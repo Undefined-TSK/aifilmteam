@@ -1,0 +1,68 @@
+{
+  "handoff_id": "EDIT-20260925-BE05",
+  "task_name": "混音执行-四轨合成粗剪v3（音拍板已定：音色A+BGM程序合成版）",
+  "from_agent": "sound_engineer",
+  "to_agent": "editor",
+  "work_background": "音效实战闭环完成（SOUN-20260925-024B）：对白8句（音色A zh-CN-XiaoyiNeural）、环境音4场程序合成、SFX 9条（含sounddino真实猫叫2条+应答单声截取0.9s）、BGM四段程序合成钢琴主题（第1场平静惊变、第2场焦虑、第3场希望、第4场温暖）。老板已授权代理人拍板：音色A、BGM程序合成降级版。音轨清单v1（JSON+MD）含全部时码与混音音量基准",
+  "deliverables": {
+    "audio_manifest": "audio目录：音轨清单_v1.json 与同名.md（25条轨道：环境4、对白8、动效9、BGM 4）",
+    "dialogue": "audio目录dialogue文件夹：8句mp3（1-1至3-5，时长全部≤镜时长-1s）",
+    "ambient": "audio目录ambient文件夹：4场mp3（15s、20s、25s、20s精确对齐时长轴）",
+    "sfx": "audio目录sfx文件夹：9条mp3（含猫叫-应答单声.mp3 0.9s，silencedetect数据驱动截取第一声）",
+    "bgm": "audio目录bgm文件夹：4段mp3钢琴主题（第3场7s处主题首现对应全片42s绿眼亮起、第4场主题完整呈现+5s淡出）",
+    "rough_cut_v2": "output目录：雨夜寻猫_粗剪_v2.mp4（80.03s无声视频，混音画面基底）",
+    "volume_standard": "混音音量基准：对白0dB、SFX -6~-14dB、环境打底-16~-18dB、BGM衬底-20dB"
+  },
+  "downstream_task": "剪辑师执行混音：按音轨清单时码将四轨合成到粗剪v2，输出粗剪v3带声成片（ffmpeg amix分层，音量按基准执行）",
+  "completion_criteria": "①粗剪v3时长约80s且含音轨 ②四轨全部按清单时码对齐 ③3-2猫叫声音先于画面0.5s可验证 ④1-2空猫窝区间雨声风声覆盖 ⑤BGM第3场42s绿眼亮起处主题进入",
+  "stop_conditions": "若混音后音轨错位（对白与口型/画面严重不符）或音量失衡（对白被环境音淹没），停手校准时码后重混；若ffmpeg amix输入数超限报错，改分轨预合成再总混",
+  "pending_items": [],
+  "material_version": "v1",
+  "created_at": "2026-09-25T22:42:00.064020",
+  "status": "completed",
+  "timeline": [
+    {
+      "event": "created",
+      "agent": "sound_engineer",
+      "message": "创建交接任务，等待 editor 检查",
+      "time": "2026-09-25T22:42:00.064020"
+    },
+    {
+      "event": "checked",
+      "agent": "editor",
+      "message": "检查完成：通过",
+      "time": "2026-09-25T22:43:07.662287"
+    },
+    {
+      "event": "accepted",
+      "agent": "editor",
+      "message": "已接受任务，开始处理",
+      "time": "2026-09-25T22:43:07.663797"
+    },
+    {
+      "event": "completed",
+      "agent": "editor",
+      "message": "任务完成，已交付结果",
+      "time": "2026-09-25T22:43:38.250509"
+    }
+  ],
+  "check_result": {
+    "checked": true,
+    "checked_by": "editor",
+    "passed": true,
+    "issues": [],
+    "should_stop": false,
+    "stop_reason": "",
+    "checked_at": "2026-09-25T22:43:07.662287"
+  },
+  "result": {
+    "deliverables": {
+      "粗剪v3成片": "output/雨夜寻猫_粗剪_v3.mp4（80.06s，8.13MB，h264视频copy自v2 + aac 44.1kHz立体声音轨）——全片首个带声版本",
+      "混音执行": "分轨预合成再总混（build_mix.py）：环境底轨80s拼接、BGM轨80s、对白轨8句adelay、SFX轨9条adelay差异化音量，四轨amix normalize=0保留相对音量+alimiter防削波",
+      "完成标准核查": "①时长80.06s含音轨✓ ②25条轨道按清单时码对齐✓ ③3-2猫叫0:38.5进入（先于画面0.5s）✓ ④1-2空猫窝雨声穿窗0:03-0:06覆盖✓ ⑤BGM主题第3场7s处进入=全片0:42绿眼亮起✓",
+      "音量分配": "对白1.0（0dB基准）、SFX轨0.8、环境轨0.55、BGM轨0.32（衬底）；踩水洼aloop×5铺满2-1~2-3行走段15s"
+    },
+    "completed_by": "editor",
+    "completed_at": "2026-09-25T22:43:38.250509"
+  }
+}

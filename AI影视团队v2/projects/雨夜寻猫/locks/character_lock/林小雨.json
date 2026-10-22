@@ -1,0 +1,40 @@
+{
+  "character_name": "林小雨",
+  "feature_keywords": [
+    "米色风衣",
+    "深色短发",
+    "年轻中国女性"
+  ],
+  "color_palette": {
+    "primary": "#d4c5a9",
+    "secondary": "#2b2b2b",
+    "accent": "#8b7355"
+  },
+  "prompt_injection": "young Chinese woman, beige trench coat, short dark hair",
+  "views": [
+    "front",
+    "side",
+    "back"
+  ],
+  "expression_set": [
+    "neutral",
+    "anxious",
+    "relieved",
+    "tender"
+  ],
+  "concept_art_path": "assets/characters/林小雨_v5.png",
+  "locked_version_uuid": "4ef11a54",
+  "locked_at": "2026-09-26T02:17:21.892927",
+  "notes": "定调图复检通过（K13 v2-v5同prompt连续锁定，形象稳定）；三视图/表情集待img2img工作流，views暂仅front；三视图补全(2026-09-26 02:15:57)：side/back由SDXL txt2img生成（视图短语前置+剥离姿势锚词，seed 2984714034，身份由prompt_injection承载），front=锁定定调图",
+  "three_view_paths": {
+    "front": "assets/characters/林小雨_v5.png",
+    "side": "assets/characters/three_view/林小雨_side.png",
+    "back": "assets/characters/three_view/林小雨_back.png"
+  },
+  "three_view_meta": {
+    "engine": "sdxl_txt2img_prompt_identity",
+    "seed": 2984714034,
+    "anchor_version_uuid": "4ef11a54",
+    "generated_at": "2026-09-26 02:15:57"
+  }
+}

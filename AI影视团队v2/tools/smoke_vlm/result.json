@@ -1,0 +1,10 @@
+{
+  "verdict": "pass",
+  "issues": [],
+  "preset": "consistency",
+  "images": [
+    "D:\\ai_film_projects\\musetalk\\code\\MuseTalk-main\\data\\video\\smoke_linxy.png",
+    "D:\\ai_film_projects\\musetalk\\smoke_frames\\f_01.png"
+  ],
+  "raw": "{\n  \"verdict\": \"pass\",\n  \"issues\": []\n}"
+}

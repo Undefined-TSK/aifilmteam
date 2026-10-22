@@ -1,0 +1,50 @@
+{
+  "handoff_id": "角色设计-20260822-61FB",
+  "task_name": "剧本定稿-雨夜寻猫",
+  "from_agent": "编剧",
+  "to_agent": "角色设计师",
+  "work_background": "编剧完成剧本初稿，主角为雨夜少女和流浪猫，故事发生在雨夜街道和梦境花园",
+  "deliverables": [
+    "剧本文档director_intent.md",
+    "角色列表：雨夜少女、流浪猫",
+    "场景列表：雨夜街道、梦境花园"
+  ],
+  "downstream_task": "角色设计与锁定",
+  "completion_criteria": [
+    "角色色板已定义",
+    "角色prompt已构建",
+    "角色已通过审核"
+  ],
+  "stop_conditions": [
+    "预算不足",
+    "角色色板无法统一"
+  ],
+  "pending_items": [],
+  "material_version": "v1",
+  "created_at": "2026-08-22T22:26:12.571168",
+  "status": "completed",
+  "timeline": [
+    {
+      "event": "created",
+      "agent": "编剧",
+      "message": "创建交接任务，等待 角色设计师 检查",
+      "time": "2026-08-22T22:26:12.571168"
+    },
+    {
+      "event": "completed",
+      "agent": "角色设计师",
+      "message": "任务完成，已交付结果",
+      "time": "2026-08-22T22:26:12.572672"
+    }
+  ],
+  "check_result": null,
+  "result": {
+    "deliverables": [
+      "角色色板.json",
+      "雨夜少女_prompt.txt",
+      "流浪猫_prompt.txt"
+    ],
+    "completed_by": "角色设计师",
+    "completed_at": "2026-08-22T22:26:12.572672"
+  }
+}

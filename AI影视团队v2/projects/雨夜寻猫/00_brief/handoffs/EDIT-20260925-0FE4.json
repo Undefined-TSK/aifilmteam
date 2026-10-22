@@ -1,0 +1,71 @@
+{
+  "handoff_id": "EDIT-20260925-0FE4",
+  "task_name": "动态镜头交付-关键镜2条+镜头清单v1",
+  "from_agent": "animator",
+  "to_agent": "editor",
+  "work_background": "动画师完成分镜表v1动画环节（handoff ANIM-20260925-8310已闭环）：关键镜3-3、4-1以AnimateDiff-Lightning i2v生成动态片段，16镜维持静帧+Ken Burns降级策略，镜头清单JSON+MD落盘shots目录",
+  "deliverables": {
+    "dynamic_clips": [
+      "shots/3-3_绿眼亮起_i2v.mp4（2s@8fps，需循环、延展至3s）",
+      "shots/4-1_归途_i2v.mp4（8.0s@4fps慢速韵律，时码与分镜表精确对齐，可直接替换粗剪v1对应片段）"
+    ],
+    "shot_list": [
+      "shots/雨夜寻猫_镜头清单_v1.json",
+      "shots/雨夜寻猫_镜头清单_v1.md"
+    ],
+    "degraded_note": "16镜沿用粗剪v1的Ken Burns方案；1-2空猫窝是唯一内容风险镜（SD出猫偏差，静帧未锁定），方案A剪辑层内景+音效暗示、方案B后续图生图局部重绘；4-1运镜低幅度建议剪辑层叠加缓慢推拉",
+    "budget_spent": "0点（本地算力），剩余590点"
+  },
+  "downstream_task": "剪辑师按镜头清单将粗剪v1中3-3、4-1两镜替换为动态片段（4-1直接替换8s；3-3循环、延展至3s），其余16镜保持Ken Burns降级；按清单降级说明处理1-2空猫窝",
+  "completion_criteria": "两镜动态片段替换进粗剪时间线，1-2空猫窝处理方案落定，更新镜头清单状态",
+  "stop_conditions": "若动态片段与前后镜色调跳变明显，退回动画师调参（不用强行混剪）",
+  "pending_items": [],
+  "material_version": "v1",
+  "created_at": "2026-09-25T18:22:30.156538",
+  "status": "completed",
+  "timeline": [
+    {
+      "event": "created",
+      "agent": "animator",
+      "message": "创建交接任务，等待 editor 检查",
+      "time": "2026-09-25T18:22:30.156538"
+    },
+    {
+      "event": "checked",
+      "agent": "editor",
+      "message": "检查完成：通过",
+      "time": "2026-09-25T22:18:44.615479"
+    },
+    {
+      "event": "accepted",
+      "agent": "editor",
+      "message": "已接受任务，开始处理",
+      "time": "2026-09-25T22:18:44.617593"
+    },
+    {
+      "event": "completed",
+      "agent": "editor",
+      "message": "任务完成，已交付结果",
+      "time": "2026-09-25T22:26:30.650483"
+    }
+  ],
+  "check_result": {
+    "checked": true,
+    "checked_by": "editor",
+    "passed": true,
+    "issues": [],
+    "should_stop": false,
+    "stop_reason": "",
+    "checked_at": "2026-09-25T22:18:44.615479"
+  },
+  "result": {
+    "deliverables": {
+      "粗剪v2成片": "output/雨夜寻猫_粗剪_v2.mp4（80.03s，1280x720/30fps）",
+      "动态替换说明": "3-3绿眼亮起慢放1.5x至3.00s；4-1归途含缓慢推拉1.0→1.05（241帧/8.03s）",
+      "1-2空猫窝方案": "剪辑层处理——粗剪v2保持内景替代，音效实战补雨声/风声+台词暗示空窝",
+      "镜头清单更新": "shots/雨夜寻猫_镜头清单_v1.json + .md 已记录替换状态与1-2方案"
+    },
+    "completed_by": "editor",
+    "completed_at": "2026-09-25T22:26:30.650483"
+  }
+}

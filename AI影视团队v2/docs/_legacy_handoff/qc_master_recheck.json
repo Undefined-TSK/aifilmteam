@@ -1,0 +1,59 @@
+{
+ "file": "audio_48k_master.wav",
+ "profile": "web1080",
+ "stage": "preview",
+ "spec_schema": "cineast.delivery_spec/1.7",
+ "spec_source": "pipeline/delivery_spec.json",
+ "measured": {
+  "res": "NonexNone",
+  "fps": 0.0,
+  "kbps": 2304.0,
+  "audio_rate": "48000",
+  "audio_ch": 2,
+  "duration_s": 80.0
+ },
+ "info": {
+  "delivery_stage": "preview",
+  "program_loudness": {
+   "input_i": -14.0,
+   "input_tp": -1.7,
+   "input_lra": 9.2,
+   "input_thresh": -24.51,
+   "target_offset": -0.16
+  },
+  "defects": {
+   "black_spans": [],
+   "frozen_over_1p2s": []
+  },
+  "aigc_implicit": {
+   "required": [
+    "comment",
+    "aigc_label",
+    "aigc_service",
+    "aigc_provider_id"
+   ],
+   "present": [
+    "comment"
+   ]
+  },
+  "explicit_label": {
+   "via": "overlay 登记"
+  },
+  "provenance_kind_counts": {
+   "still_fallback": 16,
+   "video": 2
+  }
+ },
+ "fail": [
+  "帧率 0.0 ≠ 24.0（±0.005，禁 1001 时基引入节拍抖动）",
+  "分辨率 NonexNone ≠ 1920x1080",
+  "响度测量失败：[safe-delete][SAFE_DELETE_FAIL_CLOSED] {\"target\": \"D:\\\\ai_film_projects\\\\logs\\\\_qcwin.wav\", \"reason\": \"windows-sandbox-recycle-bin-unavailable\"}",
+  "AIGC 隐式元数据缺 ['aigc_label', 'aigc_provider_id', 'aigc_service']（GB 45438-2025，容器 .wav）"
+ ],
+ "warn": [
+  "视频码率 2304.0kbps < 8000（静图放大内容必然欠载；真动化后才可能达标）｜preview 记警示",
+  "血缘 kind≠video 共 16 镜：1-1,1-2,1-3,1-4,2-1,2-2,2-3,2-4｜final 阶段必硬判",
+  "36 项轨道值为脚本自动草稿未签字（g1 门前须签）"
+ ],
+ "verdict": "FAIL"
+}

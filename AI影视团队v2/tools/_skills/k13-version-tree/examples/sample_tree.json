@@ -1,0 +1,81 @@
+{
+  "_comment": "K13 版本树示例 - 一个角色资产的典型迭代过程",
+  "asset_type": "character",
+  "asset_name": "林月",
+  "created_at": "2026-08-22T10:00:00",
+  "updated_at": "2026-08-22T15:30:00",
+  "latest_uuid": "d4e5f607",
+  "versions": [
+    {
+      "uuid": "a1b2c3d4",
+      "version": "v1",
+      "locked": true,
+      "created_at": "2026-08-22T10:05:00",
+      "parent_uuid": null,
+      "note": "初版，赛博朋克女主角，短发",
+      "params": {
+        "model": "SDXL",
+        "prompt": "cyberpunk girl, short hair, neon jacket, rainy city",
+        "seed": 12345,
+        "steps": 20,
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    {
+      "uuid": "b2c3d4e5",
+      "version": "v2",
+      "locked": true,
+      "created_at": "2026-08-22T11:20:00",
+      "parent_uuid": "a1b2c3d4",
+      "note": "长发版，脸更自然了",
+      "params": {
+        "model": "SDXL",
+        "prompt": "cyberpunk girl, LONG hair, neon jacket, rainy city, photorealistic face",
+        "seed": 12345,
+        "steps": 25,
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    {
+      "uuid": "c3d4e5f6",
+      "version": "v3",
+      "locked": true,
+      "created_at": "2026-08-22T13:10:00",
+      "parent_uuid": "a1b2c3d4",
+      "note": "另一个方向：蓝色霓虹，更酷的眼神",
+      "params": {
+        "model": "SDXL",
+        "prompt": "cyberpunk girl, short hair, BLUE neon jacket, intense gaze",
+        "seed": 67890,
+        "steps": 20,
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    {
+      "uuid": "d4e5f607",
+      "version": "v4",
+      "locked": false,
+      "created_at": "2026-08-22T15:30:00",
+      "parent_uuid": "b2c3d4e5",
+      "note": "在v2基础上试试不同的光照，还没定",
+      "params": {
+        "model": "SDXL",
+        "prompt": "cyberpunk girl, long hair, neon jacket, dramatic rim lighting",
+        "seed": 12345,
+        "steps": 30,
+        "width": 1024,
+        "height": 1024
+      }
+    }
+  ],
+  "_tree_structure": {
+    "_comment": "可视化的版本树结构",
+    "v1 (a1b2c3d4)": [
+      "v2 (b2c3d4e5) - 长发版 → [v4 (d4e5f607) - 试错中]",
+      "v3 (c3d4e5f6) - 蓝霓虹方向"
+    ]
+  }
+}

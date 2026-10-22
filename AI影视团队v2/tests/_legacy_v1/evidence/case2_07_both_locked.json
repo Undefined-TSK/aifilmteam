@@ -1,0 +1,76 @@
+{
+  "versions": [
+    {
+      "uuid": "93dba459",
+      "asset_type": "scene",
+      "asset_name": "竹林晨雾",
+      "file_name": "scene_v1.png",
+      "file_path": "D:\\ai_film_projects\\tests\\case2_multi_assets\\k13_locked\\scene\\竹林晨雾\\93dba459\\scene_v1.png",
+      "locked_at": "2026-08-22 18:24:00",
+      "params": {
+        "workflow": "sdxl_txt2img",
+        "type": "scene",
+        "model": "sd_xl_base_1.0.safetensors",
+        "steps": 20,
+        "cfg": 7.5,
+        "sampler": "dpmpp_2m",
+        "scheduler": "karras",
+        "seed": 22222,
+        "width": 1024,
+        "height": 1024,
+        "prompt": "cinematic shot of a dense bamboo forest in ancient china style, morning mist floating through the trees, golden sunbeams piercing through bamboo leaves creating god rays, ethereal atmosphere, traditional Chinese painting aesthetic meets photorealism, tranquil and serene, wide angle landscape, highly detailed, movie still",
+        "negative_prompt": "ugly, blurry, low quality, deformed, cartoon, anime, watermark, text, modern buildings, people"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "ae436160",
+      "asset_type": "character",
+      "asset_name": "白衣剑客",
+      "file_name": "character_v1.png",
+      "file_path": "D:\\ai_film_projects\\tests\\case2_multi_assets\\k13_locked\\character\\白衣剑客\\ae436160\\character_v1.png",
+      "locked_at": "2026-08-22 18:24:12",
+      "params": {
+        "workflow": "sdxl_txt2img",
+        "type": "character",
+        "model": "sd_xl_base_1.0.safetensors",
+        "steps": 20,
+        "cfg": 7.5,
+        "sampler": "dpmpp_2m",
+        "scheduler": "karras",
+        "seed": 33333,
+        "width": 1024,
+        "height": 1024,
+        "prompt": "cinematic portrait of a young 20 year old Chinese swordsman in flowing white robes, long hair tied up, cold and elegant demeanor, standing in a misty bamboo forest, ancient Chinese wuxia style, morning light filtering through bamboo, ethereal and serene, photorealistic, highly detailed, movie still, matching the bamboo forest scene aesthetic",
+        "negative_prompt": "ugly, blurry, low quality, deformed, cartoon, anime, watermark, text, modern clothes, armor",
+        "depends_on_scene": "93dba459",
+        "style_reference": "与竹林晨雾场景风格统一"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    }
+  ],
+  "assets": {
+    "scene/竹林晨雾": {
+      "asset_type": "scene",
+      "asset_name": "竹林晨雾",
+      "version_count": 1,
+      "latest_version": "93dba459",
+      "versions": [
+        "93dba459"
+      ]
+    },
+    "character/白衣剑客": {
+      "asset_type": "character",
+      "asset_name": "白衣剑客",
+      "version_count": 1,
+      "latest_version": "ae436160",
+      "versions": [
+        "ae436160"
+      ]
+    }
+  }
+}

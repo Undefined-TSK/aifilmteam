@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>维度19 · 散热降频温度曲线 — CINEAST-3</title>
+<style>
+  :root{ --c1:#1a1a2e; --c2:#16213e; --c3:#0f3460; --c4:#e94560; --c5:#533483;
+         --fg:#e8eaf0; --dim:#9aa3b2; --warn:#d29922; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--c1);color:var(--fg);font-family:"Segoe UI","Microsoft YaHei",sans-serif;padding:24px}
+  .wrap{max-width:1120px;margin:0 auto}
+  .nav{font-size:12px;color:var(--dim);margin-bottom:14px}
+  .nav a{color:var(--c4);text-decoration:none}
+  h1{font-size:20px;margin-bottom:4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+  .card{background:var(--c2);border:1px solid var(--c3);border-radius:10px;padding:16px;margin-bottom:16px}
+  .pending{background:rgba(210,153,34,.12);border:1px solid rgba(210,153,34,.5);color:#f0d38a;
+           padding:10px 12px;border-radius:8px;font-size:13px;margin-bottom:14px}
+  #chart{width:100%;height:440px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--c3)}
+  th{color:var(--dim);font-weight:500;font-size:12px}
+  code{background:var(--c3);padding:1px 6px;border-radius:4px;font-size:12px;color:#8fd6ff}
+  .note{color:var(--dim);font-size:12px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav">基线：<a href="../00-基线报告/项目基线报告.md">../00-基线报告/项目基线报告.md</a> ｜ 规约：<a href="../_执行须知.md">../_执行须知.md</a> ｜ 导航：<a href="../索引.html">../索引.html</a></div>
+  <h1>维度 19 · 散热降频温度曲线</h1>
+  <div class="sub">GPU 温度 x 频率 x 负载率 时间序列 · 本机无持续负载采样记录</div>
+
+  <div class="card">
+    <div class="pending">
+      <b>待实测</b>：本项目从未在持续负载下采样过 GPU 温度/频率，本图仅含 1 个空载实测点（2026-10-05 17:21）。
+      负荷段温度曲线一律留空，<b>不编造温度数据</b>。采样方案见下方表格。
+    </div>
+    <div id="chart"></div>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead><tr><th>步骤</th><th>操作</th><th>采集项</th><th>产出</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>空载采样 60s</td><td>温度/频率/功耗/利用率</td><td>43 C / 330 MHz / 6.23 W / 0%（已实测）</td></tr>
+        <tr><td>2</td><td>起 Wan2.2 5B 生成并全程 2s 采样</td><td>+ clocks_throttle_reasons</td><td>是否触发 thermal slowdown</td></tr>
+        <tr><td>3</td><td>连续跑 3 个 127.1s 任务</td><td>温度爬升斜率</td><td>第几镜开始降频</td></tr>
+        <tr><td>4</td><td>记录降频点温度/频率</td><td>nvidia-smi -q -d PERFORMANCE</td><td>熔断阈值标定</td></tr>
+        <tr><td>5</td><td>记录冷却回落时间</td><td>时间序列</td><td>冷却窗口时长</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:10px">采样命令：<code>nvidia-smi --query-gpu=timestamp,temperature.gpu,clocks.sm,clocks.max.sm,power.draw,utilization.gpu,clocks_throttle_reasons.active --format=csv -l 2</code></p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script>
+(function(){
+  var el = document.getElementById('chart');
+  if(!window.echarts){
+    el.innerHTML = '<div style="padding:40px;color:#9aa3b2">ECharts CDN 未加载（离线环境）。上表为采样方案。</div>';
+    return;
+  }
+  var chart = echarts.init(el);
+  chart.setOption({
+    backgroundColor:'transparent',
+    title:{ text:'GPU 温度 / 频率 / 负载率 时间序列（负荷段待实测）', left:8, top:4,
+            textStyle:{color:'#e8eaf0', fontSize:14, fontWeight:600} },
+    tooltip:{ trigger:'axis', backgroundColor:'#16213e', borderColor:'#0f3460', textStyle:{color:'#e8eaf0'} },
+    legend:{ data:['温度 (C)','SM 频率 (MHz)','GPU 利用率 (%)'], right:10, top:8, textStyle:{color:'#9aa3b2'} },
+    grid:{ left:70, right:70, top:64, bottom:50 },
+    xAxis:{
+      type:'category', boundaryGap:false,
+      data:['空载 0s','负载 T0','负载 T1','负载 T2','负载 T3','冷却 T4','冷却 T5'],
+      axisLabel:{color:'#9aa3b2', fontSize:11},
+      axisLine:{lineStyle:{color:'#0f3460'}}
+    },
+    yAxis:[
+      { type:'value', name:'温度 C', min:20, max:100, nameTextStyle:{color:'#9aa3b2'},
+        axisLabel:{color:'#9aa3b2'}, splitLine:{lineStyle:{color:'rgba(15,52,96,.7)'}},
+        markLine:{silent:true, symbol:'none',
+          lineStyle:{color:'#e94560', type:'dashed'},
+          label:{color:'#e94560', formatter:'熔断阈值待标定'},
+          data:[{yAxis:85}]} },
+      { type:'value', name:'MHz / %', min:0, max:3200, nameTextStyle:{color:'#9aa3b2'},
+        axisLabel:{color:'#9aa3b2'}, splitLine:{show:false} }
+    ],
+    series:[
+      { name:'温度 (C)', type:'line', yAxisIndex:0, smooth:true, symbol:'circle', symbolSize:8,
+        lineStyle:{color:'#e94560', width:2}, itemStyle:{color:'#e94560'},
+        data:[43, null, null, null, null, null, null],
+        label:{show:true, color:'#e94560', fontSize:11, formatter:function(p){ return p.value==null?'':p.value+' 实测'; }} },
+      { name:'SM 频率 (MHz)', type:'line', yAxisIndex:1, smooth:true, symbol:'circle', symbolSize:8,
+        lineStyle:{color:'#533483', width:2}, itemStyle:{color:'#533483'},
+        data:[330, null, null, null, null, null, null],
+        label:{show:true, color:'#b39ddb', fontSize:11, formatter:function(p){ return p.value==null?'':p.value+' 实测'; }} },
+      { name:'GPU 利用率 (%)', type:'line', yAxisIndex:1, smooth:true, symbol:'circle', symbolSize:8,
+        lineStyle:{color:'#3fb950', width:2, type:'dotted'}, itemStyle:{color:'#3fb950'},
+        data:[0, null, null, null, null, null, null] }
+    ],
+    graphic:[{
+      type:'text', left:'center', top:'52%',
+      style:{ text:'待实测', fill:'rgba(233,69,96,.35)', fontSize:64, fontWeight:700 }
+    }]
+  });
+  window.addEventListener('resize', function(){ chart.resize(); });
+})();
+</script>
+</body>
+</html>

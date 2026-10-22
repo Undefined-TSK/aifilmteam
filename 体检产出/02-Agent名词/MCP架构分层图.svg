@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" font-family="Segoe UI, Microsoft YaHei, sans-serif">
+  <title>MCP 架构分层图 — Agent → stdio MCP Server → TCP 17800 → Blender addon → bpy 五层</title>
+  <desc>CINEAST-3 白模管线的 MCP 双组件架构：LLM 操作员进程经 stdio JSON-RPC 调 baimo_mcp_server，server 经 TCP 127.0.0.1:17800 转发到 Blender addon，addon 在 Blender 主线程 20Hz 执行 bpy 命令。</desc>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#16213e"/><stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#e94560"/>
+    </marker>
+    <marker id="arrowp" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#533483"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1000" height="640" fill="#1a1a2e"/>
+  <text x="500" y="38" fill="#e8eaf0" font-size="20" font-weight="600" text-anchor="middle">MCP 架构分层图 · 白模管线双组件</text>
+  <text x="500" y="62" fill="#9aa3b2" font-size="13" text-anchor="middle">Agent 操作员 → stdio MCP Server → TCP 127.0.0.1:17800 → Blender addon → bpy 主线程</text>
+
+  <!-- Layer 1 -->
+  <rect x="70" y="92" width="860" height="88" rx="10" fill="url(#g1)" stroke="#0f3460" stroke-width="1.5"/>
+  <text x="90" y="118" fill="#39c5cf" font-size="13" font-weight="600">层 1 · Agent 操作员进程（LLM 大脑）</text>
+  <rect x="90" y="130" width="250" height="36" rx="6" fill="#0f3460"/>
+  <text x="215" y="153" fill="#e8eaf0" font-size="12.5" text-anchor="middle">N2 白模操作员 · qwen3:8b</text>
+  <rect x="360" y="130" width="250" height="36" rx="6" fill="#0f3460"/>
+  <text x="485" y="153" fill="#e8eaf0" font-size="12.5" text-anchor="middle">Function Calling 执行循环</text>
+  <rect x="630" y="130" width="280" height="36" rx="6" fill="#0f3460"/>
+  <text x="770" y="153" fill="#e8eaf0" font-size="12.5" text-anchor="middle">tools/llm_gateway.py · 五档路由</text>
+
+  <!-- arrow 1 -->
+  <line x1="500" y1="180" x2="500" y2="222" stroke="#e94560" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="512" y="205" fill="#e94560" font-size="11.5">stdio JSON-RPC 2.0</text>
+
+  <!-- Layer 2 -->
+  <rect x="70" y="228" width="860" height="88" rx="10" fill="url(#g1)" stroke="#0f3460" stroke-width="1.5"/>
+  <text x="90" y="254" fill="#39c5cf" font-size="13" font-weight="600">层 2 · stdio MCP Server（工具面 · 13 工具）</text>
+  <rect x="90" y="266" width="820" height="36" rx="6" fill="#16213e" stroke="#533483"/>
+  <text x="500" y="289" fill="#e8eaf0" font-size="12" text-anchor="middle">ping · scene_state · create_primitive · place_object · set_gray_material · add_camera · keyframe_camera · add_light · set_world · set_frame_range · render_preview · render_playblast · save_blend</text>
+
+  <!-- arrow 2 -->
+  <line x1="500" y1="316" x2="500" y2="358" stroke="#e94560" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="512" y="341" fill="#e94560" font-size="11.5">TCP 127.0.0.1:17800 + token 校验</text>
+
+  <!-- Layer 3 -->
+  <rect x="70" y="364" width="860" height="80" rx="10" fill="url(#g1)" stroke="#0f3460" stroke-width="1.5"/>
+  <text x="90" y="390" fill="#39c5cf" font-size="13" font-weight="600">层 3 · TCP 传输（本地回环 · 命令白名单）</text>
+  <rect x="90" y="400" width="820" height="32" rx="6" fill="#16213e" stroke="#533483"/>
+  <text x="500" y="421" fill="#e8eaf0" font-size="12" text-anchor="middle">baimo_mcp_server.py blender_rpc(method, params, timeout=1800) · execute_code 可配置关闭 · 仅监听 127.0.0.1</text>
+
+  <!-- arrow 3 -->
+  <line x1="500" y1="444" x2="500" y2="486" stroke="#533483" stroke-width="2" marker-end="url(#arrowp)"/>
+  <text x="512" y="469" fill="#533483" font-size="11.5">addon 服务端接收</text>
+
+  <!-- Layer 4 -->
+  <rect x="70" y="492" width="860" height="80" rx="10" fill="url(#g1)" stroke="#0f3460" stroke-width="1.5"/>
+  <text x="90" y="518" fill="#39c5cf" font-size="13" font-weight="600">层 4 · Blender addon（进程隔离边界）</text>
+  <rect x="90" y="528" width="820" height="32" rx="6" fill="#16213e" stroke="#533483"/>
+  <text x="500" y="549" fill="#e8eaf0" font-size="12" text-anchor="middle">baimo_mcp_addon/server.py · 注册为 Blender 插件 · 主线程队列（20Hz 轮询）</text>
+
+  <!-- arrow 4 -->
+  <line x1="500" y1="572" x2="500" y2="600" stroke="#533483" stroke-width="2" marker-end="url(#arrowp)"/>
+  <text x="512" y="590" fill="#533483" font-size="11.5">bpy 执行</text>
+
+  <!-- Layer 5 -->
+  <rect x="70" y="606" width="860" height="26" rx="8" fill="#0f3460"/>
+  <text x="500" y="624" fill="#e8eaf0" font-size="12.5" text-anchor="middle">层 5 · bpy 主线程 · Blender 5.2.2 headless · 渲染 EEVEE Next</text>
+
+  <!-- side note -->
+  <rect x="70" y="176" width="0" height="0"/>
+</svg>

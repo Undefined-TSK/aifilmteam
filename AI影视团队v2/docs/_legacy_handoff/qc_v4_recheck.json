@@ -1,0 +1,70 @@
+{
+ "file": "雨夜寻猫_粗剪_v4.mp4",
+ "profile": "web1080",
+ "stage": "preview",
+ "spec_schema": "cineast.delivery_spec/1.7",
+ "spec_source": "pipeline/delivery_spec.json",
+ "measured": {
+  "res": "1280x720",
+  "fps": 30.0,
+  "kbps": 1366.4,
+  "audio_rate": "44100",
+  "audio_ch": 2,
+  "duration_s": 80.0
+ },
+ "info": {
+  "delivery_stage": "preview",
+  "program_loudness": {
+   "input_i": -20.83,
+   "input_tp": -7.19,
+   "input_lra": 7.1,
+   "input_thresh": -31.36,
+   "target_offset": -0.76
+  },
+  "dialogue_window_relative": {
+   "window_lufs": -13.4,
+   "delta_lu": 7.43,
+   "band_lu": [
+    -1.0,
+    4.0
+   ],
+   "remedy": "超界只改 bus_trim_db，不许改判据或用 makeup 抬响度"
+  },
+  "defects": {
+   "black_spans": [],
+   "frozen_over_1p2s": []
+  },
+  "aigc_implicit": {
+   "required": [
+    "comment",
+    "aigc_label",
+    "aigc_service",
+    "aigc_provider_id"
+   ],
+   "present": [
+    "comment"
+   ]
+  },
+  "explicit_label": {
+   "via": "overlay 登记"
+  },
+  "provenance_kind_counts": {
+   "still_fallback": 16,
+   "video": 2
+  }
+ },
+ "fail": [
+  "帧率 30.0 ≠ 24.0（±0.005，禁 1001 时基引入节拍抖动）",
+  "分辨率 1280x720 ≠ 1920x1080",
+  "采样率 44100 ≠ 48000",
+  "程序响度 -20.83 LUFS ≠ -14.0±0.5",
+  "对白窗口相对程序响 +7.43 LU 超 [-1.0,4.0]；修法只改 spec.bus_trim_db（{\"DLG\": -2.9, \"AMB\": 0.0, \"FX\": 0.0, \"MX\": 0.0}），不改判据",
+  "AIGC 隐式元数据缺 ['aigc_label', 'aigc_provider_id', 'aigc_service']（GB 45438-2025，容器 .mp4）"
+ ],
+ "warn": [
+  "视频码率 1366.4kbps < 8000（静图放大内容必然欠载；真动化后才可能达标）｜preview 记警示",
+  "血缘 kind≠video 共 16 镜：1-1,1-2,1-3,1-4,2-1,2-2,2-3,2-4｜final 阶段必硬判",
+  "36 项轨道值为脚本自动草稿未签字（g1 门前须签）"
+ ],
+ "verdict": "FAIL"
+}

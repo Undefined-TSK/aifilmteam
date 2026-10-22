@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>维度2 · Agent 名词覆盖度热力图 — CINEAST-3</title>
+<style>
+  :root{--bg:#1a1a2e;--panel:#16213e;--line:#0f3460;--accent:#e94560;--purple:#533483;--txt:#e8eaf0;--dim:#9aa3b2;--green:#3fb950;--amber:#d29922;--red:#e94560}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI","Microsoft YaHei",sans-serif;padding:22px;max-width:1180px;margin:0 auto}
+  h1{font-size:21px;margin-bottom:4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:16px;line-height:1.7}
+  .nav{font-size:12px;color:var(--dim);margin-bottom:16px}.nav a{color:#5b8cff;text-decoration:none}
+  .legend{display:flex;gap:18px;margin-bottom:14px;font-size:12.5px;color:var(--dim);flex-wrap:wrap}
+  .dot{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:middle}
+  .g{background:var(--green)}.y{background:var(--amber)}.r{background:var(--red)}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:9px 10px;font-size:12.5px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:500;font-size:12px}
+  td.cell{text-align:center;font-weight:600}
+  tr:hover td{background:rgba(83,52,131,.18)}
+  .badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:999px;font-weight:600}
+  .b-ok{background:rgba(63,185,80,.16);color:var(--green)}
+  .b-part{background:rgba(210,153,34,.16);color:var(--amber)}
+  .b-none{background:rgba(233,69,96,.16);color:var(--red)}
+  .cell-ok{background:rgba(63,185,80,.12)}
+  .cell-part{background:rgba(210,153,34,.12)}
+  .cell-none{background:rgba(233,69,96,.14)}
+  code{background:#0f3460;padding:1px 6px;border-radius:4px;font-size:11.5px;color:#39c5cf}
+  .note{font-size:12px;color:var(--dim);margin-top:16px;line-height:1.8}
+  .sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px;text-align:center}
+  .card .n{font-size:24px;font-weight:700}
+  .card .l{font-size:11.5px;color:var(--dim);margin-top:3px}
+</style>
+</head>
+<body>
+  <h1>维度 2 · Agent 名词覆盖度热力图</h1>
+  <div class="nav">基线：<a href="../00-基线报告/项目基线报告.md">../00-基线报告/项目基线报告.md</a> ｜ 规约：<a href="../_执行须知.md">../_执行须知.md</a> ｜ 导航：<a href="../索引.html">../索引.html</a></div>
+  <div class="sub">13 个 Agent 领域名词 × 项目实现状态（绿=已有实践 / 黄=部分实现 / 红=完全缺失）· 悬停行高亮</div>
+
+  <div class="sum">
+    <div class="card"><div class="n" style="color:var(--green)">7</div><div class="l">已有（可运行）</div></div>
+    <div class="card"><div class="n" style="color:var(--amber)">5</div><div class="l">部分实现</div></div>
+    <div class="card"><div class="n" style="color:var(--red)">1</div><div class="l">完全缺失</div></div>
+    <div class="card"><div class="n" style="color:#39c5cf">54%</div><div class="l">可运行覆盖率</div></div>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot g"></span>已有实践（可运行）</span>
+    <span><span class="dot y"></span>部分实现（设计/半成品）</span>
+    <span><span class="dot r"></span>完全缺失（仅规划）</span>
+  </div>
+
+  <table>
+    <thead><tr><th style="width:130px">名词</th><th style="width:80px">状态</th><th style="width:110px">覆盖度</th><th>项目实现 / 缺口</th></tr></thead>
+    <tbody>
+      <tr><td><b>MCP</b></td><td><span class="badge b-ok">已有</span></td><td class="cell cell-ok">高</td><td><code>mcp_blender/baimo_mcp_server.py</code> 13 工具 stdio + addon 127.0.0.1:17800；<code>export_layer_manifest</code> 规划中</td></tr>
+      <tr><td><b>Tools</b></td><td><span class="badge b-ok">已有</span></td><td class="cell cell-ok">高</td><td>49 个 Python 工具 + pipeline；多数「待包装」为 Function Calling/MCP</td></tr>
+      <tr><td><b>Function Calling</b></td><td><span class="badge b-ok">已有</span></td><td class="cell cell-ok">高</td><td><code>tools/llm_gateway.py</code> chat/structured/tools 三连测全绿；工具白名单 A12 未接注册表</td></tr>
+      <tr><td><b>Handoff</b></td><td><span class="badge b-ok">已有</span></td><td class="cell cell-ok">高</td><td><code>tools/handoff_manager.py</code> 四态状态机 + handoff_package；与 crew_bus 未完全打通</td></tr>
+      <tr><td><b>Event bus</b></td><td><span class="badge b-ok">已有</span></td><td class="cell cell-ok">高</td><td><code>tools/crew_bus.py</code> SQLite WAL 五要素全绿；实际接线仅 job.*</td></tr>
+      <tr><td><b>Idempotency</b></td><td><span class="badge b-ok">已有</span></td><td class="cell cell-ok">高</td><td>crew_bus idem_key 唯一索引 + jobs.py 内容哈希；订阅者幂等为契约要求</td></tr>
+      <tr><td><b>Lineage tracing</b></td><td><span class="badge b-ok">已有</span></td><td class="cell cell-ok">中高</td><td><code>tools/dit_ingest.py</code> → <code>ditmap/lineage.jsonl</code>；16/18 镜血缘已标注，全链未覆盖</td></tr>
+      <tr><td><b>Skills</b></td><td><span class="badge b-part">部分</span></td><td class="cell cell-part">中</td><td>7 份 SKILL.md 为文档级，未全机器化；C3 岗位卡重写待 M18</td></tr>
+      <tr><td><b>A2A</b></td><td><span class="badge b-part">部分</span></td><td class="cell cell-part">中</td><td>轻量借鉴三概念（operator_card/task 状态机/handoff_package）；不引入完整协议栈</td></tr>
+      <tr><td><b>子代理</b></td><td><span class="badge b-part">部分</span></td><td class="cell cell-part">低</td><td>17d §2.3 设计（并行候选变体）；无落地代码</td></tr>
+      <tr><td><b>Guardrails</b></td><td><span class="badge b-part">部分</span></td><td class="cell cell-part">中</td><td>档位配置 + vram_lock + A8 铁律三档；<code>iron_rules.json</code>（M4）未落地，纪律偏 prompt 层</td></tr>
+      <tr><td><b>Orchestration</b></td><td><span class="badge b-part">部分</span></td><td class="cell cell-part">中</td><td>crew_bus + handoff + jobs 基建齐备；中央编排器（CrewAI）未落地，现为手工编排</td></tr>
+      <tr><td><b>RAG</b></td><td><span class="badge b-none">缺失</span></td><td class="cell cell-none">低</td><td>17d §2.7 设计（<code>rag_kb.py</code> P1 新建）；关键词索引 + 向量层均未落地</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>读图结论：</b>1)「手」与「腿」齐备——MCP/Tools/Function Calling/Handoff/Event bus/Idempotency/Lineage 七项可运行；2)「记忆」与「编排」缺失——RAG 纯规划、Orchestration 仅基建无编排器；3) 纪律护栏偏 prompt 层，A8 铁律三档须 M4 代码化才闭环；4) 13 名词中 12 项有项目内具体落点，不存在空泛对照。<br>
+    <b>覆盖度口径：</b>高=已有可运行实现；中=有设计或半成品；低=仅规划或极少量落点。可运行覆盖率 = 7/13 ≈ 54%。
+  </div>
+</body>
+</html>

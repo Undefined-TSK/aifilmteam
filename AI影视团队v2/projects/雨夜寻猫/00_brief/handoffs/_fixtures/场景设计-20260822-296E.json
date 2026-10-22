@@ -1,0 +1,36 @@
+{
+  "handoff_id": "场景设计-20260822-296E",
+  "task_name": "角色设计完成-雨夜少女+流浪猫",
+  "from_agent": "角色设计师",
+  "to_agent": "场景设计师",
+  "work_background": "雨夜少女和流浪猫的角色设计已锁定，色板和prompt已交付",
+  "deliverables": [
+    "雨夜少女色板和prompt",
+    "流浪猫色板和prompt",
+    "角色设计审核通过记录"
+  ],
+  "downstream_task": "场景设计（雨夜街道、梦境花园）",
+  "completion_criteria": [
+    "场景氛围图已生成",
+    "光影方案已确认",
+    "场景已锁定K13"
+  ],
+  "stop_conditions": [
+    "预算不足",
+    "场景与角色色板冲突"
+  ],
+  "pending_items": [],
+  "material_version": "v1",
+  "created_at": "2026-08-22T22:28:03.082169",
+  "status": "pending_check",
+  "timeline": [
+    {
+      "event": "created",
+      "agent": "角色设计师",
+      "message": "创建交接任务，等待 场景设计师 检查",
+      "time": "2026-08-22T22:28:03.082169"
+    }
+  ],
+  "check_result": null,
+  "result": null
+}

@@ -1,0 +1,35 @@
+{
+  "assets": [
+    {
+      "name": "竹林晨雾",
+      "type": "scene",
+      "status": "pending",
+      "dependencies": [],
+      "description": "古风竹林场景，晨雾缭绕，阳光穿透树叶，丁达尔效应",
+      "prompt": "cinematic shot of a dense bamboo forest in ancient china style, morning mist floating through the trees, golden sunbeams piercing through bamboo leaves creating god rays, ethereal atmosphere, traditional Chinese painting aesthetic meets photorealism, tranquil and serene, wide angle landscape, highly detailed, movie still",
+      "params": {},
+      "output_file": null,
+      "version_uuid": null,
+      "retry_count": 0,
+      "created_at": "2026-08-22 18:23:48",
+      "updated_at": "2026-08-22 18:23:48"
+    },
+    {
+      "name": "白衣剑客",
+      "type": "character",
+      "status": "pending",
+      "dependencies": [
+        "竹林晨雾"
+      ],
+      "description": "古风白衣剑客，20岁左右，清冷气质，长发束起，与竹林场景风格统一",
+      "prompt": "cinematic portrait of a young 20 year old Chinese swordsman in flowing white robes, long hair tied up, cold and elegant demeanor, standing in a misty bamboo forest, ancient Chinese wuxia style, morning light filtering through bamboo, ethereal and serene, photorealistic, highly detailed, movie still, matching the bamboo forest scene aesthetic",
+      "params": {},
+      "output_file": null,
+      "version_uuid": null,
+      "retry_count": 0,
+      "created_at": "2026-08-22 18:23:48",
+      "updated_at": "2026-08-22 18:23:48"
+    }
+  ],
+  "created_at": "2026-08-22 18:23:48"
+}

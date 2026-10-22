@@ -1,0 +1,92 @@
+{
+  "handoff_id": "ANIM-20260925-8310",
+  "task_name": "分镜表v1交付-18镜完整指令",
+  "from_agent": "storyboard_artist",
+  "to_agent": "animator",
+  "work_background": "雨夜寻猫分镜v1完成：18镜五要素+完整prompt（lock注入），4张分镜图已锁K13",
+  "deliverables": {
+    "storyboard_table": [
+      "storyboard/雨夜寻猫_分镜表_v1.json",
+      "storyboard/雨夜寻猫_分镜表_v1.md"
+    ],
+    "shots_total": "18镜（1场4+2场5+3场6+4场3），80秒",
+    "reference_images": {
+      "新生成并锁定": [
+        "分镜2-1-街道寻找_v1（uuid 5739126c）",
+        "分镜3-3-绿眼亮起_v2（uuid cd16d91b）"
+      ],
+      "沿用已锁": [
+        "分镜01（2b21ef79）→4-1",
+        "分镜02（1028cfdc）→3-1"
+      ],
+      "待定": "1-2空猫窝特写（SD出猫偏差，文字描述为准，成片剪辑层控制）"
+    },
+    "lock_injection": "林小雨13镜、小白7镜、场景lock全覆盖，手动复制特征0处",
+    "budget_spent": "50点（3张首生成+2张重生成，剩620）"
+  },
+  "downstream_task": "按分镜表逐镜生成动态画面（16:9），景别/运镜/时长按表执行",
+  "completion_criteria": "按标准交付",
+  "stop_conditions": "",
+  "pending_items": [],
+  "material_version": "v1",
+  "created_at": "2026-09-25T17:16:46.241136",
+  "status": "completed",
+  "timeline": [
+    {
+      "event": "created",
+      "agent": "storyboard_artist",
+      "message": "创建交接任务，等待 animator 检查",
+      "time": "2026-09-25T17:16:46.241136"
+    },
+    {
+      "event": "checked",
+      "agent": "animator",
+      "message": "检查完成：发现 1 个问题",
+      "time": "2026-09-25T18:07:23.190325"
+    },
+    {
+      "event": "checked",
+      "agent": "animator",
+      "message": "检查完成：通过",
+      "time": "2026-09-25T18:08:16.216306"
+    },
+    {
+      "event": "accepted",
+      "agent": "animator",
+      "message": "已接受任务，开始处理",
+      "time": "2026-09-25T18:08:16.263929"
+    },
+    {
+      "event": "completed",
+      "agent": "animator",
+      "message": "任务完成，已交付结果",
+      "time": "2026-09-25T18:22:30.154537"
+    }
+  ],
+  "check_result": {
+    "checked": true,
+    "checked_by": "animator",
+    "passed": true,
+    "issues": [],
+    "should_stop": false,
+    "stop_reason": "",
+    "checked_at": "2026-09-25T18:08:16.216306"
+  },
+  "result": {
+    "deliverables": {
+      "shots_dynamic": [
+        "shots/3-3_绿眼亮起_i2v.mp4",
+        "shots/4-1_归途_i2v.mp4"
+      ],
+      "shot_list": [
+        "shots/雨夜寻猫_镜头清单_v1.json",
+        "shots/雨夜寻猫_镜头清单_v1.md"
+      ],
+      "dynamic_summary": "关键镜2条动态：3-3绿眼亮起（2s，seed 1225766128）、4-1归途（8s慢速韵律，seed 747230375）；16镜降级静帧+Ken Burns，粗剪v1已全覆盖",
+      "self_check": "3-3四项全过；4-1①②③过、④运镜低幅度已显式标注（建议剪辑层叠加缓慢推拉）",
+      "budget_spent": "0点（本地ComfyUI算力，剩余590点）"
+    },
+    "completed_by": "animator",
+    "completed_at": "2026-09-25T18:22:30.154537"
+  }
+}

@@ -1,0 +1,2921 @@
+{
+ "schema": "cineast.timeline/2.0",
+ "project": "雨夜寻猫",
+ "contract_owners": {
+  "camera": "agent_virtualdp",
+  "gauge": "agent_virtualdp",
+  "light": "agent_virtualdp",
+  "weather": "agent_set_props",
+  "performance": "agent_director",
+  "wardrobe": "agent_set_props",
+  "props": "agent_set_props",
+  "spatial": "agent_script_super",
+  "ambience": "agent_sound",
+  "sfx": "agent_sound",
+  "dialogue": "agent_sound",
+  "music": "agent_sound",
+  "mix": "agent_sound",
+  "vfx": "agent_vfx",
+  "grade": "agent_color",
+  "overlay": "agent_editor",
+  "subtitle": "agent_editor",
+  "edit": "agent_editor",
+  "clock": "agent_coordinator"
+ },
+ "meta": {
+  "total_frames": 1920,
+  "clock_note": "",
+  "auto_draft_needs_confirm": [
+   "camera.1-1",
+   "camera.1-2",
+   "camera.1-3",
+   "camera.1-4",
+   "camera.2-1",
+   "camera.2-2",
+   "camera.2-3",
+   "camera.2-4",
+   "camera.2-5",
+   "camera.3-1",
+   "camera.3-2",
+   "camera.3-3",
+   "camera.3-4",
+   "camera.3-5",
+   "camera.3-6",
+   "camera.4-1",
+   "camera.4-2",
+   "camera.4-3",
+   "grade.1-1",
+   "grade.1-2",
+   "grade.1-3",
+   "grade.1-4",
+   "grade.2-1",
+   "grade.2-2",
+   "grade.2-3",
+   "grade.2-4",
+   "grade.2-5",
+   "grade.3-1",
+   "grade.3-2",
+   "grade.3-3",
+   "grade.3-4",
+   "grade.3-5",
+   "grade.3-6",
+   "grade.4-1",
+   "grade.4-2",
+   "grade.4-3"
+  ],
+  "signoff_rule": "origin=auto_draft 的项必须有 signoff{role,by,ts,sha} 才算定稿；qc_media 按 sha 复核，无签或 sha 不符 → 视为未填，禁止进 g1 之后的花钱步骤"
+ },
+ "clock": {
+  "fps": 24,
+  "total_frames": 1920,
+  "sample_rate": 48000
+ },
+ "tracks": {
+  "camera": {
+   "owner": "agent_virtualdp",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 50,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "1-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 85,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "1-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 75,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "1-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 35,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "2-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "truck",
+     "fps_move": 0.25,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 28,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "2-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 75,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "2-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 50,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "2-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 35,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "2-5",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 28,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 50,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "pan",
+     "fps_move": 0.25,
+     "pan_dps": 3.0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 75,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 85,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 50,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-5",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 75,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-6",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 35,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "4-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "truck",
+     "fps_move": 0.25,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 28,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "4-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 75,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "4-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 24,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null
+    }
+   ]
+  },
+  "gauge": {
+   "owner": "agent_virtualdp",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "1-2",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "1-3",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "1-4",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "2-1",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "2-2",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "2-3",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "2-4",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "2-5",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "3-1",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "3-2",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "3-3",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "3-4",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "3-5",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "3-6",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "4-1",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "4-2",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    },
+    {
+     "shot_id": "4-3",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24
+    }
+   ]
+  },
+  "light": {
+   "owner": "agent_virtualdp",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "1-2",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "1-3",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "1-4",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "2-1",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "2-2",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "2-3",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "2-4",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "2-5",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-1",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-2",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-3",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-4",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-5",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "3-6",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "4-1",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "4-2",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    },
+    {
+     "shot_id": "4-3",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null
+    }
+   ]
+  },
+  "weather": {
+   "owner": "agent_set_props",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "1-2",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "1-3",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "1-4",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "2-1",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "2-2",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "2-3",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "2-4",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "2-5",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "3-1",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "3-2",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "3-3",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "3-4",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "3-5",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "3-6",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "4-1",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "4-2",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    },
+    {
+     "shot_id": "4-3",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null
+    }
+   ]
+  },
+  "performance": {
+   "owner": "agent_director",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "1-2",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "1-3",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "1-4",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "2-1",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "2-2",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "2-3",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "2-4",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "2-5",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "3-1",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "3-2",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "3-3",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "3-4",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "3-5",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "3-6",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "4-1",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "4-2",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    },
+    {
+     "shot_id": "4-3",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null
+    }
+   ]
+  },
+  "wardrobe": {
+   "owner": "agent_set_props",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "1-2",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "1-3",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "1-4",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "2-1",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "2-2",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "2-3",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "2-4",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "2-5",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "3-1",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "3-2",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "3-3",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "3-4",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "3-5",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "3-6",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "4-1",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "4-2",
+     "costume_id": null,
+     "wetness": null
+    },
+    {
+     "shot_id": "4-3",
+     "costume_id": null,
+     "wetness": null
+    }
+   ]
+  },
+  "props": {
+   "owner": "agent_set_props",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "1-2",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "1-3",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "1-4",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "2-1",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "2-2",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "2-3",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "2-4",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "2-5",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "3-1",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "3-2",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "3-3",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "3-4",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "3-5",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "3-6",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "4-1",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "4-2",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    },
+    {
+     "shot_id": "4-3",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null
+    }
+   ]
+  },
+  "spatial": {
+   "owner": "agent_script_super",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "1-2",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "1-3",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "1-4",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "2-1",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "2-2",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "2-3",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "2-4",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "2-5",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "3-1",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "3-2",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "3-3",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "3-4",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "3-5",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "3-6",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "4-1",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "4-2",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    },
+    {
+     "shot_id": "4-3",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null
+    }
+   ]
+  },
+  "ambience": {
+   "owner": "agent_sound",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "layers": [
+      {
+       "scene": "出租屋内",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/ambient/出租屋雨声.mp3",
+       "layers_present": [
+        "屋顶近场硬雨"
+       ],
+       "layers_missing": [
+        "远景低鸣",
+        "雷低通200Hz",
+        "室内闷感滤波版"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "1-2",
+     "layers": [
+      {
+       "scene": "出租屋内",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/ambient/出租屋雨声.mp3",
+       "layers_present": [
+        "屋顶近场硬雨"
+       ],
+       "layers_missing": [
+        "远景低鸣",
+        "雷低通200Hz",
+        "室内闷感滤波版"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "1-3",
+     "layers": [
+      {
+       "scene": "出租屋内",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/ambient/出租屋雨声.mp3",
+       "layers_present": [
+        "屋顶近场硬雨"
+       ],
+       "layers_missing": [
+        "远景低鸣",
+        "雷低通200Hz",
+        "室内闷感滤波版"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "1-4",
+     "layers": [
+      {
+       "scene": "出租屋内",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/ambient/出租屋雨声.mp3",
+       "layers_present": [
+        "屋顶近场硬雨"
+       ],
+       "layers_missing": [
+        "远景低鸣",
+        "雷低通200Hz",
+        "室内闷感滤波版"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "2-1",
+     "layers": [
+      {
+       "scene": "雨夜街道",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/ambient/街道雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "远景",
+        "雷",
+        "偶发车辆远声"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "2-2",
+     "layers": [
+      {
+       "scene": "雨夜街道",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/ambient/街道雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "远景",
+        "雷",
+        "偶发车辆远声"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "2-3",
+     "layers": [
+      {
+       "scene": "雨夜街道",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/ambient/街道雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "远景",
+        "雷",
+        "偶发车辆远声"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "2-4",
+     "layers": [
+      {
+       "scene": "雨夜街道",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/ambient/街道雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "远景",
+        "雷",
+        "偶发车辆远声"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "2-5",
+     "layers": [
+      {
+       "scene": "雨夜街道",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/ambient/街道雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "远景",
+        "雷",
+        "偶发车辆远声"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "3-1",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "3-2",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "3-3",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "3-4",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "3-5",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "3-6",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "4-1",
+     "layers": [
+      {
+       "scene": "归途",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/ambient/雨声渐弱.mp3",
+       "layers_present": [
+        "硬雨渐弱"
+       ],
+       "layers_missing": [
+        "雨停滴水尾",
+        "远景城市低鸣"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "4-2",
+     "layers": [
+      {
+       "scene": "归途",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/ambient/雨声渐弱.mp3",
+       "layers_present": [
+        "硬雨渐弱"
+       ],
+       "layers_missing": [
+        "雨停滴水尾",
+        "远景城市低鸣"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    },
+    {
+     "shot_id": "4-3",
+     "layers": [
+      {
+       "scene": "归途",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/ambient/雨声渐弱.mp3",
+       "layers_present": [
+        "硬雨渐弱"
+       ],
+       "layers_missing": [
+        "雨停滴水尾",
+        "远景城市低鸣"
+       ]
+      }
+     ],
+     "room_tone_id": null
+    }
+   ]
+  },
+  "sfx": {
+   "owner": "agent_sound",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "events": [
+      {
+       "id": "sfx1",
+       "name": "纸张翻动",
+       "start_s": 0.5,
+       "gain_lin": 0.3,
+       "src": "audio/sfx/纸张翻动.mp3",
+       "trigger_ref": {
+        "t_s": 0.5,
+        "kind": "performance",
+        "desc": "床上翻身带起启事"
+       }
+      },
+      {
+       "id": "sfx2",
+       "name": "雨声穿窗",
+       "start_s": 3.0,
+       "gain_lin": 0.4,
+       "src": "audio/sfx/雨声穿窗.mp3",
+       "trigger_ref": {
+        "t_s": 3.0,
+        "kind": "weather",
+        "desc": "1-2 空猫窝镜起"
+       },
+       "line_ref": "1-3窗没关"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 0.5,
+       "kind": {
+        "t_s": 0.5,
+        "kind": "performance",
+        "desc": "床上翻身带起启事"
+       }
+      },
+      {
+       "start_s": 3.0,
+       "kind": {
+        "t_s": 3.0,
+        "kind": "weather",
+        "desc": "1-2 空猫窝镜起"
+       }
+      }
+     ]
+    },
+    {
+     "shot_id": "1-2",
+     "events": [
+      {
+       "id": "sfx2",
+       "name": "雨声穿窗",
+       "start_s": 3.0,
+       "gain_lin": 0.4,
+       "src": "audio/sfx/雨声穿窗.mp3",
+       "trigger_ref": {
+        "t_s": 3.0,
+        "kind": "weather",
+        "desc": "1-2 空猫窝镜起"
+       },
+       "line_ref": "1-3窗没关"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 3.0,
+       "kind": {
+        "t_s": 3.0,
+        "kind": "weather",
+        "desc": "1-2 空猫窝镜起"
+       }
+      }
+     ]
+    },
+    {
+     "shot_id": "1-4",
+     "events": [
+      {
+       "id": "sfx3",
+       "name": "开关门",
+       "start_s": 12.5,
+       "gain_lin": 0.5,
+       "src": "audio/sfx/开关门.mp3",
+       "trigger_ref": {
+        "t_s": 12.5,
+        "kind": "performance",
+        "desc": "1-4 手触门把"
+       }
+      },
+      {
+       "id": "sfx4",
+       "name": "踩水洼",
+       "start_s": 15.0,
+       "gain_lin": 0.35,
+       "loop": 5,
+       "src": "audio/sfx/踩水洼.mp3",
+       "trigger_ref": {
+        "synchronized_to": "video.shot=2-1",
+        "kind": "performance",
+        "desc": "步频锁相，须与走位帧逐坑对齐"
+       },
+       "foley_missing": "沥青/水洼分轨、步频未锁"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 12.5,
+       "kind": {
+        "t_s": 12.5,
+        "kind": "performance",
+        "desc": "1-4 手触门把"
+       }
+      },
+      {
+       "start_s": 15.0,
+       "kind": {
+        "synchronized_to": "video.shot=2-1",
+        "kind": "performance",
+        "desc": "步频锁相，须与走位帧逐坑对齐"
+       }
+      }
+     ]
+    },
+    {
+     "shot_id": "2-1",
+     "events": [
+      {
+       "id": "sfx4",
+       "name": "踩水洼",
+       "start_s": 15.0,
+       "gain_lin": 0.35,
+       "loop": 5,
+       "src": "audio/sfx/踩水洼.mp3",
+       "trigger_ref": {
+        "synchronized_to": "video.shot=2-1",
+        "kind": "performance",
+        "desc": "步频锁相，须与走位帧逐坑对齐"
+       },
+       "foley_missing": "沥青/水洼分轨、步频未锁"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 15.0,
+       "kind": {
+        "synchronized_to": "video.shot=2-1",
+        "kind": "performance",
+        "desc": "步频锁相，须与走位帧逐坑对齐"
+       }
+      }
+     ]
+    },
+    {
+     "shot_id": "3-1",
+     "events": [
+      {
+       "id": "sfx5",
+       "name": "伞收起滴水",
+       "start_s": 36.0,
+       "gain_lin": 0.3,
+       "src": "audio/sfx/伞收起滴水.mp3",
+       "prop_ref": "p4雨伞"
+      },
+      {
+       "id": "sfx6",
+       "name": "猫叫-微弱单声",
+       "start_s": 38.5,
+       "gain_lin": 0.7,
+       "src": "audio/sfx/猫叫-微弱单声.mp3",
+       "timing_rule": "先于画面0.5s（老板已拍板：声音先行制造听觉同步）"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 36.0,
+       "kind": {}
+      },
+      {
+       "start_s": 38.5,
+       "kind": {}
+      }
+     ]
+    },
+    {
+     "shot_id": "3-2",
+     "events": [
+      {
+       "id": "sfx6",
+       "name": "猫叫-微弱单声",
+       "start_s": 38.5,
+       "gain_lin": 0.7,
+       "src": "audio/sfx/猫叫-微弱单声.mp3",
+       "timing_rule": "先于画面0.5s（老板已拍板：声音先行制造听觉同步）"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 38.5,
+       "kind": {}
+      }
+     ]
+    },
+    {
+     "shot_id": "3-3",
+     "events": [
+      {
+       "id": "sfx7",
+       "name": "纸箱窸窣",
+       "start_s": 43.0,
+       "gain_lin": 0.22,
+       "src": "audio/sfx/纸箱窸窣.mp3",
+       "trigger_ref": {
+        "t_s": 43.0,
+        "kind": "prop",
+        "prop_id": "p5纸箱"
+       }
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 43.0,
+       "kind": {
+        "t_s": 43.0,
+        "kind": "prop",
+        "prop_id": "p5纸箱"
+       }
+      }
+     ]
+    },
+    {
+     "shot_id": "3-4",
+     "events": [
+      {
+       "id": "sfx8",
+       "name": "布料摩擦咕噜",
+       "start_s": 47.0,
+       "gain_lin": 0.22,
+       "src": "audio/sfx/布料摩擦咕噜.mp3",
+       "trigger_ref": {
+        "t_s": 47.0,
+        "kind": "performance",
+        "desc": "3-4 抱起接触帧"
+       }
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 47.0,
+       "kind": {
+        "t_s": 47.0,
+        "kind": "performance",
+        "desc": "3-4 抱起接触帧"
+       }
+      }
+     ]
+    },
+    {
+     "shot_id": "4-2",
+     "events": [
+      {
+       "id": "sfx9",
+       "name": "猫叫-应答单声",
+       "start_s": 69.5,
+       "gain_lin": 0.7,
+       "src": "audio/sfx/猫叫-应答单声.mp3",
+       "prop_ref": "p2白猫"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 69.5,
+       "kind": {}
+      }
+     ]
+    }
+   ]
+  },
+  "dialogue": {
+   "owner": "agent_sound",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "events": [
+      {
+       "line": "1-1",
+       "text": "（惊醒）…小白？",
+       "start_s": 1.5,
+       "dur_s": 1.6,
+       "src": "audio/dialogue/1-1.mp3",
+       "speaker": "林小雨",
+       "voice": "TBD(本地合规后端)",
+       "voice_license": "🟢CosyVoice3/Qwen3-TTS（R5 开工前选型落定）"
+      }
+     ],
+     "anchor_lkfs": -27.0
+    },
+    {
+     "shot_id": "1-3",
+     "events": [
+      {
+       "line": "1-3",
+       "text": "窗没关…",
+       "start_s": 6.5,
+       "dur_s": 1.4,
+       "src": "audio/dialogue/1-3.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0
+    },
+    {
+     "shot_id": "1-4",
+     "events": [
+      {
+       "line": "1-4",
+       "text": "小白！你在哪…",
+       "start_s": 11.0,
+       "dur_s": 2.2,
+       "src": "audio/dialogue/1-4.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0
+    },
+    {
+     "shot_id": "2-2",
+     "events": [
+      {
+       "line": "2-2",
+       "text": "叔叔阿姨，看见我的猫了吗…",
+       "start_s": 20.0,
+       "dur_s": 3.4,
+       "src": "audio/dialogue/2-2.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0
+    },
+    {
+     "shot_id": "2-4",
+     "events": [
+      {
+       "line": "2-4",
+       "text": "下这么大雨…",
+       "start_s": 29.0,
+       "dur_s": 2.1,
+       "src": "audio/dialogue/2-4.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0
+    },
+    {
+     "shot_id": "3-2",
+     "events": [
+      {
+       "line": "3-2",
+       "text": "小白？是你吗…",
+       "start_s": 40.0,
+       "dur_s": 1.99,
+       "src": "audio/dialogue/3-2.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0
+    },
+    {
+     "shot_id": "3-4",
+     "events": [
+      {
+       "line": "3-4",
+       "text": "原来你在这…傻丫头…",
+       "start_s": 46.0,
+       "dur_s": 2.6,
+       "src": "audio/dialogue/3-4.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0
+    },
+    {
+     "shot_id": "3-5",
+     "events": [
+      {
+       "line": "3-5",
+       "text": "找到你了…我们回家。",
+       "start_s": 51.0,
+       "dur_s": 2.4,
+       "src": "audio/dialogue/3-5.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0
+    }
+   ]
+  },
+  "music": {
+   "owner": "agent_sound",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "events": [
+      {
+       "cue": "第1场-平静惊变",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/bgm/第1场-平静惊变.mp3",
+       "level_db": -18,
+       "motive": "无主题（留白）"
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "1-2",
+     "events": [
+      {
+       "cue": "第1场-平静惊变",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/bgm/第1场-平静惊变.mp3",
+       "level_db": -18,
+       "motive": "无主题（留白）"
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "1-3",
+     "events": [
+      {
+       "cue": "第1场-平静惊变",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/bgm/第1场-平静惊变.mp3",
+       "level_db": -18,
+       "motive": "无主题（留白）"
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "1-4",
+     "events": [
+      {
+       "cue": "第1场-平静惊变",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/bgm/第1场-平静惊变.mp3",
+       "level_db": -18,
+       "motive": "无主题（留白）"
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "2-1",
+     "events": [
+      {
+       "cue": "第2场-焦虑",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/bgm/第2场-焦虑.mp3",
+       "level_db": -15
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "2-2",
+     "events": [
+      {
+       "cue": "第2场-焦虑",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/bgm/第2场-焦虑.mp3",
+       "level_db": -15
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "2-3",
+     "events": [
+      {
+       "cue": "第2场-焦虑",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/bgm/第2场-焦虑.mp3",
+       "level_db": -15
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "2-4",
+     "events": [
+      {
+       "cue": "第2场-焦虑",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/bgm/第2场-焦虑.mp3",
+       "level_db": -15
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "2-5",
+     "events": [
+      {
+       "cue": "第2场-焦虑",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/bgm/第2场-焦虑.mp3",
+       "level_db": -15
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "3-1",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "3-2",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "3-3",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "3-4",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "3-5",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "3-6",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "4-1",
+     "events": [
+      {
+       "cue": "第4场-温暖",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/bgm/第4场-温暖.mp3",
+       "level_db": -13,
+       "fade_out_s": 5.0
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "4-2",
+     "events": [
+      {
+       "cue": "第4场-温暖",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/bgm/第4场-温暖.mp3",
+       "level_db": -13,
+       "fade_out_s": 5.0
+      }
+     ],
+     "ducks_for_dialogue": null
+    },
+    {
+     "shot_id": "4-3",
+     "events": [
+      {
+       "cue": "第4场-温暖",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/bgm/第4场-温暖.mp3",
+       "level_db": -13,
+       "fade_out_s": 5.0
+      }
+     ],
+     "ducks_for_dialogue": null
+    }
+   ]
+  },
+  "mix": {
+   "owner": "agent_sound",
+   "items": []
+  },
+  "vfx": {
+   "owner": "agent_vfx",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "events": null
+    },
+    {
+     "shot_id": "1-2",
+     "events": null
+    },
+    {
+     "shot_id": "1-3",
+     "events": null
+    },
+    {
+     "shot_id": "1-4",
+     "events": null
+    },
+    {
+     "shot_id": "2-1",
+     "events": null
+    },
+    {
+     "shot_id": "2-2",
+     "events": null
+    },
+    {
+     "shot_id": "2-3",
+     "events": null
+    },
+    {
+     "shot_id": "2-4",
+     "events": null
+    },
+    {
+     "shot_id": "2-5",
+     "events": null
+    },
+    {
+     "shot_id": "3-1",
+     "events": null
+    },
+    {
+     "shot_id": "3-2",
+     "events": null
+    },
+    {
+     "shot_id": "3-3",
+     "events": null
+    },
+    {
+     "shot_id": "3-4",
+     "events": null
+    },
+    {
+     "shot_id": "3-5",
+     "events": null
+    },
+    {
+     "shot_id": "3-6",
+     "events": null
+    },
+    {
+     "shot_id": "4-1",
+     "events": null
+    },
+    {
+     "shot_id": "4-2",
+     "events": null
+    },
+    {
+     "shot_id": "4-3",
+     "events": null
+    }
+   ]
+  },
+  "grade": {
+   "owner": "agent_color",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "1-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "1-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "1-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "2-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "2-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "2-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "2-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "2-5",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "3-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "3-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "3-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "3-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "3-5",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "3-6",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "4-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "4-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    },
+    {
+     "shot_id": "4-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light"
+    }
+   ]
+  },
+  "overlay": {
+   "owner": "agent_editor",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "1-2",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "1-3",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "1-4",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "2-1",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "2-2",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "2-3",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "2-4",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "2-5",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "3-1",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "3-2",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "3-3",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "3-4",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "3-5",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "3-6",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "4-1",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "4-2",
+     "elements": null,
+     "ai_label": null
+    },
+    {
+     "shot_id": "4-3",
+     "elements": null,
+     "ai_label": null
+    }
+   ]
+  },
+  "subtitle": {
+   "owner": "agent_editor",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "1-2",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "1-3",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "1-4",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "2-1",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "2-2",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "2-3",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "2-4",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "2-5",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "3-1",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "3-2",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "3-3",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "3-4",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "3-5",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "3-6",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "4-1",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "4-2",
+     "events": null,
+     "style": null
+    },
+    {
+     "shot_id": "4-3",
+     "events": null,
+     "style": null
+    }
+   ]
+  },
+  "edit": {
+   "owner": "agent_editor",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "in_f": 0,
+     "out_f": 71,
+     "order_idx": 1,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "in_f": 72,
+     "out_f": 143,
+     "order_idx": 2,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "in_f": 144,
+     "out_f": 239,
+     "order_idx": 3,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "in_f": 240,
+     "out_f": 359,
+     "order_idx": 4,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "in_f": 360,
+     "out_f": 455,
+     "order_idx": 5,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "in_f": 456,
+     "out_f": 575,
+     "order_idx": 6,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "in_f": 576,
+     "out_f": 671,
+     "order_idx": 7,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "in_f": 672,
+     "out_f": 767,
+     "order_idx": 8,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "in_f": 768,
+     "out_f": 839,
+     "order_idx": 9,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "in_f": 840,
+     "out_f": 935,
+     "order_idx": 10,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "in_f": 936,
+     "out_f": 1007,
+     "order_idx": 11,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "in_f": 1008,
+     "out_f": 1079,
+     "order_idx": 12,
+     "transition_out": "cut",
+     "source_kind": "video",
+     "gen": {
+      "engine": "kling3-omni+first_frame"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "in_f": 1080,
+     "out_f": 1199,
+     "order_idx": 13,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "in_f": 1200,
+     "out_f": 1319,
+     "order_idx": 14,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "in_f": 1320,
+     "out_f": 1439,
+     "order_idx": 15,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "in_f": 1440,
+     "out_f": 1631,
+     "order_idx": 16,
+     "transition_out": "cut",
+     "source_kind": "video",
+     "gen": {
+      "engine": "kling3-omni+first_frame"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "in_f": 1632,
+     "out_f": 1751,
+     "order_idx": 17,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "in_f": 1752,
+     "out_f": 1919,
+     "order_idx": 18,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     }
+    }
+   ]
+  },
+  "clock": {
+   "owner": "agent_coordinator",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "fps": 24
+    },
+    {
+     "shot_id": "1-2",
+     "fps": 24
+    },
+    {
+     "shot_id": "1-3",
+     "fps": 24
+    },
+    {
+     "shot_id": "1-4",
+     "fps": 24
+    },
+    {
+     "shot_id": "2-1",
+     "fps": 24
+    },
+    {
+     "shot_id": "2-2",
+     "fps": 24
+    },
+    {
+     "shot_id": "2-3",
+     "fps": 24
+    },
+    {
+     "shot_id": "2-4",
+     "fps": 24
+    },
+    {
+     "shot_id": "2-5",
+     "fps": 24
+    },
+    {
+     "shot_id": "3-1",
+     "fps": 24
+    },
+    {
+     "shot_id": "3-2",
+     "fps": 24
+    },
+    {
+     "shot_id": "3-3",
+     "fps": 24
+    },
+    {
+     "shot_id": "3-4",
+     "fps": 24
+    },
+    {
+     "shot_id": "3-5",
+     "fps": 24
+    },
+    {
+     "shot_id": "3-6",
+     "fps": 24
+    },
+    {
+     "shot_id": "4-1",
+     "fps": 24
+    },
+    {
+     "shot_id": "4-2",
+     "fps": 24
+    },
+    {
+     "shot_id": "4-3",
+     "fps": 24
+    }
+   ]
+  }
+ }
+}

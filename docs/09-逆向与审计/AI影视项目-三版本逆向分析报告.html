@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI影视项目 · 三版本逆向分析报告（立项级）</title>
+<style>
+  :root{
+    --bg:#0e1015; --panel:#161a22; --panel2:#1b2029; --line:#2a3040;
+    --gold:#d4a959; --cyan:#6ec3cc; --green:#4caf9d; --red:#d4655f; --orange:#d4924f;
+    --txt:#d8d5d0; --dim:#8b93a3; --mono:'JetBrains Mono','Cascadia Code',Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:'Microsoft YaHei','PingFang SC',sans-serif;font-size:15px;line-height:1.75}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px 80px}
+  header{padding:56px 0 30px;border-bottom:1px solid var(--line);margin-bottom:34px}
+  header h1{font-size:30px;color:var(--gold);letter-spacing:1px;font-weight:700}
+  header .sub{color:var(--dim);margin-top:10px;font-size:14px}
+  header .sub b{color:var(--cyan);font-weight:600}
+  h2{font-size:22px;color:var(--gold);border-left:4px solid var(--gold);padding-left:14px;margin:52px 0 18px;font-weight:700}
+  h3{font-size:17px;color:var(--cyan);margin:30px 0 12px;font-weight:600}
+  h4{font-size:15px;color:var(--txt);margin:20px 0 8px;font-weight:600}
+  p{margin:8px 0}
+  .note{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--cyan);padding:10px 16px;border-radius:6px;font-size:13.5px;color:var(--dim);margin:14px 0}
+  .warn{background:#241d1a;border:1px solid #4a332c;border-left:3px solid var(--red);padding:10px 16px;border-radius:6px;font-size:13.5px;color:#d8b8b0;margin:14px 0}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+  th{background:var(--panel2);color:var(--gold);text-align:left;padding:8px 12px;border:1px solid var(--line);font-weight:600;white-space:nowrap}
+  td{padding:7px 12px;border:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:rgba(255,255,255,.018)}
+  td code, p code, li code{font-family:var(--mono);font-size:12.5px;background:#10141c;border:1px solid var(--line);padding:1px 6px;border-radius:4px;color:var(--cyan)}
+  .b{display:inline-block;padding:1px 9px;border-radius:10px;font-size:12px;font-weight:600;white-space:nowrap}
+  .b.ok{background:rgba(76,175,157,.16);color:var(--green);border:1px solid rgba(76,175,157,.5)}
+  .b.part{background:rgba(212,146,79,.16);color:var(--orange);border:1px solid rgba(212,146,79,.5)}
+  .b.todo{background:rgba(212,101,95,.16);color:var(--red);border:1px solid rgba(212,101,95,.5)}
+  .b.tbc{background:rgba(139,147,163,.14);color:var(--dim);border:1px solid rgba(139,147,163,.45)}
+  .b.gold{background:rgba(212,169,89,.14);color:var(--gold);border:1px solid rgba(212,169,89,.5)}
+  .b.cyan{background:rgba(110,195,204,.12);color:var(--cyan);border:1px solid rgba(110,195,204,.45)}
+  .mermaid{background:#12151d;border:1px solid var(--line);border-radius:10px;padding:20px 12px;margin:18px 0;overflow-x:auto;text-align:center}
+  .cap{font-size:12.5px;color:var(--dim);text-align:center;margin:-8px 0 18px}
+  ul,ol{padding-left:26px;margin:8px 0}
+  li{margin:5px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:900px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:14px 0}
+  .card h4{margin-top:0;color:var(--gold)}
+  .toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 22px;columns:2;column-gap:36px;font-size:13.5px}
+  .toc a{color:var(--cyan);text-decoration:none;display:block;padding:2.5px 0}
+  .toc a:hover{color:var(--gold)}
+  .kpi{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0}
+  .kpi .k{flex:1;min-width:170px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;text-align:center}
+  .kpi .k .n{font-size:24px;color:var(--gold);font-weight:700}
+  .kpi .k .t{font-size:12.5px;color:var(--dim);margin-top:2px}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:12.5px}
+  .arrow{color:var(--gold);font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>AI 影视项目 · 三版本逆向分析报告</h1>
+  <div class="sub">
+    报告性质：<b>项目立项级 · 只读逆向分析（零修改 / 零删除 / 零重命名）</b><br>
+    分析对象：<code>d:\aifilmteam\ai_film_projects</code> · <code>d:\aifilmteam\AI影视团队</code> · <code>d:\aifilmteam\AI影视团队v2</code><br>
+    分析日期：2026-09-29 ｜ 证据来源：代码与文档实读 + git 提交记录 + 文件时间戳 + 文件哈希比对
+  </div>
+</header>
+
+<!-- ============ 目录 ============ -->
+<div class="toc">
+  <a href="#s0">0. 阅读指南与术语速查</a>
+  <a href="#s0b">0.5 三版本演进故事（先看这个）</a>
+  <a href="#s1">一、ai_film_projects（代号 CINEAST 平台）</a>
+  <a href="#s2">二、AI影视团队（里程碑1 · FastAPI 版）</a>
+  <a href="#s3">三、AI影视团队v2（白模+写实化重构版）</a>
+  <a href="#s4">四、三文件夹对比总表</a>
+  <a href="#s4b">4.2 v1 与 v2 到底改了什么</a>
+  <a href="#s4c">4.3 冲突点清单</a>
+  <a href="#s4d">4.4 待确认清单（禁止猜测项）</a>
+  <a href="#s4e">4.5 立项建议</a>
+</div>
+
+<!-- ============ 0. 阅读指南 ============ -->
+<h2 id="s0">0. 阅读指南与术语速查</h2>
+
+<h3>0.1 三项目一句话对比</h3>
+<table>
+  <tr><th>文件夹</th><th>一句话定位</th><th>运行形态</th><th>当前状态</th></tr>
+  <tr>
+    <td><b>ai_film_projects</b><br><span style="color:var(--dim)">内部代号 CINEAST</span></td>
+    <td>「AI 剧组工作平台」：9～18 个 AI 员工在飞书群里扮演剧组岗位，把老板的一句话创意做成成片</td>
+    <td>Hermes 多智能体框架 + 飞书群聊 + 网页工作台</td>
+    <td><span class="b todo">已于 2026-09-27 归档封存</span></td>
+  </tr>
+  <tr>
+    <td><b>AI影视团队</b><br><span style="color:var(--dim)">里程碑 1</span></td>
+    <td>「最小可行版」：一个本地网站，输入一句创意，两个 AI 员工（编剧+分镜师）产出剧本和分镜表，只做文字部分</td>
+    <td>独立 FastAPI 网页应用</td>
+    <td><span class="b todo">已于 2026-09-27 归档封存</span></td>
+  </tr>
+  <tr>
+    <td><b>AI影视团队v2</b><br><span style="color:var(--dim)">重构版</span></td>
+    <td>「战略重启」：目标是好莱坞真人实拍观感。先用 Blender 白模把一切定死，再让大模型只负责“变写实”，消灭 AI 抽卡感</td>
+    <td>规格契约驱动 + 阶段验收制</td>
+    <td><span class="b cyan">进行中（R4 技术验证镜）</span></td>
+  </tr>
+</table>
+
+<h3>0.2 术语速查表（大白话）</h3>
+<table>
+  <tr><th style="width:150px">术语</th><th>大白话解释</th></tr>
+  <tr><td>Agent（智能体）</td><td>一个能自己读文件、调工具、干活的 AI「员工」，不只是聊天机器人</td></tr>
+  <tr><td>LLM（大模型）</td><td>AI 的「大脑」，负责理解与生成文字，本项目用的是月之暗面家的 Kimi</td></tr>
+  <tr><td>ComfyUI</td><td>本地 AI 画图工作台软件：把模型像积木一样连线起来出图，不花钱（用自己显卡）</td></tr>
+  <tr><td>SDXL</td><td>一种高质量「文字变图片」的开源模型</td></tr>
+  <tr><td>Wan2.2 / Wan2.1</td><td>阿里开源的视频生成模型。Wan2.2 能把一张图变成动起来的视频；Wan2.1-VACE 版能把「白模视频」变成写实视频</td></tr>
+  <tr><td>白模（blockout）</td><td>没上色、没材质的 3D 简模场景——像用灰色橡皮泥搭出来的布景，用来提前定好镜头怎么拍</td></tr>
+  <tr><td>写实化（realize）</td><td>把白模视频「化妆」成真实世界质感：真人皮肤、雨滴、光影</td></tr>
+  <tr><td>Blender</td><td>免费开源的专业 3D 制作软件，电影行业也在用</td></tr>
+  <tr><td>EXR</td><td>专业图像格式，一帧图里能附带「这个像素离镜头多远」等额外信息</td></tr>
+  <tr><td>Hermes</td><td>多智能体运行框架：让多个 AI 员工各自带着人格文件同时在线工作</td></tr>
+  <tr><td>飞书</td><td>办公协作软件。本项目把 9 个 AI 机器人和老板拉进同一个群当「剧组办公室」</td></tr>
+  <tr><td>K13 版本树</td><td>给每个资产记「族谱」：谁是谁的爹、参数是什么。锁定后任何人不得修改，保证角色长相不跑偏</td></tr>
+  <tr><td>DIT（数字影像技术员）</td><td>剧组里专门登记「每个文件是谁生成的、用了什么参数」的岗位</td></tr>
+  <tr><td>QC（质检）</td><td>质量检查：用数值标准判断成片合不合格，而不是靠肉眼感觉</td></tr>
+  <tr><td>LUFS</td><td>视频响度（音量大小）的行业统一计量单位，平台上传有硬要求</td></tr>
+  <tr><td>SQLite</td><td>「一个文件就是一个小数据库」，不用单独安装数据库服务器</td></tr>
+  <tr><td>FastAPI</td><td>Python 语言里写「网站后端」（服务器程序）的流行框架</td></tr>
+  <tr><td>WebSocket</td><td>服务器能「主动」向浏览器推送消息的通道，用于实时显示进度</td></tr>
+  <tr><td>junction（目录接合点）</td><td>一个「传送门」文件夹：打开它，等于打开另一个位置的文件夹</td></tr>
+  <tr><td>熔断</td><td>预算花超时自动停止生成的保护机制，像电闸跳闸</td></tr>
+  <tr><td>抽卡</td><td>AI 生成结果随机、好坏碰运气的现象——每次重新生成结果都不一样</td></tr>
+  <tr><td>fal.ai</td><td>云端运行 AI 模型的付费平台，按次计费，不用自己买显卡</td></tr>
+</table>
+
+<!-- ============ 0.5 演进故事 ============ -->
+<h2 id="s0b">0.5 三版本演进故事（先看这个）</h2>
+
+<div class="note"><b>先给结论：</b>三个文件夹是同一个梦想（让 AI 剧组把创意变成成片）的三次尝试。7 月做了个「纯文字最小版」；8～9 月做出最完整的「实干版」，真的产出了《雨夜寻猫》短片，但暴露出致命伤——88.9% 的镜头其实是「静图推拉」（图片慢慢放大假装在运镜），没有真运动；9 月 27 日一天之内完成战略大重构，立了 v2，改走「Blender 白模定死一切 + AI 只管写实化」的新路线。</div>
+
+<h3>0.5.1 演进时间线（依据 git 提交记录与文件时间戳还原）</h3>
+<div class="mermaid">
+timeline
+    title AI 影视项目演进时间线
+    2026-07-27 : 里程碑1数据库落盘 : CINEAST目录内出现7月旧原型
+    2026-08-17 : 《雨夜寻猫》项目启动
+    2026-08-22 : 节点图工作台页面完成
+    2026-08-27 : CINEAST建立git基线快照
+    2026-09-25 : 岗位交接密集执行
+    2026-09-26 : 18岗位架构方案定稿
+    2026-09-27 : CINEAST最后收尾并归档 : v2当日创建并连过R0至R3
+    2026-09-29 : 本报告只读分析
+</div>
+<p class="cap">图 0-1 演进时间线。注意 2026-09-27 这一天：旧版收尾、归档、新版立项、需求/调研/架构三关全部签字通过。</p>
+
+<h3>0.5.2 三版本血缘关系</h3>
+<div class="mermaid">
+flowchart LR
+    M1["AI影视团队 · 里程碑1 · 7月"] -->|"其规划的里程碑2至4由CINEAST实现"| V1["ai_film_projects · CINEAST平台"]
+    V1 -->|"实测暴露88.9%静图推拉与195处硬编码路径"| V2["AI影视团队v2 · 白模+写实化 · 9月27日"]
+    M1 -.->|"结构同源 · 见4.4待确认第2条"| V1
+    V2 -->|"旧资产830文件登记复用"| V1
+    style V2 fill:#173229,stroke:#4caf9d,stroke-width:2px
+    style M1 fill:#1c2230,stroke:#6ec3cc
+    style V1 fill:#231f2b,stroke:#d4a959
+</div>
+<p class="cap">图 0-2 三版本血缘关系图。箭头上的文字是「后一版从前一版学到了什么/继承了什么」。</p>
+
+<h3>0.5.3 磁盘上的真实状态（重要）</h3>
+<table>
+  <tr><th>路径</th><th>性质</th><th>证据</th></tr>
+  <tr><td><code>D:\ai_film_projects</code></td><td><span class="b gold">接合点（传送门）</span> → <code>D:\_ai_film_legacy_2026\ai_film_projects</code></td><td>PowerShell <code>LinkType=Junction</code> 实测；创建时间 2026-09-27 17:02</td></tr>
+  <tr><td><code>D:\AI影视团队</code></td><td><span class="b gold">接合点（传送门）</span> → <code>D:\_ai_film_legacy_2026\AI影视团队</code></td><td>同上</td></tr>
+  <tr><td><code>D:\AI影视团队v2</code></td><td><span class="b ok">真实目录</span>（v2 真身）</td><td><code>LinkType</code> 为空；创建于 2026-09-27 15:40</td></tr>
+  <tr><td><code>d:\aifilmteam\</code>（本工作区）</td><td>三个文件夹的<b>副本快照</b>（本次分析对象）</td><td>副本内文件时间戳被保留（如 workspace.html 仍显示 2026-08-22）；与 D 盘原件是否逐字节一致<span class="b tbc">待确认</span></td></tr>
+</table>
+<div class="note">这意味着：v2 的 <code>PROJECT_STATE.md</code> 里写的「旧目录归档、原位置建传送门」操作真实发生过，本报告分析的三个工作区文件夹与之相符。</div>
+
+<!-- ================================================================ -->
+<!-- 第一部分：ai_film_projects -->
+<!-- ================================================================ -->
+<h2 id="s1">一、ai_film_projects（代号 CINEAST 平台）</h2>
+
+<h3>1.1 项目背景与定位</h3>
+<p><b>结论：</b>这是一个「AI 剧组工作平台」。它把一个完整的影视剧组（制片人、艺术总监、编剧、角色设计师……）变成 9 个（后来规划扩到 18 个）AI 员工，通过飞书群聊协作，把老板（真人用户）的一句话创意，一路加工成带画面、配音、字幕、音乐的成片。</p>
+<ul>
+  <li><b>解决什么问题：</b>个人创作者没有剧组、没有预算，想一个人完成专业影视制作。</li>
+  <li><b>目标用户：</b>老板本人（个人创作者），单机 RTX 5070 显卡（12G 显存）。</li>
+  <li><b>关键设定（来自 AGENTS.md）：</b>老板有绝对终裁权；平级 AI 争执最多 2 轮，第 3 轮必须升级艺术总监，方向级分歧必须老板拍板；「老板发言=终局」。</li>
+  <li><b>已有实战作品：</b>《雨夜寻猫》短片——从剧本、角色图、场景图、分镜、视频片段、音频、字幕到粗剪 v1~v4 和技术交付版 v5 的全套产物都真实存在。</li>
+  <li><b>附带产物：</b>课程学习材料（方法论 6 模块 + 4 检查清单）、产品展示官网、可视化节点图工作台。</li>
+</ul>
+
+<div class="mermaid">
+mindmap
+  root((CINEAST))
+    一句话定位
+      老板的一句话创意变成完整成片
+      个人AI影视剧组
+    运行形态
+      Hermes框架下的AI员工
+      飞书群里扮演角色协作
+      老板拥有绝对终裁权
+    目标用户
+      个人创作者老板本人
+      单机RTX5070 12G显存
+    权力层级
+      老板终裁
+      制片人管项目
+      艺术总监管创作
+      专业岗只干本职
+    已有作品
+      雨夜寻猫全流程产物
+      粗剪v1至v4与技术版v5
+    附带资产
+      课程与方法论沉淀
+      产品官网与节点图工作台
+</div>
+<p class="cap">图 1-1 CINEAST 项目定位思维导图</p>
+
+<h3>1.2 技术栈全景</h3>
+<table>
+  <tr><th style="width:110px">层</th><th>技术</th><th>版本/参数</th><th>证据</th></tr>
+  <tr><td>AI 大脑</td><td>Kimi（月之暗面）云 API</td><td>kimi-k2.6，256K 上下文，支持看图</td><td><code>config.yaml</code>（api.moonshot.cn）</td></tr>
+  <tr><td>智能体框架</td><td>Hermes 多 Profile 框架</td><td>9 个 Profile（SOUL.md 人格 + 全局 AGENTS.md 规则）</td><td><code>AGENTS.md</code>、<code>roles\*</code></td></tr>
+  <tr><td>协作通道</td><td>飞书群（9 个机器人，@谁谁响应）</td><td>—</td><td><code>AGENTS.md</code> 消息路由节</td></tr>
+  <tr><td>图片生成</td><td>ComfyUI + SDXL / SD1.5</td><td>本地 127.0.0.1:8188</td><td><code>tools\comfyui_generator.py</code></td></tr>
+  <tr><td>视频生成</td><td>Wan2.2 TI2V 5B（图生视频）</td><td>本地走 ComfyUI；另有 Wan2.1-VACE 权重下载准备</td><td><code>tools\wan22_client.py</code>、<code>tools\p0_setup.py</code></td></tr>
+  <tr><td>音频生成</td><td>AceStep（BGM/音效/环境音）</td><td>—</td><td><code>tools\acestep_client.py</code>、<code>gen_bgm.py</code> 等</td></tr>
+  <tr><td>语音转文字</td><td>faster-whisper</td><td>CPU 运行（不占显存）</td><td><code>tools\whisper_transcribe.py</code></td></tr>
+  <tr><td>看图质检</td><td>Qwen3-VL-4B 视觉语言模型</td><td>本地权重约 4.97GB</td><td><code>models\Qwen3-VL-4B-Instruct\</code>、<code>tools\vlm_check.py</code></td></tr>
+  <tr><td>前端</td><td>纯 HTML 官网 + 单文件节点图 + React 工作台</td><td>React 18.3 + React Flow(@xyflow/react) 12.3 + Zustand 5.0 + Vite 6.0 + lucide-react 0.460</td><td><code>web\react-workspace\package.json</code></td></tr>
+  <tr><td>后端</td><td>FastAPI 网关（包装 CLI 工具为 HTTP 接口）</td><td>端口 8190，标题 "CINEAST API v2.0"</td><td><code>tools\api_server.py</code></td></tr>
+  <tr><td>数据</td><td>文件系统为主 + SQLite 任务账本</td><td><code>jobs.db</code>；项目数据全是 JSON/MD/PNG/MP3 文件</td><td><code>pipeline\jobs.db</code></td></tr>
+  <tr><td>3D/剪辑</td><td>Blender 5.2.2 便携版 + FFmpeg</td><td>—</td><td><code>blender\blender-5.2.2-windows-x64\</code></td></tr>
+  <tr><td>其他安装</td><td>ComfyUI 便携版、Musetalk（唇形同步，仅安装）</td><td>—</td><td><code>comfyui\</code>、<code>musetalk\</code></td></tr>
+</table>
+
+<div class="mermaid">
+flowchart TB
+    subgraph USER["用户层"]
+        BOSS["老板 · 飞书群发一句话创意"]
+        WEB["浏览器 · 官网与节点图工作台"]
+    end
+    subgraph AGENT["智能体层 · Hermes 框架"]
+        ROLES["9个完整岗位 + 6个骨架岗位"]
+        KIMI["Kimi K2.6 云端大脑"]
+        ROLES --> KIMI
+    end
+    subgraph TOOL["工具层 · 约30个Python脚本"]
+        MGMT["管理类 · 意图 资产 预算 交接 版本树"]
+        GEN["生成类 · 图片 视频 音频 字幕"]
+        QCT["质检类 · 技术门 血缘 看图检查"]
+        API["FastAPI网关 · 8190端口"]
+    end
+    subgraph ENGINE["引擎层 · 本地优先"]
+        CUI["ComfyUI · SDXL画图 8188"]
+        WAN["Wan2.2 · 图变视频"]
+        ACE["AceStep · 音乐音效"]
+        WHIS["faster-whisper · 字幕"]
+        VLM["Qwen3-VL · 看图质检"]
+    end
+    subgraph DATA["数据层 · 文件为中心"]
+        FILES["项目目录 · JSON与媒体文件"]
+        SQL["SQLite · jobs.db任务账本"]
+    end
+    BOSS --> ROLES
+    WEB --> API
+    ROLES --> MGMT
+    API --> GEN
+    GEN --> CUI
+    GEN --> WAN
+    GEN --> ACE
+    QCT --> WHIS
+    QCT --> VLM
+    MGMT --> FILES
+    GEN --> FILES
+    API --> SQL
+</div>
+<p class="cap">图 1-2 CINEAST 技术栈架构：五层结构，从老板到底层数据</p>
+
+<h3>1.3 功能模块清单</h3>
+<table>
+  <tr><th style="width:150px">功能模块</th><th>大白话描述</th><th style="width:80px">实现状态</th><th style="width:270px">所在关键文件</th></tr>
+  <tr><td>导演意图管理</td><td>把老板的想法存成一份标准文档，全员照着办</td><td><span class="b ok">完整</span></td><td><code>tools\director_intent.py</code></td></tr>
+  <tr><td>资产管理</td><td>管理所有角色/场景/分镜素材的清单和状态</td><td><span class="b ok">完整</span></td><td><code>tools\asset_manager.py</code></td></tr>
+  <tr><td>预算管理</td><td>花钱记账，接近上限报警，花超自动熔断停机（雨夜寻猫已花 595/1000 点）</td><td><span class="b ok">完整</span></td><td><code>tools\budget_manager.py</code>、<code>projects\雨夜寻猫\budget.json</code></td></tr>
+  <tr><td>K13 版本树</td><td>资产「族谱」：记录版本、锁定后禁止修改（雨夜寻猫已锁 23 个版本）</td><td><span class="b ok">完整</span></td><td><code>tools\k13_version_tree.py</code>、<code>skills\k13-version-tree\</code></td></tr>
+  <tr><td>交接调度</td><td>岗位之间派活、收活、退件的「工单系统」（雨夜寻猫 27 条交接记录）</td><td><span class="b ok">完整</span></td><td><code>tools\handoff_manager.py</code>、<code>projects\雨夜寻猫\handoffs\</code></td></tr>
+  <tr><td>图片生成</td><td>本地 ComfyUI 画角色图/场景图，联动扣预算</td><td><span class="b ok">完整</span></td><td><code>tools\comfyui_generator.py</code>、<code>comfyui_client.py</code></td></tr>
+  <tr><td>三视图生成</td><td>给角色出正/侧/背三张图，保证换角度不变形</td><td><span class="b ok">完整</span></td><td><code>tools\three_view_client.py</code></td></tr>
+  <tr><td>视频生成</td><td>把分镜图变成动态视频片段（33、41 号镜头实际生成过）</td><td><span class="b ok">完整</span></td><td><code>tools\wan22_client.py</code>、<code>wan22_shots_33_41.py</code></td></tr>
+  <tr><td>音频生成</td><td>BGM、音效、环境音、对白配音（雨夜寻猫 37 个音频文件）</td><td><span class="b ok">完整</span></td><td><code>tools\acestep_client.py</code>、<code>gen_bgm.py</code>、<code>gen_sfx.py</code>、<code>gen_ambient.py</code></td></tr>
+  <tr><td>字幕转写</td><td>音频自动转 SRT 字幕</td><td><span class="b ok">完整</span></td><td><code>tools\whisper_transcribe.py</code></td></tr>
+  <tr><td>角色/场景锁定</td><td>把角色长相、场景氛围存成特征库，画分镜时自动注入</td><td><span class="b ok">完整</span></td><td><code>tools\character_lock_writer.py</code>、<code>scene_lock_writer.py</code></td></tr>
+  <tr><td>时间线构建</td><td>19 条专业轨道（相机/灯光/天气/表演/道具…）的时间线契约与校验</td><td><span class="b ok">完整</span></td><td><code>pipeline\timeline_build.py</code></td></tr>
+  <tr><td>技术剪辑</td><td>粗剪视频抬到交付规格（重定 24fps、1080p、AI 标识）</td><td><span class="b ok">完整</span></td><td><code>pipeline\tech_cut.py</code>（产物 tech_v5）</td></tr>
+  <tr><td>分轨混音</td><td>环境/BGM/对白/音效四轨按清单混成母带</td><td><span class="b ok">完整</span></td><td><code>pipeline\audio_mix.py</code>、<code>tools\build_mix.py</code></td></tr>
+  <tr><td>交付质检</td><td>用 FFmpeg 数值检测视频/音频是否达标（四道技术门）</td><td><span class="b ok">完整</span></td><td><code>tools\qc_media.py</code>（产物 qc_gate1~4.json）</td></tr>
+  <tr><td>DIT 血缘登记</td><td>每个文件谁生成的、什么参数，登记成台账</td><td><span class="b ok">完整</span></td><td><code>tools\dit_ingest.py</code>、<code>projects\雨夜寻猫\ditmap\</code></td></tr>
+  <tr><td>显存锁</td><td>12G 显存同时只准跑一个模型，排队+心跳+30 分钟超时</td><td><span class="b ok">完整</span></td><td><code>tools\vram_lock.py</code>、<code>logs\vram.lock</code>（注：README 写的 vram_scheduler.py 实际不存在）</td></tr>
+  <tr><td>任务队列</td><td>后台作业账本（防重复提交）</td><td><span class="b ok">完整</span></td><td><code>tools\jobs.py</code>、<code>pipeline\jobs.db</code></td></tr>
+  <tr><td>API 网关</td><td>把 CLI 工具包装成 17 个 HTTP 接口给网页用</td><td><span class="b ok">完整</span></td><td><code>tools\api_server.py</code></td></tr>
+  <tr><td>产品官网</td><td>暗色电影风展示页（能力卡片/版本树/预算仪表盘）</td><td><span class="b ok">完整</span></td><td><code>web\showcase\index.html</code></td></tr>
+  <tr><td>节点图工作台</td><td>可视化画布：节点+连线管理资产（88KB 单文件 HTML 版 + React 版）</td><td><span class="b ok">完整</span></td><td><code>web\workspace\workspace.html</code>、<code>web\react-workspace\</code></td></tr>
+  <tr><td>环境准备</td><td>自动探测/下载 Blender 和模型权重</td><td><span class="b ok">完整</span></td><td><code>tools\p0_setup.py</code></td></tr>
+  <tr><td>骨架岗位（6 个）</td><td>导演/摄影指导/灯光师/场记/视效师/统筹：只有岗位卡和人格文件，无工具链</td><td><span class="b part">空壳</span></td><td><code>roles\director\</code> 等 6 个仅 2 文件的目录</td></tr>
+  <tr><td>Musetalk 唇形同步</td><td>让画面人物嘴型对上配音</td><td><span class="b tbc">仅安装未集成（待确认）</span></td><td><code>musetalk\</code>（只有安装包，未见集成代码）</td></tr>
+  <tr><td>云端视频 API</td><td>AGENTS.md 提到「视频生成走云端 API（可灵/Seedance）」</td><td><span class="b tbc">文档提及，代码证据未见（待确认）</span></td><td><code>AGENTS.md</code> 硬件现实节</td></tr>
+</table>
+
+<div class="mermaid">
+mindmap
+  root((CINEAST功能全景))
+    管理类
+      导演意图文档
+      资产清单与状态
+      预算管控预警熔断
+      K13版本树锁定
+      岗位交接调度
+    生成类
+      图片生成与三视图
+      视频生成Wan2.2
+      BGM音效环境音对白
+      字幕转写
+    锁定类
+      角色特征锁
+      场景特征锁
+    剪辑类
+      19轨时间线
+      技术剪辑
+      分轨混音
+    质检类
+      交付技术门
+      DIT血缘登记
+      视觉模型看图检查
+    前端类
+      产品官网
+      单文件节点图工作台
+      React版工作台
+    基建类
+      显存锁排队
+      任务队列账本
+      API网关
+      环境准备
+</div>
+<p class="cap">图 1-3 CINEAST 功能模块全景思维导图</p>
+
+<h3>1.4 数据模型与业务流程</h3>
+<h4>数据模型：以「文件」为中心（没有传统数据库）</h4>
+<p>这个项目几乎不用数据库存业务数据，所有东西都是磁盘上的文件和文件夹——这本身就是一种设计选择：AI 员工和人都直接读文件，简单透明。</p>
+<div class="mermaid">
+classDiagram
+    class ProjectDir {
+        +screenplay 剧本JSON与MD
+        +assets 角色图场景图分镜图
+        +audio 四类音频与字幕
+        +timeline 19轨master时间线
+        +budget.json 预算账本
+        +graph.json 节点画布
+        +ditmap 血缘索引jsonl
+    }
+    class Asset {
+        +类型 character scene storyboard
+        +多版本PNG
+    }
+    class Handoff {
+        +共27条记录
+        +11完成 4拒绝 12进行中
+    }
+    class Budget {
+        +总额1000点
+        +已支出595点
+        +预警与熔断
+    }
+    class K13Version {
+        +23个锁定版本
+        +锁定后禁止修改
+    }
+    class CharacterLock {
+        +角色特征JSON
+        +分镜时自动注入
+    }
+    class SceneLock {
+        +场景氛围JSON
+        +分镜时自动注入
+    }
+    class Job {
+        +SQLite jobs.db
+        +后台作业账本
+    }
+    ProjectDir *-- Asset : 角色场景分镜图
+    ProjectDir *-- Handoff : 27条岗位交接
+    ProjectDir *-- Budget : 预算账本
+    ProjectDir *-- K13Version : 23个锁定版本
+    ProjectDir *-- CharacterLock : 角色特征库
+    ProjectDir *-- SceneLock : 场景特征库
+    ProjectDir ..> Job : 生成任务记账
+</div>
+<p class="cap">图 1-4 CINEAST 数据模型类图：一个项目目录聚合了六类核心数据</p>
+
+<h4>19 轨时间线（专业程度对标真实剧组）</h4>
+<table>
+  <tr><th>轨道</th><td>camera 相机</td><td>gauge 画幅</td><td>light 灯光</td><td>weather 天气</td><td>performance 表演</td><td>wardrobe 服装</td><td>props 道具</td><td>spatial 空间</td><td>ambience 环境</td><td>sfx 音效</td></tr>
+  <tr><th>轨道</th><td>dialogue 对白</td><td>music 音乐</td><td>mix 混音</td><td>vfx 视效</td><td>grade 调色</td><td>overlay 叠加</td><td>subtitle 字幕</td><td>edit 剪辑</td><td>clock 时钟</td><td>—— 每轨都有责任岗位和校验规则</td></tr>
+</table>
+
+<h4>核心业务流程</h4>
+<div class="mermaid">
+flowchart TD
+    A["老板发一句话创意"] --> B["制片人拆任务"]
+    B --> C["艺术总监派活"]
+    C --> D["编剧产出剧本JSON"]
+    D --> E["角色设计师出三视图"]
+    D --> F["场景设计师出概念图"]
+    E --> G["写入角色锁"]
+    F --> H["写入场景锁"]
+    G --> I["分镜师出镜头表 · 自动注入锁定特征"]
+    H --> I
+    I --> J["动画师Wan2.2生成视频片段"]
+    J --> K["音效师做BGM音效对白字幕"]
+    K --> L["剪辑师合成粗剪"]
+    L --> M["质检技术门四道"]
+    M --> N["艺术总监审片"]
+    N -->|"打回 · 必须带具体理由"| C
+    N --> O["制片人汇总交付老板"]
+</div>
+<p class="cap">图 1-5 CINEAST 核心业务流程：任何环节可打回重做，但必须说明理由（哪帧/哪秒/什么问题/改什么方向）</p>
+
+<h3>1.5 接口与 API</h3>
+<h4>后端接口（tools\api_server.py，端口 8190，架构：把命令行工具包装成 HTTP 服务）</h4>
+<table>
+  <tr><th>接口</th><th>功能</th></tr>
+  <tr><td><code>GET /</code> / <code>/workspace</code> / <code>/workspace-react</code></td><td>三个页面：产品官网 / HTML 工作台 / React 工作台</td></tr>
+  <tr><td><code>GET /api/health</code> · <code>/api/project</code></td><td>健康检查 / 项目概览（有无意图、预算、资产、版本树）</td></tr>
+  <tr><td><code>GET /api/budget/status</code> · <code>/api/budget/history</code></td><td>预算状态 / 支出流水</td></tr>
+  <tr><td><code>GET /api/versions</code> · <code>/api/versions/history?name=</code></td><td>K13 版本列表 / 单资产版本历史</td></tr>
+  <tr><td><code>GET /api/assets</code> · <code>/api/assets/status</code></td><td>资产清单 / 资产状态</td></tr>
+  <tr><td><code>GET /api/handoffs</code> · <code>/api/handoffs/stats</code></td><td>交接记录 / 交接统计</td></tr>
+  <tr><td><code>GET /api/intent</code> · <code>/api/scenes</code> · <code>/api/characters</code></td><td>导演意图 / 场景锁 / 角色锁</td></tr>
+  <tr><td><code>GET/POST/DELETE /api/graph</code></td><td>节点图画布存档（亮点：原子写入防半截文件；删除先备份可回滚；「损坏」与「不存在」严格区分）</td></tr>
+  <tr><td><code>POST /api/generate</code></td><td><b>生成闭环入口</b>：调 ComfyUI 画一张图，自动扣预算、存入项目资产目录</td></tr>
+  <tr><td><code>POST /api/lock</code></td><td>把生成的资产锁定进 K13 版本树（冻结）</td></tr>
+</table>
+<h4>外部 AI 服务调用</h4>
+<table>
+  <tr><th>服务</th><th>用途</th><th>证据</th></tr>
+  <tr><td>Kimi K2.6（api.moonshot.cn）</td><td>所有 AI 员工的大脑</td><td><code>config.yaml</code></td></tr>
+  <tr><td>ComfyUI 本地 API（127.0.0.1:8188）</td><td>图片/视频生成引擎</td><td><code>comfyui_client.py</code>（提交/轮询/下载三步）</td></tr>
+  <tr><td>hf-mirror.com（HuggingFace 镜像）</td><td>下载模型权重</td><td><code>p0_setup.py</code>、<code>whisper_transcribe.py</code></td></tr>
+  <tr><td>可灵 / Seedance 云端视频 API</td><td>视频生成（文档规划）</td><td><span class="b tbc">待确认：AGENTS.md 提及，未见代码实现</span></td></tr>
+</table>
+
+<h3>1.6 代码质量与完成度</h3>
+<table>
+  <tr><th>维度</th><th>评估</th><th>证据</th></tr>
+  <tr><td>版本管理</td><td><span class="b ok">有 git</span>，8 次提交：2026-08-27 基线 → 2026-09-27 15:44 收尾</td><td><code>git log</code> 实测</td></tr>
+  <tr><td>测试</td><td><span class="b ok">有</span>，3 个测试用例全部通过；验收报告发现 4 个 P0 问题（意图模板依赖外部路径、资产拆解靠关键词匹配等）</td><td><code>tests\00-测试计划.md</code>、<code>验收与优化报告.md</code></td></tr>
+  <tr><td>运行痕迹</td><td><span class="b ok">真实运行过</span>：显存锁文件、环境准备状态、FFmpeg 错误日志、27 条交接、预算支出 595 点、粗剪 v1~v4 + 技术版 v5 全套产物</td><td><code>logs\</code>、<code>projects\雨夜寻猫\</code></td></tr>
+  <tr><td>工程细节</td><td>有亮点：graph.json 原子写入、损坏检测、终端命令白名单/黑名单安全机制</td><td><code>api_server.py</code>、<code>AGENTS.md</code></td></tr>
+</table>
+<h4>明显问题（含 v2 盘点时定性的根因）</h4>
+<table>
+  <tr><th>#</th><th>问题</th><th>性质</th></tr>
+  <tr><td>1</td><td><b>88.9% 的镜头是静图推拉</b>（图片放大冒充运镜），无真运动——被 v2 立为头号根因</td><td>质量根因</td></tr>
+  <tr><td>2</td><td><b>195 处字面量根路径</b>（把 D:\、C:\ 路径写死在代码里），搬家即坏</td><td>工程根因</td></tr>
+  <tr><td>3</td><td>README 与实际不符：声称根目录有 <code>vram_scheduler.py</code>，实际是 <code>tools\vram_lock.py</code></td><td>文档失真</td></tr>
+  <tr><td>4</td><td>岗位数字混乱：AGENTS.md 说 9 岗、目录实有 15 个（9 全 6 空）、v4.0 方案定稿 18 岗，三处对不齐</td><td>文档失真</td></tr>
+  <tr><td>5</td><td>成片 fps 实测 23.975（应为 24）、码率 1919.8kbps 不达标（应为 ≥6000）</td><td>交付质量</td></tr>
+  <tr><td>6</td><td>Musetalk 装而未用；多份方案文档并存且有冲突（已归档但保留）</td><td>冗余</td></tr>
+</table>
+<div class="note"><b>总体完成度判断：</b>这是三版中<b>唯一真正「跑通过全流程」</b>的版本——从创意到技术成片闭环，工具链约 30 个脚本基本成型。它死于「质量天花板」而不是「功能缺失」：直接文生图+图生视频的路线，注定抽卡、注定静图推拉。这正是 v2 换路线的直接原因。</div>
+
+<!-- ================================================================ -->
+<!-- 第二部分：AI影视团队（里程碑1） -->
+<!-- ================================================================ -->
+<h2 id="s2">二、AI影视团队（里程碑 1 · FastAPI 版）</h2>
+
+<h3>2.1 项目背景与定位</h3>
+<p><b>结论：</b>这是一个刻意做小的「最小可行产品」：一个本地网站，输入一句创意，两个 AI 员工（编剧、分镜师）接力产出结构化剧本和分镜表，全程网页上实时看进度。图片、视频、音频、剪辑全部留到后续里程碑。</p>
+<ul>
+  <li><b>解决什么问题：</b>先验证「创意 → 剧本 → 分镜」这段纯文字流水线能不能稳定跑通。</li>
+  <li><b>目标用户：</b>老板本人，本地运行（127.0.0.1:8000），不上线、不多人。</li>
+  <li><b>在整体规划中的位置：</b>README 明确写了 4 个里程碑，本版是第 1 个；第 2~4 步（ComfyUI 画图、VRAM 调度接入 Wan/ChatTTS/MusicGen、FFmpeg 剪辑成片）<b>恰好就是 CINEAST 后来实现的东西</b>。</li>
+</ul>
+<div class="mermaid">
+mindmap
+  root((里程碑1))
+    一句话定位
+      本地AI影视系统的第一步
+      创意到剧本到分镜纯文字
+    设计思路
+      两个AI员工编剧与分镜师
+      Kimi大模型当大脑
+      网页实时看进度
+    严谨之处
+      严格JSON结构化输出
+      不支持时自动降级
+      空库空创意都有防护
+    在规划中的位置
+      四个里程碑的第一个
+      后三步图片视频音频剪辑
+    实际状态
+      代码闭环
+      从未真实用过
+      数据库是空的
+</div>
+<p class="cap">图 2-1 里程碑 1 项目定位思维导图</p>
+
+<h3>2.2 技术栈全景</h3>
+<table>
+  <tr><th style="width:110px">层</th><th>技术</th><th>版本</th><th>证据</th></tr>
+  <tr><td>后端</td><td>Python + FastAPI + uvicorn</td><td>fastapi≥0.115、uvicorn≥0.30</td><td><code>requirements.txt</code></td></tr>
+  <tr><td>AI 调用</td><td>openai SDK 兼容模式 → Kimi API</td><td>openai≥1.50，模型 kimi-k3</td><td><code>app\services\kimi_client.py</code>、<code>config.yaml</code></td></tr>
+  <tr><td>数据</td><td>SQLite（原生 sqlite3，无 ORM）</td><td>2 张表</td><td><code>app\db.py</code></td></tr>
+  <tr><td>实时通信</td><td>WebSocket（进度推送 + 历史补发 200 条）</td><td>—</td><td><code>app\services\progress.py</code></td></tr>
+  <tr><td>前端</td><td>原生 HTML/CSS/JS</td><td>零框架、零 CDN、零构建步骤</td><td><code>static\index.html</code>、<code>js\app.js</code></td></tr>
+  <tr><td>其他依赖</td><td>pydantic≥2.7、PyYAML≥6.0、python-dotenv≥1.0、httpx≥0.27、pytest≥8.0</td><td>共 8 个依赖</td><td><code>requirements.txt</code></td></tr>
+</table>
+
+<div class="mermaid">
+flowchart LR
+    subgraph FE["浏览器前端 · 原生三件套"]
+        UI["左侧创意输入与项目列表 · 右侧进度流与三标签页展示"]
+    end
+    subgraph BE["FastAPI 后端 · 8000端口"]
+        R["5个HTTP接口"]
+        WS["WebSocket进度通道"]
+        PL["流水线编排 · 串行两步"]
+    end
+    subgraph AI["AI层"]
+        SW["编剧Agent · 20年经验人设"]
+        SB["分镜师Agent · 镜头语言人设"]
+        KC["Kimi客户端 · json_schema严格模式"]
+    end
+    subgraph DB["数据层"]
+        S["SQLite · projects与artifacts两表"]
+    end
+    UI -->|"fetch调用"| R
+    UI <-->|"实时进度"| WS
+    R --> PL
+    PL --> SW
+    PL --> SB
+    SW --> KC
+    SB --> KC
+    KC -->|"https云API"| KIMI["Kimi kimi-k3 · moonshot"]
+    PL --> S
+</div>
+<p class="cap">图 2-2 里程碑 1 技术栈架构：极简单体应用</p>
+
+<h3>2.3 功能模块清单</h3>
+<table>
+  <tr><th style="width:150px">功能模块</th><th>大白话描述</th><th style="width:80px">实现状态</th><th style="width:250px">所在关键文件</th></tr>
+  <tr><td>项目管理</td><td>创建/列表/详情（创意存档、状态流转）</td><td><span class="b ok">完整</span></td><td><code>app\routers\projects.py</code></td></tr>
+  <tr><td>编剧 Agent</td><td>把一句创意写成结构化剧本（场次/角色/台词/时长/情绪）</td><td><span class="b ok">完整</span></td><td><code>crew\agents.py</code> + <code>crew\schemas.py</code></td></tr>
+  <tr><td>分镜师 Agent</td><td>把剧本拆成镜头表（景别/运镜/时长/英文提示词——为将来文生图做准备）</td><td><span class="b ok">完整</span></td><td>同上</td></tr>
+  <tr><td>结构化输出</td><td>强制 AI 输出严格匹配格式的 JSON，不支持时自动降级+提示词兜底</td><td><span class="b ok">完整</span></td><td><code>app\services\kimi_client.py</code></td></tr>
+  <tr><td>进度推送</td><td>制作过程实时推到网页，掉线重连自动补历史消息</td><td><span class="b ok">完整</span></td><td><code>app\services\progress.py</code>、<code>app\main.py</code></td></tr>
+  <tr><td>前端展示</td><td>进度时间线 + 剧本卡片 + 分镜表格 + 原始 JSON 四种视图</td><td><span class="b ok">完整</span></td><td><code>static\js\app.js</code></td></tr>
+  <tr><td>测试</td><td>4 个冒烟测试（健康检查/增删查/无密钥防护/JSON 提取鲁棒性）</td><td><span class="b ok">完整且跑过</span></td><td><code>tests\test_smoke.py</code>、<code>.pytest_cache</code></td></tr>
+  <tr><td>图片/视频/音频/剪辑</td><td>整个生成链</td><td><span class="b todo">未实现（规划在里程碑 2~4）</span></td><td>—</td></tr>
+  <tr><td>日志系统</td><td>任何运行日志</td><td><span class="b todo">无</span></td><td>—</td></tr>
+  <tr><td>项目删除/编辑</td><td>管理功能</td><td><span class="b todo">无</span></td><td>—</td></tr>
+</table>
+
+<div class="mermaid">
+mindmap
+  root((里程碑1功能))
+    项目管理
+      创建项目
+      项目列表
+      项目详情
+    AI创作
+      编剧Agent
+      分镜师Agent
+      严格JSON结构化输出
+    实时进度
+      WebSocket推送
+      历史消息补发
+    前端展示
+      进度时间线
+      剧本卡片
+      分镜表格
+      原始JSON
+    防护设计
+      空创意拦截
+      重复运行拦截
+      无密钥拦截
+    尚未实现
+      图片视频音频生成
+      剪辑合成
+      日志系统
+</div>
+<p class="cap">图 2-3 里程碑 1 功能模块全景思维导图</p>
+
+<h3>2.4 数据模型与业务流程</h3>
+<div class="mermaid">
+erDiagram
+    PROJECTS ||--o{ ARTIFACTS : "一个项目存放多条产物"
+    PROJECTS {
+        text id PK "项目唯一编号"
+        text title "标题，超24字截断"
+        text idea "用户创意原文"
+        text status "created running done failed"
+        real created_at "创建时间戳"
+    }
+    ARTIFACTS {
+        text project_id PK "所属项目"
+        text kind PK "script剧本 或 storyboard分镜"
+        text content "产物JSON全文"
+        real updated_at "更新时间戳"
+    }
+</div>
+<p class="cap">图 2-4 里程碑 1 数据模型 ER 图：全库就两张表，剧本分镜以 JSON 文本存库，不落文件</p>
+
+<div class="mermaid">
+flowchart TD
+    A["网页左侧输入一句创意"] --> B["点击创建并开始制作"]
+    B --> C["后端建项目 · 状态created"]
+    C --> D["后台启动流水线 · 状态running"]
+    D --> E["编剧Agent调Kimi生成剧本JSON"]
+    E --> F["存入artifacts表"]
+    F --> G["WebSocket推送 · 剧本完成"]
+    G --> H["分镜师Agent读剧本生成分镜JSON"]
+    H --> I["存入artifacts表"]
+    I --> J["WebSocket推送 · 分镜完成"]
+    J --> K["状态done · 前端三标签页展示"]
+    E -.->|"任一步出错"| X["状态failed · 失败原因推给前端"]
+</div>
+<p class="cap">图 2-5 里程碑 1 核心业务流程：串行两步，简单可靠</p>
+
+<h3>2.5 接口与 API</h3>
+<table>
+  <tr><th>接口</th><th>方法</th><th>功能</th><th>证据</th></tr>
+  <tr><td><code>/api/health</code></td><td>GET</td><td>健康检查</td><td><code>projects.py:18</code></td></tr>
+  <tr><td><code>/api/projects</code></td><td>POST / GET</td><td>创建项目（空创意返回 400）/ 项目列表</td><td><code>projects.py:23-33</code></td></tr>
+  <tr><td><code>/api/projects/{pid}</code></td><td>GET</td><td>项目详情含产物</td><td><code>projects.py:36</code></td></tr>
+  <tr><td><code>/api/projects/{pid}/run</code></td><td>POST</td><td>启动流水线（重复启动返回 409；无密钥返回 400）</td><td><code>projects.py:45</code></td></tr>
+  <tr><td><code>/ws/projects/{pid}</code></td><td>WebSocket</td><td>进度推送（连接即补发最近 200 条历史）</td><td><code>main.py:24</code></td></tr>
+</table>
+<p><b>外部 AI 服务：</b>仅一个——Kimi API（kimi-k3，api.moonshot.cn），通过 openai 兼容 SDK 调用，带「推理强度分级」（简单任务省钱、复杂任务保质量）和「严格 JSON 模式失败自动降级」两个健壮性设计。</p>
+
+<h3>2.6 代码质量与完成度</h3>
+<table>
+  <tr><th>维度</th><th>评估</th><th>证据</th></tr>
+  <tr><td>代码质量</td><td><span class="b ok">优</span>：全类型注解、无死代码、无重复代码、无 TODO 残留、防御性编程到位</td><td>逐文件审读</td></tr>
+  <tr><td>测试</td><td>4 个冒烟测试全部真实跑过（pytest 缓存留有全部用例 ID）</td><td><code>.pytest_cache\v\cache\nodeids</code></td></tr>
+  <tr><td>真实使用</td><td><span class="b todo">从未真实用过</span>：数据库是空壳（20KB 仅建表，无任何项目行）；无日志、无产物文件</td><td><code>data\ai_film.db</code>（2026-07-27 20:49）</td></tr>
+  <tr><td>设计文档</td><td><span class="b todo">无</span>：README 提到的「设计方案」不在仓库内</td><td>全目录 .md 搜索</td></tr>
+</table>
+<div class="note"><b>总体完成度判断：</b>「里程碑 1 范围内」完成度 100%，代码干净得像教学示例；「整个产品愿景」完成度约 25%（四个里程碑只做了第一个），且从未投入真实使用。它是一个合格的<b>技术探路石</b>，其规划直接指明了 CINEAST 的建设蓝图。</div>
+
+<!-- ================================================================ -->
+<!-- 第三部分：AI影视团队v2 -->
+<!-- ================================================================ -->
+<h2 id="s3">三、AI影视团队v2（白模+写实化重构版）</h2>
+
+<h3>3.1 项目背景与定位</h3>
+<p><b>结论：</b>这不是功能升级，是<b>战略级推倒重来</b>。v2 的目标从「能出片」提高到「像好莱坞真人剧组实拍」——明确反对 PPT 感、静图推拉和「AI 味」。核心思路：用 Blender 白模（灰色简模动画）把镜头的一切（几何、灯光、相机运动、走位、道具、天气、时间轴）提前<b>定死</b>，大模型只负责「把已经定好的东西渲染成写实」，从而消灭 AI 抽卡的不确定性。</p>
+<ul>
+  <li><b>解决什么问题：</b>v1 实测暴露的三大根因——88.9% 静图推拉（没有真运动）、生成结果不可控、质量靠感觉不靠数值。</li>
+  <li><b>目标用户：</b>仍是老板本人；三层目标：L1 技术验证（5~10 秒单镜）→ L2 能力样片（《雨夜寻猫》30~45 秒）→ L3 平台内核。</li>
+  <li><b>管理制度（本版最大特色）：</b>阶段门控制——R0 盘点 → R1 需求 → R2 调研 → R3 架构 → R4 技术验证 → R5 样片 → R6 平台，<b>每阶段末老板签字验收，不许跳步</b>；「拍板 ≠ 开工许可」；报「已查/已测」必须附探针回显；每个主题只保留一份「唯一事实来源」文档。</li>
+  <li><b>成本纪律：</b>截至 R4 累计花费 <b>0 元</b>；本地开源优先，云端按「开拍单」精准调用。</li>
+</ul>
+<div class="mermaid">
+mindmap
+  root((v2))
+    终极目标
+      好莱坞真人实拍观感
+      反PPT感反AI味
+    技术路线
+      Blender白模把一切定死
+      大模型只负责渲染成写实
+      消灭抽卡不确定性
+    组织形态
+      7个岗位卡
+      机器可读规格契约
+      老板逐阶段签字验收
+    质量制度
+      五项硬指标数值化
+      47项QC契约
+      报已查必须附回显
+    成本纪律
+      累计花费0元
+      本地开源优先
+      云端按开拍单调用
+    当前阶段
+      R4技术验证镜
+      白模已出121帧
+      写实化尚未跑通
+</div>
+<p class="cap">图 3-1 v2 项目定位思维导图</p>
+
+<h3>3.2 技术栈全景</h3>
+<table>
+  <tr><th style="width:110px">层</th><th>技术</th><th>状态</th><th>证据</th></tr>
+  <tr><td>治理层</td><td>PROJECT_STATE.md 唯一入口 + 20 余份文档（需求定稿/调研/R0~R4）</td><td><span class="b ok">完整且已签字</span></td><td><code>PROJECT_STATE.md</code>、<code>docs\</code></td></tr>
+  <tr><td>规格层</td><td>3 份机器可读 JSON 契约（交付规格 / QC 判据 / 镜头规格）</td><td><span class="b ok">完整</span></td><td><code>spec\delivery_spec.json</code> 等</td></tr>
+  <tr><td>岗位层</td><td>7 个岗位 SKILL.md（导演/制片/编剧/预演/白模/写实化/场记）</td><td><span class="b ok">完整</span></td><td><code>agents\*\SKILL.md</code></td></tr>
+  <tr><td>白模制作</td><td>Blender 5.2.2，bpy 脚本直调（禁用第三方 Blender MCP）</td><td><span class="b ok">可运行</span></td><td><code>tools\blockout_min_v1.py</code>、<code>tools\make_r4_l1_blockout.py</code></td></tr>
+  <tr><td>本地写实化</td><td>Wan2.1-VACE-1.3B（看着白模视频输出写实视频）</td><td><span class="b todo">未完成</span>：权重仅 776MB 残片（应约 4.31GB）；官方推理代码未克隆完；运行器未写</td><td><code>models\wan_vace_1.3b\</code>、<code>wan_runtime\</code></td></tr>
+  <tr><td>云端写实化</td><td>fal.ai 3DREAL strong-v2（主）；即梦 Seedance 2.5 / Higgsfield（备选）</td><td><span class="b part">契约已定稿，未实际调用</span></td><td><code>docs\R3-架构定稿.md</code></td></tr>
+  <tr><td>质检链</td><td>qc_media v7 + 五项硬指标（含 ArcFace 人脸一致性、光流运动检测）</td><td><span class="b part">工具迁移完成，光流模块待建</span></td><td><code>tools\qc_media.py</code></td></tr>
+  <tr><td>音频链</td><td>CosyVoice3 + afir + ebur128 独立链设计（旧 37 个音频资产已迁移复用）</td><td><span class="b part">资产完整，新链待建</span></td><td><code>projects\雨夜寻猫\05_audio\</code></td></tr>
+  <tr><td>前端</td><td>React 工作台（与 v1 代码逐字节相同）</td><td><span class="b tbc">拷贝未适配（待确认）</span></td><td>MD5 比对：两版 <code>package.json</code> 哈希一致</td></tr>
+  <tr><td>数据</td><td>文件系统 + jobs.db 作业账本 + 规划中的 cost_ledger.jsonl 成本账本</td><td><span class="b part">部分</span></td><td><code>tools\jobs.py</code></td></tr>
+</table>
+
+<div class="mermaid">
+flowchart TB
+    subgraph GOV["治理层 · 唯一事实来源"]
+        PS["PROJECT_STATE 唯一入口"]
+        DOC["需求定稿 · 调研 · 架构定稿"]
+    end
+    subgraph SPEC["规格层 · 三份JSON契约"]
+        DS["交付规格 L1 L2 L3"]
+        QR["质检判据 五项硬指标"]
+        SS["镜头规格 岗位间合同"]
+    end
+    subgraph AG["岗位层 · 7个SKILL卡"]
+        A7["导演 制片 编剧 预演 白模 写实化 场记"]
+    end
+    subgraph MAK["制作层"]
+        BL["Blender 5.2.2 白模 · bpy直调"]
+        VACE["本地 VACE 1.3B · 权重残缺"]
+        FAL["云端 fal 3DREAL · 契约已定"]
+    end
+    subgraph RUN["运行时与工具"]
+        WR["wan_runtime 第三方库"]
+        TOOLS["工具脚本约60个"]
+    end
+    subgraph ASSET["资产层"]
+        OLD["旧资产830文件 sha256台账"]
+        PROJ["雨夜寻猫 结构化项目"]
+    end
+    PS --> DOC
+    DOC --> SPEC
+    SPEC --> AG
+    AG --> BL
+    BL --> VACE
+    BL --> FAL
+    TOOLS --> BL
+    OLD --> PROJ
+</div>
+<p class="cap">图 3-2 v2 技术栈架构：文档与规格先行，制作层刚起步</p>
+
+<h3>3.3 功能模块清单</h3>
+<table>
+  <tr><th style="width:150px">功能模块</th><th>大白话描述</th><th style="width:110px">实现状态</th><th style="width:260px">所在关键文件</th></tr>
+  <tr><td>项目状态管理</td><td>一份「唯一入口」文档管全局：当前阶段、待办、会话日志、签字记录</td><td><span class="b ok">完整</span></td><td><code>PROJECT_STATE.md</code>（19KB，滚动维护）</td></tr>
+  <tr><td>需求定稿</td><td>三层目标（L1 验证镜→L2 样片→L3 平台）、多模态边界，全部拍板无遗留</td><td><span class="b ok">完整</span></td><td><code>docs\需求定稿.md</code></td></tr>
+  <tr><td>调研体系</td><td>竞品 20 家、渲染后端成本、fal 接口一手核验、音频链、合规许可</td><td><span class="b ok">完整</span>（板块①②已签字验收）</td><td><code>docs\调研-*.md</code> 约 10 份</td></tr>
+  <tr><td>架构定稿</td><td>14 节 + 19 条修正落点 + 47 项 QC 契约（老板 2026-09-27 18:21 签字）</td><td><span class="b ok">完整</span></td><td><code>docs\R3-架构定稿.md</code></td></tr>
+  <tr><td>交付规格</td><td>三档画质标准（详见 3.4），数值全部写死，工具只执行不发明</td><td><span class="b ok">完整</span></td><td><code>spec\delivery_spec.json</code></td></tr>
+  <tr><td>QC 判据</td><td>五项硬指标的精确阈值（详见 3.4）</td><td><span class="b ok">完整</span>（v1.1.0）</td><td><code>spec\qc_rubric.json</code></td></tr>
+  <tr><td>镜头规格契约</td><td>预演→白模→写实化三岗之间的「合同」：14 个必填字段（详见 3.4）</td><td><span class="b ok">完整</span></td><td><code>spec\shot_spec.schema.json</code></td></tr>
+  <tr><td>岗位卡</td><td>7 个岗位的职责/输入/输出/铁律（旧 15 岗只留档不再作依据）</td><td><span class="b ok">完整</span></td><td><code>agents\*\SKILL.md</code>、<code>agents\_legacy_roles\</code></td></tr>
+  <tr><td>试点白模</td><td>48 帧白模粗片（球头人体/雨棚/寻猫启事/dolly-in）验证「Blender 能渲出可用白模」</td><td><span class="b ok">完整</span></td><td><code>tools\blockout_min_v1.py</code>、<code>blender\shots\_pilot_blockout\</code></td></tr>
+  <tr><td>R4 验证镜白模</td><td>121 帧（空房+占位人转身 90°+相机推进），RGB+EXR 深度双序列+相机数据旁车文件</td><td><span class="b ok">完整</span></td><td><code>tools\make_r4_l1_blockout.py</code>、<code>blender\shots\r4_l1\</code></td></tr>
+  <tr><td>本地写实化（VACE）</td><td>白模进→写实出。权重残缺（776MB/应4.31GB）、推理代码未齐、运行器未写、无输出</td><td><span class="b todo">未完成</span></td><td><code>models\wan_vace_1.3b\</code>、<code>wan_runtime\pylibs\</code></td></tr>
+  <tr><td>云端写实化（fal）</td><td>按镜付费的云端写实化。19 条契约参数已定稿（如 generate_audio 默认关、安全检查默认开）</td><td><span class="b todo">未实施</span></td><td><code>docs\R3-架构定稿.md</code> fal 契约节</td></tr>
+  <tr><td>作业账本</td><td>从 v1 迁移的异步任务账本（幂等防重复）</td><td><span class="b ok">完整</span></td><td><code>tools\jobs.py</code></td></tr>
+  <tr><td>交付技术门</td><td>从 v1 迁移的 qc_media v7</td><td><span class="b ok">完整</span></td><td><code>tools\qc_media.py</code></td></tr>
+  <tr><td>光流质检</td><td>检测「真运动还是静图推拉」的模块</td><td><span class="b todo">待建</span></td><td>场记岗位卡中标注</td></tr>
+  <tr><td>旧资产迁移</td><td>旧项目 209 文件完整副本 + 830 文件逐文件 sha256 台账 + 36 作业迁移记录</td><td><span class="b ok">完整</span></td><td><code>_legacy\</code>、<code>projects\雨夜寻猫\</code></td></tr>
+  <tr><td>前端</td><td>React 工作台（v1 原样拷贝）</td><td><span class="b tbc">待确认：未见针对 v2 架构的适配改造</span></td><td><code>web\react-workspace\</code></td></tr>
+  <tr><td>配置中心</td><td>预留目录</td><td><span class="b todo">空</span></td><td><code>config\</code>（空目录）</td></tr>
+</table>
+
+<div class="mermaid">
+mindmap
+  root((v2功能全景))
+    文档治理
+      唯一事实来源制度
+      阶段验收签字
+      探针回显铁律
+    规格契约
+      交付三档规格
+      五项硬指标判据
+      镜头规格合同
+    岗位体系
+      7个在岗岗位卡
+      旧15岗位只留档
+    白模制作
+      试点白模48帧
+      R4验证镜121帧带深度
+    写实化
+      本地VACE未完成
+      云端fal未实施
+    质检与账本
+      交付技术门v7
+      作业账本
+      DIT血缘
+    资产复用
+      旧资产完整迁移
+      sha256逐文件台账
+    前端
+      v1前端原样拷贝
+      适配情况待确认
+</div>
+<p class="cap">图 3-3 v2 功能模块全景思维导图</p>
+
+<h3>3.4 数据模型与业务流程</h3>
+<h4>核心「数据模型」= 三份机器可读规格契约（不是数据库表）</h4>
+<p>v2 把「大家必须遵守的规则」从文档人话变成了 JSON 机器可读契约——工具直接读它执行，不再各自发明数值。这是 v2 相对 v1 最重要的架构升级之一。</p>
+
+<h4>① 交付规格 delivery_spec（三档画质标准）</h4>
+<table>
+  <tr><th>档位</th><th>用途</th><th>分辨率</th><th>帧率</th><th>码率 kbps</th><th>响度</th></tr>
+  <tr><td>L1 审片档</td><td>内部审片/迭代/引擎对比</td><td>1280×720</td><td>24 CFR</td><td>6000/8000/10000</td><td>-14 LUFS ±0.5</td></tr>
+  <tr><td>L2 发布档</td><td>B站/YouTube/抖音横屏</td><td>1920×1080</td><td>24 CFR</td><td>10000/12000/16000</td><td>-14 LUFS ±0.5</td></tr>
+  <tr><td>L3 商单档</td><td>商业交付</td><td>1080p 或 4K</td><td>24 CFR</td><td>12000/16000/24000</td><td>-14 LUFS ±0.5</td></tr>
+</table>
+<p>三档均强制：AI 生成显式标识（「本片由 AI 生成合成」≥3 秒）+ 隐式元数据五键。每条数值都有「法条出处」（旧项目实测翻车教训：fps 23.975 判 FAIL、码率 1919.8 不足）。</p>
+
+<h4>② 质检判据 qc_rubric（五项硬指标，v1.1.0）</h4>
+<table>
+  <tr><th>指标</th><th>判据示例</th><th>等级</th></tr>
+  <tr><td>运动真实性</td><td>背景光流中位速度 ≥2px/帧；静图降级镜 ≤30%；无超 0.5 秒冻结；卡顿用帧时间戳分布检测</td><td><span class="b todo">硬门</span></td></tr>
+  <tr><td>结构锁定</td><td>主体偏移记录在案；相机运动偏差 &lt;20%；首帧关键元素完整</td><td><span class="b part">半硬</span></td></tr>
+  <tr><td>角色一致性</td><td>人脸 ArcFace 相似度（一种人脸识别算法）多帧投票均值 ≥0.75；服装主色差 ΔE≤12；道具状态逐镜核对</td><td><span class="b todo">硬门</span></td></tr>
+  <tr><td>光影连续性</td><td>主光方位角跨镜变化 ≤30°；相邻镜头景别跨度 ≥2 档；平均镜头长 2~5 秒</td><td><span class="b part">半硬</span></td></tr>
+  <tr><td>声音真实性</td><td>48kHz/24bit；-14 LUFS ±0.5；真峰 ≤-1.5dBTP；环境声分层 ≥3 层</td><td><span class="b todo">硬门</span></td></tr>
+</table>
+
+<h4>③ 镜头规格 shot_spec（岗位间的「合同」）</h4>
+<div class="mermaid">
+classDiagram
+    class ShotSpec {
+        +shot_id 镜号
+        +duration_s 实为帧数 8k+1 最小17
+        +aspect_ratio 白模阶段定死
+        +camera 焦段 机位 运动类型
+        +lighting 主光 色温 辅光比
+        +subject 角色 轴线 动作 视线
+        +props 道具状态机
+        +weather 雨 风 雾 闪电
+        +beats 时间轴节拍
+        +first_frame_key_elements 首帧关键元素
+        +locks 绝对不许变项
+        +reference_assets 参考资产锚点
+        +engine_routing 引擎与成本
+        +owner_signoff 岗位签收
+    }
+    ShotSpec --> Camera : 焦段与运动
+    ShotSpec --> Lighting : 光影契约
+    ShotSpec --> Locks : 锁定铁律
+    ShotSpec --> EngineRouting : 引擎路由与成本
+    class Camera {
+        +运动类型与速度
+        +physics_note
+    }
+    class Lighting {
+        +全片复用同段光影描述
+        +Show LUT
+    }
+    class Locks {
+        +绝对不许变项
+        +违反即作废
+    }
+    class EngineRouting {
+        +引擎选择
+        +帧数与分辨率
+        +seed与预估成本
+    }
+</div>
+<p class="cap">图 3-4 shot_spec 契约结构：预演岗填写 → 白模岗照做 → 写实化岗照路由 → 场记岗照验，一纸合同贯穿四岗</p>
+
+<h4>阶段治理流程（v2 的「项目管理」业务流程）</h4>
+<div class="mermaid">
+flowchart LR
+    R0["R0 只读盘点"] --> R1["R1 需求定稿"]
+    R1 --> R2["R2 调研做全"]
+    R2 --> R3["R3 架构定稿"]
+    R3 --> R4["R4 技术验证镜"]
+    R4 --> R5["R5 雨夜寻猫样片"]
+    R5 --> R6["R6 平台内核"]
+    R1 -.-> V["老板签字验收"]
+    R2 -.-> V
+    R3 -.-> V
+    R4 -.-> V
+    style R4 fill:#173229,stroke:#4caf9d,stroke-width:2px
+    style V fill:#3a2e1e,stroke:#d4a959
+</div>
+<p class="cap">图 3-5 v2 阶段门流程：R1~R3 已全部签字通过（2026-09-27），当前在 R4。铁律：三问未全 YES 不得动工，每阶段末不许跳步。</p>
+
+<h4>核心制作业务流程（白模 → 写实化管线）</h4>
+<div class="mermaid">
+flowchart LR
+    S1["剧本"] --> S2["预演岗产出镜头规格"]
+    S2 --> S3["Blender白模 · 几何灯光相机走位道具天气时间轴"]
+    S3 --> S4["PNG帧序列 + EXR深度 + 相机数据"]
+    S4 --> S5{"写实化引擎选择"}
+    S5 -->|"本地 0元"| L1["VACE 1.3B · 权重残缺"]
+    S5 -->|"云端 按镜付费"| L2["fal 3DREAL · 契约已定未调用"]
+    L1 --> S6["五项硬指标质检"]
+    L2 --> S6
+    S6 -->|"不过关带数值打回"| S3
+    S6 --> S7["交付包 L1 L2 L3 三档"]
+</div>
+<p class="cap">图 3-6 v2 核心制作管线：当前卡在 S5→L1 这一步（写实化未跑通）</p>
+
+<h3>3.5 接口与 API</h3>
+<table>
+  <tr><th>类型</th><th>内容</th><th>状态</th></tr>
+  <tr><td>自有后端 API</td><td>未见 v2 自己的 API 服务（<code>tools\_selftest\api_server.py</code> 为 v1 迁移的自测件）</td><td><span class="b tbc">待确认</span></td></tr>
+  <tr><td>外部 AI：本地</td><td>Wan2.1-VACE-1.3B（本地推理，需补全权重与推理代码）</td><td><span class="b todo">未跑通</span></td></tr>
+  <tr><td>外部 AI：云端</td><td>fal.ai 3DREAL strong-v2 —— 19 条接口契约已定稿（image_url 默认留空、细节增强默认关、音频生成默认关、安全检查默认开、成本按每镜宽高比×帧数计）</td><td><span class="b part">契约定稿，0 次调用</span></td></tr>
+  <tr><td>外部 AI：备选</td><td>即梦 Seedance 2.5、Higgsfield for Blender（路线表在列）</td><td><span class="b todo">仅调研</span></td></tr>
+</table>
+
+<h3>3.6 代码质量与完成度</h3>
+<table>
+  <tr><th>维度</th><th>评估</th><th>证据</th></tr>
+  <tr><td>文档治理</td><td><span class="b ok">三版最强</span>：唯一事实来源、签字位、探针回显、会话日志、sha256 台账俱全</td><td><code>PROJECT_STATE.md</code> §4/§7/§9</td></tr>
+  <tr><td>版本管理</td><td><span class="b todo">无 git</span>（v1 有、v2 目前没有）</td><td><code>.git</code> 不存在</td></tr>
+  <tr><td>R4 实际进展</td><td>白模侧已闭环（121 帧真产物）；写实化侧五缺：全量权重、推理代码、运行器、写实输出、QC 报告</td><td><code>blender\shots\r4_l1\</code> vs <code>models\wan_vace_1.3b\</code></td></tr>
+  <tr><td>空目录</td><td><code>config\</code>、<code>assets\</code>、<code>blender\lib\</code>、<code>projects\雨夜寻猫\01_spec\</code> 均为空（规划位）</td><td>目录实测</td></tr>
+  <tr><td>R4 三个后台任务结局</td><td>权重下载（LNd1SX）<span class="b todo">残缺 776MB</span>；代码克隆（nZNY5i）<span class="b todo">只有运行时库</span>；白模渲染（3maSDv）<span class="b ok">已产出 121 帧</span></td><td><code>docs\R4-执行计划.md</code> + 目录实测</td></tr>
+</table>
+<div class="note"><b>总体完成度判断：</b>「想清楚」的部分（需求/调研/架构/规格/制度）完成度极高且质量罕见；「做出来」的部分完成度低——白模侧 100%、写实化侧 0%。当前离「跑通第一镜」的具体差距：① VACE 全量权重（差约 3.5GB）② Wan 官方推理代码 ③ <code>r4_vace_runner.py</code> 运行器 ④ 一次真实的写实化输出 ⑤ R4 QC 数值报告。</div>
+
+<!-- ================================================================ -->
+<!-- 第四部分：对比总表 -->
+<!-- ================================================================ -->
+<h2 id="s4">四、三文件夹对比总表</h2>
+
+<h3>4.1 核心对比</h3>
+<table>
+  <tr><th style="width:130px">维度</th><th>ai_film_projects（CINEAST）</th><th>AI影视团队（里程碑1）</th><th>AI影视团队v2</th></tr>
+  <tr><td><b>核心功能</b></td><td>全流程 AI 剧组：剧本→图→视频→音频→剪辑→质检→交付</td><td>仅创意→剧本→分镜（纯文字）</td><td>白模→写实化新管线（建设中）+ 完整规格契约体系</td></tr>
+  <tr><td><b>技术栈</b></td><td>Hermes 多智能体 + 飞书 + ComfyUI/SDXL + Wan2.2 + Kimi K2.6 + React/FastAPI + 文件为中心</td><td>FastAPI + SQLite + WebSocket + 原生 JS + Kimi kimi-k3</td><td>规格 JSON 契约 + Blender 5.2.2 bpy + Wan2.1-VACE（本地）+ fal 3DREAL（云端）+ React（v1 拷贝）</td></tr>
+  <tr><td><b>智能体数量</b></td><td>9 完整 + 6 骨架（规划 18）</td><td>2</td><td>7（+旧 15 留档）</td></tr>
+  <tr><td><b>完成度</b></td><td><span class="b ok">约 80%</span>（全链跑通，有真成片）</td><td><span class="b ok">里程碑1 范围 100%</span> / 全愿景 25%（未用过）</td><td><span class="b part">约 40%</span>（设计与规格 95%，写实化执行 0%）</td></tr>
+  <tr><td><b>真实产物</b></td><td>《雨夜寻猫》粗剪 v1~v4 + 技术版 v5 + 37 音频 + 23 锁定版本 + 27 交接</td><td>无（空数据库）</td><td>白模 48 帧 + R4 验证镜 121 帧（RGB+EXR）</td></tr>
+  <tr><td><b>独有亮点</b></td><td>① 19 轨时间线契约 ② 预算熔断机制 ③ K13 版本树 + 角色/场景锁自动注入 ④ 飞书群聊剧组（独特形态）⑤ 节点图工作台</td><td>① 代码最干净（全注解、零死码）② Kimi 严格 JSON + 自动降级封装 ③ WebSocket 历史补发</td><td>① 唯一事实来源 + 签字验收制度 ② 三份机器可读规格 ③ 五项硬指标数值化质检 ④ 白模锁结构路线 ⑤ sha256 资产台账 ⑥ 0 元成本纪律</td></tr>
+  <tr><td><b>明显缺陷</b></td><td>① 88.9% 静图推拉 ② 195 处硬编码路径 ③ README 失真 ④ 岗位数字三处对不齐 ⑤ 多份文档并存冲突</td><td>① 无真实使用 ② 无日志 ③ 无设计文档 ④ 规划的 3/4 未做</td><td>① 写实化完全未跑通（权重残缺）② 无 git ③ 前端是 v1 拷贝未适配 ④ 多个规划目录为空</td></tr>
+  <tr><td><b>规模</b></td><td>约 74GB（含 ComfyUI/Blender/模型等重型安装）</td><td>约 70MB（含 venv）</td><td>约 1.4GB（projects 541MB + _legacy 535MB + 运行时 221MB）</td></tr>
+  <tr><td><b>活跃期</b></td><td>2026-08 ~ 2026-09-27</td><td>约 2026-07-27</td><td>2026-09-27 创建，进行中</td></tr>
+</table>
+
+<h3 id="s4b">4.2 AI影视团队（v1）与 v2 到底改了什么</h3>
+<div class="note">说明：与 v2 直接构成「前后代」关系的是 <b>ai_film_projects（CINEAST）</b>——v2 的 PROJECT_STATE.md 把它和里程碑1 统称「旧目录」。下表是两代的核心差异。</div>
+<table>
+  <tr><th style="width:120px">维度</th><th>v1（CINEAST）</th><th>v2</th><th>为什么改</th></tr>
+  <tr><td><b>战略目标</b></td><td>一句话创意 → 能出片就行</td><td>好莱坞真人实拍观感，明确定义「AI 味」为不合格</td><td>实测发现「能出」和「能看」之间隔着一条鸿沟</td></tr>
+  <tr><td><b>技术路线</b></td><td>文生图（SDXL）+ 图生视频（Wan2.2）直接生成</td><td>Blender 白模先锁死一切 → 大模型只做写实化渲染</td><td>直接生成=抽卡；白模=能定死的全定死，消灭随机性</td></tr>
+  <tr><td><b>视频引擎</b></td><td>Wan2.2 TI2V 5B（图→视频）</td><td>Wan2.1-VACE-1.3B（白模视频→写实视频）+ 云端 fal 3DREAL</td><td>VACE 类模型专吃「结构已定」的输入，正好配白模</td></tr>
+  <tr><td><b>岗位体系</b></td><td>9 完整 + 6 骨架，规划 18 岗（按现实剧组部门扩张）</td><td>精简为 7 岗，按新管线重设（预演/白模/写实化是全新岗位）</td><td>岗位跟着路线走，不跟剧组规模走</td></tr>
+  <tr><td><b>质量控制</b></td><td>QC 报告事后检查（qc_gate1~4）</td><td>47 项 QC 契约前置 + 五项硬指标数值化硬门 + 光流检测真运动</td><td>事后发现静图推拉已经晚了；事前用数值把住门</td></tr>
+  <tr><td><b>接口契约</b></td><td>无统一契约，各工具自行约定</td><td>shot_spec「合同」贯穿预演→白模→写实化→场记四岗</td><td>岗位间靠白纸黑字的字段交接，不靠记忆</td></tr>
+  <tr><td><b>成本管理</b></td><td>预算点数制（1000 点已花 595）</td><td>¥0 本地优先 + 云端按「开拍单」按镜计费 + 成本账本</td><td>省钱铁律升级：先免费验证，再精准花钱</td></tr>
+  <tr><td><b>文档治理</b></td><td>多份方案并存、README 失真、三处岗位数对不齐</td><td>每个主题唯一事实来源 + 归档制度 + 签字位 + 探针回显</td><td>直接回应 v1 文档混乱的教训</td></tr>
+  <tr><td><b>旧资产态度</b></td><td>—（自身即源头）</td><td>不删不弃：830 文件 sha256 台账登记复用（三视图/锚点图/音频/粗剪）</td><td>旧资产有价值，浪费可耻</td></tr>
+  <tr><td><b>已知痛点修复</b></td><td>88.9% 静图 / 195 处硬编码路径 / fps 23.975</td><td>白模保证真运动 / 规格集中管理数值 / CFR 24 写进契约</td><td>对症下药，逐条闭环</td></tr>
+  <tr><td><b>继承而非重写的部分</b></td><td colspan="3">qc_media 质检、jobs 作业账本、dit_ingest 血缘、vram_lock 显存锁、19 轨时间线思路、前端 React 工程、音频资产与粗剪成果——v2 是「换发动机保留底盘」</td></tr>
+</table>
+
+<h3 id="s4c">4.3 冲突点清单</h3>
+<table>
+  <tr><th>#</th><th>冲突</th><th>位置</th><th>v2 的处理/建议</th></tr>
+  <tr><td>1</td><td>交付规格两份并存</td><td>v1 <code>pipeline\delivery_spec.json</code> vs v2 <code>spec\delivery_spec.json</code></td><td>v2 已列入挂起项：旧版待移入 _legacy（尚未执行）</td></tr>
+  <tr><td>2</td><td>需求文档两份并存</td><td>v2 <code>docs\R0-规划书-v2.0</code> vs <code>docs\需求定稿.md</code></td><td>已声明冲突以需求定稿为准；规划书待降级迁入 _archive</td></tr>
+  <tr><td>3</td><td>前端代码两份完全相同</td><td>v1 与 v2 的 <code>web\react-workspace\</code>（package.json MD5 一致）</td><td><span class="b tbc">待确认</span> v2 是否计划改造适配新架构</td></tr>
+  <tr><td>4</td><td>README 幽灵文件</td><td>v1 README 声称的 <code>vram_scheduler.py</code> 不存在（实为 <code>tools\vram_lock.py</code>）</td><td>v1 已封存，仅作历史记录</td></tr>
+  <tr><td>5</td><td>路径漂移</td><td>代码/文档引用 <code>C:\Users\LZH\...</code> 与 <code>D:\...</code>，实际位于 <code>d:\aifilmteam\...</code></td><td>工作区为搬迁副本；硬编码路径问题 v2 已知（195 处根因即源于此）</td></tr>
+  <tr><td>6</td><td>岗位数量三种口径</td><td>AGENTS.md 9 岗 / 目录 15 个 / v4.0 方案 18 岗</td><td>v2 已收敛为 7 岗，旧口径全部留档不再作依据</td></tr>
+</table>
+
+<h3 id="s4d">4.4 待确认清单（无法从代码确定，禁止猜测）</h3>
+<table>
+  <tr><th>#</th><th>事项</th><th>已有线索</th></tr>
+  <tr><td>1</td><td>d:\aifilmteam 工作区三份与 D 盘原件是否逐字节一致</td><td>副本保留了原时间戳；D 盘 v1/里程碑1 为接合点、v2 为真身</td></tr>
+  <tr><td>2</td><td>里程碑1 与 CINEAST 的严格先后与「平台归属」</td><td>里程碑1 数据库时间 2026-07-27 与 CINEAST 内 <code>_archive\legacy_20260727</code>（含同构的 app\services\pipeline.py）同日，结构同源，高度疑似同一项目两份拷贝；具体先后待确认</td></tr>
+  <tr><td>3</td><td>ChatTTS / MusicGen / 可灵 / Seedance 云端 API 是否实际用过</td><td>仅文档提及，三版代码中均未见调用实现</td></tr>
+  <tr><td>4</td><td>v2 前端（v1 拷贝）的适配计划</td><td>无任何改造痕迹</td></tr>
+  <tr><td>5</td><td>Musetalk 是否曾实际集成</td><td>只有安装包与下载日志</td></tr>
+  <tr><td>6</td><td>R4 后台三任务的最终日志（权重为何只下到 776MB）</td><td>R4-执行计划记录了任务号，无完成回执</td></tr>
+  <tr><td>7</td><td>三个版本分别由哪个 AI 平台/工具协作开发</td><td>用户自述「不同 AI 平台遗留版本」；代码内可见 Hermes（v1）、.workbuddy（v1/v2）等痕迹，但无法据此断定开发工具</td></tr>
+</table>
+
+<h3 id="s4e">4.5 立项建议（先结论后推导）</h3>
+<ol>
+  <li><b>v2 是唯一值得投入的版本。</b>推导：v1 已归档且路线被判死刑（静图推拉无解）；里程碑1 价值已被 v1 吸收；v2 制度、规格、路线三者齐备且经过签字验收。</li>
+  <li><b>当前最短路径是补齐 R4 的「写实化五缺」。</b>推导：白模侧已闭环（121 帧真产物），卡点全在本地 VACE——全量权重（约 4.31GB，现有 776MB 残片）、官方推理代码、运行器脚本、一次真实输出、QC 报告。补齐即可拿到「白模进、写实出」的第一镜证据。</li>
+  <li><b>给 v2 补上 git 版本管理。</b>推导：v1 有 git 而 v2 没有；v2 的「不删任何东西」铁律目前只靠目录约定维护，无版本回滚能力，风险不对称。</li>
+  <li><b>处理两处已挂起的规格冲突（4.3 表 #1、#2）。</b>推导：两份 delivery_spec 并存违背 v2 自己的「唯一事实来源」原则，且是低风险操作。</li>
+  <li><b>旧两版保持只读归档即可，不必修复其文档失真。</b>推导：修复无收益，且 v2 制度已免疫同类问题。</li>
+</ol>
+
+<footer>
+  本报告为只读逆向分析：分析过程中未修改、删除、重命名任何文件（0 写操作；唯一触碰为读取与哈希计算）。<br>
+  证据方法：文件实读（README/AGENTS/PROJECT_STATE/config/requirements/package.json/核心脚本）＋ 3 个并行只读探索代理全目录扫描 ＋ git log 时间戳 ＋ PowerShell 接合点检测 ＋ MD5 哈希比对。<br>
+  凡无法从代码确定的事项均已标注「待确认」，未做猜测。报告生成：2026-09-29。
+</footer>
+
+</div>
+<script>
+(function(){
+  var urls = [
+    'https://registry.npmmirror.com/mermaid/11.4.1/files/dist/mermaid.min.js',
+    'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js',
+    'https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js'
+  ];
+  function fail(){
+    document.querySelectorAll('.mermaid').forEach(function(e){
+      e.style.padding = '24px';
+      e.innerHTML = '<span style="color:#d4655f;font-size:13px">图表渲染库加载失败：本报告的图表需要联网加载 Mermaid 库，请检查网络后刷新页面。</span>';
+    });
+  }
+  function tryNext(){
+    if(!urls.length){ fail(); return; }
+    var s = document.createElement('script');
+    s.src = urls.shift();
+    s.onload = function(){
+      if(window.mermaid){
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: 'dark',
+          themeVariables: {
+            primaryColor: '#1c2230',
+            primaryTextColor: '#e8e6e3',
+            primaryBorderColor: '#d4a959',
+            lineColor: '#7fb8c4',
+            secondaryColor: '#1c2a30',
+            tertiaryColor: '#241f2c',
+            fontSize: '14px',
+            fontFamily: 'Microsoft YaHei, PingFang SC, sans-serif'
+          }
+        });
+      } else { tryNext(); }
+    };
+    s.onerror = tryNext;
+    document.head.appendChild(s);
+  }
+  tryNext();
+})();
+</script>
+</body>
+</html>

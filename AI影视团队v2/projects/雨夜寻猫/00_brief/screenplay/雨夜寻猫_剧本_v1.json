@@ -1,0 +1,129 @@
+{
+  "title": "雨夜寻猫",
+  "version": 1,
+  "created_at": "2026-09-25",
+  "total_duration_sec": 80,
+  "synopsis": "独居女孩林小雨深夜发现窗没关，相依为命的小白猫不见了。她抓起米色风衣冲进雨幕，在霓虹湿冷的街道上呼喊寻找，一次次蹲下又起身。一声微弱猫叫从巷口纸箱里传来——绿眼睛的小白抖了抖湿毛。路灯暖光下，她把猫裹进怀里踏上归途：远景里，女孩走，小猫跟，雨还在下，心里亮了。",
+  "acts": [
+    {
+      "act": 1,
+      "title": "丢失",
+      "scenes": [
+        {
+          "scene_no": 1,
+          "location": "出租屋内",
+          "time": "雨夜·晚23:00",
+          "characters": ["林小雨"],
+          "action": "暖黄台灯下，林小雨伏案写字，抬头发现窗帘在飘——窗开着。镜头推向空猫窝：小白不在。她愣两秒，抓起椅背上的米色风衣冲出门，门灯熄灭。",
+          "dialogue": [
+            {"speaker": "林小雨", "line": "……小白？", "emotion": "疑惑(confused)"},
+            {"speaker": "林小雨", "line": "窗没关……它肯定出去了。", "emotion": "惊觉(alarm)"},
+            {"speaker": "林小雨", "line": "等我，我马上回来。", "emotion": "坚定(determined)"}
+          ],
+          "emotion": "平静→惊觉·焦虑",
+          "duration_sec": 15,
+          "visual_ref": "新场景（待场景设计师出概念图）"
+        }
+      ]
+    },
+    {
+      "act": 2,
+      "title": "寻找",
+      "scenes": [
+        {
+          "scene_no": 2,
+          "location": "雨夜街道",
+          "time": "雨夜·深夜23:10",
+          "characters": ["林小雨"],
+          "action": "林小雨撑伞快步穿过霓虹街道，水洼倒影被踩碎。她蹲下查看垃圾桶旁、车底，一次次起身摇头。中雨打在伞面上，她的呼喊被雨声压低。空荡街道上只剩一个米色风衣的身影。",
+          "dialogue": [
+            {"speaker": "林小雨", "line": "小白——小白？", "emotion": "焦虑(anxious)"},
+            {"speaker": "林小雨", "line": "不吓你，我们回家。", "emotion": "轻哄(soothing)"}
+          ],
+          "emotion": "焦虑·孤寂",
+          "duration_sec": 20,
+          "visual_ref": "scene_lock已锁：雨夜街道（霓虹+雨幕反射冷色调、中雨、广角35mm低机位）"
+        }
+      ]
+    },
+    {
+      "act": 3,
+      "title": "重逢与归途",
+      "scenes": [
+        {
+          "scene_no": 3,
+          "location": "雨夜巷口",
+          "time": "雨夜·深夜23:20",
+          "characters": ["林小雨", "小白"],
+          "action": "林小雨停在窄巷口喘气，伞沿滴水。一声微弱猫叫传来，她循声望去——巷口纸箱里，小白蜷成一团，绿眼睛在路灯暖光下亮了一下。她蹲下伸手，小白蹭了蹭她的掌心。她把猫裹进风衣怀里，抱紧。",
+          "dialogue": [
+            {"speaker": "林小雨", "line": "是小白的声音。", "emotion": "惊喜(hopeful)"},
+            {"speaker": "林小雨", "line": "找到你了。", "emotion": "释然(relieved)"},
+            {"speaker": "林小雨", "line": "吓死我了……走，回家。", "emotion": "温柔(tender)"}
+          ],
+          "emotion": "微光希望·重逢",
+          "duration_sec": 25,
+          "visual_ref": "分镜02已锁：窄巷口、暖色路灯光、纸箱、small white kitten（持伞寻猫）"
+        },
+        {
+          "scene_no": 4,
+          "location": "雨夜街道（归途）",
+          "time": "雨夜·深夜23:30",
+          "characters": ["林小雨", "小白"],
+          "action": "远景：林小雨撑伞走在空荡的霓虹街道上，小白猫踏着水洼跟在她脚边。她回头看了一眼猫，嘴角微微上扬，继续走。一人一猫的影子被路灯拉得很长。雨声渐弱，画面渐黑。",
+          "dialogue": [],
+          "emotion": "温暖·释然",
+          "duration_sec": 20,
+          "visual_ref": "分镜01已锁：wide shot, rainy street, girl walking, cat following, neon lights"
+        }
+      ]
+    }
+  ],
+  "character_briefs": [
+    {
+      "name": "林小雨",
+      "age": 18,
+      "personality": "安静内向、话少、自言自语式说话，对小白有强烈的责任感与温柔",
+      "identity": "独居女大学生",
+      "clothing": "米色风衣（K13已锁林小雨v2基准）",
+      "appearance_ref": "K13已锁：young Chinese woman, beige trench coat, short dark hair"
+    },
+    {
+      "name": "小白",
+      "age": 1,
+      "personality": "胆小粘人，认主，怕雨声",
+      "identity": "白色小猫（林小雨捡养的流浪猫）",
+      "clothing": "无",
+      "appearance_ref": "K13已锁流浪猫v1：white/wet fur, green eyes + 分镜02：small white kitten"
+    }
+  ],
+  "scene_briefs": [
+    {
+      "name": "出租屋内",
+      "time": "雨夜·晚23:00",
+      "mood": "暖黄台灯vs窗外冷蓝雨夜，冷暖对比",
+      "props": ["台灯", "空猫窝", "飘动的窗帘", "开着的窗", "伏案的书本"]
+    },
+    {
+      "name": "雨夜街道",
+      "time": "深夜23:10",
+      "mood": "孤寂·湿冷·霓虹",
+      "props": ["霓虹招牌", "水洼", "垃圾桶", "路灯"],
+      "locked_ref": "scene_lock/雨夜街道.json"
+    },
+    {
+      "name": "雨夜巷口",
+      "time": "深夜23:20",
+      "mood": "湿冷·微光·希望",
+      "props": ["路灯", "纸箱", "水洼", "窄巷"],
+      "locked_ref": "分镜02-巷口寻猫（K13已锁）"
+    },
+    {
+      "name": "雨夜街道（归途）",
+      "time": "深夜23:30",
+      "mood": "温暖·释然·雨声",
+      "props": ["伞", "霓虹", "水洼倒影"],
+      "locked_ref": "分镜01-雨夜街道远景（K13已锁）"
+    }
+  ]
+}

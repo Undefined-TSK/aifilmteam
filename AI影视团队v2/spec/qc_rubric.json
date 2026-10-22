@@ -1,0 +1,108 @@
+{
+  "schema": "cineast.qc_rubric/1.0",
+  "adopted_at": "2026-09-27",
+  "version": "1.1.0",
+  "rubric_versioning": "本文件每次修改必须递增 version；历史评分必须记录当时用的 rubric_version（否则分数不可比、不可回归）",
+  "boss_approval": { "date": "2026-09-27", "scope": "A3 五项硬指标的硬/半硬划分 —— 老板回复「A 全认」" },
+
+  "principle": "把「像不像实拍」从审美争论变成可测数值。硬指标不过 → 不得进老板预览；半硬指标不过 → 记 WARN + 必须归因。",
+  "why": "旧项目全流程唯一的门是「老板预览=审批」，创作者与审片人同一人 → 老板在替 QC 背锅；且 88.9% 静图就是在「零返工」口号下被降级交付吞掉的。",
+
+  "layers": {
+    "hard": {
+      "rule": "不过不得进老板预览（blocking）",
+      "gates": ["hard_1_motion", "hard_3_identity", "hard_5_audio"]
+    },
+    "soft": {
+      "rule": "不过记 WARN；必须写明归因：ENGINE（引擎能力）/ BLOCKOUT（白模没定死）/ BOTH",
+      "gates": ["soft_2_structure", "soft_4_lighting"]
+    },
+    "creative": {
+      "rule": "老板判。导演 Dailies 圈 take，废片理由必填到帧/秒",
+      "gates": ["creative_performance", "creative_cinematic_score"]
+    }
+  },
+
+  "gates": {
+    "hard_1_motion": {
+      "name": "① 运动真实性（治 PPT 感）",
+      "why_it_exists": "这是老板最痛的「PPT 感」的直接量度，且可自动测",
+      "checks": [
+        { "id": "M1", "check": "背景光流中位速", "threshold": ">= 2.0 px/帧", "tool": "OpenCV Farneback（本地免费）", "fail_action": "判「静图充数」→ 自动打回" },
+        { "id": "M2", "check": "静图降级镜占比", "threshold": "<= 30%（首片目标 0%）", "tool": "血缘 kind 统计（ditmap）", "fail_action": "打回；若为老板批准的降级，必须在交付时显式标注" },
+        { "id": "M3", "check": "相机运动可追溯", "threshold": "每镜的运动必须能追溯到 Blender 白模的相机关键帧", "tool": "白模 shot_spec 与成片光流方向比对", "fail_action": "判「运动来源不明」" },
+        { "id": "M4", "check": "无黑帧/冻结帧", "threshold": "无 >0.5s 的冻结", "tool": "ffmpeg freezedetect=n=-60dB:d=0.5" },
+        { "id": "M5", "check": "无闪白/爆闪", "threshold": "每帧亮度差分 <= 3 次/s", "tool": "ffmpeg signalstats + metadata=eq", "note": "signalstats 全片跑极慢（1080p30/120s 实测 29.56s），必须抽样" },
+        { "id": "M6", "check": "无 judder / 帧率漂移", "threshold": "CFR 下相邻帧 pkt_dts_time 间隔须恒等 1/fps≈0.0416667s；r_frame_rate 与 avg_frame_rate 一致", "tool": "ffprobe -show_frames（检测阶段绝不加 -fps_mode/-vsync）", "fail_action": "判帧率问题打回；mpdecimate 不得作此质量门（慢运镜实测误删 58% 帧）" }
+      ]
+    },
+    "hard_3_identity": {
+      "name": "③ 角色一致性（治「人物五官奇怪」）",
+      "why_it_exists": "老板点名的核心问题；且可直接测",
+      "checks": [
+        { "id": "I1", "check": "人脸相似度（同人跨镜）", "threshold": "ArcFace 余弦多帧投票均值 >= 0.75，且仅取 |yaw|<45° 的检出帧（单帧 seed 方差 σ≈0.09 不可信）", "tool": "本地人脸模型（多帧投票）", "fail_action": "打回该镜；R4 自建 golden 基线标定，对外不宣称行业标准" },
+        { "id": "I2", "check": "动物是否同一只", "threshold": "VLM 判读为同一只（毛色/眼色/体型）", "tool": "Qwen3-VL-4B（本地）" },
+        { "id": "I3", "check": "服装主色", "threshold": "ΔE <= 12（对照服装定妆帧）", "tool": "LAB 色差" },
+        { "id": "I4", "check": "道具状态机", "threshold": "逐镜与 shot_spec 的 props.state 完全一致（例：寻猫启事 完整→湿皱→落地）", "tool": "字段核对", "note": "旧项目 timeline 的 props.state_machine 全为 null —— v2 必须落值" },
+        { "id": "I5", "check": "口型同步（有对白时）", "threshold": "Sync-C >= 5，或 VLM 三项（张嘴幅度/闭嘴时段/音节数差<=1）", "tool": "抽检" }
+      ]
+    },
+    "hard_5_audio": {
+      "name": "⑤ 声音真实性",
+      "why_it_exists": "唯一能一秒出卖「廉价感」的东西，且完全可测",
+      "checks": [
+        { "id": "A1", "check": "采样率/位深/声道", "threshold": "48000 Hz / 24 bit / 2ch（交付档）", "tool": "ffprobe", "note": "旧项目 tech_v5 成片音轨实测 ch=1（单声道），未被列为缺陷 —— v2 必须拦" },
+        { "id": "A2", "check": "程序响度", "threshold": "-14.0 LUFS ±0.5", "tool": "ffmpeg ebur128 两遍法" },
+        { "id": "A3", "check": "真峰", "threshold": "<= -1.5 dBTP", "tool": "ffmpeg ebur128", "note": "旧项目实测 -1.41 判 FAIL；alimiter 必须显式 :level=disabled（否则二次抬电平）；loudnorm 即使 linear=true 也可能静默回退 dynamic，第二遍须回读 normalization_type" },
+        { "id": "A4", "check": "响度范围 LRA", "threshold": ">= 8 LU（不要压缩成墙）", "tool": "ffmpeg ebur128" },
+        { "id": "A5", "check": "对白与程序响度差", "threshold": "∈ [-1, +4] LU", "tool": "对白窗口相对测量", "remedy": "只改 bus_trim_db，不许改判据" },
+        { "id": "A6", "check": "环境声分层数", "threshold": ">= 3 层", "tool": "音频清单核对", "note": "旧项目 audio_report.json 列 10 项 blocked_items（缺房间层/雷/远景/滴水尾）+ 8 项 approx_items（对白混响用 aecho 近似、缺 IR）" }
+      ]
+    },
+    "soft_2_structure": {
+      "name": "② 结构锁定（白模有没有被听话）",
+      "why_soft": "白模是「强空间参考」不是硬约束（即梦官方实测 + fal 实测均证实细节会漂移）。强行判 FAIL 会陷入无限返工。",
+      "checks": [
+        { "id": "S1", "check": "主体在画面中的位置偏移", "threshold": "记录基准值 + 偏差；超阈值记 WARN" },
+        { "id": "S2", "check": "相机运动方向与速率一致性", "threshold": "方向必须一致；速率偏差 < 20% 记 OK" },
+        { "id": "S3", "check": "前后景遮挡关系", "threshold": "关键遮挡关系（如立柱遮挡主体）必须保持" },
+        { "id": "S4", "check": "首帧关键元素完整性", "threshold": "每镜首帧必须含 shot_spec 列出的全部关键元素（fal 铁律：否则模型在镜中段会凭空发明）" }
+      ]
+    },
+    "soft_4_lighting": {
+      "name": "④ 光影连续性",
+      "checks": [
+        { "id": "L1", "check": "主光方位角跨镜变化", "threshold": "<= 30°", "tool": "VLM 抽检 + shot_spec 字段核对" },
+        { "id": "L2", "check": "色温一致性", "threshold": "逐镜对照 show LUT 的色温基准" },
+        { "id": "L3", "check": "相邻镜景别跨度", "threshold": ">= 2 档" },
+        { "id": "L4", "check": "ASL（平均镜长）", "threshold": "2–5 秒", "note": "旧项目 80s/18镜 = 4.4s 本身合格，问题全在「无第二运动元素 + 无反应镜」" },
+        { "id": "L5", "check": "跨轴检查", "threshold": "视线方向按半屏符号判，跨轴报警" }
+      ]
+    },
+    "creative_performance": {
+      "name": "表演/情绪/节奏",
+      "judge": "老板（人工）",
+      "inputs": ["导演 Dailies 圈选结论", "外部敌意审查者的逐镜意见"],
+      "rule": "废片理由必填到帧/秒"
+    },
+    "creative_cinematic_score": {
+      "name": "实拍感总评（VLM rubric 打分）",
+      "dims": ["运动连贯", "光影一致", "材质细节", "表演", "空间纵深", "噪点结构"],
+      "scale": "每维 1-5",
+      "tool": "Qwen3-VL-4B，preset `cinematic`；版本化 rubric + golden 集，用 DeepEval G-Eval 跑回归"
+    }
+  },
+
+  "external_adversarial_review": {
+    "required": true,
+    "why": "创作者不能自己当裁判。公开复盘实证：独立 critic（另一家厂商的模型）对每个 pilot 都返回 REVISE，部分意见真的改了片子，部分被导演逐帧驳回 —— 批评与分歧同时记录才有价值。",
+    "how": "每阶段末，用**不同厂商**的模型对样片逐镜打分",
+    "verdicts": ["REVISE", "MINOR", "OK"],
+    "rule": "必须同时记录「批评」与「分歧（被驳回的理由）」；最后一条 critic 判定若仍为 REVISE，可以交付，但必须如实标注"
+  },
+
+  "baseline_expectations": {
+    "industry_discard_rate": "60-80%（弃片率基线）—— 不承诺一次成片",
+    "note": "本 rubric 的作用是让返工可控可测，不是承诺零返工"
+  }
+}

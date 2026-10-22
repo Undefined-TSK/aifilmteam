@@ -1,0 +1,38 @@
+# ========== Hermes Profile config.yaml ==========
+# 所有 9 个 Profile 共用此配置（KIMI K2.6）
+# 复制到每个 Profile 目录：
+# C:\Users\LZH\AppData\Local\hermes\profiles\{角色名}\config.yaml
+
+custom_providers:
+  - name: kimi-k2-cn
+    base_url: https://api.moonshot.cn/v1
+    key_env: KIMI_CN_API_KEY
+    api_mode: chat_completions
+    model: kimi-k2.6
+    extra_body:
+      reasoning_effort: max
+    models:
+      kimi-k2.6:
+        context_length: 256000
+        supports_vision: true
+
+model:
+  provider: custom:kimi-k2-cn
+  default: kimi-k2.6
+  context_length: 256000
+  supports_vision: true
+
+agent:
+  disabled_toolsets:
+    - delegation
+  reasoning_effort: max
+
+plugins:
+  enabled: []
+
+auxiliary:
+  vision:
+    provider: main
+    model: kimi-k2.6
+    extra_body:
+      reasoning_effort: max

@@ -1,0 +1,259 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "cineast.shot_spec/1.0",
+  "title": "镜头规格（分镜/预演师 → 白模工程师的合同）",
+  "description": "这是白模阶段与写实化阶段之间的**接口**。白模工程师按本规格建 Blender 场景；写实化调度按本规格挂载参考与锁与约束。字段依据：旧项目《阶段0体检审计报告v6.0》§3.2「开拍单字段缺口」+ fal.ai 白模五条铁律 + Higgsfield 五段式 prompt 模板。",
+  "type": "object",
+  "required": ["shot_id", "project", "duration_s", "purpose", "shot_size", "camera", "lighting", "subject", "props", "weather", "beats", "first_frame_key_elements", "locks", "reference_assets"],
+  "additionalProperties": false,
+  "properties": {
+    "shot_id": { "type": "string", "description": "镜号，例 3-3", "pattern": "^[0-9]+-[0-9]+$" },
+    "project": { "type": "string" },
+    "scene_id": { "type": "string", "description": "场次号" },
+    "duration_s": { "type": "integer", "description": "⭐镜头帧数（命名沿用 duration_s，但单位为帧，不写秒）。必须为 8k+1（LTX/fal 时序自编码 8×压缩+1 锚帧），显式枚举 59 个合法帧值（R1.5-Q12 / D25⑤ / R0-T3 补丁）；禁用 9 帧，工程下限 17 帧（0.708s@24fps），上限 481。分镜表写'0.5 秒'不可执行——改用帧数枚举（见 frame_count_note 锚点）。", "enum": [17, 25, 33, 41, 49, 57, 65, 73, 81, 89, 97, 105, 113, 121, 129, 137, 145, 153, 161, 169, 177, 185, 193, 201, 209, 217, 225, 233, 241, 249, 257, 265, 273, 281, 289, 297, 305, 313, 321, 329, 337, 345, 353, 361, 369, 377, 385, 393, 401, 409, 417, 425, 433, 441, 449, 457, 465, 473, 481], "minimum": 17, "maximum": 481, "examples": [17, 33, 41, 81, 97, 121, 137, 353] },
+    "fps": { "type": "integer", "const": 24, "description": "统一 24fps CFR；白模与输出 fps 必须一致（fps 只改回放速率，非时长/成本杠杆）" },
+    "frame_count_note": {
+      "type": "string",
+      "description": "帧数换算与锚点：121 帧=5.042s（720p 上限/默认）、137 帧=5.71s（720p 实用上限）、353 帧=14.71s（480p 上限）；361 帧禁用（略超 ~15s 有 422 风险）。首联调限用 17/33/41/81/97/121。",
+      "examples": ["3.0s @24fps -> 取 73 帧（72+1）"]
+    },
+    "aspect_ratio": {
+      "type": "string",
+      "pattern": "^(16:9|9:16|21:9)$",
+      "description": "⭐白模宽高比，必须等于目标成片宽高比且在 Blender 阶段定死（fal: Output size follows the source video）。R5-C7 收紧为三档（对齐 D25⑥：16:9/9:16/21:9）；旧 2.39:1 按 D25⑥ 派生表近似映射为 21:9，1:1/4:3 需人工判档。不一致会被多数投票改写输出比例，导致整镜重生成。"
+    },
+
+    "purpose": {
+      "type": "string",
+      "enum": ["建立", "关系", "动作", "插入", "主观", "反应", "空镜", "转场"],
+      "description": "用途（建立/关系/动作/插入/主观/反应/空镜/转场）—— 防「无反应镜」的结构性配平"
+    },
+    "shot_size": {
+      "type": "string",
+      "enum": ["VLS", "WS", "FS", "MS", "MCU", "CU", "ECU", "BCU", "OTS"],
+      "description": "景别。规则：相邻镜跨度>=2档"
+    },
+    "narrative": { "type": "string", "description": "这一镜要讲什么（一到两句）" },
+
+    "camera": {
+      "type": "object",
+      "required": ["focal_mm", "t_stop", "height_cm", "move_type"],
+      "additionalProperties": false,
+      "properties": {
+        "focal_mm": { "type": "number", "description": "焦段 mm" },
+        "t_stop": { "type": "number", "description": "T 值，例 2.8" },
+        "sensor": { "type": "string", "default": "super35" },
+        "shutter_angle_deg": { "type": "number", "const": 180, "description": "24fps 下 180° 快门" },
+        "height_cm": { "type": "number", "description": "机位高 cm" },
+        "azimuth_deg": { "type": ["number", "null"], "description": "水平角" },
+        "pitch_deg": { "type": ["number", "null"], "description": "俯仰角" },
+        "move_type": { "type": "string", "enum": ["static", "dolly", "truck", "pan", "tilt", "crane", "handheld", "orbit", "zoom", "tracking"] },
+        "move_speed": { "type": ["string", "null"], "description": "带单位：dolly m/s、pan °/s、手持抖幅 %", "examples": ["0.25 m/s", "3 °/s", "1.5%"] },
+        "focus_target": { "type": ["string", "null"], "description": "焦点目标与落点" },
+        "motivation": { "type": ["string", "null"], "description": "这个运动为什么存在（叙事动机）" },
+        "one_readable_idea": {
+          "type": "boolean",
+          "description": "fal 铁律②：每镜只放一个可读的相机想法。过于复杂/暴力的运动会破坏重风格化",
+          "const": true
+        },
+        "physics_note": {
+          "type": "string",
+          "description": "fal 铁律⑤：必须匀速/真抛物线；**禁用 Blender 默认的 ease-in-out 缓动弧线**——假缓动在写实化后会显得很假",
+          "const": "uniform_speed_or_true_parabola_no_fake_easing"
+        }
+      }
+    },
+
+    "lighting": {
+      "type": "object",
+      "required": ["key_dir_az_deg", "key_temp_k", "key_intensity", "fill_ratio", "lighting_fragment"],
+      "additionalProperties": false,
+      "properties": {
+        "key_dir_az_deg": { "type": "number", "description": "主光方位角" },
+        "key_dir_el_deg": { "type": ["number", "null"], "description": "主光仰角" },
+        "key_temp_k": { "type": "number", "description": "主光色温 K" },
+        "key_intensity": { "type": "number", "description": "主光强度（相对值）" },
+        "fill_ratio": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1, "description": "光比填充率，(0,1) 开区间小数（如 1:4 → 0.25）。R0-T3b 统一口径：与 timeline 校验器 RANGE 一致取小数域，废弃旧'1:3 -> 3'分母整数口径。" },
+        "rim": { "type": ["string", "null"], "description": "逆光/轮廓光" },
+        "practicals": { "type": ["array", "null"], "items": { "type": "string" }, "description": "画内实用光源" },
+        "haze_dust": { "type": ["number", "null"], "description": "雾尘量 0-1" },
+        "reflective_surfaces": { "type": ["array", "null"], "items": { "type": "string" } },
+        "lighting_fragment": {
+          "type": "string",
+          "description": "⭐ Higgsfield 实证：**同一段光照片段逐镜复用**，锁死光向与色温。这一段原文进每个 prompt。",
+          "minLength": 40
+        },
+        "color_anchor_hex": { "type": ["string", "null"], "pattern": "^#[0-9a-fA-F]{6}$", "description": "调色锚" },
+        "show_lut_version": { "type": ["string", "null"], "description": "全片统一 show LUT；禁止各镜自选 LUT" }
+      }
+    },
+
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "screen_dir", "action"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "screen_dir": { "type": "string", "description": "屏幕方向（左->右 / 右->左 / 朝镜头 / 背对）" },
+              "eyeline_deg": { "type": ["number", "null"] },
+              "action": { "type": "string", "description": "肢体动作（表演只做到『能被读懂的肢体动作』；脸部留给写实化）" },
+              "emotion_tag": { "type": ["string", "null"] },
+              "emotion_intensity_1to5": { "type": ["integer", "null"], "minimum": 1, "maximum": 5 },
+              "walk_path": { "type": ["string", "null"], "description": "走位路径" }
+            }
+          }
+        },
+        "animals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "action"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "action": { "type": "string" },
+              "path": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "axis_line_deg": { "type": ["number", "null"], "description": "轴线（跨轴检查用）" }
+      }
+    },
+
+    "props": {
+      "type": "array",
+      "description": "道具状态机——旧项目该字段全为 null，v2 必须落值",
+      "items": {
+        "type": "object",
+        "required": ["prop_id", "visible", "state"],
+        "additionalProperties": false,
+        "properties": {
+          "prop_id": { "type": "string" },
+          "visible": { "type": "boolean" },
+          "state": { "type": "string", "description": "状态机当前态，例：完整 / 湿皱 / 落地 / 满 / 半 / 空" },
+          "state_machine": { "type": ["array", "null"], "items": { "type": "string" }, "description": "该道具在全片中的状态序列" },
+          "screen_pos": { "type": ["string", "null"] }
+        }
+      }
+    },
+
+    "weather": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rain_rate_mm_h": { "type": ["number", "null"], "description": "雨多大" },
+        "wind_dir_deg": { "type": ["number", "null"], "description": "风往哪吹" },
+        "wind_speed_ms": { "type": ["number", "null"] },
+        "ground_wetness_0to1": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "地面湿到什么程度" },
+        "fog_0to1": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "lightning": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "count": { "type": "integer" },
+            "at_s": { "type": "array", "items": { "type": "number" } },
+            "lowpass_hz": { "type": ["number", "null"] }
+          }
+        }
+      }
+    },
+
+    "beats": {
+      "type": "array",
+      "description": "时间轴：每一秒发生什么，全排好",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["t_s", "what"],
+        "additionalProperties": false,
+        "properties": {
+          "t_s": { "type": "number", "description": "镜内秒数" },
+          "what": { "type": "string" },
+          "audio_cue": { "type": ["string", "null"], "description": "画内声点（diegetic）" }
+        }
+      }
+    },
+
+    "first_frame_key_elements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "⭐ fal 铁律①：**每一镜的第一帧必须清晰展示所有关键元素**。视频模型由首帧驱动；若关键元素在镜中段才出现，模型必须在镜内凭空发明它 → 必然漂移。白模阶段必须先检查这一条（构图错了就移相机，不是改提示词）。"
+    },
+
+    "locks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "⭐ Higgsfield 实证：每镜必须写「锁与约束」——什么绝对不许变（服装 / 道具 / 损伤状态 / 座次 / 发型）。"
+    },
+    "waste_criteria": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "该镜的废片判据（这一镜出现什么就判废，重生成）"
+    },
+
+    "reference_assets": {
+      "type": "object",
+      "required": ["appearance_anchor"],
+      "additionalProperties": false,
+      "properties": {
+        "appearance_anchor": {
+          "type": "string",
+          "description": "⭐ 驱动外观的首帧锚定图路径。**特写镜必须挂**——因为白模头没有五官，不锚定就是让模型自由发明脸（这正是「五官奇怪」的根因）。"
+        },
+        "identity_refs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "角色三视图 / 定妆图（跨镜一致性靠模型反复看到同一批元素）"
+        },
+        "scene_refs": { "type": "array", "items": { "type": "string" } },
+        "prop_refs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "engine_routing": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "engine": { "type": "string", "enum": ["fal_ltx23_render_to_real", "jimeng_seedance25_blockout", "higgsfield_blender", "local_wan22_fallback"] },
+        "adapter": { "type": ["string", "null"], "enum": ["Light", "Strong", "Strong v2", null], "description": "仅 fal：Light 最忠于结构 / Strong 复杂场景更强 / Strong v2 支持单 clip 多镜连贯+同步音频" },
+        "num_frames": { "type": ["integer", "null"], "description": "fal: 必须 8k+1" },
+        "resolution": { "type": ["string", "null"] },
+        "seeds": { "type": ["array", "null"], "items": { "type": "integer" }, "description": "多 seed 抽卡（fal 参考实现每镜 4 seed）" },
+        "est_cost_cny": { "type": ["number", "null"], "description": "预估现金成本，须回写真值" }
+      }
+    },
+
+    "visual_prompt_5block": {
+      "type": "object",
+      "description": "⭐ Higgsfield 公开的五段式 prompt 模板（实证有效）。注：参考文献编号是**局部的**，每次 prompt 都要重新指派。",
+      "additionalProperties": false,
+      "properties": {
+        "b1_scene_context_and_style": { "type": "string" },
+        "b2_active_references": { "type": "string", "description": "例：@Image 1 = 场景锚点；@Image 2 = 角⾊定妆；@Video 1 = 白模粗片（只遵循其相机运动与时序）" },
+        "b3_camera_and_action_timing": { "type": "string" },
+        "b4_locks_and_constraints": { "type": "string" },
+        "b5_physics_and_motion_principles": { "type": "string" }
+      }
+    },
+
+    "owner_signoff": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "role": { "type": "string" },
+        "by": { "type": "string" },
+        "ts": { "type": "string" },
+        "sha": { "type": "string", "description": "被签对象内容 sha256 前12" }
+      },
+      "description": "auto_draft 的项若无 signoff 则不得进 g1_blockout_lock；sha 不匹配即视为未签"
+    }
+  }
+}

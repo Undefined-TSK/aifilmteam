@@ -1,0 +1,50 @@
+# keep engine and deps out of VCS
+comfyui/*
+!comfyui/*.json
+node_modules/
+**/dist/
+**/build/
+.venv/
+venv/
+
+# third-party software / weights (huge, must not enter VCS)
+# 依据：审计件 §5.1「素材大文件维持只入库清单不入库 binary」
+blender/
+models/
+musetalk/
+
+# python artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# runtime noise
+logs/*
+!logs/_handoff_A_20260927/
+!logs/_mem_mirror/
+*.log
+*.pid
+
+# 白模渲染中间帧序列（可随时重渲，不入库）
+logs/_handoff_A_20260927/**/frames/
+
+# media binaries (只入库清单：详见 projects/*/ditmap/file_index.jsonl)
+projects/**/output/
+projects/**/assets/
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.flac
+*.mp3
+
+# secrets
+.env
+.env.local
+credentials*
+
+# misc
+Thumbs.db
+.DS_Store
+*.tmp
+*.swp

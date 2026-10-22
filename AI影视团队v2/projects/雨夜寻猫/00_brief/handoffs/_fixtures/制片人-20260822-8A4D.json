@@ -1,0 +1,44 @@
+{
+  "handoff_id": "制片人-20260822-8A4D",
+  "task_name": "角色设计被退回-流浪猫",
+  "from_agent": "角色设计师",
+  "to_agent": "制片人",
+  "work_background": "流浪猫的角色设计色板与雨夜少女色调冲突，需要重新调整",
+  "deliverables": [
+    "流浪猫初版色板（被退回）"
+  ],
+  "downstream_task": "流浪猫色板重新设计",
+  "completion_criteria": [
+    "色板冲突已解决",
+    "新版色板已通过审核"
+  ],
+  "stop_conditions": [
+    "预算不足"
+  ],
+  "pending_items": [],
+  "material_version": "v1",
+  "created_at": "2026-08-22T22:28:03.084694",
+  "status": "rejected",
+  "timeline": [
+    {
+      "event": "created",
+      "agent": "角色设计师",
+      "message": "创建交接任务，等待 制片人 检查",
+      "time": "2026-08-22T22:28:03.084694"
+    },
+    {
+      "event": "rejected",
+      "agent": "制片人",
+      "message": "任务被退回，原因：色板与雨夜少女色调冲突，需调整对比度",
+      "time": "2026-08-22T22:28:03.085673"
+    }
+  ],
+  "check_result": null,
+  "result": null,
+  "rejection": {
+    "rejected_by": "制片人",
+    "reason": "色板与雨夜少女色调冲突，需调整对比度",
+    "details": "",
+    "rejected_at": "2026-08-22T22:28:03.085673"
+  }
+}

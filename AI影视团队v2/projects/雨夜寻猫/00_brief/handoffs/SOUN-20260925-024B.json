@@ -1,0 +1,76 @@
+{
+  "handoff_id": "SOUN-20260925-024B",
+  "task_name": "音效设计-四轨素材+清单（基于粗剪v2时间线）",
+  "from_agent": "editor",
+  "to_agent": "sound_engineer",
+  "work_background": "剪辑师完成粗剪v2（output/雨夜寻猫_粗剪_v2.mp4，80.03s，1280x720/30fps）：3-3绿眼亮起慢放1.5x至3.00s、4-1归途含缓慢推拉（241帧/8.03s），其余16镜为静帧+Ken Burns降级；1-2空猫窝拍板剪辑层处理——粗剪保持内景替代，需音效补雨声/风声+台词暗示空窝",
+  "deliverables": {
+    "rough_cut_v2": "output/雨夜寻猫_粗剪_v2.mp4",
+    "shot_list": "shots目录：雨夜寻猫_镜头清单_v1.json 与同名.md（逐镜时码、时长、状态）",
+    "screenplay": "screenplay目录：雨夜寻猫_剧本_v1.json（8句对白、情绪标注、四场时长轴15s、20s、25s、20s）",
+    "special_note_1_2": "1-2空猫窝（时码约3-5s区间）是内容风险镜，音效需重点覆盖：雨声、风声打底+对白暗示空窝"
+  },
+  "downstream_task": "按音效工程师岗位卡工作流8步执行：四轨设计（环境/动效/对白/BGM）、edge-tts音色三选一试听、对白8句生成、环境音素材获取、音画对齐自检、音轨清单JSON+MD落盘",
+  "completion_criteria": "①对白8句TTS生成（时长≤镜时长-1s、音色统一）②环境音4场覆盖（含1-2雨声风声）③音轨清单JSON+MD落盘（每条含镜号/轨别/文件/时长/淡入淡出）④素材授权合规标注",
+  "stop_conditions": "若时间线与镜头清单时码冲突无法对齐，停手报剪辑师核对；若音色试听三选一仍不满足角色气质，报艺术总监裁决",
+  "pending_items": [
+    "音色三选一（XiaoyiNeural/XiaoxiaoNeural/XiaohanNeural）需老板试听拍板",
+    "BGM四段钢琴素材选型：CC0下载（老板试听选曲）或程序合成降级版，需老板拍板"
+  ],
+  "material_version": "v1",
+  "created_at": "2026-09-25T22:27:50.219951",
+  "status": "completed",
+  "timeline": [
+    {
+      "event": "created",
+      "agent": "editor",
+      "message": "创建交接任务，等待 sound_engineer 检查",
+      "time": "2026-09-25T22:27:50.219951"
+    },
+    {
+      "event": "checked",
+      "agent": "sound_engineer",
+      "message": "检查完成：发现 3 个问题",
+      "time": "2026-09-25T22:28:03.457501"
+    },
+    {
+      "event": "checked",
+      "agent": "sound_engineer",
+      "message": "检查完成：通过",
+      "time": "2026-09-25T22:28:41.367978"
+    },
+    {
+      "event": "accepted",
+      "agent": "sound_engineer",
+      "message": "已接受任务，开始处理",
+      "time": "2026-09-25T22:28:41.369984"
+    },
+    {
+      "event": "completed",
+      "agent": "sound_engineer",
+      "message": "任务完成，已交付结果",
+      "time": "2026-09-25T22:38:09.678374"
+    }
+  ],
+  "check_result": {
+    "checked": true,
+    "checked_by": "sound_engineer",
+    "passed": true,
+    "issues": [],
+    "should_stop": false,
+    "stop_reason": "",
+    "checked_at": "2026-09-25T22:28:41.367978"
+  },
+  "result": {
+    "deliverables": {
+      "对白轨": "audio/dialogue/1-1至3-5共8句mp3（edge-tts候选A音色，自检全部≤镜时长-1s，3-2微调语速重生成修正2.04s→1.99s）",
+      "环境轨": "audio/ambient/4场mp3（出租屋15s含挂钟滴答、街道20s含车流、巷口25s回声感、归途20s渐弱淡出——程序合成，零授权风险）",
+      "动效轨": "audio/sfx/9条（7条程序合成+2条sounddino真实猫叫采样免署名；含1-2空猫窝专用雨声穿窗，执行拍板方案）",
+      "音轨清单": "audio/音轨清单_v1.json与同名.md（25条轨道：环境4、对白8、动效9、BGM4段待拍板；含时码、淡入淡出、混音音量基准、授权标注）",
+      "关键设计执行": "3-2猫叫声音先于画面0.5s（0:38.5进入，观众与林小雨同时听见）；1-2雨声风声与1-3台词窗没关形成听觉因果链",
+      "遗留拍板项": "音色A、B二选一待老板试听（voice_test目录）；BGM四段待老板拍板选型（CC0下载 vs 程序合成降级版）"
+    },
+    "completed_by": "sound_engineer",
+    "completed_at": "2026-09-25T22:38:09.678374"
+  }
+}

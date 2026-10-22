@@ -1,0 +1,24 @@
+{
+  "total_budget": 200.0,
+  "spent": 20.0,
+  "remaining": 180.0,
+  "currency": "CNY",
+  "warning_threshold": 0.8,
+  "frozen": false,
+  "transactions": [
+    {
+      "type": "spend",
+      "amount": 10.0,
+      "description": "SDXL场景生成",
+      "asset_name": "竹林晨雾",
+      "timestamp": "2026-08-22 18:24:00"
+    },
+    {
+      "type": "spend",
+      "amount": 10.0,
+      "description": "SDXL角色生成",
+      "asset_name": "白衣剑客",
+      "timestamp": "2026-08-22 18:24:12"
+    }
+  ]
+}

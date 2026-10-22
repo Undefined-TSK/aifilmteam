@@ -1,0 +1,39 @@
+{
+  "versions": [
+    {
+      "uuid": "02312674",
+      "asset_type": "character",
+      "asset_name": "女主角林月",
+      "file_name": "generated_v1.png",
+      "file_path": "D:\\ai_film_projects\\tests\\case1_single_character\\k13_locked\\character\\女主角林月\\02312674\\generated_v1.png",
+      "locked_at": "2026-08-22 18:21:49",
+      "params": {
+        "workflow": "sdxl_txt2img",
+        "model": "sd_xl_base_1.0.safetensors",
+        "steps": 20,
+        "cfg": 7.5,
+        "sampler": "dpmpp_2m",
+        "scheduler": "karras",
+        "seed": 12345,
+        "width": 1024,
+        "height": 1024,
+        "prompt": "cinematic photo of a 25 year old woman named Lin Yue with short hair, wearing a neon colored cyberpunk jacket, standing in a rainy neon-lit city street at night, cyberpunk aesthetic, dramatic lighting, rain reflections on wet pavement, photorealistic, highly detailed, movie still",
+        "negative_prompt": "ugly, blurry, low quality, deformed, cartoon, anime, watermark, text"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    }
+  ],
+  "assets": {
+    "character/女主角林月": {
+      "asset_type": "character",
+      "asset_name": "女主角林月",
+      "version_count": 1,
+      "latest_version": "02312674",
+      "versions": [
+        "02312674"
+      ]
+    }
+  }
+}

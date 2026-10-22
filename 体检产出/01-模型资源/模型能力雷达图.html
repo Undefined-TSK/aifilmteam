@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>维度1 · 模型能力雷达图 — CINEAST-3</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script>window.echarts||document.write('<script src="https://unpkg.com/echarts@5.5.0/dist/echarts.min.js"><\/script>')</script>
+<style>
+  :root{--bg:#1a1a2e;--panel:#16213e;--line:#0f3460;--accent:#e94560;--purple:#533483;--txt:#e8eaf0;--dim:#9aa3b2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI","Microsoft YaHei",sans-serif;padding:22px;max-width:1180px;margin:0 auto}
+  h1{font-size:21px;margin-bottom:4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:16px;line-height:1.7}
+  .nav{font-size:12px;color:var(--dim);margin-bottom:16px}.nav a{color:#5b8cff;text-decoration:none}
+  #chart{width:100%;height:560px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+  table{width:100%;border-collapse:collapse;margin-top:18px}
+  th,td{text-align:left;padding:7px 10px;font-size:12.5px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:500}
+  .note{font-size:12px;color:var(--dim);margin-top:14px;line-height:1.8}
+  code{background:#0f3460;padding:1px 6px;border-radius:4px;font-size:12px;color:#39c5cf}
+</style>
+</head>
+<body>
+  <h1>维度 1 · 模型能力雷达图（文本 / 视觉 / 音频 / 视频 / Embedding）</h1>
+  <div class="nav">基线：<a href="../00-基线报告/项目基线报告.md">../00-基线报告/项目基线报告.md</a> ｜ 规约：<a href="../_执行须知.md">../_执行须知.md</a> ｜ 导航：<a href="../索引.html">../索引.html</a></div>
+  <div class="sub">五维能力对比 · 多模型叠加 · 评分为「相对能力分（0-10，定性口径）」——依据平台官方能力标签与本机实测，非绝对基准，仅用于选型定位。</div>
+  <div id="chart"></div>
+  <table>
+    <thead><tr><th>模型</th><th>文本</th><th>视觉</th><th>音频</th><th>视频</th><th>Embedding</th><th>本项目角色</th></tr></thead>
+    <tbody>
+      <tr><td>本地 qwen3:8b</td><td>8</td><td>2</td><td>0</td><td>0</td><td>3</td><td>N1~N5 全节点编排主力</td></tr>
+      <tr><td>百炼 qwen3.8-max</td><td>10</td><td>4</td><td>0</td><td>0</td><td>3</td><td>N1 高档歧义仲裁（11/01 到期）</td></tr>
+      <tr><td>百炼 qwen3-vl-flash</td><td>6</td><td>9</td><td>0</td><td>3</td><td>2</td><td>N2/N4 视觉自检与抽卡评分</td></tr>
+      <tr><td>百炼 wanx2.1-vace-plus</td><td>0</td><td>4</td><td>0</td><td>9</td><td>0</td><td>N4 云端重绘（唯一烧钱节点）</td></tr>
+      <tr><td>本地 Wan VACE 1.3B</td><td>0</td><td>3</td><td>0</td><td>7</td><td>0</td><td>N4 本地抽卡层 1（0 元）</td></tr>
+      <tr><td>百炼 CosyVoice v3</td><td>3</td><td>0</td><td>9</td><td>0</td><td>0</td><td>N5 高质量 TTS</td></tr>
+      <tr><td>百炼 text-embedding-v4</td><td>4</td><td>2</td><td>0</td><td>0</td><td>10</td><td>N1~N5 RAG 语义检索</td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <b>读图结论：</b>1) 本地 qwen3:8b 是唯一「文本+编排」通吃且 0 元的节点，但视觉/音频/视频维度接近 0——须靠云端独家能力补；2) 视频维度由 wanx（云）与 Wan VACE（本地）双落点，形成「本地抽卡+云端胜者」的分层；3) 音频维度本地侧（whisper/ACE-Step/CosyVoice）不在此雷达主叠加中但已在链路清单覆盖；4) Embedding 维度是 RAG 知识库（17d §2.7）的启用前置。<br>
+    <b>说明：</b>评分为定性相对值，用于定位而非评测；绝对能力以各平台官方模型卡为准。
+  </div>
+<script>
+  var C={bg:'#1a1a2e',panel:'#16213e',line:'#0f3460',accent:'#e94560',purple:'#533483',txt:'#e8eaf0',dim:'#9aa3b2'};
+  var chart=echarts.init(document.getElementById('chart'));
+  var models=[
+    {name:'本地 qwen3:8b', v:[8,2,0,0,3], color:'#3fb950'},
+    {name:'百炼 qwen3.8-max', v:[10,4,0,0,3], color:'#5b8cff'},
+    {name:'百炼 qwen3-vl-flash', v:[6,9,0,3,2], color:'#39c5cf'},
+    {name:'百炼 wanx2.1-vace-plus', v:[0,4,0,9,0], color:'#e94560'},
+    {name:'本地 Wan VACE 1.3B', v:[0,3,0,7,0], color:'#f0883e'},
+    {name:'百炼 CosyVoice v3', v:[3,0,9,0,0], color:'#bc8cff'},
+    {name:'百炼 text-embedding-v4', v:[4,2,0,0,10], color:'#d29922'}
+  ];
+  chart.setOption({
+    backgroundColor:'transparent',
+    color: models.map(function(m){return m.color;}),
+    title:{text:'模型五维能力雷达（相对能力分 0-10）',left:'center',top:8,textStyle:{color:C.txt,fontSize:14,fontWeight:600}},
+    tooltip:{backgroundColor:C.panel,borderColor:C.line,textStyle:{color:C.txt,fontSize:12}},
+    legend:{bottom:6,textStyle:{color:C.dim,fontSize:11},itemWidth:14,itemHeight:8},
+    radar:{center:['50%','52%'],radius:'62%',
+      indicator:[{name:'文本',max:10},{name:'视觉',max:10},{name:'音频',max:10},{name:'视频',max:10},{name:'Embedding',max:10}],
+      axisName:{color:C.txt,fontSize:12},
+      splitLine:{lineStyle:{color:C.line,opacity:.6}}, axisLine:{lineStyle:{color:C.line}},
+      splitArea:{areaStyle:{color:['rgba(15,52,96,.25)','rgba(22,33,62,.35)']}}},
+    series:[{type:'radar',symbolSize:4,areaStyle:{opacity:.08},lineStyle:{width:2},
+      data: models.map(function(m){return {name:m.name,value:m.v};})}]
+  });
+  window.addEventListener('resize',function(){chart.resize();});
+</script>
+</body>
+</html>

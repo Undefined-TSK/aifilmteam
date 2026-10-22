@@ -1,0 +1,76 @@
+{
+  "schema": "cineast.local_render_measure/1.0",
+  "measured_at": "2026-09-27",
+  "measured_by": "接手 AI「A」（老板第三轮裁决五：R2 12GB 实机吞吐实测，必须带探针回显）",
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "vram_total_mib": 12231,
+    "ram_total_bytes": 16607784960,
+    "ram_free_at_start_bytes": 2046033920,
+    "os": "Windows 11",
+    "note": "内存是比显存更早撞到的墙：启动前可用 RAM 仅 2.05GB"
+  },
+  "measurements": [
+    {
+      "engine": "wan2.2_ti2v_5B_fp16",
+      "status": "ok",
+      "purpose": "本地兜底视频引擎（当前现役）",
+      "model_files": {
+        "diffusion": "wan2.2_ti2v_5B_fp16.safetensors (9999658848 B)",
+        "text_encoder": "umt5_xxl_fp8_e4m3fn_scaled.safetensors (6735906897 B)",
+        "vae": "wan2.2_vae.safetensors (1409400960 B)"
+      },
+      "run": {
+        "resolution": "832x480",
+        "frames": 49,
+        "fps": 24,
+        "duration_sec": 2.04,
+        "steps": 20,
+        "cfg": 5,
+        "shift": 8,
+        "elapsed_sec": 127.1,
+        "includes_model_load": true,
+        "seed": 151188705,
+        "output_bytes": 281395,
+        "prompt_id": "5d0f22fb-845b-4066-8369-fdddc27d180d"
+      },
+      "vram_peak_observed_mib": 10596,
+      "vram_free_observed_mib": 1375,
+      "gpu_util_peak_pct": 100,
+      "derived": {
+        "sec_per_frame": 2.594,
+        "sec_per_video_second_at_24fps": 62.3,
+        "vram_headroom_mib": 1635
+      },
+      "cmd": "python tools/wan22_client.py generate <proj> <out> --anchor <img> --length 49 --width 832 --height 480",
+      "cross_check_history": "同引擎历史实测：3-3 镜 73 帧 139s；4-1 镜 193 帧 383s → 约 1.9-2.0 s/帧，与本轮 2.59 s/帧（含冷启动加载）同量级"
+    },
+    {
+      "engine": "wan2.1_vace_1.3B_preview_fp16",
+      "status": "blocked",
+      "purpose": "路线核心候选：白模粗片 → 写实化的控制分支（VACE = Video Aided Creation/Editing）",
+      "reason": "权重下载不完整：本地只有 196324235 B 的 .part 残片，官方文件应为 4309497120 B（约占 4.6%），无法加载",
+      "evidence": "comfyui/ComfyUI_windows_portable/ComfyUI/models/diffusion_models/wan2.1_vace_1.3B_preview_fp16.safetensors.part（196324235 B）；logs/p0_setup_state.json 记为 status=too_small"
+    },
+    {
+      "engine": "wan2.1_fun_control_1.3B_bf16",
+      "status": "not_downloaded",
+      "purpose": "备选控制分支（与 VACE 功能重叠）",
+      "reason": "logs/p0_setup_state.json 标记为 deferred —— 原计划先验证 VACE 再决定"
+    },
+    {
+      "engine": "LTX-Video（2B/distilled/fp8/Q8）",
+      "status": "not_downloaded",
+      "purpose": "R1 调研指出：白模→写实化且本地 12GB 可跑的**最贴合候选**（Apache-2.0 代码）",
+      "reason": "未下载、未实测。R1 的「8GB 可跑 720x480x121」结论来自官方 README，**非本机实测**"
+    }
+  ],
+  "pagefile_peak": null,
+  "pagefile_unverified_reason": "未采集。准确值需在渲染循环内轮询 Windows 性能计数器（Get-Counter '\\Paging File(_Total)\\% Usage'）；本轮只在渲染期用 nvidia-smi 采样了显存与利用率，未采样页面文件",
+  "unverified": [
+    "页面文件峰值（未采集）",
+    "VACE / Fun-Control / LTX 三个引擎的显存与吞吐（权重缺失，跑不通——按老板要求写「跑不通」而非「预计能成」）",
+    "Wan2.2 在 720p / 1080p 下的吞吐（本轮只测 832x480）"
+  ],
+  "conclusion": "12GB 显存可跑 Wan2.2 TI2V 5B（剩余约 1.6GB 余量，属紧平衡）；制约主因是 16GB 系统内存（启动前仅剩 2.05GB），而非显存。VACE 控制分支因权重残缺**当前跑不通**，是「白模→写实化」路线的直接阻塞项。"
+}

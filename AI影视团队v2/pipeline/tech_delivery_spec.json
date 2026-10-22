@@ -1,0 +1,168 @@
+{
+  "schema": "cineast.delivery_spec/1.7",
+  "adopted_at": "2026-09-26",
+  "principle": "本文件是响度/帧率/码率/声道/标识的唯一定义处。ffmpeg 与 qc_media 只执行与比对，不自行发明数值口径。",
+  "references": {
+    "GY/T 377-2023（广电·网络视听节目响度）": "平均响度 -15 或 -24 LKFS ±2LU，真峰 ≤ -1 dBTP",
+    "EBU R128": "-23 LUFS ±0.5LU，TP ≤ -1 dBTP",
+    "Netflix 交付（对白锚点，5.1/Atmos）": "dialogue-gated -27 LKFS ±5，程序总响度 -24 LKFS 档",
+    "网络流媒体实践口径": "平台会向下归一到约 -14 LUFS（YouTube 官方只说会调小，-14 为业界实践值，非官方条款）",
+    "GB 45438-2025 与《人工智能生成合成内容标识办法》": "显式标识 + 隐式元数据标识；视频与音频均适用",
+    "T/CEAP 1-2025": "竖屏微短剧码率下限 5500kbps（横屏档沿用其思路）"
+  },
+  "profiles": {
+    "web1080": {
+      "video": {
+        "res": "1920x1080",
+        "fps": 24.0,
+        "fps_tolerance": 0.005,
+        "shutter_deg": 180,
+        "min_video_kbps": 8000,
+        "codec": "h264",
+        "crf": 16,
+        "timecode_note": "必须 CFR 24/1，不用 23.976（避免 1001 时基引入节拍抖动）",
+        "encode_mode": "ABR+maxrate（交付档不能只靠 crf：crf 不保证码率下限，实测 1919.8kbps 即为此坑）",
+        "target_bitrate_kbps": 12000,
+        "maxrate_kbps": 16000,
+        "bufsize_kbps": 24000
+      },
+      "audio": {
+        "rate": 48000,
+        "channels": 2,
+        "master_bit_depth": 24
+      },
+      "program_loudness": {
+        "integrated_lufs": -14.0,
+        "tolerance": 0.5,
+        "true_peak_dbtp_max": -1.5,
+        "lra_max": 14.0
+      },
+      "dialogue_check": {
+        "method": "dialogue_window_relative",
+        "band": [
+          -1.0,
+          4.0
+        ],
+        "measurement": "对白窗口内整段混音相对程序响度（立体声网络版可测近似）；5.1 正式交付须改用对白 stem 门控",
+        "remedy": "超界只改 bus_trim_db，不许改判据或用 makeup 抬响度",
+        "cinema_51_alt": {
+          "dialogue_gated_lkfs": -27.0,
+          "tolerance": 5.0
+        },
+        "evidence_this_round": {
+          "measured_delta_lu_before_fix": 6.33,
+          "bus_trim_db_written": {
+            "DLG": -2.9
+          }
+        }
+      },
+      "subtitle_style": {
+        "max_lines": 2,
+        "max_chars_per_line": 42,
+        "min_dur_s": 0.5,
+        "max_dur_s": 7.0
+      }
+    },
+    "review720": {
+      "video": {
+        "res": "1280x720",
+        "fps": 24.0,
+        "min_video_kbps": 6000,
+        "target_bitrate_kbps": 7000,
+        "maxrate_kbps": 9000,
+        "bufsize_kbps": 12000
+      },
+      "audio": {
+        "rate": 48000,
+        "channels": 2
+      },
+      "program_loudness": {
+        "integrated_lufs": -14.0,
+        "tolerance": 0.5,
+        "true_peak_dbtp_max": -1.5
+      }
+    }
+  },
+  "ai_label": {
+    "explicit": {
+      "required": true,
+      "text": "本片由 AI 生成合成",
+      "min_duration_s": 3.0,
+      "y_pct_start_of_frame": 0.06,
+      "font_min_px": 40,
+      "safe_area": "title_safe"
+    },
+    "implicit_metadata_keys": [
+      "comment",
+      "aigc_label",
+      "aigc_service",
+      "aigc_provider_id",
+      "aigc_generated_at"
+    ],
+    "implicit_values_example": {
+      "comment": "AIGC",
+      "aigc_label": "本片由AI生成合成",
+      "aigc_service": "cineast_pipeline_v1",
+      "aigc_provider_id": "kling3_omni_feature_first_frame+wan2.2_local",
+      "aigc_generated_at": "<渲染日期>"
+    },
+    "implicit_metadata_transport": {
+      "container": "matroska",
+      "note": "MP4 只保留 itu963 tag 白名单里的自定义键，会被静默丢弃；本实测确认 ffprobe 读不到 aigc_*。故交付版容器用 .mkv，如平台强制 mp4 需在 mp4 内另存一份并在 delivery_proof 记录差异"
+    }
+  },
+  "field_index_这份文件在定什么": {
+    "程序总响度": "profiles.*.program_loudness.integrated_lufs / tolerance（网络档 -14±0.5）",
+    "真峰上限": "profiles.*.program_loudness.true_peak_dbtp_max（-1.5 dBTP）",
+    "响度范围上限": "profiles.*.program_loudness.lra_max（14 LU）",
+    "对白是否浮在氛围上": "profiles.*.dialogue_check（立体声网络版=对白窗口与程序响度的相对差 ∈ [-1.0,+2.5] LU）",
+    "影院5.1对白锚点": "dialogue_check.cinema_51_alt（-27 LKFS ±5，必须用对白 stem 门控测，网络立体声版不得套用）",
+    "帧率与容差": "profiles.*.video.fps / fps_tolerance（24 ±0.005，禁 1001 时基）",
+    "分辨率/码率/编码": "profiles.*.video.res / min_video_kbps / codec / crf",
+    "声道与采样": "profiles.*.audio.channels / rate / bit_depth（2ch 48k 24bit）",
+    "音频标识义务": "ai_label.explicit（起始画面≥3s 显著提示，字号/位置）+ implicit_metadata_keys（必须写进容器元数据）",
+    "字幕样式": "profiles.*.subtitle_style（≤2行、每行≤42字、0.5-7s）",
+    "标准出处": "references.*（GY/T 377-2023、EBU R128、Netflix、YouTube 实践值、GB 45438-2025、T/CEAP 1-2025）",
+    "视频码率怎么做": "profiles.*.video.target_bitrate_kbps/maxrate_kbps/bufsize_kbps + min_video_kbps（门检只判 min）",
+    "阶段": "delivery_stage_definition（preview/final，同一门不同硬度，避免为凑码率虚标）",
+    "总线微调": "bus_trim_db（对白过热 -2.9LU 这类修正记在这里，不在脚本里）"
+  },
+  "integrity_flags": {
+    "defined_by": "DIT 层（tools/dit_ingest.py）只报事实，不做交付判定",
+    "fields": {
+      "zero_byte_assets": "0 或极小体积的素材路径清单（事实：产物损坏/未写出）",
+      "broken_references": "被 K13/lock 索引引用但文件不存在或体积异常的记录（事实：锁与文件不一致）",
+      "unreferenced_assets": "无任何索引引用的素材数（事实：孤儿，需归档不删）",
+      "shot_kind_counts": "按溯源 kind 计数 {video, still_fallback, blockout_2d, missing}（事实：谁在交付时间线上）"
+    },
+    "not_here": [
+      "PASS/FAIL 判定",
+      "是否需要重制的设计决策"
+    ],
+    "verdict_lives_in": "tools/qc_media.py（技术门）+ 老板预览（创意门）"
+  },
+  "owner_signoff": {
+    "carrier": "projects/雨夜寻猫/timeline/master_v2.json 内每条轨道项的 owner_signoff 字段（不落口头约定）",
+    "schema": {
+      "signoff": {
+        "role": "owner 岗位 id",
+        "by": "Agent 名或人",
+        "ts": "ISO 时间",
+        "sha": "被签对象内容 sha256 前12"
+      },
+      "rule": "origin=auto_draft 的项若无 signoff 则不得进 g1；sha 不匹配即视为未签（值被改过）"
+    },
+    "gate": "g1_blockout_lock 前置条件：19 轨全部有值或有 signoff"
+  },
+  "delivery_stage_definition": {
+    "preview": "内部审看/技术体检阶段：码率与真动比例记 WARN，但响度/采样率/声道/帧率/标识仍硬判",
+    "final": "对外交付阶段：本文件所有阈值全部硬判，血缘 kind≠video 的镜不得出现在时间线"
+  },
+  "bus_trim_db": {
+    "DLG": -2.9,
+    "AMB": 0.0,
+    "FX": 0.0,
+    "MX": 0.0
+  },
+  "default_stage": "preview"
+}

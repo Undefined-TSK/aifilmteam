@@ -1,0 +1,16 @@
+{
+ "gaps_by_owner": {},
+ "blocking_errs": 16,
+ "pending_manual_by_owner": {
+  "agent_virtualdp": 126,
+  "agent_set_props": 126,
+  "agent_director": 72,
+  "agent_script_super": 72,
+  "agent_sound": 54,
+  "agent_vfx": 18,
+  "agent_color": 36,
+  "agent_editor": 72
+ },
+ "pending_manual_errs": 576,
+ "note": "R17 demo一条龙（寇豆码 代收敛·团队推荐即采纳）：2026-10-03T23:15:58+08:00 camera 1-1~1-4 回填提案值并签核，light 1-1~1-4 已由 R0-T4-conv 签核未动；gaps 重生成。"
+}

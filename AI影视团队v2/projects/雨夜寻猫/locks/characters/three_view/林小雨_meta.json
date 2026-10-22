@@ -1,0 +1,38 @@
+{
+  "character": "林小雨",
+  "engine": "sdxl_txt2img_prompt_identity",
+  "checkpoint": "sd_xl_base_1.0.safetensors",
+  "anchor": "D:\\ai_film_projects\\projects\\雨夜寻猫\\assets\\characters\\林小雨_v5.png",
+  "anchor_version_uuid": "4ef11a54",
+  "anchor_prompt": "cinematic portrait of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, detailed face, 35mm film, high quality",
+  "identity_prompt": "of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, 35mm film, high quality",
+  "seed": 2984714034,
+  "steps": 25,
+  "cfg": 7.5,
+  "views_generated": [
+    "side",
+    "back"
+  ],
+  "prompts": {
+    "side": {
+      "positive": "side view, full body profile, standing pose, character reference, short dark bob haircut, chin-length dark hair, of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, detailed face, 35mm film, high quality",
+      "negative": "ugly, blurry, low quality, deformed, watermark, text, multiple characters, duplicate, inconsistent design, extra limbs, front view, facing camera, updo, bun, hair bun, long hair, ponytail",
+      "seed": 2888527802,
+      "steps": 25,
+      "cfg": 7.5
+    },
+    "back": {
+      "positive": "back view, seen from directly behind, back of head visible, full body, standing pose, character reference, short dark bob haircut, walking away from camera, rear view, of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, 35mm film, high quality",
+      "negative": "ugly, blurry, low quality, deformed, watermark, text, multiple characters, duplicate, inconsistent design, extra limbs, front view, facing camera, face visible, eyes visible, profile, side view, updo, bun, long hair, ponytail, side view, profile, looking back",
+      "seed": 2984714034,
+      "steps": 25,
+      "cfg": 7.5
+    }
+  },
+  "files": {
+    "side": "D:\\ai_film_projects\\projects\\雨夜寻猫\\assets\\characters\\three_view\\林小雨_side.png",
+    "back": "D:\\ai_film_projects\\projects\\雨夜寻猫\\assets\\characters\\three_view\\林小雨_back.png"
+  },
+  "generated_at": "2026-09-26 02:15:57",
+  "cost": 50
+}

@@ -1,0 +1,43 @@
+{
+  "total_budget": 32.0,
+  "spent": 22.0,
+  "remaining": 10.0,
+  "currency": "CNY",
+  "warning_threshold": 0.8,
+  "frozen": false,
+  "transactions": [
+    {
+      "type": "add",
+      "amount": 20.0,
+      "description": "老板追加预算",
+      "timestamp": "2026-08-22 18:25:15"
+    },
+    {
+      "type": "spend",
+      "amount": 10.0,
+      "description": "未来城市概念图生成",
+      "asset_name": "未来城市",
+      "timestamp": "2026-08-22 18:25:15"
+    },
+    {
+      "type": "spend",
+      "amount": 8.0,
+      "description": "第二次生成",
+      "asset_name": "未来城市v2",
+      "timestamp": "2026-08-22 18:25:15"
+    },
+    {
+      "type": "spend",
+      "amount": 4.0,
+      "description": "第三次生成",
+      "asset_name": "未来城市v3",
+      "timestamp": "2026-08-22 18:25:15"
+    },
+    {
+      "type": "add",
+      "amount": 10.0,
+      "description": "紧急追加预算",
+      "timestamp": "2026-08-22 18:25:15"
+    }
+  ]
+}

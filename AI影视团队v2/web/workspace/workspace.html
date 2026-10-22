@@ -1,0 +1,2926 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CINEAST — 工作台</title>
+<link rel="preconnect" href="https://fonts.loli.net">
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
+<link href="https://fonts.loli.net/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CINEAST 工作台 — 节点图界面
+   Design system inherited from showcase/index.html
+   ============================================================ */
+
+:root {
+  --bg: #0d0c0a;
+  --bg-elev: #161411;
+  --bg-card: #1c1a16;
+  --bg-hover: #221f1a;
+  --fg: #f2ede4;
+  --fg-dim: #b5ad9e;
+  --fg-mute: #7a7366;
+  --accent: #e8b949;
+  --accent-dim: #c49a2e;
+  --accent-teal: #5bb8b5;
+  --accent-rose: #c97b63;
+  --accent-red: #d65d4e;
+  --accent-green: #6b9e54;
+  --accent-yellow: #d4a839;
+  --accent-blue: #6b8fa8;
+  --accent-gold: #e8b949;
+  --accent-purple: #8b6ba8;
+  --line: #2a2722;
+  --line-soft: #1f1d19;
+  --radius: 6px;
+  --radius-sm: 4px;
+  --radius-lg: 10px;
+  --sidebar-w: 240px;
+  --sidebar-right-w: 300px;
+  --topbar-h: 52px;
+  --bottombar-h: 44px;
+  --transition: 0.2s ease;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: 'Inter', 'Noto Serif SC', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+.serif { font-family: 'Fraunces', 'Noto Serif SC', serif; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* SVG icon system */
+.icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.icon-sm {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.icon-md {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.icon-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ============================================================
+   APP LAYOUT
+   ============================================================ */
+
+.app {
+  display: grid;
+  grid-template-rows: var(--topbar-h) 1fr var(--bottombar-h);
+  grid-template-columns: var(--sidebar-w) 1fr var(--sidebar-right-w);
+  grid-template-areas:
+    "topbar topbar topbar"
+    "left   canvas right"
+    "bottom bottom bottom";
+  height: 100vh;
+}
+
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+
+.topbar {
+  grid-area: topbar;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--line);
+  gap: 16px;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar-logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.topbar-logo-mark {
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  color: var(--accent);
+}
+
+.topbar-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--fg-mute);
+}
+
+.topbar-breadcrumb span.current {
+  color: var(--fg);
+}
+
+.topbar-breadcrumb .sep {
+  color: var(--fg-mute);
+  opacity: 0.5;
+}
+
+.topbar-center {
+  display: flex;
+  gap: 2px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.topbar-tab {
+  padding: 5px 14px;
+  font-size: 0.75rem;
+  color: var(--fg-mute);
+  cursor: pointer;
+  border-radius: 3px;
+  transition: var(--transition);
+  white-space: nowrap;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.topbar-tab:hover { color: var(--fg-dim); }
+.topbar-tab.active {
+  background: var(--bg-card);
+  color: var(--fg);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-btn {
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--fg-dim);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.topbar-btn:hover {
+  border-color: var(--fg-mute);
+  color: var(--fg);
+}
+
+.topbar-btn.primary {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  font-weight: 500;
+}
+
+.topbar-btn.primary:hover {
+  background: var(--accent-dim);
+}
+
+/* ============================================================
+   LEFT SIDEBAR — Agent list + project tree
+   ============================================================ */
+
+.sidebar-left {
+  grid-area: left;
+  background: var(--bg-elev);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-section {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.sidebar-header {
+  padding: 10px 14px 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-mute);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-header .count {
+  font-weight: 400;
+  color: var(--fg-mute);
+  opacity: 0.7;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0 6px 10px;
+}
+
+.sidebar-item {
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition);
+  font-size: 0.8rem;
+  color: var(--fg-dim);
+}
+
+.sidebar-item:hover {
+  background: var(--bg-hover);
+  color: var(--fg);
+}
+
+.sidebar-item.active {
+  background: var(--bg-card);
+  color: var(--fg);
+}
+
+.sidebar-item .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-green { background: var(--accent-green); }
+.dot-yellow { background: var(--accent-yellow); }
+.dot-red { background: var(--accent-red); }
+.dot-blue { background: var(--accent-blue); }
+.dot-gray { background: var(--fg-mute); }
+
+.sidebar-item .label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sidebar-item .meta { font-size: 0.7rem; color: var(--fg-mute); }
+
+/* Budget mini panel */
+.budget-mini {
+  padding: 12px 14px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.budget-bar {
+  height: 4px;
+  background: var(--bg);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.budget-fill {
+  height: 100%;
+  background: var(--accent-teal);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+.budget-fill.warn { background: var(--accent-yellow); }
+.budget-fill.danger { background: var(--accent-red); }
+
+.budget-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--fg-mute);
+  margin-top: 4px;
+}
+
+.budget-text .spent { color: var(--fg-dim); }
+
+/* ============================================================
+   CANVAS — Node graph
+   ============================================================ */
+
+.canvas-area {
+  grid-area: canvas;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  cursor: grab;
+}
+
+.canvas-area.panning { cursor: grabbing; }
+
+.canvas-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.canvas-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Canvas overlay UI */
+.canvas-overlay {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.canvas-overlay > * { pointer-events: auto; }
+
+.zoom-controls {
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+}
+
+.zoom-btn {
+  width: 28px; height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--fg-dim);
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.zoom-btn:hover { background: var(--bg-hover); color: var(--fg); }
+
+.zoom-level {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--fg-mute);
+  text-align: center;
+  padding: 2px 0;
+}
+
+/* Canvas status badge */
+.canvas-status {
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  color: var(--fg-dim);
+}
+
+.status-badge .dot { width: 6px; height: 6px; border-radius: 50%; }
+
+/* ============================================================
+   NODES (SVG foreign content)
+   ============================================================ */
+
+.node {
+  position: absolute;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  min-width: 160px;
+  cursor: move;
+  user-select: none;
+  pointer-events: auto;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.node:hover {
+  border-color: var(--fg-mute);
+}
+
+.node.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 0 20px rgba(232,185,73,0.15);
+}
+
+.node-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--line-soft);
+  gap: 8px;
+}
+
+.node-title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.node-icon {
+  width: 16px; height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.7rem;
+}
+
+.node-status {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.node-body {
+  padding: 6px 10px;
+  font-size: 0.7rem;
+  color: var(--fg-mute);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.node-param {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.node-param .key { color: var(--fg-mute); }
+.node-param .val { color: var(--fg-dim); }
+
+.node-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px 5px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.65rem;
+}
+
+.node-versions {
+  display: flex;
+  gap: 2px;
+}
+
+.node-ver {
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--fg-mute);
+  background: var(--bg);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.node-ver.locked {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 500;
+}
+
+.node-ver:hover:not(.locked) {
+  color: var(--fg-dim);
+  background: var(--bg-hover);
+}
+
+.node-tag {
+  font-size: 0.6rem;
+  color: var(--accent-rose);
+  font-weight: 500;
+}
+
+/* Node type styling */
+.node[data-type="element"] { border-top: 2px solid var(--accent-teal); }
+.node[data-type="task"] { border-top: 2px solid var(--accent-blue); }
+.node[data-type="review"] { border-top: 2px solid var(--accent-yellow); }
+.node[data-type="decision"] { border-top: 2px solid var(--accent-rose); }
+
+/* Input/Output ports */
+.node-ports {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.node-ports.in { left: -6px; }
+.node-ports.out { right: -6px; }
+
+.port {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background: var(--bg-elev);
+  cursor: crosshair;
+  transition: var(--transition);
+}
+
+.port:hover { border-color: var(--accent); }
+.port.connected { border-color: var(--accent-teal); background: var(--accent-teal); }
+
+/* Connection line tooltip */
+.conn-label {
+  position: absolute;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 0.65rem;
+  color: var(--fg-mute);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   RIGHT SIDEBAR — Node details
+   ============================================================ */
+
+.sidebar-right {
+  grid-area: right;
+  background: var(--bg-elev);
+  border-left: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.detail-section {
+  border-bottom: 1px solid var(--line-soft);
+  padding: 12px 14px;
+}
+
+.detail-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: var(--fg);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 0.75rem;
+}
+
+.detail-row .key {
+  color: var(--fg-mute);
+  flex-shrink: 0;
+  min-width: 70px;
+}
+
+.detail-row .val {
+  color: var(--fg-dim);
+  text-align: right;
+  word-break: break-all;
+}
+
+.detail-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.detail-tag {
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--bg);
+  color: var(--fg-mute);
+  border: 1px solid var(--line-soft);
+}
+
+.detail-tag.locked {
+  background: rgba(232,185,73,0.1);
+  color: var(--accent);
+  border-color: rgba(232,185,73,0.3);
+}
+
+/* Timeline entries */
+.timeline-entry {
+  display: flex;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 0.7rem;
+}
+
+.timeline-entry:last-child { border-bottom: none; }
+
+.timeline-entry .time {
+  color: var(--fg-mute);
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.timeline-entry .msg {
+  color: var(--fg-dim);
+}
+
+.timeline-entry .agent {
+  color: var(--accent-teal);
+  font-weight: 500;
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--fg-mute);
+  gap: 8px;
+}
+
+.empty-state .icon {
+  font-size: 2rem;
+  opacity: 0.3;
+}
+
+.empty-state .text {
+  font-size: 0.8rem;
+}
+
+/* ============================================================
+   BOTTOM BAR — Chat input + status
+   ============================================================ */
+
+.bottombar {
+  grid-area: bottom;
+  background: var(--bg-elev);
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 8px;
+}
+
+.bottombar-prompt {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 4px 8px 4px 12px;
+}
+
+.bottombar-prompt:focus-within {
+  border-color: var(--fg-mute);
+}
+
+.bottombar-prompt-icon {
+  color: var(--fg-mute);
+  font-size: 0.8rem;
+}
+
+.bottombar-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--fg);
+  font-size: 0.8rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.bottombar-input::placeholder { color: var(--fg-mute); }
+
+.bottombar-send {
+  padding: 4px 12px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.bottombar-send:hover { background: var(--accent-dim); }
+
+.bottombar-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: var(--fg-mute);
+  white-space: nowrap;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--fg-mute); }
+
+/* Connection lines */
+.conn-line {
+  fill: none;
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+
+.conn-solid { stroke: var(--fg-mute); }
+.conn-dashed { stroke: var(--fg-mute); stroke-dasharray: 4 4; }
+.conn-conflict { stroke: var(--accent-red); stroke-width: 2; }
+.conn-pulse { stroke: var(--accent-green); stroke-width: 2; }
+
+.conn-arrow {
+  fill: var(--fg-mute);
+  opacity: 0.6;
+}
+
+/* ============================================================
+   ALT VIEWS — Shared styles
+   ============================================================ */
+
+.alt-view {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+  overflow-y: auto;
+  z-index: 5;
+}
+
+.alt-view-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.alt-view-title {
+  font-family: 'Fraunces', 'Noto Serif SC', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.alt-view-sub {
+  font-size: 0.8rem;
+  color: var(--fg-mute);
+}
+
+/* ============================================================
+   VERSION TREE
+   ============================================================ */
+
+.version-tree-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 8px 0;
+}
+
+.vt-asset-group {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+
+.vt-asset-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.vt-asset-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-dim);
+}
+
+.vt-asset-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--fg);
+  flex: 1;
+}
+
+.vt-versions {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.vt-version {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  min-width: 280px;
+}
+
+.vt-version.vt-locked {
+  border-color: var(--accent-gold);
+  background: rgba(232,185,73,0.06);
+}
+
+.vt-version.vt-wip {
+  border-color: var(--accent-blue);
+  background: rgba(107,143,168,0.06);
+}
+
+.vt-version.vt-abandoned {
+  opacity: 0.5;
+}
+
+.vt-version.vt-archived {
+  opacity: 0.7;
+}
+
+.vt-v-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  min-width: 28px;
+}
+
+.vt-version.vt-abandoned .vt-v-num { color: var(--fg-mute); }
+.vt-version.vt-archived .vt-v-num { color: var(--fg-dim); }
+.vt-version.vt-wip .vt-v-num { color: var(--accent-blue); }
+
+.vt-v-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vt-v-status {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--fg-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vt-v-meta {
+  font-size: 0.7rem;
+  color: var(--fg-mute);
+}
+
+.vt-v-time {
+  font-size: 0.65rem;
+  color: var(--fg-mute);
+  opacity: 0.7;
+}
+
+.vt-v-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  background: var(--bg);
+}
+
+.vt-branch-line {
+  width: 24px;
+  height: 2px;
+  background: var(--line);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   BUDGET DASHBOARD
+   ============================================================ */
+
+.budget-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.bd-hero {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 32px;
+}
+
+.bd-hero-ring {
+  flex-shrink: 0;
+}
+
+.bd-hero-info {
+  flex: 1;
+}
+
+.bd-hero-status {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bd-hero-desc {
+  font-size: 0.8rem;
+  color: var(--fg-mute);
+  margin-bottom: 20px;
+}
+
+.bd-hero-stats {
+  display: flex;
+  gap: 32px;
+}
+
+.bd-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bd-stat-val {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.bd-stat-label {
+  font-size: 0.7rem;
+  color: var(--fg-mute);
+}
+
+.bd-section {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+
+.bd-section-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--fg-dim);
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bd-cat-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.bd-cat-label {
+  font-size: 0.8rem;
+  color: var(--fg-dim);
+  min-width: 100px;
+}
+
+.bd-cat-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--bg);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bd-cat-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+.bd-cat-val {
+  font-size: 0.75rem;
+  color: var(--fg-mute);
+  min-width: 60px;
+  text-align: right;
+}
+
+.bd-rule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 0.8rem;
+  color: var(--fg-dim);
+}
+
+/* ============================================================
+   HANDOFF TIMELINE
+   ============================================================ */
+
+.handoff-timeline {
+  position: relative;
+  padding-left: 24px;
+}
+
+.handoff-timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--line);
+}
+
+.ht-item {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.ht-dot {
+  position: absolute;
+  left: -22px;
+  top: 14px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  border: 2px solid var(--bg);
+  z-index: 1;
+}
+
+.ht-dot-red { background: var(--accent-red); }
+.ht-dot-blue { background: var(--accent-blue); }
+
+.ht-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+}
+
+.ht-item.ht-rejected .ht-card {
+  border-color: rgba(214,93,78,0.3);
+}
+
+.ht-item.ht-inprogress .ht-card {
+  border-color: rgba(107,143,168,0.3);
+}
+
+.ht-card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+}
+
+.ht-from {
+  color: var(--accent-teal);
+  font-weight: 500;
+}
+
+.ht-arrow {
+  color: var(--fg-mute);
+}
+
+.ht-to {
+  color: var(--accent-rose);
+  font-weight: 500;
+}
+
+.ht-status {
+  margin-left: auto;
+  font-size: 0.7rem;
+  color: var(--accent-green);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ht-status-rejected { color: var(--accent-red); }
+.ht-status-progress { color: var(--accent-blue); }
+
+.ht-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ht-uuid {
+  font-size: 0.7rem;
+  color: var(--fg-mute);
+}
+
+.ht-desc {
+  font-size: 0.8rem;
+  color: var(--fg-dim);
+}
+
+.ht-time {
+  font-size: 0.7rem;
+  color: var(--fg-mute);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.ht-stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.ht-stat-card {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+
+.ht-stat-val {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.ht-stat-label {
+  font-size: 0.75rem;
+  color: var(--fg-mute);
+  margin-top: 2px;
+}
+
+/* ============================================================
+   STORYBOARD
+   ============================================================ */
+
+.sb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.sb-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.sb-panel:hover {
+  border-color: var(--fg-mute);
+}
+
+.sb-panel.sb-done {
+  border-top: 2px solid var(--accent-green);
+}
+
+.sb-panel.sb-wip {
+  border-top: 2px solid var(--accent-blue);
+}
+
+.sb-panel.sb-pending {
+  border-top: 2px solid var(--line);
+  opacity: 0.6;
+}
+
+.sb-thumb {
+  width: 100%;
+  height: 120px;
+  background: var(--bg);
+}
+
+.sb-info {
+  padding: 10px 12px;
+}
+
+.sb-num {
+  font-family: 'Fraunces', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 2px;
+}
+
+.sb-desc {
+  font-size: 0.8rem;
+  color: var(--fg-dim);
+  margin-bottom: 6px;
+}
+
+.sb-meta {
+  display: flex;
+  gap: 8px;
+  font-size: 0.7rem;
+  color: var(--fg-mute);
+}
+
+.sb-camera {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.sb-dur {
+  margin-left: auto;
+}
+
+.sb-status {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.sb-panel {
+  position: relative;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  :root {
+    --sidebar-w: 0px;
+    --sidebar-right-w: 0px;
+  }
+  .sidebar-left, .sidebar-right { display: none; }
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "topbar"
+      "canvas"
+      "bottom";
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============================================================
+       TOPBAR
+       ============================================================ -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="/" style="text-decoration:none;color:inherit;">
+      <div class="topbar-logo">
+        <div class="topbar-logo-mark">C</div>
+        CINEAST
+      </div>
+      </a>
+      <div class="topbar-breadcrumb">
+        <a href="/" style="color:var(--fg-mute);text-decoration:none;font-size:0.8rem;">首页</a>
+        <span class="sep">/</span>
+        <span>项目</span>
+        <span class="sep">/</span>
+        <span>雨夜寻猫</span>
+        <span class="sep">/</span>
+        <span class="current">角色设计阶段</span>
+      </div>
+    </div>
+
+    <div class="topbar-center">
+      <button class="topbar-tab active" data-view="graph">节点图</button>
+      <button class="topbar-tab" data-view="storyboard">分镜板</button>
+      <button class="topbar-tab" data-view="versions">版本树</button>
+      <button class="topbar-tab" data-view="budget">预算</button>
+      <button class="topbar-tab" data-view="handoffs">交接记录</button>
+    </div>
+
+    <div class="topbar-right">
+      <span id="apiStatusBadge" style="font-size:0.7rem;color:var(--fg-mute);padding:4px 8px;border:1px solid var(--line);border-radius:var(--radius-sm);">离线模式</span>
+      <button class="topbar-btn">渲染选中</button>
+      <button class="topbar-btn">锁定 V3</button>
+      <button class="topbar-btn primary">生成整片</button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       LEFT SIDEBAR
+       ============================================================ -->
+  <div class="sidebar-left">
+    <div class="sidebar-section">
+      <div class="sidebar-header">
+        <span>Agent 列表</span>
+        <span class="count">9</span>
+      </div>
+      <ul class="sidebar-list" id="agentList">
+        <li class="sidebar-item active">
+          <span class="dot dot-green"></span>
+          <span class="label">制片人</span>
+          <span class="meta">调度</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-blue"></span>
+          <span class="label">角色设计师</span>
+          <span class="meta">出图中</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-green"></span>
+          <span class="label">场景设计师</span>
+          <span class="meta">空闲</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-gray"></span>
+          <span class="label">分镜师</span>
+          <span class="meta">未启动</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-gray"></span>
+          <span class="label">艺术总监</span>
+          <span class="meta">未启动</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-gray"></span>
+          <span class="label">编剧</span>
+          <span class="meta">未启动</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-gray"></span>
+          <span class="label">动画师</span>
+          <span class="meta">未启动</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-gray"></span>
+          <span class="label">音效工程师</span>
+          <span class="meta">未启动</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-gray"></span>
+          <span class="label">剪辑师</span>
+          <span class="meta">未启动</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-header">
+        <span>项目元素</span>
+        <span class="count">4</span>
+      </div>
+      <ul class="sidebar-list">
+        <li class="sidebar-item">
+          <span class="dot dot-green"></span>
+          <span class="label">角色 · 林小雨</span>
+          <span class="meta">V3</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-green"></span>
+          <span class="label">角色 · 小白猫</span>
+          <span class="meta">V1</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-green"></span>
+          <span class="label">场景 · 雨夜巷</span>
+          <span class="meta">V2</span>
+        </li>
+        <li class="sidebar-item">
+          <span class="dot dot-yellow"></span>
+          <span class="label">场景 · 小巷深处</span>
+          <span class="meta">审查中</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="budget-mini">
+      <div class="sidebar-header" style="padding: 0 0 4px;">
+        <span>预算</span>
+        <span class="count mono">34 / 50</span>
+      </div>
+      <div class="budget-bar">
+        <div class="budget-fill warn" style="width: 68%"></div>
+      </div>
+      <div class="budget-text">
+        <span>已用 34 点</span>
+        <span class="spent">剩余 16 点</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CANVAS — Node Graph
+       ============================================================ -->
+  <div class="canvas-area" id="canvas">
+    <div class="canvas-bg"></div>
+
+    <!-- SVG for connection lines -->
+    <svg class="canvas-svg" id="connSvg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" class="conn-arrow" />
+        </marker>
+      </defs>
+    </svg>
+
+    <!-- Nodes will be rendered here by JS -->
+    <div id="nodesLayer" style="position:absolute;inset:0;pointer-events:none;"></div>
+
+    <!-- Canvas overlay UI -->
+    <div class="canvas-overlay canvas-status">
+      <div class="status-badge">
+        <span class="dot dot-green"></span>
+        <span>2 已通过</span>
+      </div>
+      <div class="status-badge">
+        <span class="dot dot-blue"></span>
+        <span>1 进行中</span>
+      </div>
+      <div class="status-badge">
+        <span class="dot dot-gray"></span>
+        <span>3 未开始</span>
+      </div>
+    </div>
+
+    <div class="canvas-overlay zoom-controls" style="position:absolute;">
+      <button class="zoom-btn" onclick="zoomOut()">−</button>
+      <div class="zoom-level" id="zoomLevel">100%</div>
+      <button class="zoom-btn" onclick="zoomIn()">+</button>
+      <button class="zoom-btn" onclick="zoomReset()" style="font-size:0.7rem;">⌂</button>
+    </div>
+
+    <!-- ============================================================
+         VIEW: Version Tree (版本树)
+         ============================================================ -->
+    <div id="view-versions" class="alt-view" style="display:none;">
+      <div class="alt-view-header">
+        <h2 class="alt-view-title">版本树</h2>
+        <span class="alt-view-sub">K13 版本管理系统 · 全部资产版本追溯</span>
+      </div>
+      <div class="version-tree-container">
+        <div class="vt-asset-group">
+          <div class="vt-asset-header">
+            <span class="vt-asset-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <span class="vt-asset-name">角色 · 林小雨</span>
+            <span class="vt-asset-status dot dot-green" style="width:8px;height:8px;border-radius:50%;display:inline-block;"></span>
+          </div>
+          <div class="vt-versions">
+            <div class="vt-version vt-abandoned">
+              <div class="vt-v-num">V1</div>
+              <div class="vt-v-info">
+                <div class="vt-v-status">已废弃</div>
+                <div class="vt-v-meta mono">seed:9847 · 20步 · 1024×1024</div>
+                <div class="vt-v-time">2026-08-22 18:30</div>
+              </div>
+              <div class="vt-v-thumb" style="background:linear-gradient(135deg,#3a3030,#1a1818);"></div>
+            </div>
+            <div class="vt-branch-line"></div>
+            <div class="vt-version vt-archived">
+              <div class="vt-v-num">V2</div>
+              <div class="vt-v-info">
+                <div class="vt-v-status">已归档</div>
+                <div class="vt-v-meta mono">seed:28391 · 25步 · 1024×1024</div>
+                <div class="vt-v-time">2026-08-22 19:15</div>
+              </div>
+              <div class="vt-v-thumb" style="background:linear-gradient(135deg,#3a3a30,#1a1a18);"></div>
+            </div>
+            <div class="vt-branch-line"></div>
+            <div class="vt-version vt-locked">
+              <div class="vt-v-num">V3</div>
+              <div class="vt-v-info">
+                <div class="vt-v-status" style="color:var(--accent-gold)"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> 已锁定</div>
+                <div class="vt-v-meta mono">seed:51200 · 30步 · 1024×1024</div>
+                <div class="vt-v-time">2026-08-22 20:00</div>
+              </div>
+              <div class="vt-v-thumb" style="background:linear-gradient(135deg,#3a3520,#1a1810);border:1px solid var(--accent-gold);"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vt-asset-group">
+          <div class="vt-asset-header">
+            <span class="vt-asset-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="4" cy="8" r="2"/><path d="M8 16a4 4 0 0 1 8 0"/><path d="M3 16c0 2.5 2 4.5 4.5 4.5h9c2.5 0 4.5-2 4.5-4.5"/></svg></span>
+            <span class="vt-asset-name">角色 · 小白猫</span>
+            <span class="vt-asset-status dot dot-green" style="width:8px;height:8px;border-radius:50%;display:inline-block;"></span>
+          </div>
+          <div class="vt-versions">
+            <div class="vt-version vt-locked">
+              <div class="vt-v-num">V1</div>
+              <div class="vt-v-info">
+                <div class="vt-v-status" style="color:var(--accent-gold)"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> 已锁定</div>
+                <div class="vt-v-meta mono">seed:18200 · 20步 · 1024×1024</div>
+                <div class="vt-v-time">2026-08-22 19:00</div>
+              </div>
+              <div class="vt-v-thumb" style="background:linear-gradient(135deg,#2a3530,#1a1818);border:1px solid var(--accent-gold);"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vt-asset-group">
+          <div class="vt-asset-header">
+            <span class="vt-asset-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+            <span class="vt-asset-name">场景 · 竹林晨雾</span>
+            <span class="vt-asset-status dot dot-blue" style="width:8px;height:8px;border-radius:50%;display:inline-block;"></span>
+          </div>
+          <div class="vt-versions">
+            <div class="vt-version vt-archived">
+              <div class="vt-v-num">V1</div>
+              <div class="vt-v-info">
+                <div class="vt-v-status">已归档</div>
+                <div class="vt-v-meta mono">seed:7100 · 22步 · 1024×1024</div>
+                <div class="vt-v-time">2026-08-22 18:00</div>
+              </div>
+              <div class="vt-v-thumb" style="background:linear-gradient(135deg,#2a303a,#1a1818);"></div>
+            </div>
+            <div class="vt-branch-line"></div>
+            <div class="vt-version vt-locked">
+              <div class="vt-v-num">V2</div>
+              <div class="vt-v-info">
+                <div class="vt-v-status" style="color:var(--accent-gold)"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> 已锁定</div>
+                <div class="vt-v-meta mono">seed:33445 · 28步 · 1024×1024</div>
+                <div class="vt-v-time">2026-08-22 19:30</div>
+              </div>
+              <div class="vt-v-thumb" style="background:linear-gradient(135deg,#2a3525,#1a1810);border:1px solid var(--accent-gold);"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vt-asset-group">
+          <div class="vt-asset-header">
+            <span class="vt-asset-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></span>
+            <span class="vt-asset-name">分镜 · 第3镜</span>
+            <span class="vt-asset-status dot dot-yellow" style="width:8px;height:8px;border-radius:50%;display:inline-block;"></span>
+          </div>
+          <div class="vt-versions">
+            <div class="vt-version vt-abandoned">
+              <div class="vt-v-num">V1</div>
+              <div class="vt-v-info">
+                <div class="vt-v-status">已废弃</div>
+                <div class="vt-v-meta mono">seed:9551 · 20步 · 1024×576</div>
+                <div class="vt-v-time">2026-08-22 20:00</div>
+              </div>
+              <div class="vt-v-thumb" style="background:linear-gradient(135deg,#302a3a,#1a1818);"></div>
+            </div>
+            <div class="vt-branch-line"></div>
+            <div class="vt-version vt-wip">
+              <div class="vt-v-num">V2</div>
+              <div class="vt-v-info">
+                <div class="vt-v-status" style="color:var(--accent-blue)">进行中</div>
+                <div class="vt-v-meta mono">seed:48123 · 25步 · 1024×576</div>
+                <div class="vt-v-time">2026-08-22 20:30</div>
+              </div>
+              <div class="vt-v-thumb" style="background:linear-gradient(135deg,#302a35,#1a1818);border:1px solid var(--accent-blue);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         VIEW: Budget Dashboard (预算)
+         ============================================================ -->
+    <div id="view-budget" class="alt-view" style="display:none;">
+      <div class="alt-view-header">
+        <h2 class="alt-view-title">预算仪表盘</h2>
+        <span class="alt-view-sub">预算管理 · 预警与熔断</span>
+      </div>
+      <div class="budget-dashboard">
+        <div class="bd-hero">
+          <div class="bd-hero-ring">
+            <svg width="160" height="160" viewBox="0 0 160 160">
+              <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="12"/>
+              <circle cx="80" cy="80" r="70" fill="none" stroke="var(--accent-gold)" stroke-width="12"
+                      stroke-dasharray="440" stroke-dashoffset="141" stroke-linecap="round"
+                      transform="rotate(-90 80 80)"/>
+              <text x="80" y="75" text-anchor="middle" fill="var(--fg)" font-size="28" font-weight="700" font-family="Inter,sans-serif">34</text>
+              <text x="80" y="100" text-anchor="middle" fill="var(--fg-mute)" font-size="13" font-family="Inter,sans-serif">/ 50 点</text>
+            </svg>
+          </div>
+          <div class="bd-hero-info">
+            <div class="bd-hero-status" style="color:var(--accent-gold)"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 预警状态</div>
+            <div class="bd-hero-desc">已使用 68% 预算，超过 80% 将触发熔断</div>
+            <div class="bd-hero-stats">
+              <div class="bd-stat">
+                <div class="bd-stat-val">16</div>
+                <div class="bd-stat-label">剩余点数</div>
+              </div>
+              <div class="bd-stat">
+                <div class="bd-stat-val">8</div>
+                <div class="bd-stat-label">可生成次数</div>
+              </div>
+              <div class="bd-stat">
+                <div class="bd-stat-val">5.2</div>
+                <div class="bd-stat-label">单均消耗</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bd-section">
+          <div class="bd-section-title">分类消耗</div>
+          <div class="bd-cat-row">
+            <span class="bd-cat-label">角色概念图</span>
+            <div class="bd-cat-bar"><div class="bd-cat-fill" style="width:62%;background:var(--accent-teal);"></div></div>
+            <span class="bd-cat-val mono">15 / 20</span>
+          </div>
+          <div class="bd-cat-row">
+            <span class="bd-cat-label">场景概念图</span>
+            <div class="bd-cat-bar"><div class="bd-cat-fill" style="width:52%;background:var(--accent-blue);"></div></div>
+            <span class="bd-cat-val mono">11 / 20</span>
+          </div>
+          <div class="bd-cat-row">
+            <span class="bd-cat-label">分镜生成</span>
+            <div class="bd-cat-bar"><div class="bd-cat-fill" style="width:30%;background:var(--accent-purple);"></div></div>
+            <span class="bd-cat-val mono">3 / 10</span>
+          </div>
+          <div class="bd-cat-row">
+            <span class="bd-cat-label">动画渲染</span>
+            <div class="bd-cat-bar"><div class="bd-cat-fill" style="width:0%;background:var(--accent-rose);"></div></div>
+            <span class="bd-cat-val mono">0 / 10</span>
+          </div>
+        </div>
+
+        <div class="bd-section">
+          <div class="bd-section-title">熔断规则</div>
+          <div class="bd-rule">
+            <span class="bd-rule-dot dot dot-green" style="width:6px;height:6px;border-radius:50%;display:inline-block;"></span>
+            <span class="bd-rule-text">使用率 &lt; 50%：正常工作</span>
+          </div>
+          <div class="bd-rule">
+            <span class="bd-rule-dot" style="width:6px;height:6px;border-radius:50%;display:inline-block;background:var(--accent-gold);"></span>
+            <span class="bd-rule-text">使用率 50%-80%：预警提示</span>
+          </div>
+          <div class="bd-rule">
+            <span class="bd-rule-dot dot dot-red" style="width:6px;height:6px;border-radius:50%;display:inline-block;"></span>
+            <span class="bd-rule-text">使用率 &gt; 80%：自动熔断，停止生成</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         VIEW: Handoff Records (交接记录)
+         ============================================================ -->
+    <div id="view-handoffs" class="alt-view" style="display:none;">
+      <div class="alt-view-header">
+        <h2 class="alt-view-title">交接记录</h2>
+        <span class="alt-view-sub">Agent 接力时间线 · 全程可追溯</span>
+      </div>
+      <div class="handoff-timeline">
+        <div class="ht-item ht-completed">
+          <div class="ht-dot"></div>
+          <div class="ht-card">
+            <div class="ht-card-header">
+              <span class="ht-from">制片人</span>
+              <span class="ht-arrow">→</span>
+              <span class="ht-to">角色设计师</span>
+              <span class="ht-status"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 已完成</span>
+            </div>
+            <div class="ht-card-body">
+              <div class="ht-uuid mono">handoff-001</div>
+              <div class="ht-desc">生成林小雨概念图 · V3已锁定</div>
+              <div class="ht-time">2026-08-22 18:30 → 20:00</div>
+            </div>
+          </div>
+        </div>
+        <div class="ht-item ht-completed">
+          <div class="ht-dot"></div>
+          <div class="ht-card">
+            <div class="ht-card-header">
+              <span class="ht-from">制片人</span>
+              <span class="ht-arrow">→</span>
+              <span class="ht-to">角色设计师</span>
+              <span class="ht-status"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 已完成</span>
+            </div>
+            <div class="ht-card-body">
+              <div class="ht-uuid mono">handoff-002</div>
+              <div class="ht-desc">生成小白猫概念图 · V1已锁定</div>
+              <div class="ht-time">2026-08-22 19:00</div>
+            </div>
+          </div>
+        </div>
+        <div class="ht-item ht-completed">
+          <div class="ht-dot"></div>
+          <div class="ht-card">
+            <div class="ht-card-header">
+              <span class="ht-from">制片人</span>
+              <span class="ht-arrow">→</span>
+              <span class="ht-to">场景设计师</span>
+              <span class="ht-status"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 已完成</span>
+            </div>
+            <div class="ht-card-body">
+              <div class="ht-uuid mono">handoff-003</div>
+              <div class="ht-desc">生成竹林晨雾场景 · V2已锁定</div>
+              <div class="ht-time">2026-08-22 18:00 → 19:30</div>
+            </div>
+          </div>
+        </div>
+        <div class="ht-item ht-rejected">
+          <div class="ht-dot ht-dot-red"></div>
+          <div class="ht-card">
+            <div class="ht-card-header">
+              <span class="ht-from">制片人</span>
+              <span class="ht-arrow">→</span>
+              <span class="ht-to">角色设计师</span>
+              <span class="ht-status ht-status-rejected"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> 已退回</span>
+            </div>
+            <div class="ht-card-body">
+              <div class="ht-uuid mono">handoff-004</div>
+              <div class="ht-desc">退回原因：角色描述过于模糊（"路人"），需补充外貌特征</div>
+              <div class="ht-time">2026-08-22 21:00</div>
+            </div>
+          </div>
+        </div>
+        <div class="ht-item ht-inprogress">
+          <div class="ht-dot ht-dot-blue"></div>
+          <div class="ht-card">
+            <div class="ht-card-header">
+              <span class="ht-from">制片人</span>
+              <span class="ht-arrow">→</span>
+              <span class="ht-to">分镜师</span>
+              <span class="ht-status ht-status-progress"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 进行中</span>
+            </div>
+            <div class="ht-card-body">
+              <div class="ht-uuid mono">handoff-005</div>
+              <div class="ht-desc">第3镜生成中 · V2 进行中</div>
+              <div class="ht-time">2026-08-22 20:30 → 进行中</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ht-stats">
+        <div class="ht-stat-card">
+          <div class="ht-stat-val">5</div>
+          <div class="ht-stat-label">总交接数</div>
+        </div>
+        <div class="ht-stat-card">
+          <div class="ht-stat-val" style="color:var(--accent-green)">3</div>
+          <div class="ht-stat-label">已完成</div>
+        </div>
+        <div class="ht-stat-card">
+          <div class="ht-stat-val" style="color:var(--accent-blue)">1</div>
+          <div class="ht-stat-label">进行中</div>
+        </div>
+        <div class="ht-stat-card">
+          <div class="ht-stat-val" style="color:var(--accent-rose)">1</div>
+          <div class="ht-stat-label">已退回</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         VIEW: Storyboard (分镜板)
+         ============================================================ -->
+    <div id="view-storyboard" class="alt-view" style="display:none;">
+      <div class="alt-view-header">
+        <h2 class="alt-view-title">分镜板</h2>
+        <span class="alt-view-sub">分镜序列 · 8 镜头</span>
+      </div>
+      <div class="sb-grid">
+        <div class="sb-panel sb-done">
+          <div class="sb-thumb" style="background:linear-gradient(135deg,#2a3530,#1a1818);"></div>
+          <div class="sb-info">
+            <div class="sb-num">第1镜</div>
+            <div class="sb-desc">竹林全景 · 晨雾缭绕</div>
+            <div class="sb-meta">
+              <span class="sb-camera">远景 · 静态</span>
+              <span class="sb-dur">5秒</span>
+            </div>
+          </div>
+          <div class="sb-status"><svg class="icon-md" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="sb-panel sb-done">
+          <div class="sb-thumb" style="background:linear-gradient(135deg,#2a303a,#1a1818);"></div>
+          <div class="sb-info">
+            <div class="sb-num">第2镜</div>
+            <div class="sb-desc">林小雨中景 · 回头</div>
+            <div class="sb-meta">
+              <span class="sb-camera">中景 · 慢摇</span>
+              <span class="sb-dur">4秒</span>
+            </div>
+          </div>
+          <div class="sb-status"><svg class="icon-md" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </div>
+        <div class="sb-panel sb-wip">
+          <div class="sb-thumb" style="background:linear-gradient(135deg,#302a3a,#1a1818);border:1px solid var(--accent-blue);"></div>
+          <div class="sb-info">
+            <div class="sb-num">第3镜</div>
+            <div class="sb-desc">小白猫特写 · 跑过</div>
+            <div class="sb-meta">
+              <span class="sb-camera">特写 · 固定</span>
+              <span class="sb-dur">3秒</span>
+            </div>
+          </div>
+          <div class="sb-status"><svg class="icon-md" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        </div>
+        <div class="sb-panel sb-pending">
+          <div class="sb-thumb"></div>
+          <div class="sb-info">
+            <div class="sb-num">第4镜</div>
+            <div class="sb-desc">双人全景 · 对话</div>
+            <div class="sb-meta">
+              <span class="sb-camera">全景 · 固定</span>
+              <span class="sb-dur">6秒</span>
+            </div>
+          </div>
+          <div class="sb-status"><svg class="icon-md" viewBox="0 0 24 24" fill="none" stroke="var(--fg-mute)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="sb-panel sb-pending">
+          <div class="sb-thumb"></div>
+          <div class="sb-info">
+            <div class="sb-num">第5镜</div>
+            <div class="sb-desc">林小雨特写 · 微笑</div>
+            <div class="sb-meta">
+              <span class="sb-camera">特写 · 推镜</span>
+              <span class="sb-dur">4秒</span>
+            </div>
+          </div>
+          <div class="sb-status"><svg class="icon-md" viewBox="0 0 24 24" fill="none" stroke="var(--fg-mute)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="sb-panel sb-pending">
+          <div class="sb-thumb"></div>
+          <div class="sb-info">
+            <div class="sb-num">第6镜</div>
+            <div class="sb-desc">竹林空镜 · 风吹叶动</div>
+            <div class="sb-meta">
+              <span class="sb-camera">远景 · 固定</span>
+              <span class="sb-dur">3秒</span>
+            </div>
+          </div>
+          <div class="sb-status"><svg class="icon-md" viewBox="0 0 24 24" fill="none" stroke="var(--fg-mute)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="sb-panel sb-pending">
+          <div class="sb-thumb"></div>
+          <div class="sb-info">
+            <div class="sb-num">第7镜</div>
+            <div class="sb-desc">小白猫跟拍 · 奔跑</div>
+            <div class="sb-meta">
+              <span class="sb-camera">跟随 · 手持</span>
+              <span class="sb-dur">5秒</span>
+            </div>
+          </div>
+          <div class="sb-status"><svg class="icon-md" viewBox="0 0 24 24" fill="none" stroke="var(--fg-mute)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="sb-panel sb-pending">
+          <div class="sb-thumb"></div>
+          <div class="sb-info">
+            <div class="sb-num">第8镜</div>
+            <div class="sb-desc">双人远景 · 远去</div>
+            <div class="sb-meta">
+              <span class="sb-camera">远景 · 固定</span>
+              <span class="sb-dur">6秒</span>
+            </div>
+          </div>
+          <div class="sb-status"><svg class="icon-md" viewBox="0 0 24 24" fill="none" stroke="var(--fg-mute)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       RIGHT SIDEBAR — Node Details
+       ============================================================ -->
+  <div class="sidebar-right" id="detailPanel">
+    <div class="detail-section">
+      <div class="detail-title">角色 · 林小雨</div>
+      <div class="detail-row">
+        <span class="key">类型</span>
+        <span class="val">元素节点 · 角色</span>
+      </div>
+      <div class="detail-row">
+        <span class="key">状态</span>
+        <span class="val" style="color:var(--accent-green)">已通过</span>
+      </div>
+      <div class="detail-row">
+        <span class="key">UUID</span>
+        <span class="val mono">a1b2c3d4</span>
+      </div>
+      <div class="detail-row">
+        <span class="key">创建于</span>
+        <span class="val">2026-08-22 18:30</span>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="sidebar-header" style="padding:0 0 6px;">参数</div>
+      <div class="detail-row">
+        <span class="key">年龄</span>
+        <span class="val">25岁</span>
+      </div>
+      <div class="detail-row">
+        <span class="key">发型</span>
+        <span class="val">短发，微卷</span>
+      </div>
+      <div class="detail-row">
+        <span class="key">服装</span>
+        <span class="val">米色风衣，黑色内搭</span>
+      </div>
+      <div class="detail-row">
+        <span class="key">色调</span>
+        <span class="val">暖灰偏冷</span>
+      </div>
+      <div class="detail-row">
+        <span class="key">情绪</span>
+        <span class="val">焦虑中带着坚定</span>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="sidebar-header" style="padding:0 0 6px;">版本树 (K13)</div>
+      <div class="detail-tag-list">
+        <span class="detail-tag">V1 · 废弃</span>
+        <span class="detail-tag">V2 · 归档</span>
+        <span class="detail-tag locked">V3 · 锁定</span>
+      </div>
+      <div class="detail-row" style="margin-top:8px;">
+        <span class="key">Seed</span>
+        <span class="val mono">12345</span>
+      </div>
+      <div class="detail-row">
+        <span class="key">Steps</span>
+        <span class="val mono">20</span>
+      </div>
+      <div class="detail-row">
+        <span class="key">尺寸</span>
+        <span class="val mono">1024×1024</span>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="sidebar-header" style="padding:0 0 6px;">交接记录</div>
+      <div class="timeline-entry">
+        <span class="time">19:28</span>
+        <span class="msg"><span class="agent">制片人</span> 创建交接任务</span>
+      </div>
+      <div class="timeline-entry">
+        <span class="time">19:29</span>
+        <span class="msg"><span class="agent">角色设计师</span> 检查通过</span>
+      </div>
+      <div class="timeline-entry">
+        <span class="time">19:31</span>
+        <span class="msg"><span class="agent">角色设计师</span> 接受任务</span>
+      </div>
+      <div class="timeline-entry">
+        <span class="time">19:35</span>
+        <span class="msg"><span class="agent">角色设计师</span> V1生成完成</span>
+      </div>
+      <div class="timeline-entry">
+        <span class="time">19:40</span>
+        <span class="msg"><span class="agent">制片人</span> 反馈：风格偏暖</span>
+      </div>
+      <div class="timeline-entry">
+        <span class="time">19:45</span>
+        <span class="msg"><span class="agent">角色设计师</span> V3生成完成</span>
+      </div>
+      <div class="timeline-entry">
+        <span class="time">19:48</span>
+        <span class="msg"><span class="agent">制片人</span> 锁定 V3</span>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="sidebar-header" style="padding:0 0 6px;">下游影响</div>
+      <div class="detail-row">
+        <span class="key">分镜</span>
+        <span class="val">镜头 1, 3, 5 引用</span>
+      </div>
+      <div class="detail-row">
+        <span class="key">动画</span>
+        <span class="val">2 个镜头待生成</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BOTTOM BAR
+       ============================================================ -->
+  <div class="bottombar">
+    <div class="bottombar-status">
+      <span class="dot dot-green" style="width:6px;height:6px;border-radius:50%;display:inline-block;"></span>
+      <span>系统正常</span>
+      <span style="opacity:0.5">·</span>
+      <span>ComfyUI 已连接</span>
+    </div>
+    <div class="bottombar-prompt">
+      <span class="bottombar-prompt-icon">⟩</span>
+      <input class="bottombar-input" type="text"
+             placeholder="输入创作指令，如：把林小雨的风衣改成深蓝色…"
+             id="chatInput">
+    </div>
+    <button class="bottombar-send" onclick="sendInstruction()">发送</button>
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+// DATA — Sample project data
+// ============================================================
+
+const nodes = [
+  {
+    id: 'elem-linxy',
+    type: 'element',
+    title: '角色 · 林小雨',
+    icon: 'user',
+    status: 'green',
+    x: 40, y: 80,
+    params: [
+      {k: '年龄', v: '25岁'},
+      {k: '服装', v: '米色风衣'},
+      {k: '色调', v: '暖灰偏冷'},
+    ],
+    versions: [
+      {ver: 'V1', locked: false},
+      {ver: 'V2', locked: false},
+      {ver: 'V3', locked: true},
+    ],
+    tag: ''
+  },
+  {
+    id: 'elem-cat',
+    type: 'element',
+    title: '角色 · 小白猫',
+    icon: 'user',
+    status: 'green',
+    x: 40, y: 240,
+    params: [
+      {k: '品种', v: '白猫'},
+      {k: '体型', v: '幼猫'},
+      {k: '眼睛', v: '蓝色'},
+    ],
+    versions: [{ver: 'V1', locked: true}],
+    tag: ''
+  },
+  {
+    id: 'elem-scene1',
+    type: 'element',
+    title: '场景 · 雨夜巷',
+    icon: 'image',
+    status: 'green',
+    x: 40, y: 390,
+    params: [
+      {k: '环境', v: '雨夜小巷'},
+      {k: '光照', v: '路灯暖光'},
+      {k: '天气', v: '中雨'},
+    ],
+    versions: [{ver: 'V1', locked: false}, {ver: 'V2', locked: true}],
+    tag: ''
+  },
+  {
+    id: 'task-chardesign',
+    type: 'task',
+    title: '任务 · 角色设计',
+    icon: 'edit',
+    status: 'green',
+    x: 290, y: 100,
+    params: [
+      {k: 'Agent', v: '角色设计师'},
+      {k: '交付', v: '概念图 ×3版'},
+      {k: '用时', v: '18min'},
+    ],
+    versions: [
+      {ver: 'V1', locked: false},
+      {ver: 'V2', locked: false},
+      {ver: 'V3', locked: true},
+    ],
+    tag: ''
+  },
+  {
+    id: 'task-scenedesign',
+    type: 'task',
+    title: '任务 · 场景设计',
+    icon: 'edit',
+    status: 'green',
+    x: 290, y: 280,
+    params: [
+      {k: 'Agent', v: '场景设计师'},
+      {k: '交付', v: '场景图 ×2版'},
+      {k: '用时', v: '12min'},
+    ],
+    versions: [{ver: 'V1', locked: false}, {ver: 'V2', locked: true}],
+    tag: ''
+  },
+  {
+    id: 'task-storyboard',
+    type: 'task',
+    title: '任务 · 分镜构图',
+    icon: 'edit',
+    status: 'gray',
+    x: 540, y: 180,
+    params: [
+      {k: 'Agent', v: '分镜师'},
+      {k: '交付', v: '5镜头分镜'},
+      {k: '状态', v: '待启动'},
+    ],
+    versions: [],
+    tag: ''
+  },
+  {
+    id: 'review-qc',
+    type: 'review',
+    title: '审查 · Auto-QC',
+    icon: 'shield',
+    status: 'yellow',
+    x: 770, y: 80,
+    params: [
+      {k: '类型', v: '自动审查'},
+      {k: '检查项', v: '5/7通过'},
+      {k: '问题', v: '2项需人工'},
+    ],
+    versions: [],
+    tag: '待审'
+  },
+  {
+    id: 'review-art',
+    type: 'review',
+    title: '审查 · 艺术总监',
+    icon: 'shield',
+    status: 'gray',
+    x: 770, y: 220,
+    params: [
+      {k: '类型', v: '审美审查'},
+      {k: '基准', v: '导演意图'},
+      {k: '状态', v: '待启动'},
+    ],
+    versions: [],
+    tag: ''
+  },
+  {
+    id: 'decision-boss',
+    type: 'decision',
+    title: '决策 · 老板',
+    icon: 'flag',
+    status: 'gray',
+    x: 990, y: 150,
+    params: [
+      {k: '类型', v: '最终确认'},
+      {k: '选项', v: '通过/打回'},
+      {k: '状态', v: '待启动'},
+    ],
+    versions: [],
+    tag: ''
+  },
+  {
+    id: 'task-anim',
+    type: 'task',
+    title: '任务 · 动画',
+    icon: 'edit',
+    status: 'gray',
+    x: 540, y: 340,
+    params: [
+      {k: 'Agent', v: '动画师'},
+      {k: '交付', v: '动画片段'},
+      {k: '状态', v: '待启动'},
+    ],
+    versions: [],
+    tag: ''
+  },
+  {
+    id: 'elem-scene2',
+    type: 'element',
+    title: '场景 · 小巷深处',
+    icon: 'image',
+    status: 'yellow',
+    x: 40, y: 540,
+    params: [
+      {k: '环境', v: '小巷深处'},
+      {k: '光照', v: '月光'},
+      {k: '状态', v: '审查中'},
+    ],
+    versions: [{ver: 'V1', locked: false}],
+    tag: '审查中'
+  },
+];
+
+const connections = [
+  {from: 'elem-linxy', to: 'task-chardesign', type: 'solid'},
+  {from: 'elem-cat', to: 'task-chardesign', type: 'solid'},
+  {from: 'elem-scene1', to: 'task-scenedesign', type: 'solid'},
+  {from: 'elem-scene1', to: 'task-storyboard', type: 'dashed'},
+  {from: 'task-chardesign', to: 'review-qc', type: 'solid'},
+  {from: 'task-scenedesign', to: 'review-qc', type: 'solid'},
+  {from: 'task-chardesign', to: 'task-storyboard', type: 'solid'},
+  {from: 'task-scenedesign', to: 'task-storyboard', type: 'dashed'},
+  {from: 'review-qc', to: 'review-art', type: 'solid'},
+  {from: 'review-art', to: 'decision-boss', type: 'solid'},
+  {from: 'task-storyboard', to: 'task-anim', type: 'solid'},
+  {from: 'elem-scene2', to: 'task-scenedesign', type: 'dashed'},
+];
+
+// ============================================================
+// RENDER — Draw nodes and connections
+// ============================================================
+
+const statusColors = {
+  green: 'var(--accent-green)',
+  yellow: 'var(--accent-yellow)',
+  red: 'var(--accent-red)',
+  blue: 'var(--accent-blue)',
+  gray: 'var(--fg-mute)',
+};
+
+let selectedNode = 'elem-linxy';
+let zoom = 1;
+let panX = 0, panY = 0;
+
+const nodesLayer = document.getElementById('nodesLayer');
+const connSvg = document.getElementById('connSvg');
+const canvas = document.getElementById('canvas');
+
+function getIconSvg(name) {
+  const icons = {
+    user: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+    image: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
+    edit: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>',
+    shield: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    flag: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>',
+  };
+  return icons[name] || '';
+}
+
+function renderNodes() {
+  nodesLayer.innerHTML = '';
+  nodes.forEach(n => {
+    const el = document.createElement('div');
+    el.className = 'node' + (n.id === selectedNode ? ' selected' : '');
+    el.dataset.type = n.type;
+    el.dataset.id = n.id;
+    el.style.left = (n.x + panX) * zoom + 'px';
+    el.style.top = (n.y + panY) * zoom + 'px';
+    el.style.transform = `scale(${zoom})`;
+    el.style.transformOrigin = 'top left';
+
+    const portsHtml = `
+      <div class="node-ports in"><div class="port connected"></div></div>
+      <div class="node-ports out"><div class="port connected"></div></div>
+    `;
+
+    const paramsHtml = n.params.map(p =>
+      `<div class="node-param"><span class="key">${p.k}</span><span class="val">${p.v}</span></div>`
+    ).join('');
+
+    const verHtml = n.versions.map(v =>
+      `<span class="node-ver ${v.locked ? 'locked' : ''}">${v.ver}</span>`
+    ).join('');
+
+    el.innerHTML = `
+      ${portsHtml}
+      <div class="node-head">
+        <div class="node-title">
+          <span class="node-icon">${getIconSvg(n.icon)}</span>
+          ${n.title}
+        </div>
+        <div class="node-status" style="background:${statusColors[n.status]}"></div>
+      </div>
+      <div class="node-body">${paramsHtml}</div>
+      <div class="node-foot">
+        <div class="node-versions">${verHtml}</div>
+        ${n.tag ? `<span class="node-tag">${n.tag}</span>` : ''}
+      </div>
+    `;
+
+    el.addEventListener('mousedown', e => startDragNode(e, n.id));
+    el.addEventListener('click', e => { e.stopPropagation(); selectNode(n.id); });
+    nodesLayer.appendChild(el);
+  });
+}
+
+function renderConnections() {
+  const existing = connSvg.querySelectorAll('path, .conn-label');
+  existing.forEach(e => e.remove());
+
+  const canvasRect = canvas.getBoundingClientRect();
+
+  connections.forEach(c => {
+    const fromEl = document.querySelector('[data-id="' + c.from + '"]');
+    const toEl = document.querySelector('[data-id="' + c.to + '"]');
+    if (!fromEl || !toEl) return;
+
+    const fr = fromEl.getBoundingClientRect();
+    const tr = toEl.getBoundingClientRect();
+
+    const fromX = fr.right - canvasRect.left;
+    const fromY = fr.top + fr.height / 2 - canvasRect.top;
+    const toX = tr.left - canvasRect.left;
+    const toY = tr.top + tr.height / 2 - canvasRect.top;
+
+    const midX = (fromX + toX) / 2;
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', `M ${fromX} ${fromY} C ${midX} ${fromY}, ${midX} ${toY}, ${toX} ${toY}`);
+    path.setAttribute('class', `conn-line conn-${c.type}`);
+    path.setAttribute('marker-end', 'url(#arrow)');
+    connSvg.appendChild(path);
+  });
+}
+
+function selectNode(id) {
+  selectedNode = id;
+  renderNodes();
+}
+
+// ============================================================
+// DRAG — Pan canvas + drag nodes
+// ============================================================
+
+let isDragging = false;
+let dragNode = null;
+let startX, startY, startNodeX, startNodeY;
+
+function startDragNode(e, nodeId) {
+  e.preventDefault();
+  e.stopPropagation();
+  dragNode = nodeId;
+  startX = e.clientX;
+  startY = e.clientY;
+  const n = nodes.find(nd => nd.id === nodeId);
+  startNodeX = n.x;
+  startNodeY = n.y;
+  selectNode(nodeId);
+  document.addEventListener('mousemove', onDragMove);
+  document.addEventListener('mouseup', endDrag);
+}
+
+function onDragMove(e) {
+  if (!dragNode) return;
+  const dx = (e.clientX - startX) / zoom;
+  const dy = (e.clientY - startY) / zoom;
+  const n = nodes.find(nd => nd.id === dragNode);
+  n.x = startNodeX + dx;
+  n.y = startNodeY + dy;
+  renderNodes();
+  renderConnections();
+}
+
+function endDrag() {
+  dragNode = null;
+  document.removeEventListener('mousemove', onDragMove);
+  document.removeEventListener('mouseup', endDrag);
+}
+
+// Canvas pan
+canvas.addEventListener('mousedown', function(e) {
+  if (e.target === canvas || e.target.classList.contains('canvas-bg')) {
+    isDragging = true;
+    canvas.parentElement.classList.add('panning');
+    startX = e.clientX;
+    startY = e.clientY;
+    document.addEventListener('mousemove', onPanMove);
+    document.addEventListener('mouseup', endPan);
+  }
+});
+
+function onPanMove(e) {
+  if (!isDragging) return;
+  panX += (e.clientX - startX) / zoom;
+  panY += (e.clientY - startY) / zoom;
+  startX = e.clientX;
+  startY = e.clientY;
+  renderNodes();
+  renderConnections();
+}
+
+function endPan() {
+  isDragging = false;
+  canvas.parentElement.classList.remove('panning');
+  document.removeEventListener('mousemove', onPanMove);
+  document.removeEventListener('mouseup', endPan);
+}
+
+// Canvas click deselect
+canvas.addEventListener('click', e => {
+  if (e.target === canvas || e.target.classList.contains('canvas-bg')) {
+    selectedNode = null;
+    renderNodes();
+  }
+});
+
+// ============================================================
+// ZOOM — zoom around a screen point
+// ============================================================
+
+function zoomAtPoint(newZoom, screenX, screenY) {
+  newZoom = Math.max(0.4, Math.min(2, newZoom));
+  if (newZoom === zoom) return;
+  // Keep the world point under (screenX, screenY) stationary
+  panX = panX + screenX * (1 / newZoom - 1 / zoom);
+  panY = panY + screenY * (1 / newZoom - 1 / zoom);
+  zoom = newZoom;
+  document.getElementById('zoomLevel').textContent = Math.round(zoom * 100) + '%';
+  renderNodes();
+  renderConnections();
+}
+
+function getCanvasMouse(e) {
+  const rect = canvas.getBoundingClientRect();
+  return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+}
+
+function getNodesCentroidScreen() {
+  var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  nodes.forEach(function(n) {
+    var el = document.querySelector('[data-id="' + n.id + '"]');
+    var w = el ? el.offsetWidth : 180;
+    var h = el ? el.offsetHeight : 120;
+    minX = Math.min(minX, n.x);
+    minY = Math.min(minY, n.y);
+    maxX = Math.max(maxX, n.x + w);
+    maxY = Math.max(maxY, n.y + h);
+  });
+  var cx = (minX + maxX) / 2;
+  var cy = (minY + maxY) / 2;
+  return { x: (cx + panX) * zoom, y: (cy + panY) * zoom };
+}
+
+function zoomIn() {
+  var c = getNodesCentroidScreen();
+  zoomAtPoint(zoom * 1.2, c.x, c.y);
+}
+
+function zoomOut() {
+  var c = getNodesCentroidScreen();
+  zoomAtPoint(zoom / 1.2, c.x, c.y);
+}
+
+function zoomReset() {
+  zoom = 1;
+  panX = 0;
+  panY = 0;
+  document.getElementById('zoomLevel').textContent = '100%';
+  renderNodes();
+  renderConnections();
+}
+
+// Mouse wheel zoom — origin = mouse position (graph view only)
+canvas.addEventListener('wheel', function(e) {
+  // Don't capture wheel when an alt-view is active — let it scroll naturally
+  var altActive = false;
+  document.querySelectorAll('.alt-view').forEach(function(el) {
+    if (el.style.display === 'block') altActive = true;
+  });
+  if (altActive) return;
+  e.preventDefault();
+  var m = getCanvasMouse(e);
+  var factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  zoomAtPoint(zoom * factor, m.x, m.y);
+});
+
+// ============================================================
+// CHAT INPUT
+// ============================================================
+
+function sendInstruction() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  // Simulate: flash a node
+  const target = nodes.find(n => n.id === 'task-chardesign');
+  if (target) {
+    const el = document.querySelector('[data-id="' + target.id + '"]');
+    if (el) {
+      el.style.borderColor = 'var(--accent-teal)';
+      el.style.boxShadow = '0 0 0 1px var(--accent-teal), 0 0 20px rgba(91,184,181,0.2)';
+      setTimeout(function() {
+        el.style.borderColor = '';
+        el.style.boxShadow = '';
+        renderNodes();
+        renderConnections();
+      }, 2000);
+    }
+  }
+  input.value = '';
+  // Status feedback, auto-reset after 3s
+  var status = document.querySelector('.bottombar-status');
+  status.innerHTML = '<span class="dot dot-blue" style="width:6px;height:6px;border-radius:50%;display:inline-block;"></span><span>正在处理指令…</span>';
+  setTimeout(function() {
+    status.innerHTML = '<span class="dot dot-green" style="width:6px;height:6px;border-radius:50%;display:inline-block;"></span><span>系统正常</span><span style="opacity:0.5">·</span><span>ComfyUI 已连接</span>';
+  }, 3000);
+}
+
+document.getElementById('chatInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') sendInstruction();
+});
+
+// ============================================================
+// TAB SWITCHING — View switching logic
+// ============================================================
+
+const graphElements = document.querySelectorAll('#canvas > .canvas-bg, #connSvg, #nodesLayer, #canvas > .canvas-overlay');
+const altViews = document.querySelectorAll('.alt-view');
+
+// Stop wheel events from bubbling to canvas — allows native scroll in alt-views
+altViews.forEach(function(view) {
+  view.addEventListener('wheel', function(e) {
+    e.stopPropagation();
+  }, { passive: true });
+});
+
+function switchView(viewName) {
+  // Update tab active states
+  document.querySelectorAll('.topbar-tab').forEach(t => t.classList.remove('active'));
+  const activeTab = document.querySelector('.topbar-tab[data-view="' + viewName + '"]');
+  if (activeTab) activeTab.classList.add('active');
+
+  if (viewName === 'graph') {
+    // Show node graph elements
+    graphElements.forEach(el => el.style.display = '');
+    // Hide all alt views
+    altViews.forEach(el => el.style.display = 'none');
+    // Restore canvas cursor
+    canvas.style.cursor = 'grab';
+    // Re-render connections after layout settles
+    requestAnimationFrame(() => renderConnections());
+  } else {
+    // Hide node graph elements
+    graphElements.forEach(el => el.style.display = 'none');
+    // Hide all alt views
+    altViews.forEach(el => el.style.display = 'none');
+    // Show the selected view
+    const target = document.getElementById('view-' + viewName);
+    if (target) target.style.display = 'block';
+    // Remove canvas cursor
+    canvas.style.cursor = 'default';
+    // Load API data for the view
+    if (apiOnline) {
+      if (viewName === 'budget') loadBudgetView();
+      else if (viewName === 'versions') loadVersionsView();
+      else if (viewName === 'handoffs') loadHandoffsView();
+    }
+  }
+}
+
+document.querySelectorAll('.topbar-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const viewName = tab.dataset.view;
+    if (viewName) switchView(viewName);
+  });
+});
+
+// Agent list click
+document.querySelectorAll('#agentList .sidebar-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('#agentList .sidebar-item').forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+// ============================================================
+// API INTEGRATION — 前后端联调
+// ============================================================
+
+const API_BASE = '/api';
+let apiOnline = false;
+
+async function fetchAPI(endpoint) {
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 5000);
+    const response = await fetch(API_BASE + endpoint, { signal: ctrl.signal });
+    clearTimeout(timer);
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    return await response.json();
+  } catch (e) {
+    return null;
+  }
+}
+
+function updateAPIBadge(online) {
+  const badge = document.getElementById('apiStatusBadge');
+  if (!badge) return;
+  if (online) {
+    badge.textContent = 'API已连接';
+    badge.style.color = 'var(--accent-green)';
+  } else {
+    badge.textContent = '离线模式';
+    badge.style.color = 'var(--fg-mute)';
+  }
+}
+
+// --- 预算仪表盘 ---
+async function loadBudgetView() {
+  const data = await fetchAPI('/budget/status');
+  if (!data || data.error) return;
+
+  apiOnline = true;
+  updateAPIBadge(true);
+
+  const total = data.total_budget || 0;
+  const spent = data.spent || 0;
+  const remaining = data.remaining || 0;
+  const pct = data.used_percent || 0;
+  const isWarning = data.warning;
+  const isFrozen = data.frozen;
+  const statusColor = isFrozen ? 'var(--accent-red)' : isWarning ? 'var(--accent-gold)' : 'var(--accent-green)';
+  const statusText = isFrozen ? '已熔断' : isWarning ? '预警中' : '正常运行';
+
+  const ringOffset = 251.2 - (251.2 * pct / 100);
+
+  const hero = document.querySelector('#view-budget .bd-hero');
+  if (hero) {
+    hero.innerHTML = `
+      <div class="bd-hero-ring">
+        <svg width="100" height="100" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="var(--line)" stroke-width="6"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="${statusColor}" stroke-width="6"
+                  stroke-dasharray="251.2" stroke-dashoffset="${ringOffset}"
+                  transform="rotate(-90 50 50)" stroke-linecap="round"/>
+          <text x="50" y="48" text-anchor="middle" fill="var(--fg)" font-family="Fraunces, serif" font-size="1.4rem" font-weight="700">${pct}%</text>
+          <text x="50" y="64" text-anchor="middle" fill="var(--fg-mute)" font-size="0.6rem">已使用</text>
+        </svg>
+      </div>
+      <div class="bd-hero-info">
+        <div class="bd-hero-status" style="color:${statusColor}">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          ${statusText}
+        </div>
+        <div class="bd-hero-desc">总预算 ${total} ${data.currency || 'CNY'} · 已支出 ${spent} · 剩余 ${remaining}</div>
+        <div class="bd-hero-stats">
+          <div class="bd-stat"><span class="bd-stat-val">${spent}</span><span class="bd-stat-label">已支出</span></div>
+          <div class="bd-stat"><span class="bd-stat-val">${remaining}</span><span class="bd-stat-label">剩余</span></div>
+          <div class="bd-stat"><span class="bd-stat-val">${data.transaction_count || 0}</span><span class="bd-stat-label">交易笔数</span></div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+// --- 版本树 ---
+async function loadVersionsView() {
+  const data = await fetchAPI('/versions');
+  if (!data || data.error) return;
+
+  apiOnline = true;
+  updateAPIBadge(true);
+
+  if (!data.versions || data.versions.length === 0) return;
+
+  const container = document.querySelector('#view-versions .version-tree-container');
+  if (!container) return;
+
+  const byAsset = {};
+  data.versions.forEach(v => {
+    const key = v.asset_type + ' · ' + v.asset_name;
+    if (!byAsset[key]) byAsset[key] = [];
+    byAsset[key].push(v);
+  });
+
+  const iconMap = {
+    character: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+    scene: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
+    storyboard: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>',
+    video: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>',
+  };
+
+  let html = '';
+  Object.entries(byAsset).forEach(([assetKey, versions]) => {
+    const icon = iconMap[versions[0].asset_type] || iconMap.scene;
+    html += `
+      <div class="vt-asset-group">
+        <div class="vt-asset-header">
+          <span class="vt-asset-icon">${icon}</span>
+          <span class="vt-asset-name">${assetKey}</span>
+          <span class="vt-asset-status">${versions.length} 个版本</span>
+        </div>
+        <div class="vt-versions">
+    `;
+    versions.forEach((v, i) => {
+      const isLatest = i === 0;
+      const cls = isLatest ? 'vt-locked' : 'vt-archived';
+      const num = 'V' + (versions.length - i);
+      const time = v.locked_at ? v.locked_at.substring(0, 19).replace('T', ' ') : '';
+      html += `
+          <div class="vt-version ${cls}">
+            <span class="vt-v-num">${num}</span>
+            <div class="vt-v-info">
+              <div class="vt-v-status">${isLatest ? '<svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> 已锁定' : '归档版本'}</div>
+              <div class="vt-v-meta">UUID: ${v.uuid}</div>
+            </div>
+            <span class="vt-v-time">${time}</span>
+          </div>
+      `;
+      if (i < versions.length - 1) html += '<div class="vt-branch-line"></div>';
+    });
+    html += `
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+// --- 交接记录 ---
+async function loadHandoffsView() {
+  const list = await fetchAPI('/handoffs');
+  if (!list || (list.error && !Array.isArray(list))) return;
+
+  apiOnline = true;
+  updateAPIBadge(true);
+
+  if (!Array.isArray(list) || list.length === 0) return;
+
+  const container = document.querySelector('#view-handoffs .handoff-timeline');
+  if (!container) return;
+
+  const statusColors = {
+    completed: 'var(--accent-green)',
+    rejected: 'var(--accent-red)',
+    in_progress: 'var(--accent-blue)',
+    pending_check: 'var(--accent-gold)',
+  };
+  const statusLabels = {
+    completed: '已完成',
+    rejected: '已退回',
+    in_progress: '进行中',
+    pending_check: '待检查',
+  };
+  const statusIcons = {
+    completed: '<svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+    rejected: '<svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+    in_progress: '<svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    pending_check: '<svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
+  };
+
+  let html = '';
+  list.forEach(h => {
+    const status = h.status || 'pending_check';
+    const color = statusColors[status] || 'var(--fg-mute)';
+    const label = statusLabels[status] || status;
+    const icon = statusIcons[status] || '';
+    const dotColor = status === 'completed' ? '' : status === 'rejected' ? 'ht-dot-red' : status === 'in_progress' ? 'ht-dot-blue' : '';
+    const time = h.created_at ? h.created_at.substring(0, 19).replace('T', ' ') : '';
+    const hid = h.handoff_id ? h.handoff_id.substring(0, 8) : '';
+
+    html += `
+      <div class="ht-item ht-${status === 'completed' ? 'completed' : status === 'rejected' ? 'rejected' : 'inprogress'}">
+        <div class="ht-dot ${dotColor}"></div>
+        <div class="ht-card">
+          <div class="ht-card-header">
+            <span class="ht-from">${h.from_agent || '?'}</span>
+            <span class="ht-arrow">→</span>
+            <span class="ht-to">${h.to_agent || '?'}</span>
+            <span class="ht-status" style="color:${color}">${icon} ${label}</span>
+          </div>
+          <div class="ht-card-body">
+            <span class="ht-uuid">${hid}</span>
+            <span class="ht-desc">${h.task_name || ''}</span>
+            <span class="ht-time">${time}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+// --- 资产状态 (更新底部状态栏) ---
+async function loadAssetStatus() {
+  const data = await fetchAPI('/assets/status');
+  if (!data || data.error) return;
+
+  apiOnline = true;
+  updateAPIBadge(true);
+
+  const leftStatus = document.querySelector('.bottombar-left');
+  if (leftStatus && data.total !== undefined) {
+    const pct = data.progress_percent || 0;
+    const locked = data.locked_count || 0;
+    leftStatus.innerHTML = `
+      <span style="color:var(--accent-green)">${pct}%</span>
+      <span style="color:var(--fg-mute)">· ${data.total}项资产 · ${locked}已锁定</span>
+    `;
+  }
+}
+
+// --- API健康检查 ---
+async function checkAPI() {
+  const data = await fetchAPI('/health');
+  if (data && data.status === 'ok') {
+    apiOnline = true;
+    updateAPIBadge(true);
+    loadBudgetView();
+    loadVersionsView();
+    loadHandoffsView();
+    loadAssetStatus();
+  } else {
+    apiOnline = false;
+    updateAPIBadge(false);
+  }
+}
+
+// ============================================================
+// INIT
+// ============================================================
+
+renderNodes();
+renderConnections();
+
+// Re-render after fonts/layout settle
+requestAnimationFrame(() => { renderConnections(); });
+window.addEventListener('load', () => { renderConnections(); });
+window.addEventListener('resize', () => { renderConnections(); });
+
+// API health check on load, then periodic refresh
+checkAPI();
+setInterval(checkAPI, 30000);
+</script>
+
+</body>
+</html>

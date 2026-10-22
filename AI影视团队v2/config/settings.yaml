@@ -1,0 +1,51 @@
+# AI影视团队v2 — 统一配置中心（维度33 配置管理）
+# 12-Factor App 之 Config：全部可变量集中于此，代码只读不写死。
+# 覆盖优先级：环境变量（AI_FILM_ 前缀） > settings.<env>.yaml > settings.yaml > defaults
+# 校验入口：python -c "from config.config_loader import validate; validate()"
+
+app:
+  name: cineast-3
+  project: 雨夜寻猫          # 当前唯一在制项目
+  env: development           # development | staging | production
+
+# ---- 端口（维度33：原散落各脚本，现收敛）----
+ports:
+  blender_addon: 17800       # mcp_blender/baimo_mcp_addon（20Hz 主线程 bpy）
+  ollama: 11434              # 本地 LLM 0 元基本盘
+  api_server: 8000           # tools/api_server.py（FastAPI）
+  comfyui: 8188              # D盘portable ComfyUI（tools/comfyui_start.py 启动，tools/comfyui_client.py 连接）
+
+# ---- 超时与锁（原 tools/vram_lock.py 内字面量）----
+vram_lock:
+  ttl_seconds: 1800          # 锁最长持有
+  heartbeat_seconds: 60      # 心跳间隔
+  poll_seconds: 5            # 抢锁轮询
+
+# ---- QC 硬门阈值（唯一事实来源：spec/qc_rubric.json，此处仅镜像便于校验）----
+qc:
+  motion_px_per_frame_min: 2.0     # 硬门：运动 ≥2px/frame
+  arcface_similarity_min: 0.75     # 硬门：角色一致性
+  sync_c_min: 5.0                  # 硬门：音画同步
+  source_of_truth: spec/qc_rubric.json
+
+# ---- 预算（老板铁律：R5 ≤100 元）----
+budget:
+  r5_total_cny: 100.0
+  warn_ratio: 0.8                  # 消耗 80% 触发预警
+  halt_ratio: 1.0                  # 100% 熔断（老板签字解锁）
+
+# ---- 交付规格（唯一事实来源：spec/delivery_spec.json）----
+delivery:
+  spec_file: spec/delivery_spec.json
+  ai_label_required: true          # GB 45438-2025 双标识（显式 overlay + 隐式元数据）
+  tiers: [L1, L2, L3]
+
+# ---- 本地模型（本地优先路线，维度1）----
+models:
+  ollama_llm: qwen3:8b
+  vace_dir: models/wan_vace_1.3b   # 全量 16.4GB（已补齐）
+  wan_local: Wan2.2-5B             # 832×480/49帧，峰值 10596MiB
+
+# ---- 路径（唯一事实来源：config/paths.py，此处不重复定义）----
+paths:
+  source_of_truth: config/paths.py

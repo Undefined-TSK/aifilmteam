@@ -1,0 +1,74 @@
+{
+  "handoff_id": "角色设计-20260925-54FE",
+  "task_name": "剧本v1角色描述交付-林小雨与小白",
+  "from_agent": "编剧",
+  "to_agent": "角色设计师",
+  "work_background": "雨夜寻猫剧本v1已落盘（三幕四场80秒）。角色视觉基准以K13已锁资产为准：林小雨v2（米色风衣深色短发）、流浪猫v1（绿眼湿毛白猫）+分镜02（small white kitten）",
+  "deliverables": [
+    "screenplay/雨夜寻猫_角色描述.md",
+    "screenplay/雨夜寻猫_剧本_v1.json"
+  ],
+  "downstream_task": "林小雨定调图复检+三视图+表情集写入character_lock；小白定调图+character_lock",
+  "completion_criteria": [
+    "character_lock包含feature_keywords/prompt_injection/views",
+    "与K13已锁资产（短发/米色风衣/绿眼白猫）无冲突"
+  ],
+  "stop_conditions": [
+    "与已锁资产特征冲突无法调和时上报艺术总监"
+  ],
+  "pending_items": [],
+  "material_version": "v1",
+  "created_at": "2026-09-25T16:33:56.953237",
+  "status": "completed",
+  "timeline": [
+    {
+      "event": "created",
+      "agent": "编剧",
+      "message": "创建交接任务，等待 角色设计师 检查",
+      "time": "2026-09-25T16:33:56.953237"
+    },
+    {
+      "event": "checked",
+      "agent": "角色设计师",
+      "message": "检查完成：通过",
+      "time": "2026-09-25T16:53:06.703673"
+    },
+    {
+      "event": "accepted",
+      "agent": "角色设计师",
+      "message": "已接受任务，开始处理",
+      "time": "2026-09-25T16:53:16.499331"
+    },
+    {
+      "event": "completed",
+      "agent": "角色设计师",
+      "message": "任务完成，已交付结果",
+      "time": "2026-09-25T16:56:41.651461"
+    }
+  ],
+  "check_result": {
+    "checked": true,
+    "checked_by": "角色设计师",
+    "passed": true,
+    "issues": [],
+    "should_stop": false,
+    "stop_reason": "",
+    "checked_at": "2026-09-25T16:53:06.703673"
+  },
+  "result": {
+    "deliverables": {
+      "character_lock": [
+        "character_lock/林小雨.json",
+        "character_lock/小白.json"
+      ],
+      "k13_locked": "小白_v2（uuid: 07915e1d）",
+      "concept_art": [
+        "assets/characters/小白_v2.png（新生成定调）",
+        "assets/characters/林小雨_v5.png（复检沿用）"
+      ],
+      "budget_spent": "20点（小白v1重生成+v2定稿）"
+    },
+    "completed_by": "角色设计师",
+    "completed_at": "2026-09-25T16:56:41.651461"
+  }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>维度1 · 模型成本对比柱状图 — CINEAST-3</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script>window.echarts||document.write('<script src="https://unpkg.com/echarts@5.5.0/dist/echarts.min.js"><\/script>')</script>
+<style>
+  :root{--bg:#1a1a2e;--panel:#16213e;--line:#0f3460;--accent:#e94560;--purple:#533483;--txt:#e8eaf0;--dim:#9aa3b2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"Segoe UI","Microsoft YaHei",sans-serif;padding:22px;max-width:1180px;margin:0 auto}
+  h1{font-size:21px;margin-bottom:4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:16px;line-height:1.7}
+  .nav{font-size:12px;color:var(--dim);margin-bottom:16px}
+  .nav a{color:#5b8cff;text-decoration:none}
+  #chart{width:100%;height:520px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px}
+  table{width:100%;border-collapse:collapse;margin-top:18px}
+  th,td{text-align:left;padding:7px 10px;font-size:12.5px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:500}
+  .note{font-size:12px;color:var(--dim);margin-top:14px;line-height:1.8}
+  .tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;margin-left:6px}
+  .ok{background:rgba(63,185,80,.15);color:#3fb950}.warn{background:rgba(233,69,96,.15);color:var(--accent)}
+  code{background:#0f3460;padding:1px 6px;border-radius:4px;font-size:12px;color:#39c5cf}
+</style>
+</head>
+<body>
+  <h1>维度 1 · 各模型「每镜」成本对比</h1>
+  <div class="nav">基线：<a href="../00-基线报告/项目基线报告.md">../00-基线报告/项目基线报告.md</a> ｜ 规约：<a href="../_执行须知.md">../_执行须知.md</a> ｜ 导航：<a href="../索引.html">../索引.html</a></div>
+  <div class="sub">口径：1 镜 = 5 秒（121 帧）· 本地 0 元（仅电费忽略）· 云端按官方文档单价换算 · 悬停查看详情 · 数据源见文末。</div>
+  <div id="chart"></div>
+  <table>
+    <thead><tr><th>引擎 / 模型</th><th>计费口径</th><th>每镜成本</th><th>状态</th></tr></thead>
+    <tbody>
+      <tr><td>本地 Wan VACE 1.3B</td><td>本机 12GB 显存，0 元</td><td>¥0.00</td><td><span class="tag warn">待实测</span></td></tr>
+      <tr><td>本地 Wan2.2 TI2V 5B</td><td>本机 12GB 显存，0 元</td><td>¥0.00</td><td><span class="tag ok">已实测</span></td></tr>
+      <tr><td>fal 3DREAL 480p</td><td>$0.0024075/Mpx × 0.3456Mpx × 121 帧</td><td>≈ ¥0.72</td><td><span class="tag warn">待实测</span></td></tr>
+      <tr><td>百炼 wan2.2-i2v-flash 480P</td><td>0.1 元/秒 × 5 秒</td><td>≈ ¥0.50</td><td><span class="tag warn">待实测</span></td></tr>
+      <tr><td>fal 3DREAL 720p</td><td>$0.0024075/Mpx × 0.9216Mpx × 121 帧</td><td>≈ ¥1.90</td><td><span class="tag warn">待实测</span></td></tr>
+      <tr><td>百炼 wan2.2-i2v-flash 720P</td><td>0.2 元/秒 × 5 秒</td><td>≈ ¥1.00</td><td><span class="tag warn">待实测</span></td></tr>
+      <tr><td>百炼 wanx2.1-vace-plus 720P</td><td>参照同代 i2v 约 0.2 元/秒 × 5 秒</td><td>≈ ¥1.00</td><td><span class="tag ok">已实测</span></td></tr>
+      <tr><td>百炼 wan2.2-t2v-plus 1080P</td><td>0.7 元/秒 × 5 秒</td><td>≈ ¥3.50</td><td><span class="tag warn">待实测</span></td></tr>
+      <tr><td>即梦 Seedance 2.5</td><td>官方按次计费，单价未公开抓取</td><td>待实测</td><td><span class="tag warn">待实测</span></td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <b>读图结论：</b>1) 本地引擎为 0 元基本盘，K-REV-3「本地抽卡 N=3~4 版 → 云端只烧胜者」可把云端消耗压缩约 4 倍；2) 云端重绘 720P 档约 1 元/镜，18 镜全走云端 ≈ ¥18，落在 ≤100 元预算内；3) fal 720p 单价高于百炼同档，百炼在免费期内为 0 元。<br>
+    <b>来源：</b>help.aliyun.com/zh/model-studio/wan2-2-i2v-flash（0.1/0.2/0.48 元/秒）；wan2-2-t2v-plus（0.14/0.7 元/秒）；fal 3DREAL $0.0024075/Mpx（`docs/03-规划与调研/白模驱动成片引擎矩阵-2026-10-03.md`）；本地引擎实测见 `AI影视团队v2/AGENTS.md`。
+  </div>
+<script>
+  var C = {bg:'#1a1a2e',panel:'#16213e',line:'#0f3460',accent:'#e94560',purple:'#533483',txt:'#e8eaf0',dim:'#9aa3b2'};
+  var chart = echarts.init(document.getElementById('chart'), null, {renderer:'canvas'});
+  var cats = ['本地 VACE 1.3B','本地 Wan2.2 5B','fal 480p','百炼 i2v 480P','fal 720p','百炼 i2v 720P','百炼 vace 720P','百炼 t2v 1080P','即梦 Seedance 2.5'];
+  var vals = [0,0,0.72,0.50,1.90,1.00,1.00,3.50,null];
+  var detail = [
+    '本地 Wan VACE 1.3B · 0 元 · 权重 16.4GB 已补齐，运行待实测',
+    '本地 Wan2.2 TI2V 5B · 0 元 · 832x480/49帧/127.1s 已实测',
+    'fal 3DREAL 480p · $0.0024075/Mpx · 480p 接受度待 R4 实测',
+    '百炼 wan2.2-i2v-flash 480P · 0.1 元/秒 · 免费额度内 0 元',
+    'fal 3DREAL 720p · $0.0024075/Mpx · detail_refine 可 2x',
+    '百炼 wan2.2-i2v-flash 720P · 0.2 元/秒 · 免费额度内 0 元',
+    '百炼 wanx2.1-vace-plus 720P · 约 0.2 元/秒 · 1-1/1-2 已打通',
+    '百炼 wan2.2-t2v-plus 1080P · 0.7 元/秒',
+    '即梦 Seedance 2.5 · 官方单价未公开抓取 · 待实测'
+  ];
+  var data = vals.map(function(v,i){
+    var local = v===0;
+    return {value:v, itemStyle:{color: v===null?'#533483':(local?'#3fb950':(v<=1.2?'#e94560':'#f0883e')), borderRadius:[4,4,0,0]},
+      emphasis:{itemStyle:{color:'#39c5cf'}}};
+  });
+  chart.setOption({
+    backgroundColor:'transparent',
+    title:{text:'每镜（5 秒 / 121 帧）成本对比 · 单位：元', left:14, top:10,
+      textStyle:{color:C.txt,fontSize:14,fontWeight:600},
+      subtext:'绿=本地 0 元 · 红=云端 ≤1.2 元 · 橙=云端 >1.2 元 · 紫=待实测（无公开单价）', subtextStyle:{color:C.dim,fontSize:11}},
+    tooltip:{trigger:'axis', axisPointer:{type:'shadow'}, backgroundColor:C.panel, borderColor:C.line,
+      textStyle:{color:C.txt,fontSize:12},
+      formatter:function(p){var i=p[0].dataIndex; var v=vals[i]; return '<b>'+cats[i]+'</b><br/>每镜成本：'+(v===null?'待实测':'¥'+v.toFixed(2))+'<br/><span style="color:#9aa3b2">'+detail[i]+'</span>';}},
+    grid:{left:60,right:26,top:78,bottom:110},
+    xAxis:{type:'category',data:cats, axisLabel:{color:C.dim,fontSize:10.5,interval:0,rotate:32}, axisLine:{lineStyle:{color:C.line}}},
+    yAxis:{type:'value',name:'元/镜', nameTextStyle:{color:C.dim}, axisLabel:{color:C.dim}, splitLine:{lineStyle:{color:C.line,opacity:.5}}},
+    series:[{type:'bar',data:data,barWidth:'52%',
+      label:{show:true,position:'top',color:C.txt,fontSize:11,
+        formatter:function(p){return vals[p.dataIndex]===null?'待实测':'¥'+vals[p.dataIndex].toFixed(2);}}},
+      {type:'line',data:[],smooth:true,symbol:'none'}]
+  });
+  window.addEventListener('resize', function(){chart.resize();});
+</script>
+</body>
+</html>

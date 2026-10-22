@@ -1,0 +1,616 @@
+{
+  "versions": [
+    {
+      "uuid": "97d280db",
+      "asset_type": "character",
+      "asset_name": "雨夜少女",
+      "file_name": "雨夜少女_v1.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\雨夜少女\\97d280db\\雨夜少女_v1.png",
+      "locked_at": "2026-08-22 22:28:03",
+      "params": {
+        "prompt": "cyberpunk girl, rain night, neon lights, 18yo, black hair, red jacket",
+        "seed": 42,
+        "steps": 30,
+        "cfg": 7.5
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "3ba07b4f",
+      "asset_type": "character",
+      "asset_name": "流浪猫",
+      "file_name": "流浪猫_v1.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\流浪猫\\3ba07b4f\\流浪猫_v1.png",
+      "locked_at": "2026-08-22 22:28:03",
+      "params": {
+        "prompt": "stray cat, wet fur, green eyes, alleyway, rainy night",
+        "seed": 108,
+        "steps": 25,
+        "cfg": 7.0
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "e1f09c9a",
+      "asset_type": "scene",
+      "asset_name": "雨夜街道",
+      "file_name": "雨夜街道_v1.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\scene\\雨夜街道\\e1f09c9a\\雨夜街道_v1.png",
+      "locked_at": "2026-08-22 22:28:03",
+      "params": {
+        "prompt": "rainy street night, neon signs, wet pavement reflections, cinematic",
+        "seed": 256,
+        "steps": 35,
+        "cfg": 8.0
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "6db52730",
+      "asset_type": "scene",
+      "asset_name": "雨夜街道",
+      "file_name": "雨夜街道_v2.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\scene\\雨夜街道\\6db52730\\雨夜街道_v2.png",
+      "locked_at": "2026-08-22 22:28:03",
+      "params": {
+        "prompt": "rainy street night, neon signs, wet pavement reflections, cinematic, wide angle",
+        "seed": 257,
+        "steps": 40,
+        "cfg": 8.5
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "2b21ef79",
+      "asset_type": "storyboard",
+      "asset_name": "分镜01-雨夜街道远景",
+      "file_name": "分镜01_v1.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\storyboard\\分镜01-雨夜街道远景\\2b21ef79\\分镜01_v1.png",
+      "locked_at": "2026-08-22 22:28:03",
+      "params": {
+        "prompt": "wide shot, rainy street, girl walking, cat following, neon lights",
+        "seed": 512,
+        "steps": 30,
+        "cfg": 7.5
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "af23cbc3",
+      "asset_type": "character",
+      "asset_name": "api_test",
+      "file_name": "api_test_v1.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\api_test\\af23cbc3\\api_test_v1.png",
+      "locked_at": "2026-08-27 20:53:18",
+      "params": {
+        "prompt": "a fox spirit",
+        "seed": 42
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "34388178",
+      "asset_type": "character",
+      "asset_name": "api_test2",
+      "file_name": "api_test2_v1.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\api_test2\\34388178\\api_test2_v1.png",
+      "locked_at": "2026-08-27 20:55:04",
+      "params": {
+        "prompt": "a red-crowned crane, sumi-e ink painting",
+        "negative": "",
+        "seed": 99,
+        "steps": 18,
+        "cfg": 7.0,
+        "width": 512,
+        "height": 512,
+        "model": "v1-5-pruned-emaonly-fp16.safetensors"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "259a63fe",
+      "asset_type": "character",
+      "asset_name": "林小雨",
+      "file_name": "林小雨_v2.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\林小雨\\259a63fe\\林小雨_v2.png",
+      "locked_at": "2026-08-27 21:04:54",
+      "params": {
+        "prompt": "cinematic portrait of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, detailed face, 35mm film, high quality",
+        "seed": 314417113
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "584d8c25",
+      "asset_type": "character",
+      "asset_name": "林小雨",
+      "file_name": "林小雨_v3.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\林小雨\\584d8c25\\林小雨_v3.png",
+      "locked_at": "2026-09-24 21:23:11",
+      "params": {
+        "prompt": "cinematic portrait of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, detailed face, 35mm film, high quality",
+        "seed": 1622596120,
+        "params": {
+          "prompt": "cinematic portrait of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, detailed face, 35mm film, high quality",
+          "negative": "",
+          "seed": 1622596120,
+          "steps": 25,
+          "cfg": 7.5,
+          "width": 1024,
+          "height": 1024,
+          "model": "sd_xl_base_1.0.safetensors",
+          "preset": "sdxl",
+          "sampler_name": "dpmpp_2m",
+          "scheduler": "karras",
+          "engine": "http://127.0.0.1:8188"
+        },
+        "cost": 10
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "f5f2b49c",
+      "asset_type": "character",
+      "asset_name": "林小雨",
+      "file_name": "林小雨_v4.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\林小雨\\f5f2b49c\\林小雨_v4.png",
+      "locked_at": "2026-09-24 21:24:38",
+      "params": {
+        "prompt": "cinematic portrait of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, detailed face, 35mm film, high quality",
+        "seed": 1798522822,
+        "params": {
+          "prompt": "cinematic portrait of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, detailed face, 35mm film, high quality",
+          "negative": "",
+          "seed": 1798522822,
+          "steps": 25,
+          "cfg": 7.5,
+          "width": 1024,
+          "height": 1024,
+          "model": "sd_xl_base_1.0.safetensors",
+          "preset": "sdxl",
+          "sampler_name": "dpmpp_2m",
+          "scheduler": "karras",
+          "engine": "http://127.0.0.1:8188"
+        },
+        "cost": 10
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "4ef11a54",
+      "asset_type": "character",
+      "asset_name": "林小雨",
+      "file_name": "林小雨_v5.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\林小雨\\4ef11a54\\林小雨_v5.png",
+      "locked_at": "2026-09-24 21:28:39",
+      "params": {
+        "prompt": "cinematic portrait of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, detailed face, 35mm film, high quality",
+        "seed": 289938210,
+        "params": {
+          "prompt": "cinematic portrait of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, detailed face, 35mm film, high quality",
+          "negative": "",
+          "seed": 289938210,
+          "steps": 25,
+          "cfg": 7.5,
+          "width": 1024,
+          "height": 1024,
+          "model": "sd_xl_base_1.0.safetensors",
+          "preset": "sdxl",
+          "sampler_name": "dpmpp_2m",
+          "scheduler": "karras",
+          "engine": "http://127.0.0.1:8188"
+        },
+        "cost": 10
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "1028cfdc",
+      "asset_type": "storyboard",
+      "asset_name": "分镜02-巷口寻猫",
+      "file_name": "分镜02-巷口寻猫_v1.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\storyboard\\分镜02-巷口寻猫\\1028cfdc\\分镜02-巷口寻猫_v1.png",
+      "locked_at": "2026-09-25 15:09:04",
+      "params": {
+        "prompt": "cinematic storyboard frame, young Chinese woman in beige trench coat holding an umbrella searching for a small white kitten at the entrance of a narrow alley on a rainy night, warm streetlight glow, wet asphalt reflections, medium-wide shot, film noir atmosphere, 35mm film still, high quality",
+        "seed": 1750904320,
+        "params": {
+          "prompt": "cinematic storyboard frame, young Chinese woman in beige trench coat holding an umbrella searching for a small white kitten at the entrance of a narrow alley on a rainy night, warm streetlight glow, wet asphalt reflections, medium-wide shot, film noir atmosphere, 35mm film still, high quality",
+          "negative": "",
+          "seed": 1750904320,
+          "steps": 25,
+          "cfg": 7.5,
+          "width": 1344,
+          "height": 768,
+          "model": "sd_xl_base_1.0.safetensors",
+          "preset": "sdxl",
+          "sampler_name": "dpmpp_2m",
+          "scheduler": "karras",
+          "engine": "http://127.0.0.1:8188"
+        },
+        "cost": 10
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "07915e1d",
+      "asset_type": "character",
+      "asset_name": "小白",
+      "file_name": "小白_v2.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\小白\\07915e1d\\小白_v2.png",
+      "locked_at": "2026-09-25 16:56:01",
+      "params": {
+        "prompt": "small white kitten with green eyes, soaked wet fur, fur clumping, water droplets on fur, sitting in a cardboard box, rainy night alleyway, warm streetlight glow, cinematic portrait, 35mm film, detailed wet fur texture, high quality",
+        "seed": 1937030601,
+        "steps": 20,
+        "cfg": 7.5,
+        "width": 1024,
+        "height": 1024,
+        "model": "sd_xl_base_1.0.safetensors"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "924d5794",
+      "asset_type": "scene",
+      "asset_name": "出租屋内",
+      "file_name": "出租屋内_v2.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\scene\\出租屋内\\924d5794\\出租屋内_v2.png",
+      "locked_at": "2026-09-25 17:01:04",
+      "params": {
+        "prompt": "small apartment interior at night, wide open window with rainy night outside, white curtain blowing inward in the wind, empty round pet bed on wooden floor, no animals, warm yellow desk lamp glow on desk, cold blue light coming from window, books on desk, strong warm-cold color contrast, cinematic, 35mm film, volumetric light, high quality",
+        "seed": 321270685,
+        "steps": 20,
+        "cfg": 7.5,
+        "width": 1344,
+        "height": 768,
+        "model": "sd_xl_base_1.0.safetensors"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "5739126c",
+      "asset_type": "storyboard",
+      "asset_name": "分镜2-1-街道寻找",
+      "file_name": "分镜2-1-街道寻找_v1.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\storyboard\\分镜2-1-街道寻找\\5739126c\\分镜2-1-街道寻找_v1.png",
+      "locked_at": "2026-09-25 17:16:46",
+      "params": {
+        "prompt": "wide shot, young Chinese woman in beige trench coat with short dark hair, holding umbrella walking fast through empty rainy street, neon signs reflections on wet pavement, cold blue-purple tone, cinematic, low angle, 35mm film, high quality",
+        "seed": 133461349,
+        "steps": 20,
+        "cfg": 7.5,
+        "width": 1344,
+        "height": 768,
+        "model": "sd_xl_base_1.0.safetensors",
+        "shot_info": {
+          "shot_no": "2-1",
+          "shot_type": "WS",
+          "camera_move": "tracking",
+          "duration_sec": 4
+        }
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "cd16d91b",
+      "asset_type": "storyboard",
+      "asset_name": "分镜3-3-绿眼亮起",
+      "file_name": "分镜3-3-绿眼亮起_v2.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\storyboard\\分镜3-3-绿眼亮起\\cd16d91b\\分镜3-3-绿眼亮起_v2.png",
+      "locked_at": "2026-09-25 17:16:46",
+      "params": {
+        "prompt": "extreme close-up of small white kitten in cardboard box, soaked wet fur clumping, damp matted white fur with water droplets, bright green eyes reflecting warm orange streetlight glow, warm light rim on fur edges, narrow rainy alley at night with bokeh background, cinematic, shallow depth of field, 35mm film, high quality",
+        "seed": 1252240033,
+        "steps": 20,
+        "cfg": 7.5,
+        "width": 1344,
+        "height": 768,
+        "model": "sd_xl_base_1.0.safetensors",
+        "shot_info": {
+          "shot_no": "3-3",
+          "shot_type": "ECU",
+          "camera_move": "static",
+          "duration_sec": 3
+        }
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "af70b9b0",
+      "asset_type": "scene",
+      "asset_name": "雨夜街道",
+      "file_name": "雨夜街道_v3.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\scene\\雨夜街道\\af70b9b0\\雨夜街道_v3.png",
+      "locked_at": "2026-09-25 17:41:56",
+      "params": {
+        "prompt": "rainy street at night, neon signs, wet pavement reflections, cinematic wide angle, empty street, atmospheric perspective, cold blue-purple tone, 35mm film, high quality",
+        "seed": 623059198,
+        "steps": 20,
+        "cfg": 7.5,
+        "width": 1344,
+        "height": 768,
+        "model": "sd_xl_base_1.0.safetensors",
+        "note": "v1/v2为0字节空文件事故，v3重新生成恢复（原prompt=rainy street night, neon signs, wet pavement reflections, cinematic, wide angle）"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "58f9b65d",
+      "asset_type": "storyboard",
+      "asset_name": "分镜01-归途",
+      "file_name": "分镜01-归途_v2.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\storyboard\\分镜01-归途\\58f9b65d\\分镜01-归途_v2.png",
+      "locked_at": "2026-09-25 17:41:57",
+      "params": {
+        "prompt": "wide shot, young Chinese woman in beige trench coat with umbrella walking on rainy street at night, small white kitten walking beside her feet on wet pavement clearly visible, kitten following her, neon lights reflections on wet ground, cinematic, 35mm film, high quality",
+        "seed": 1290763498,
+        "steps": 20,
+        "cfg": 7.5,
+        "width": 1344,
+        "height": 768,
+        "model": "sd_xl_base_1.0.safetensors",
+        "shot_info": {
+          "shot_no": "4-1",
+          "shot_type": "WS",
+          "camera_move": "tracking",
+          "duration_sec": 8
+        },
+        "note": "原分镜01_v1.png为0字节空文件（早期生成失败占位），v2重新生成恢复；v1(75%)缺猫，v2白猫清晰可见定稿"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "47d2a2b1",
+      "asset_type": "character",
+      "asset_name": "小白",
+      "file_name": "小白_side.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\小白\\47d2a2b1\\小白_side.png",
+      "locked_at": "2026-09-26 02:18:02",
+      "params": {
+        "view": "side",
+        "engine": "sdxl_txt2img_prompt_identity",
+        "prompt": "side view, full body profile, standing pose, character reference, small white kitten with green eyes, soaked wet fur, fur clumping, water droplets on fur, rainy night alleyway, warm streetlight glow, 35mm film, detailed wet fur texture, high quality",
+        "negative": "ugly, blurry, low quality, deformed, watermark, text, multiple characters, duplicate, inconsistent design, extra limbs, front view, facing camera",
+        "seed": 1234792641,
+        "steps": 20,
+        "cfg": 7.5,
+        "anchor_version_uuid": "07915e1d",
+        "identity_prompt": "small white kitten with green eyes, soaked wet fur, fur clumping, water droplets on fur, rainy night alleyway, warm streetlight glow, 35mm film, detailed wet fur texture, high quality"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "f80fc082",
+      "asset_type": "character",
+      "asset_name": "小白",
+      "file_name": "小白_back.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\小白\\f80fc082\\小白_back.png",
+      "locked_at": "2026-09-26 02:18:02",
+      "params": {
+        "view": "back",
+        "engine": "sdxl_txt2img_prompt_identity",
+        "prompt": "back view, seen from behind, full body, standing pose, character reference, small white kitten with green eyes, soaked wet fur, fur clumping, water droplets on fur, rainy night alleyway, warm streetlight glow, 35mm film, detailed wet fur texture, high quality",
+        "negative": "ugly, blurry, low quality, deformed, watermark, text, multiple characters, duplicate, inconsistent design, extra limbs, front view, facing camera, face visible, eyes visible",
+        "seed": 1234792641,
+        "steps": 20,
+        "cfg": 7.5,
+        "anchor_version_uuid": "07915e1d",
+        "identity_prompt": "small white kitten with green eyes, soaked wet fur, fur clumping, water droplets on fur, rainy night alleyway, warm streetlight glow, 35mm film, detailed wet fur texture, high quality"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "522757f4",
+      "asset_type": "character",
+      "asset_name": "林小雨",
+      "file_name": "林小雨_side.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\林小雨\\522757f4\\林小雨_side.png",
+      "locked_at": "2026-09-26 02:18:02",
+      "params": {
+        "view": "side",
+        "engine": "sdxl_txt2img_prompt_identity",
+        "prompt": "side view, full body profile, standing pose, character reference, short dark bob haircut, chin-length dark hair, of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, detailed face, 35mm film, high quality",
+        "negative": "ugly, blurry, low quality, deformed, watermark, text, multiple characters, duplicate, inconsistent design, extra limbs, front view, facing camera, updo, bun, hair bun, long hair, ponytail",
+        "seed": 2888527802,
+        "steps": 25,
+        "cfg": 7.5,
+        "anchor_version_uuid": "4ef11a54",
+        "identity_prompt": "of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, 35mm film, high quality"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    },
+    {
+      "uuid": "138002d8",
+      "asset_type": "character",
+      "asset_name": "林小雨",
+      "file_name": "林小雨_back.png",
+      "file_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\林小雨\\138002d8\\林小雨_back.png",
+      "locked_at": "2026-09-26 02:18:02",
+      "params": {
+        "view": "back",
+        "engine": "sdxl_txt2img_prompt_identity",
+        "prompt": "back view, seen from directly behind, back of head visible, full body, standing pose, character reference, short dark bob haircut, walking away from camera, rear view, of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, 35mm film, high quality",
+        "negative": "ugly, blurry, low quality, deformed, watermark, text, multiple characters, duplicate, inconsistent design, extra limbs, front view, facing camera, face visible, eyes visible, profile, side view, updo, bun, long hair, ponytail, side view, profile, looking back",
+        "seed": 2984714034,
+        "steps": 25,
+        "cfg": 7.5,
+        "anchor_version_uuid": "4ef11a54",
+        "identity_prompt": "of a young Chinese woman, beige trench coat, short dark hair, warm grey-cool tone, soft bokeh, 35mm film, high quality"
+      },
+      "branch": "main",
+      "parent_uuid": null,
+      "locked": true
+    }
+  ],
+  "assets": {
+    "character/雨夜少女": {
+      "asset_type": "character",
+      "asset_name": "雨夜少女",
+      "version_count": 1,
+      "latest_version": "97d280db",
+      "versions": [
+        "97d280db"
+      ]
+    },
+    "character/流浪猫": {
+      "asset_type": "character",
+      "asset_name": "流浪猫",
+      "version_count": 1,
+      "latest_version": "3ba07b4f",
+      "versions": [
+        "3ba07b4f"
+      ]
+    },
+    "scene/雨夜街道": {
+      "asset_type": "scene",
+      "asset_name": "雨夜街道",
+      "version_count": 3,
+      "latest_version": "af70b9b0",
+      "versions": [
+        "e1f09c9a",
+        "6db52730",
+        "af70b9b0"
+      ]
+    },
+    "storyboard/分镜01-雨夜街道远景": {
+      "asset_type": "storyboard",
+      "asset_name": "分镜01-雨夜街道远景",
+      "version_count": 1,
+      "latest_version": "2b21ef79",
+      "versions": [
+        "2b21ef79"
+      ]
+    },
+    "character/api_test": {
+      "asset_type": "character",
+      "asset_name": "api_test",
+      "version_count": 1,
+      "latest_version": "af23cbc3",
+      "versions": [
+        "af23cbc3"
+      ]
+    },
+    "character/api_test2": {
+      "asset_type": "character",
+      "asset_name": "api_test2",
+      "version_count": 1,
+      "latest_version": "34388178",
+      "versions": [
+        "34388178"
+      ]
+    },
+    "character/林小雨": {
+      "asset_type": "character",
+      "asset_name": "林小雨",
+      "version_count": 6,
+      "latest_version": "138002d8",
+      "versions": [
+        "259a63fe",
+        "584d8c25",
+        "f5f2b49c",
+        "4ef11a54",
+        "522757f4",
+        "138002d8"
+      ]
+    },
+    "storyboard/分镜02-巷口寻猫": {
+      "asset_type": "storyboard",
+      "asset_name": "分镜02-巷口寻猫",
+      "version_count": 1,
+      "latest_version": "1028cfdc",
+      "versions": [
+        "1028cfdc"
+      ]
+    },
+    "character/小白": {
+      "asset_type": "character",
+      "asset_name": "小白",
+      "version_count": 3,
+      "latest_version": "f80fc082",
+      "versions": [
+        "07915e1d",
+        "47d2a2b1",
+        "f80fc082"
+      ]
+    },
+    "scene/出租屋内": {
+      "asset_type": "scene",
+      "asset_name": "出租屋内",
+      "version_count": 1,
+      "latest_version": "924d5794",
+      "versions": [
+        "924d5794"
+      ]
+    },
+    "storyboard/分镜2-1-街道寻找": {
+      "asset_type": "storyboard",
+      "asset_name": "分镜2-1-街道寻找",
+      "version_count": 1,
+      "latest_version": "5739126c",
+      "versions": [
+        "5739126c"
+      ]
+    },
+    "storyboard/分镜3-3-绿眼亮起": {
+      "asset_type": "storyboard",
+      "asset_name": "分镜3-3-绿眼亮起",
+      "version_count": 1,
+      "latest_version": "cd16d91b",
+      "versions": [
+        "cd16d91b"
+      ]
+    },
+    "storyboard/分镜01-归途": {
+      "asset_type": "storyboard",
+      "asset_name": "分镜01-归途",
+      "version_count": 1,
+      "latest_version": "58f9b65d",
+      "versions": [
+        "58f9b65d"
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# AI影视团队v2 — Python 依赖清单（维度25 可移植性 / 维度33 配置管理）
+# 生成方式：对 AI影视团队v2 现役 .py（排除 _legacy / tests / wan_runtime / _selftest）
+#          做 import 静态扫描，再与本机 importlib.metadata 实测版本对齐（2026-10-05）。
+# 使用：python -m pip install -r requirements.txt
+# 说明：bpy 不在此列——它由 Blender 便携版自带，非 pip 包。
+
+# ---- 核心：服务与校验 ----
+fastapi==0.141.1
+uvicorn==0.52.4
+jsonschema==4.26.0        # 被 spec 校验脚本 import，本机原缺失（本次补齐）
+pydantic==2.13.4
+python-multipart==0.0.20  # FastAPI 表单/上传支持，本机原缺失（本次补齐）
+
+# ---- 数值与图像 ----
+numpy==2.2.6
+opencv-python==5.0.0.93
+Pillow==12.2.0
+torch==2.8.0              # 本地视频生成 / 模型推理
+
+# ---- 模型与推理（本地优先路线）----
+huggingface-hub==0.36.2
+transformers==4.57.6
+faster-whisper==1.2.1     # ASR 质检闭环（CPU 档）
+qwen-vl-utils==0.0.14     # 被 tools/vlm_check.py import，本机原缺失（本次补齐）
+
+# ---- 工具与系统 ----
+requests==2.33.1
+PyYAML==6.0.3             # config/settings.yaml 加载
+psutil==7.2.2             # 维度19 硬件资源调度（VRAM/RAM 采样）
+
+# ---- 已移除（合规，见维度16/17）----
+# edge-tts 已移除：违反微软自动化条款；TTS 改走 CosyVoice 3 / Qwen3-TTS
+#   （见 tools/tts_generator.py v2.0）。若需本地 TTS，请按 A6 双链方案单独安装。

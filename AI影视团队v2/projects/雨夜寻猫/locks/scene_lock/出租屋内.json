@@ -1,0 +1,18 @@
+{
+  "scene_name": "出租屋内",
+  "atmosphere_keywords": [
+    "冷暖对比",
+    "寂静",
+    "丢失感"
+  ],
+  "lighting_direction": "暖黄台灯主光 vs 窗外冷蓝光",
+  "color_palette": {
+    "primary": "#e8b04b",
+    "secondary": "#3a5a8c",
+    "accent": "#8b7355"
+  },
+  "memory_point": "开着的窗+飘动窗帘（丢失线索）；空猫窝特写为分镜层关键镜头，概念图不承载",
+  "concept_art_path": "assets/scenes/出租屋内_v2.png",
+  "locked_version_uuid": "924d5794",
+  "locked_at": "2026-09-25T17:01:05.028981"
+}

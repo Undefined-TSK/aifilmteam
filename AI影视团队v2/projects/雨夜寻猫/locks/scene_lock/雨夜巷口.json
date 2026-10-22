@@ -1,0 +1,18 @@
+{
+  "scene_name": "雨夜巷口",
+  "atmosphere_keywords": [
+    "湿冷",
+    "微光",
+    "希望"
+  ],
+  "lighting_direction": "路灯暖光主光源（冷环境中的唯一暖光源，全片情绪转折点）",
+  "color_palette": {
+    "primary": "#16213e",
+    "secondary": "#e8a87c",
+    "accent": "#2b8a5a"
+  },
+  "memory_point": "绿眼睛在路灯暖光下亮起来（重逢瞬间）",
+  "concept_art_path": "k13_locked/storyboard/分镜02-巷口寻猫/1028cfdc/分镜02-巷口寻猫_v1.png",
+  "locked_version_uuid": "1028cfdc",
+  "locked_at": "2026-09-25T17:01:05.071273"
+}

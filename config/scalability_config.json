@@ -1,0 +1,89 @@
+{
+  "scalability_configs": {
+    "oklch_palette": {
+      "description": "OKLCH色板规模配置",
+      "levels": {
+        "light": {
+          "size": 24,
+          "use_case": "单角色简单场景"
+        },
+        "standard": {
+          "size": 48,
+          "use_case": "标准项目"
+        },
+        "heavy": {
+          "size": 72,
+          "use_case": "群戏复杂场景（12角色×6色，OKLCH按semantic_role分区复用池；96无场景依据，经05反思复核由96修正为72）"
+        }
+      }
+    },
+    "object_limit": {
+      "description": "单镜具名对象上限配置",
+      "levels": {
+        "light": {
+          "limit": 4,
+          "use_case": "访谈类简单镜头"
+        },
+        "standard": {
+          "limit": 8,
+          "use_case": "标准剧集镜头"
+        },
+        "heavy": {
+          "limit": 16,
+          "use_case": "群戏复杂镜头（GRP群演算1个）"
+        }
+      }
+    },
+    "render_timeout": {
+      "description": "渲染健康线配置（√像素模型：timeout ∝ √像素量；EEVEE片元∝像素，健康线=卡死探测器，高分辨率相对更早探活；原2/4/8(1:2:4)无推导，经05反思复核修正；各档基线待R0实机标定）",
+      "model": "sqrt_pixel",
+      "levels": {
+        "480p": {
+          "resolution": "480p",
+          "threshold_seconds": 2,
+          "use_case": "低分辨率渲染（基线，√像素基准）"
+        },
+        "720p": {
+          "resolution": "720p",
+          "threshold_seconds": 3,
+          "use_case": "中等分辨率渲染（像素2.31×→√≈1.52×→2×1.52≈3s）"
+        },
+        "1080p": {
+          "resolution": "1080p",
+          "threshold_seconds": 4.6,
+          "use_case": "高分辨率渲染（像素5.19×→√≈2.28×→2×2.28≈4.6s；R0或取整5s）"
+        }
+      }
+    },
+    "undo_steps": {
+      "description": "撤销重做步数配置",
+      "levels": {
+        "quick": {
+          "steps": 30,
+          "use_case": "快速模式（简单操作）"
+        },
+        "detailed": {
+          "steps": 100,
+          "use_case": "精细模式（复杂操作）"
+        }
+      }
+    },
+    "graph_size_limit": {
+      "description": "图规模上限配置",
+      "levels": {
+        "short": {
+          "limit": 30,
+          "use_case": "短片项目"
+        },
+        "standard": {
+          "limit": 60,
+          "use_case": "标准剧集项目"
+        },
+        "long": {
+          "limit": 120,
+          "use_case": "长片分章管理项目"
+        }
+      }
+    }
+  }
+}

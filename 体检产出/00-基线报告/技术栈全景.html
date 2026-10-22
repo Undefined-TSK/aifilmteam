@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CINEAST-3 技术栈全景 · 债务热力图</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --panel2: #1d212b; --line: #2a2f3a;
+    --txt: #e8eaf0; --dim: #9aa3b2; --accent: #5b8cff;
+    --green: #3fb950; --amber: #d29922; --red: #f85149; --cyan: #39c5cf;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--txt); font-family: "Segoe UI", "Microsoft YaHei", sans-serif; padding: 24px; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  .sub { color: var(--dim); font-size: 13px; margin-bottom: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  .card .layer { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+  .card .tech { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+  .card .ver { font-size: 12px; color: var(--dim); margin-bottom: 8px; }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; margin-right: 6px; }
+  .tag-ok { background: rgba(63,185,80,.15); color: var(--green); }
+  .tag-warn { background: rgba(210,153,34,.15); color: var(--amber); }
+  .tag-bad { background: rgba(248,81,73,.15); color: var(--red); }
+  .card .note { font-size: 12px; color: var(--dim); line-height: 1.5; }
+  h2 { font-size: 16px; margin: 8px 0 12px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 28px; }
+  th, td { text-align: left; padding: 8px 10px; font-size: 13px; border-bottom: 1px solid var(--line); }
+  th { color: var(--dim); font-weight: 500; font-size: 12px; }
+  .sev { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
+  .sev-r { background: var(--red); } .sev-h { background: var(--amber); } .sev-m { background: #e3b341; }
+  .bar { height: 8px; border-radius: 4px; background: var(--panel2); overflow: hidden; min-width: 90px; }
+  .bar i { display: block; height: 100%; }
+  .legend { display: flex; gap: 18px; font-size: 12px; color: var(--dim); margin-bottom: 20px; }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  @media (max-width: 600px) { body { padding: 12px; } }
+</style>
+</head>
+<body>
+  <h1>CINEAST-3 · AI 影视团队 v2 技术栈全景</h1>
+  <div class="sub">基线快照 2026-10-05 ｜ 体检批次：00-基线报告 ｜ 配套：项目基线报告.md（35 维度统一依据）</div>
+
+  <div class="grid">
+    <div class="card"><div class="layer">3D 白模</div><div class="tech">Blender 5.2.2 LTS</div><div class="ver">便携版 · EEVEE Next · Standard 色彩</div><span class="tag tag-ok">可跑</span><span class="tag tag-warn">无 FFmpeg/EXR-ML</span><div class="note">PNG/EXR 单层输出 + 外部 ffmpeg 打包（D6b）</div></div>
+    <div class="card"><div class="layer">白模脚本</div><div class="tech">make_r4_l1 / blockout_min</div><div class="ver">—</div><span class="tag tag-ok">已跑通</span><div class="note">R0 待修第 6 行注释（Multilayer 实为单层）</div></div>
+    <div class="card"><div class="layer">控制图</div><div class="tech">exr_to_control.py</div><div class="ver">depth/normal/canny</div><span class="tag tag-ok">已跑通</span><div class="note">白模 EXR → 控制图</div></div>
+    <div class="card"><div class="layer">本地 LLM</div><div class="tech">Ollama qwen3:8b</div><div class="ver">127.0.0.1:11434</div><span class="tag tag-ok">0 元基本盘</span><div class="note">2026-10-03 三连测全绿（chat/structured/tools）</div></div>
+    <div class="card"><div class="layer">云端 LLM</div><div class="tech">百炼 DashScope</div><div class="ver">compatible-mode v1</div><span class="tag tag-ok">五档链</span><div class="note">llm_router.json 五档 + 额度报错即切链</div></div>
+    <div class="card"><div class="layer">云端写实化</div><div class="tech">wanx2.1-vace-plus</div><div class="ver">~114-115s/5s</div><span class="tag tag-ok">打通</span><div class="note">白模→深度控制→写实 1-1/1-2 实证</div></div>
+    <div class="card"><div class="layer">云端渲染</div><div class="tech">fal 3DREAL</div><div class="ver">$0.0024075/Mpx</div><span class="tag tag-warn">R4 待实测</span><div class="note">480p 输入接受度待 R4 实测（D2 附注）</div></div>
+    <div class="card"><div class="layer">本地视频</div><div class="tech">Wan2.2 5B</div><div class="ver">832×480/49帧/127.1s</div><span class="tag tag-warn">近红线</span><div class="note">峰值 10596MiB，距 12GB 仅 ~1.4GB；vram_lock 强制</div></div>
+    <div class="card"><div class="layer">本地 VACE</div><div class="tech">Wan VACE 1.3B</div><div class="ver">196MB / 应 4.3GB</div><span class="tag tag-bad">硬阻塞</span><div class="note">R4 主阻塞；LNd1SX 全量权重待下</div></div>
+    <div class="card"><div class="layer">MCP</div><div class="tech">baimo_mcp_server</div><div class="ver">stdio 13 工具 + TCP 17800</div><span class="tag tag-ok">闭环</span><div class="note">运镜动感 77.15% vs 固定脚本 47.87%</div></div>
+    <div class="card"><div class="layer">事件总线</div><div class="tech">crew_bus</div><div class="ver">SQLite WAL · 6 事件</div><span class="tag tag-ok">v2 实测 800 不丢</span><div class="note">at-least-once + 幂等；C3 重构版未落地</div></div>
+    <div class="card"><div class="layer">任务/成本/审计</div><div class="tech">jobs/costs/audit</div><div class="ver">idem 内容哈希</div><span class="tag tag-ok">三用例验收</span><div class="note">成功才计费；18 evidence 快照</div></div>
+    <div class="card"><div class="layer">前端</div><div class="tech">React + React Flow + Zustand</div><div class="ver">@xyflow/react 12.3.5</div><span class="tag tag-ok">可跑</span><div class="note">5 视图；仅 SDXL 静图；C3 M18 规格已定</div></div>
+    <div class="card"><div class="layer">数据库</div><div class="tech">SQLite WAL</div><div class="ver">busy_timeout ≥ 5000</div><span class="tag tag-ok">可用</span><div class="note">生产级升级路径见维度 15</div></div>
+    <div class="card"><div class="layer">音频</div><div class="tech">audio_mix.py + ffmpeg</div><div class="ver">-14.00 LUFS / TP -1.70</div><span class="tag tag-ok">四项达标</span><div class="note">alimiter 必须 :level=disabled</div></div>
+    <div class="card"><div class="layer">TTS</div><div class="tech">tts_generator.py</div><div class="ver">edge-tts</div><span class="tag tag-bad">违规必换</span><div class="note">违微软自动化条款；A6 拍板换 CosyVoice 3 / Qwen3-TTS</div></div>
+    <div class="card"><div class="layer">合规</div><div class="tech">GB 45438-2025</div><div class="ver">2025-09-01 施行</div><span class="tag tag-bad">双缺失</span><div class="note">显式 overlay + 隐式 4 键元数据均未嵌入</div></div>
+    <div class="card"><div class="layer">版本控制</div><div class="tech">git</div><div class="ver">未 init</div><span class="tag tag-bad">空白</span><div class="note">.gitignore 已备；LFS/sparse 方案见维度 13</div></div>
+  </div>
+
+  <h2>7 大债务严重度矩阵</h2>
+  <div class="legend">
+    <span><i class="sev sev-r"></i>红线（blocking R5 交付）</span>
+    <span><i class="sev sev-h"></i>高（能力缺失）</span>
+    <span><i class="sev sev-m"></i>中（可绕行须整改）</span>
+  </div>
+  <table>
+    <thead><tr><th style="width:34px">#</th><th>债务</th><th>严重度</th><th style="width:150px">证据</th><th style="width:200px">阻塞的 R5 能力</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>16/18 镜非视频血缘（静帧+Ken Burns）</td><td><span class="sev sev-r"></span>红线</td><td>粗剪 v1→v4、tech_v5 连续 FAIL</td><td>交付主线本身</td></tr>
+      <tr><td>2</td><td>GB 45438-2025 双标识缺失</td><td><span class="sev sev-r"></span>红线</td><td>delivery_spec extra_required 未执行</td><td>L2/L3 交付合法性</td></tr>
+      <tr><td>3</td><td>清单与代码漂移（23 zone 虚标 + 195+ 硬编码路径）</td><td><span class="sev sev-h"></span>高</td><td>掌握报告 §7.3；换机即失效</td><td>跨机迁移 / 可复现</td></tr>
+      <tr><td>4</td><td>本地 VACE 权重残缺（196MB/4.3GB）</td><td><span class="sev sev-h"></span>高</td><td>models/wan_vace_1.3b 实测</td><td>本地 0 元写实化路径</td></tr>
+      <tr><td>5</td><td>timeline_build 重跑覆盖签核</td><td><span class="sev sev-m"></span>中</td><td>19 轨 0 签核 + 647 阻塞错误</td><td>QC 签核闭环</td></tr>
+      <tr><td>6</td><td>9 份旧 .env 明文密钥</td><td><span class="sev sev-m"></span>中（已控）</td><td>已 .gitignore 未入库；R14-RC4 已定</td><td>git init 前置条件</td></tr>
+      <tr><td>7</td><td>edge-tts 违规（微软自动化条款）</td><td><span class="sev sev-m"></span>中</td><td>A6 拍板必换；现用</td><td>配音链合规</td></tr>
+    </tbody>
+  </table>
+
+  <h2>7 岗位 → 5 操作员收敛</h2>
+  <table>
+    <thead><tr><th>岗位层（agents/ SKILL.md）</th><th>映射</th><th>操作员层（三档控制区）</th><th>类型</th></tr></thead>
+    <tbody>
+      <tr><td>编剧 screenwriter · 导演 director · 制片 producer · 预演 previs</td><td>→</td><td>N1 意图（判断型 · locked/proposed）</td><td>判断型</td></tr>
+      <tr><td>预演 previs · 白模 blockout</td><td>→</td><td>N2 白模（唯一双手）</td><td>执行型</td></tr>
+      <tr><td>白模 blockout · 场记 script_supervisor</td><td>→</td><td>N3 控制图派生</td><td>执行型</td></tr>
+      <tr><td>写实化 realizer</td><td>→</td><td>N4 云端重绘（唯一烧钱节点）</td><td>执行型</td></tr>
+      <tr><td>场记 script_supervisor</td><td>→</td><td>N5 配音剪辑（规格最后防线）</td><td>执行型</td></tr>
+    </tbody>
+  </table>
+  <div class="sub">C3 新增音效师/剪辑师为纯工具链岗（A6/A6b，LLM 无判断增量不加 LLM）。</div>
+</body>
+</html>

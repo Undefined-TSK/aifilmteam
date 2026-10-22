@@ -1,0 +1,33 @@
+{
+  "handoff_id": "制片人-20260822-2CDD",
+  "task_name": "分镜01生成中",
+  "from_agent": "分镜师",
+  "to_agent": "制片人",
+  "work_background": "分镜01（雨夜街道远景）正在ComfyUI生成中，预计30分钟完成",
+  "deliverables": [
+    "分镜01预览图（生成中）"
+  ],
+  "downstream_task": "分镜01审核与锁定",
+  "completion_criteria": [
+    "分镜01质量达标",
+    "分镜01已锁定K13"
+  ],
+  "stop_conditions": [
+    "预算不足",
+    "生成超时"
+  ],
+  "pending_items": [],
+  "material_version": "v1",
+  "created_at": "2026-08-22T22:25:49.433153",
+  "status": "pending_check",
+  "timeline": [
+    {
+      "event": "created",
+      "agent": "分镜师",
+      "message": "创建交接任务，等待 制片人 检查",
+      "time": "2026-08-22T22:25:49.433153"
+    }
+  ],
+  "check_result": null,
+  "result": null
+}

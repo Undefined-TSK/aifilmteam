@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CINEAST-3 工程体检 · 执行总览索引</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --panel2: #1d212b; --line: #2a2f3a;
+    --txt: #e8eaf0; --dim: #9aa3b2; --accent: #5b8cff;
+    --green: #3fb950; --amber: #d29922; --red: #f85149; --cyan: #39c5cf;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--txt); font-family: "Segoe UI", "Microsoft YaHei", sans-serif; padding: 24px; max-width: 1180px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 16px; margin: 26px 0 12px; }
+  .sub { color: var(--dim); font-size: 13px; margin-bottom: 18px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-bottom: 20px; }
+  .dim { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 12px; }
+  .dim b { display: block; font-size: 13px; margin-bottom: 2px; }
+  .dim span { color: var(--dim); }
+  .dim.exec { border-color: rgba(63,185,80,.4); }
+  .dim.exec b::after { content: " ✓"; color: var(--green); }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; margin-right: 6px; white-space: nowrap; }
+  .tag-ok { background: rgba(63,185,80,.15); color: var(--green); }
+  .tag-run { background: rgba(57,197,207,.15); color: var(--cyan); }
+  .tag-warn { background: rgba(210,153,34,.15); color: var(--amber); }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+  th, td { text-align: left; padding: 8px 10px; font-size: 13px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--dim); font-weight: 500; font-size: 12px; }
+  td code, p code { background: var(--panel2); padding: 1px 6px; border-radius: 4px; font-size: 12px; color: var(--cyan); }
+  .sev { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
+  .sev-r { background: var(--red); } .sev-h { background: var(--amber); } .sev-m { background: #e3b341; }
+  .bar { height: 8px; border-radius: 4px; background: var(--panel2); overflow: hidden; min-width: 90px; }
+  .bar i { display: block; height: 100%; background: var(--green); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  .card .h { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .card .note { font-size: 12px; color: var(--dim); line-height: 1.6; }
+  .card .note b { color: var(--txt); }
+  ul { padding-left: 18px; }
+  li { font-size: 13px; line-height: 1.7; color: var(--dim); }
+  li b { color: var(--txt); }
+  @media (max-width: 600px) { body { padding: 12px; } }
+</style>
+</head>
+<body>
+  <h1>CINEAST-3 · AI 影视团队 v2 工程体检 — 执行总览索引</h1>
+  <div class="sub">体检批次 2026-10-05 ｜ 模式：边体检边执行（35 维度框架 → 7 大债务驱动落地）｜ 入口：<a href="00-基线报告/项目基线报告.md">00-基线报告/项目基线报告.md</a> · <a href="00-基线报告/技术栈全景.html">00-基线报告/技术栈全景.html</a></div>
+
+  <h2>一、执行口径（老板变更后的落地规则）</h2>
+  <ul>
+    <li>不再产出 35 份独立提示词文件——维度目录保留为导航骨架，<b>执行以 7 大债务为驱动</b>，边体检边修。</li>
+    <li>每一债务的执行结果留痕于 <code>AI影视团队v2</code> 现役代码/数据 + 本索引证据列，替代提示词交付物。</li>
+    <li>基线采集（全局通读 / git 现状 / 决策历史 / 机器契约 / 岗位卡 / 插件市场）已随 2026-10-05 清理归档至 <code>D:\_aifilmteam_清理_20261005\</code>。</li>
+  </ul>
+
+  <h2>二、35 维度骨架（✓ = 本次债务执行已覆盖）</h2>
+  <div class="grid">
+    <div class="dim exec"><b>01-模型资源</b><span>VACE 权重补齐</span></div>
+    <div class="dim"><b>02-Agent名词</b><span>—</span></div>
+    <div class="dim"><b>03-现状问题</b><span>—</span></div>
+    <div class="dim"><b>04-工具价值</b><span>—</span></div>
+    <div class="dim"><b>05-变更复盘</b><span>—</span></div>
+    <div class="dim"><b>06-文档整理</b><span>—</span></div>
+    <div class="dim"><b>07-白模分层</b><span>—</span></div>
+    <div class="dim"><b>08-全链路走通</b><span>—</span></div>
+    <div class="dim"><b>09-价值潜力</b><span>—</span></div>
+    <div class="dim"><b>10-常见问题对照</b><span>—</span></div>
+    <div class="dim"><b>11-LLM工具化</b><span>—</span></div>
+    <div class="dim"><b>12-API平台</b><span>—</span></div>
+    <div class="dim"><b>13-版本控制</b><span>—</span></div>
+    <div class="dim"><b>14-资料调研</b><span>—</span></div>
+    <div class="dim"><b>15-技术选型</b><span>—</span></div>
+    <div class="dim exec"><b>16-合规</b><span>GB 45438 / TTS 合规</span></div>
+    <div class="dim exec"><b>17-音频</b><span>TTS 引擎替换</span></div>
+    <div class="dim"><b>18-QC</b><span>签核工具（债务5）</span></div>
+    <div class="dim"><b>19-硬件</b><span>—</span></div>
+    <div class="dim"><b>20-成本</b><span>—</span></div>
+    <div class="dim exec"><b>21-安全</b><span>.env 密钥收敛</span></div>
+    <div class="dim exec"><b>22-测试</b><span>37 旧测归档</span></div>
+    <div class="dim"><b>23-人机界面</b><span>—</span></div>
+    <div class="dim"><b>24-资产管线</b><span>—</span></div>
+    <div class="dim exec"><b>25-迁移</b><span>硬编码路径动态化</span></div>
+    <div class="dim"><b>26-灾备</b><span>—</span></div>
+    <div class="dim"><b>27-性能</b><span>—</span></div>
+    <div class="dim"><b>28-供应链</b><span>—</span></div>
+    <div class="dim"><b>29-创意质量</b><span>—</span></div>
+    <div class="dim"><b>30-LLM路由</b><span>—</span></div>
+    <div class="dim"><b>31-Prompt工程</b><span>—</span></div>
+    <div class="dim"><b>32-知识沉淀</b><span>—</span></div>
+    <div class="dim exec"><b>33-配置</b><span>paths.py 中心化</span></div>
+    <div class="dim exec"><b>34-血缘</b><span>16/18 镜血缘标注</span></div>
+    <div class="dim"><b>35-缓存</b><span>—</span></div>
+  </div>
+  <div class="sub">未覆盖维度 = 后续轮次执行位（git 版本控制 / 文档整理 / 白模分层 / 全链路走通 / 灾备性能等）。</div>
+
+  <h2>三、7 大债务执行状态</h2>
+  <table>
+    <thead><tr><th style="width:30px">#</th><th style="width:150px">债务</th><th style="width:80px">基线</th><th style="width:110px">现状</th><th>证据（AI影视团队v2）</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>16/18 镜非视频血缘</td><td><span class="sev sev-r"></span>红线</td><td><span class="tag tag-ok">✅ 已落地</span></td><td><code>tools/dit_ingest.py</code> 血缘标注（SHA256+零字节态+缺引用显式标记）→ <code>projects/雨夜寻猫/ditmap/lineage.jsonl</code>；<code>00_brief/storyboard/雨夜寻猫_分镜表_v1.json</code> 引用路径修正（k13_locked → locks）</td></tr>
+      <tr><td>2</td><td>GB 45438-2025 双标识缺失</td><td><span class="sev sev-r"></span>红线</td><td><span class="tag tag-ok">✅ 已落地</span></td><td><code>tools/ai_label.py</code>（片头 3s 显式 overlay + matroska 隐式 4 键元数据，数值唯一来源 <code>spec/delivery_spec.json</code> ai_label 段）+ <code>pipeline/tech_cut.py</code> 合成时集成</td></tr>
+      <tr><td>3</td><td>清单与代码漂移（195+ 硬编码路径）</td><td><span class="sev sev-h"></span>高</td><td><span class="tag tag-ok">✅ 已落地</span></td><td><code>config/paths.py</code> 中心化（<code>Path(__file__).resolve().parents</code> 动态派生）；16+ 文件改造（pipeline/audio_mix、tech_cut、tools/llm_gateway 等）；<code>tests/_legacy_v1/</code> 37 旧测归档</td></tr>
+      <tr><td>4</td><td>本地 VACE 权重残缺（196MB/4.3GB）</td><td><span class="sev sev-h"></span>高</td><td><span class="tag tag-ok">✅ 已补齐</span></td><td><code>tools/dl_vace.py</code>（5 次重试 + 断点续传 + max_workers=4）→ <code>models/wan_vace_1.3b/</code> 全量验证通过：<b>16.4GB</b>（diffusion 6.8GB + umt5-xxl 编码器 10.8GB + VAE 0.5GB，23 文件）</td></tr>
+      <tr><td>5</td><td>timeline_build 重跑覆盖签核</td><td><span class="sev sev-m"></span>中</td><td><span class="tag tag-ok">✅ 已修复</span></td><td><code>pipeline/timeline_build.py</code> 按 (track, shot_id) 索引保留旧 signoff；<code>tools/t4_batch1_signoff.py</code>（camera/gauge/light 逐 item 签核/豁免，幂等 + canonical sha256 前 12 位）→ <code>master_v2.json</code> + <code>gaps_by_owner.json</code> 重生成</td></tr>
+      <tr><td>6</td><td>9 份旧 .env 明文密钥</td><td><span class="sev sev-m"></span>中（已控）</td><td><span class="tag tag-ok">✅ 已收敛</span></td><td>现役密钥收敛至 <code>D:\aifilmteam\runtime\secrets\dashscope.env</code>；旧 .env 仅存 <code>_legacy_projects/</code>（归档非现役）；<code>.gitignore</code> 已拒 *.env</td></tr>
+      <tr><td>7</td><td>edge-tts 违规（微软自动化条款）</td><td><span class="sev sev-m"></span>中</td><td><span class="tag tag-ok">✅ 已替换</span></td><td><code>tools/tts_generator.py</code> 合规版 v2.0：CosyVoice 3（首选）→ Qwen3-TTS（备选），无本地模型即显式报错，绝不静默回落违规后端；<code>tools/gen_audio_manifest.py</code> 合规说明留痕</td></tr>
+    </tbody>
+  </table>
+
+  <h2>四、本次执行的其他收尾</h2>
+  <ul>
+    <li><b>根目录清理</b>：.trae / .trae-html-share-packages / trae_market / .runtime / .workbuddy / 项目全面工程体检-优化提示词.md / .gitignore 临时副本 → <code>D:\_aifilmteam_清理_20261005\</code>（7 项，基线报告路径引用已同步）。</li>
+    <li><b>LLM 网关修复</b>：<code>tools/llm_gateway.py</code> 运行期路径派生（grandparent / runtime）+ <code>_slide()</code> 缺失 switches 参数补齐。</li>
+    <li><b>项目结构对齐</b>：dit_ingest 读取 v2 现役布局（00_brief/shots、locks/），消除静默失败。</li>
+  </ul>
+
+  <h2>五、剩余阻塞与下一步</h2>
+  <table>
+    <thead><tr><th>项</th><th>状态</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>VACE 全量权重</td><td><span class="tag tag-ok">✅ 已补齐</span></td><td>16.4GB 全量验证通过（2026-10-05）；下一步 r4_vace_runner.py 本地实测 + R4 QC 报告</td></tr>
+      <tr><td>版本控制</td><td><span class="tag tag-warn">待办</span></td><td>根级 .gitignore 已就绪未 init；git init 前置条件（.env 收敛）已完成</td></tr>
+      <tr><td>技术栈全景</td><td><span class="tag tag-ok">已完成</span></td><td>00-基线报告/技术栈全景.html（债务矩阵 + 岗位收敛表，基线快照）</td></tr>
+      <tr><td>35 维度余项</td><td><span class="tag tag-warn">待办</span></td><td>13/17/18/19/20/23/26/27/28/29/30/31/32/35 等维度未执行位，随 R5 推进按需落地</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sub" style="margin-top:24px">生成于 2026-10-05 · 7 大债务全部执行完毕 · 本索引随 R5 推进持续更新</div>
+</body>
+</html>

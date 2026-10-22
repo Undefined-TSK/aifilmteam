@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>维度19 · 硬件瓶颈热力图 — CINEAST-3</title>
+<style>
+  :root{ --c1:#1a1a2e; --c2:#16213e; --c3:#0f3460; --c4:#e94560; --c5:#533483;
+         --fg:#e8eaf0; --dim:#9aa3b2; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--c1);color:var(--fg);font-family:"Segoe UI","Microsoft YaHei",sans-serif;padding:24px}
+  .wrap{max-width:1180px;margin:0 auto}
+  .nav{font-size:12px;color:var(--dim);margin-bottom:14px}
+  .nav a{color:var(--c4);text-decoration:none}
+  h1{font-size:20px;margin-bottom:4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+  .card{background:var(--c2);border:1px solid var(--c3);border-radius:10px;padding:16px;margin-bottom:16px;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:820px}
+  th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--c3)}
+  th{color:var(--dim);font-weight:500;font-size:12px;white-space:nowrap}
+  td.task{font-weight:600;white-space:nowrap}
+  .cell{display:block;padding:4px 8px;border-radius:6px;text-align:center;font-size:11.5px;font-weight:600}
+  .lv0{background:rgba(63,185,80,.18);color:#7ee08a}
+  .lv1{background:rgba(57,197,207,.20);color:#7fe0e6}
+  .lv2{background:rgba(210,153,34,.22);color:#f0cf7a}
+  .lv3{background:rgba(233,69,96,.28);color:#ff9db0}
+  .note{color:var(--dim);font-size:12px;line-height:1.8;margin-top:10px}
+  .note b{color:var(--fg)}
+  .lg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--dim);margin:6px 0 14px}
+  .lg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  code{background:var(--c3);padding:1px 6px;border-radius:4px;font-size:12px;color:#8fd6ff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav">基线：<a href="../00-基线报告/项目基线报告.md">../00-基线报告/项目基线报告.md</a> ｜ 规约：<a href="../_执行须知.md">../_执行须知.md</a> ｜ 导航：<a href="../索引.html">../索引.html</a></div>
+  <h1>维度 19 · 硬件瓶颈热力图</h1>
+  <div class="sub">VRAM / RAM / 温度 / 磁盘 I/O 四维压力等级 × 任务组合 · 数据来源：nvidia-smi 实测 + R0-T6 实测附录 + outputs/ 体积统计</div>
+
+  <div class="lg">
+    <span><i class="lv0"></i>低（充裕）</span>
+    <span><i class="lv1"></i>中（可控）</span>
+    <span><i class="lv2"></i>高（接近上限）</span>
+    <span><i class="lv3"></i>极高（先撞墙 / 待实测）</span>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>任务组合</th>
+          <th>VRAM（12GB）</th>
+          <th>RAM（15.5GB）</th>
+          <th>温度 / 降频</th>
+          <th>磁盘 I/O</th>
+          <th>瓶颈判定</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="task">空载</td>
+          <td><span class="cell lv0">3207 MiB · 低</span></td>
+          <td><span class="cell lv2">空闲仅 2.3 GB · 高</span></td>
+          <td><span class="cell lv0">43 C 实测 · 低</span></td>
+          <td><span class="cell lv0">无 · 低</span></td>
+          <td>RAM 基线本就紧（后台已占约 13 GB）</td>
+        </tr>
+        <tr>
+          <td class="task">Ollama 编剧（qwen3:8b）</td>
+          <td><span class="cell lv2">约 5120 MiB · 高</span></td>
+          <td><span class="cell lv2">约 +5 GB · 高</span></td>
+          <td><span class="cell lv1">100% GPU · 中</span></td>
+          <td><span class="cell lv0">模型常驻 · 低</span></td>
+          <td>VRAM 与 RAM 双高；禁与 Blender 同段</td>
+        </tr>
+        <tr>
+          <td class="task">Blender EEVEE 白模渲染（121 帧）</td>
+          <td><span class="cell lv1">独立基线 19s · 中</span></td>
+          <td><span class="cell lv1">约 +4 GB · 中</span></td>
+          <td><span class="cell lv1">CPU+GPU 混合 · 中</span></td>
+          <td><span class="cell lv2">PNG 序列 323KB/帧 · 高</span></td>
+          <td>I/O 与 CPU 是主约束，非显存</td>
+        </tr>
+        <tr>
+          <td class="task">控制图派生（depth/normal/canny）</td>
+          <td><span class="cell lv0">CPU/轻 GPU · 低</span></td>
+          <td><span class="cell lv1">约 +2 GB · 中</span></td>
+          <td><span class="cell lv0">低</span></td>
+          <td><span class="cell lv2">EXR 读 + PNG 写 · 高</span></td>
+          <td>I/O 密集；EXR 单帧体积大</td>
+        </tr>
+        <tr>
+          <td class="task">Wan2.2 5B 本地生成（832x480/49f）</td>
+          <td><span class="cell lv3">峰值 10596 MiB · 极高</span></td>
+          <td><span class="cell lv1">约 +2 GB · 中</span></td>
+          <td><span class="cell lv3">100% GPU 127s · 待实测</span></td>
+          <td><span class="cell lv1">写 1 个 mp4 · 中</span></td>
+          <td>VRAM 距红线仅 1635 MiB —— 第一硬约束</td>
+        </tr>
+        <tr>
+          <td class="task">Qwen3-VL-4B 本地质检</td>
+          <td><span class="cell lv3">约 10240 MiB（估算）· 极高</span></td>
+          <td><span class="cell lv3">宿主内存叠加 · 极高</span></td>
+          <td><span class="cell lv3">待实测</span></td>
+          <td><span class="cell lv1">读图 · 中</span></td>
+          <td>须先释放 ComfyUI 常驻 8.7 GB，否则必 OOM</td>
+        </tr>
+        <tr>
+          <td class="task">音频合成 / ffmpeg 打包</td>
+          <td><span class="cell lv0">不占显存 · 低</span></td>
+          <td><span class="cell lv1">约 +1 GB · 中</span></td>
+          <td><span class="cell lv0">CPU 编码 · 低</span></td>
+          <td><span class="cell lv2">80s 音轨写 · 高</span></td>
+          <td>CPU 任务，可与云端并行</td>
+        </tr>
+        <tr>
+          <td class="task">云端写实化（fal / 百炼 wanx）</td>
+          <td><span class="cell lv0">0 MiB（不占本地）· 低</span></td>
+          <td><span class="cell lv0">仅网络栈 · 低</span></td>
+          <td><span class="cell lv0">无 · 低</span></td>
+          <td><span class="cell lv1">上传白模 mp4 · 中</span></td>
+          <td>唯一可并行扩张的算力；R5 扩容方向</td>
+        </tr>
+        <tr>
+          <td class="task">全开（Blender + Ollama + ffmpeg）</td>
+          <td><span class="cell lv3">实测并发峰值 11194 MiB · 极高</span></td>
+          <td><span class="cell lv3">约 13 GB / 15.5 GB · 极高</span></td>
+          <td><span class="cell lv3">待实测</span></td>
+          <td><span class="cell lv3">多路读写放大 · 极高</span></td>
+          <td>RAM 先于 VRAM 触顶 —— R5 最危险组合</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">
+      <b>读图要点</b>：<br>
+      1. <b>VRAM 三处极高</b>：Wan2.2 生成、VLM 质检、全开并发 —— 三者都靠 <code>vram_lock</code> 串行化规避。<br>
+      2. <b>RAM 比 VRAM 更早爆</b>：实测物理内存 15.5 GB、空闲仅 2.3 GB；「Blender + Ollama + ffmpeg」合计约 13 GB，是比显存更早撞到的墙（p1_local_render_measured.json 已点明）。<br>
+      3. <b>温度列无持续负载实测数据</b>：一律标 <b>待实测</b>，不编造曲线；实测方案见 <code>散热降频温度曲线.html</code> 与主文件 §5。<br>
+      4. <b>磁盘 I/O 被低估</b>：outputs/ 实测 1254 张 PNG（123.5 MB）+ 360 个 EXR（96.9 MB）；EXR 序列帧是 I/O 大户，R5 18 镜全量渲染前应清理探针残留（<code>control_test/</code>、<code>_probe_*</code>）。
+    </p>
+  </div>
+</div>
+</body>
+</html>

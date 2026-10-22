@@ -1,0 +1,35 @@
+{
+  "character": "小白",
+  "engine": "sdxl_txt2img_prompt_identity",
+  "checkpoint": "sd_xl_base_1.0.safetensors",
+  "anchor": "D:\\ai_film_projects\\projects\\雨夜寻猫\\assets\\characters\\小白_v2.png",
+  "anchor_version_uuid": "07915e1d",
+  "anchor_prompt": "small white kitten with green eyes, soaked wet fur, fur clumping, water droplets on fur, sitting in a cardboard box, rainy night alleyway, warm streetlight glow, cinematic portrait, 35mm film, detailed wet fur texture, high quality",
+  "identity_prompt": "small white kitten with green eyes, soaked wet fur, fur clumping, water droplets on fur, rainy night alleyway, warm streetlight glow, 35mm film, detailed wet fur texture, high quality",
+  "seed": 1234792641,
+  "steps": 20,
+  "cfg": 7.5,
+  "views_generated": [
+    "side",
+    "back"
+  ],
+  "prompts": {
+    "side": {
+      "positive": "side view, full body profile, standing pose, character reference, small white kitten with green eyes, soaked wet fur, fur clumping, water droplets on fur, rainy night alleyway, warm streetlight glow, 35mm film, detailed wet fur texture, high quality",
+      "negative": "ugly, blurry, low quality, deformed, watermark, text, multiple characters, duplicate, inconsistent design, extra limbs, front view, facing camera"
+    },
+    "back": {
+      "positive": "back view, seen from behind, full body, standing pose, character reference, small white kitten with green eyes, soaked wet fur, fur clumping, water droplets on fur, rainy night alleyway, warm streetlight glow, 35mm film, detailed wet fur texture, high quality",
+      "negative": "ugly, blurry, low quality, deformed, watermark, text, multiple characters, duplicate, inconsistent design, extra limbs, front view, facing camera, face visible, eyes visible",
+      "seed": 1234792641,
+      "steps": 20,
+      "cfg": 7.5
+    }
+  },
+  "files": {
+    "side": "D:\\ai_film_projects\\projects\\雨夜寻猫\\assets\\characters\\three_view\\小白_side.png",
+    "back": "D:\\ai_film_projects\\projects\\雨夜寻猫\\assets\\characters\\three_view\\小白_back.png"
+  },
+  "generated_at": "2026-09-26 02:11:30",
+  "cost": 20
+}

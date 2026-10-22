@@ -1,0 +1,5134 @@
+{
+ "schema": "cineast.timeline/2.0",
+ "project": "雨夜寻猫",
+ "contract_owners": {
+  "camera": "agent_virtualdp",
+  "gauge": "agent_virtualdp",
+  "light": "agent_virtualdp",
+  "weather": "agent_set_props",
+  "performance": "agent_director",
+  "wardrobe": "agent_set_props",
+  "props": "agent_set_props",
+  "spatial": "agent_script_super",
+  "ambience": "agent_sound",
+  "sfx": "agent_sound",
+  "dialogue": "agent_sound",
+  "music": "agent_sound",
+  "mix": "agent_sound",
+  "vfx": "agent_vfx",
+  "grade": "agent_color",
+  "overlay": "agent_editor",
+  "subtitle": "agent_editor",
+  "edit": "agent_editor",
+  "clock": "agent_coordinator"
+ },
+ "meta": {
+  "total_frames": 1920,
+  "clock_note": "",
+  "auto_draft_needs_confirm": [
+   "camera.1-1(未签)",
+   "camera.1-2(未签)",
+   "camera.1-3(未签)",
+   "camera.1-4(未签)",
+   "camera.2-1(未签)",
+   "camera.2-2(未签)",
+   "camera.2-3(未签)",
+   "camera.2-4(未签)",
+   "camera.2-5(未签)",
+   "camera.3-1(未签)",
+   "camera.3-2(未签)",
+   "camera.3-3(未签)",
+   "camera.3-4(未签)",
+   "camera.3-5(未签)",
+   "camera.3-6(未签)",
+   "camera.4-1(未签)",
+   "camera.4-2(未签)",
+   "camera.4-3(未签)",
+   "grade.1-1(未签)",
+   "grade.1-2(未签)",
+   "grade.1-3(未签)",
+   "grade.1-4(未签)",
+   "grade.2-1(未签)",
+   "grade.2-2(未签)",
+   "grade.2-3(未签)",
+   "grade.2-4(未签)",
+   "grade.2-5(未签)",
+   "grade.3-1(未签)",
+   "grade.3-2(未签)",
+   "grade.3-3(未签)",
+   "grade.3-4(未签)",
+   "grade.3-5(未签)",
+   "grade.3-6(未签)",
+   "grade.4-1(未签)",
+   "grade.4-2(未签)",
+   "grade.4-3(未签)"
+  ],
+  "signoff_rule": "origin=auto_draft 的项必须有 signoff{role,by,ts,sha} 才算定稿；qc_media 按 sha 复核，无签或 sha 不符 → 视为未填，禁止进 g1 之后的花钱步骤",
+  "explicit_label_burned_in": {
+   "done": true,
+   "by": "pipeline/tech_cut.py drawtext",
+   "text": "本片由 AI 生成合成",
+   "window_s": [
+    0.0,
+    4.0
+   ],
+   "proof": "video_24fps_1080.mp4"
+  },
+  "delivery_stage": "preview"
+ },
+ "clock": {
+  "fps": 24,
+  "total_frames": 1920,
+  "sample_rate": 48000
+ },
+ "tracks": {
+  "camera": {
+   "owner": "agent_virtualdp",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": false,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "寇豆码(代收敛·团队推荐即采纳)",
+      "ts": "2026-10-03T23:15:58+08:00",
+      "sha": "7a351a19b013"
+     },
+     "pos": [
+      0.4,
+      -0.6,
+      1.15
+     ],
+     "aim": [
+      0,
+      0,
+      0.95
+     ],
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 50,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": "固定镜先建立'平静伏案'的正常世界，观众才会被下一镜的空窝惊到（分镜表1-1：伏案→抬头）",
+     "manual_review": {
+      "status": "resolved",
+      "reason": "原 pending_owner 豁免已解除：DP 推荐值经'团队推荐即采纳'授权回填（依据 docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md）",
+      "recorded_by": "寇豆码(代收敛·团队推荐即采纳)",
+      "recorded_at": "2026-10-03T23:15:58+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": false,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "寇豆码(代收敛·团队推荐即采纳)",
+      "ts": "2026-10-03T23:15:58+08:00",
+      "sha": "38f5b56cc28d"
+     },
+     "pos": [
+      0.2,
+      0.3,
+      0.9
+     ],
+     "aim": [
+      0,
+      0.6,
+      0.55
+     ],
+     "move_type": "dolly",
+     "fps_move": 0.25,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 85,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": "推向空猫窝是'丢失的第一信号'（分镜表1-2原文：冷蓝窗光打在空窝上）",
+     "manual_review": {
+      "status": "resolved",
+      "reason": "原 pending_owner 豁免已解除：DP 推荐值经'团队推荐即采纳'授权回填（依据 docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md）",
+      "recorded_by": "寇豆码(代收敛·团队推荐即采纳)",
+      "recorded_at": "2026-10-03T23:15:58+08:00"
+     },
+     "correction": {
+      "field": "move_type+fps_move",
+      "old": "static/0",
+      "new": "dolly/0.25",
+      "basis": "分镜表 1-2 原文'推向空猫窝/推近'（分镜表胜过 auto_draft 默认 static）；fps_move 0→0.25 为衍生一致性（生成器口径 move≠static→0.25，同 2-1 truck）",
+      "source": "docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md + 主理人收敛裁定(R0-执行日志-2026-10-03)"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": false,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "寇豆码(代收敛·团队推荐即采纳)",
+      "ts": "2026-10-03T23:15:58+08:00",
+      "sha": "810e046df39d"
+     },
+     "pos": [
+      0.4,
+      -0.7,
+      1.45
+     ],
+     "aim": [
+      0,
+      0,
+      1.35
+     ],
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 75,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": "固定近景承接'愣两秒→抓风衣'的惊觉（剧本第1场：窗没关……它肯定出去了）",
+     "manual_review": {
+      "status": "resolved",
+      "reason": "原 pending_owner 豁免已解除：DP 推荐值经'团队推荐即采纳'授权回填（依据 docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md）",
+      "recorded_by": "寇豆码(代收敛·团队推荐即采纳)",
+      "recorded_at": "2026-10-03T23:15:58+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": false,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "寇豆码(代收敛·团队推荐即采纳)",
+      "ts": "2026-10-03T23:15:58+08:00",
+      "sha": "0469d24c10df"
+     },
+     "pos": [
+      1.8,
+      0.3,
+      1.5
+     ],
+     "aim": [
+      3.2,
+      0.3,
+      1.3
+     ],
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 35,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": "广角看她冲出门、门灯熄灭，把'决然'交给空间（分镜表1-4）",
+     "manual_review": {
+      "status": "resolved",
+      "reason": "原 pending_owner 豁免已解除：DP 推荐值经'团队推荐即采纳'授权回填（依据 docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md）",
+      "recorded_by": "寇豆码(代收敛·团队推荐即采纳)",
+      "recorded_at": "2026-10-03T23:15:58+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "truck",
+     "fps_move": 0.25,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 35,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00",
+      "note": "已按收敛裁定修正 focal_mm（见 correction）；pos/aim/motivation 仍空，豁免继续有效，待 blockout 后回签"
+     },
+     "correction": {
+      "field": "focal_mm",
+      "old": 28,
+      "new": 35,
+      "basis": "scene_lock/雨夜街道.json '广角35mm低机位'（lock 胜出 auto_draft 按景别默认焦段）",
+      "source": "docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md + 主理人收敛裁定(R0-执行日志-2026-10-03)"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 75,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 50,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 35,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 35,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00",
+      "note": "已按收敛裁定修正 focal_mm（见 correction）；pos/aim/motivation 仍空，豁免继续有效，待 blockout 后回签"
+     },
+     "correction": {
+      "field": "focal_mm",
+      "old": 28,
+      "new": 35,
+      "basis": "scene_lock/雨夜街道.json '广角35mm低机位'（lock 胜出 auto_draft 按景别默认焦段）",
+      "source": "docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md + 主理人收敛裁定(R0-执行日志-2026-10-03)"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 50,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "pan",
+     "fps_move": 0.25,
+     "pan_dps": 3.0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 75,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 85,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 50,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 75,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 35,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "truck",
+     "fps_move": 0.25,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 35,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00",
+      "note": "已按收敛裁定修正 focal_mm（见 correction）；pos/aim/motivation 仍空，豁免继续有效，待 blockout 后回签"
+     },
+     "correction": {
+      "field": "focal_mm",
+      "old": 28,
+      "new": 35,
+      "basis": "scene_lock/雨夜街道.json '广角35mm低机位'（lock 胜出；4-1 与 2-1 同街道同机位语法）",
+      "source": "docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md + 主理人收敛裁定(R0-执行日志-2026-10-03)"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 75,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "signoff": null,
+     "pos": null,
+     "aim": null,
+     "move_type": "static",
+     "fps_move": 0,
+     "pan_dps": 0,
+     "hand_shake_pct": 0.0,
+     "focal_mm": 35,
+     "t_stop": 2.8,
+     "focus_curve": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "pos/aim/motivation 为必填且为 null：机位坐标/朝向/动机需 DP 内容判断。scene_lock 仅定性（雨夜街道:'广角35mm低机位'），02_blockout 为空、无机位数值 lock，无明确依据不可代填，禁止 rubber-stamp → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00",
+      "note": "已按收敛裁定修正 focal_mm（见 correction）；pos/aim/motivation 仍空，豁免继续有效，待 blockout 后回签"
+     },
+     "correction": {
+      "field": "focal_mm",
+      "old": 24,
+      "new": 35,
+      "basis": "scene_lock/雨夜街道.json '广角35mm低机位'（lock 胜出 auto_draft 默认焦段）",
+      "source": "docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md + 主理人收敛裁定(R0-执行日志-2026-10-03)"
+     }
+    }
+   ]
+  },
+  "gauge": {
+   "owner": "agent_virtualdp",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "833dcf34cee2"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "fa1c8f9e378e"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "774a02d2b922"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "f13dd62d99ab"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "81279caa85e1"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "8a45abe2d432"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "a1414cd57d87"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "9c72fa64819c"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "8f8288a362f9"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "d4a52bdd2eec"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "5cd665246cf4"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "458ec1841f7f"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "9deac4437be1"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "ddc97008ad4b"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "717a694fe86a"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "07c1c719d3c0"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "b8b623da14c2"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "sensor": "super35",
+     "shutter_angle_deg": 180,
+     "frame_rate": 24,
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-batch1",
+      "ts": "2026-10-03T18:06:58+08:00",
+      "sha": "05ffa03da0d7"
+     }
+    }
+   ]
+  },
+  "light": {
+   "owner": "agent_virtualdp",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "key_temp_k": 2900,
+     "key_dir_az_deg": 270,
+     "key_intensity": 1.0,
+     "fill_ratio": 0.25,
+     "motivation": "暖黄台灯主光 vs 窗外冷蓝光（scene_lock 出租屋内原文），平静段暖主光占优",
+     "correction": {
+      "field": "fill_ratio",
+      "proposal_value": 4,
+      "stored_value": 0.25,
+      "basis": "提案按分母口径填 4（1:4，提案文档§〇.3）与 timeline 校验器 RANGE fill_ratio∈(0,1) 冲突；按校验器域以倒数等价落库（1:4→0.25），光比语义不变；口径冲突上报待架构师/T3 裁决",
+      "source": "docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md + 主理人收敛裁定(R0-执行日志-2026-10-03)"
+     },
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-conv(团队推荐收敛,提案文档:R0-T4-批次1-创作提案-36项.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "f92090d284a3"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "key_temp_k": 8500,
+     "key_dir_az_deg": 0,
+     "key_intensity": 0.9,
+     "fill_ratio": 0.3333,
+     "motivation": "冷蓝窗光打在空窝上（分镜表1-2原文）——主辅与 1-1 对调，冷暖易位即叙事",
+     "correction": {
+      "field": "fill_ratio",
+      "proposal_value": 3,
+      "stored_value": 0.3333,
+      "basis": "提案按分母口径填 3（1:3，提案文档§〇.3）与 timeline 校验器 RANGE fill_ratio∈(0,1) 冲突；按校验器域以倒数等价落库（1:3→0.3333），光比语义不变；口径冲突上报待架构师/T3 裁决",
+      "source": "docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md + 主理人收敛裁定(R0-执行日志-2026-10-03)"
+     },
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-conv(团队推荐收敛,提案文档:R0-T4-批次1-创作提案-36项.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "c7570c47f713"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "key_temp_k": 2900,
+     "key_dir_az_deg": 270,
+     "key_intensity": 1.0,
+     "fill_ratio": 0.25,
+     "motivation": "延续 lock 暖黄台灯主光，光不切换保场内连续（同场光连续铁律），情绪反差由表演承接",
+     "correction": {
+      "field": "fill_ratio",
+      "proposal_value": 4,
+      "stored_value": 0.25,
+      "basis": "提案按分母口径填 4（1:4，提案文档§〇.3）与 timeline 校验器 RANGE fill_ratio∈(0,1) 冲突；按校验器域以倒数等价落库（1:4→0.25），光比语义不变；口径冲突上报待架构师/T3 裁决",
+      "source": "docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md + 主理人收敛裁定(R0-执行日志-2026-10-03)"
+     },
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-conv(团队推荐收敛,提案文档:R0-T4-批次1-创作提案-36项.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "59de7c509030"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "key_temp_k": 8500,
+     "key_dir_az_deg": 0,
+     "key_intensity": 0.7,
+     "fill_ratio": 0.1667,
+     "motivation": "门灯熄灭，屋内只剩开着的窗和飘动窗帘（分镜表1-4原文）——她离开后世界的空",
+     "correction": {
+      "field": "fill_ratio",
+      "proposal_value": 6,
+      "stored_value": 0.1667,
+      "basis": "提案按分母口径填 6（1:6，提案文档§〇.3）与 timeline 校验器 RANGE fill_ratio∈(0,1) 冲突；按校验器域以倒数等价落库（1:6→0.1667），光比语义不变；口径冲突上报待架构师/T3 裁决",
+      "source": "docs/07-交接与日志/R0-T4-批次1-创作提案-36项.md + 主理人收敛裁定(R0-执行日志-2026-10-03)"
+     },
+     "signoff": {
+      "role": "agent_virtualdp",
+      "by": "R0-T4-conv(团队推荐收敛,提案文档:R0-T4-批次1-创作提案-36项.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "6187047d3b94"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "key_temp_k": null,
+     "key_dir_az_deg": null,
+     "key_intensity": null,
+     "fill_ratio": null,
+     "motivation": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "key_temp_k/key_dir_az_deg/key_intensity/fill_ratio/motivation 为必填且为 null：scene_lock 仅给定性 lighting_direction（出租屋内'暖黄台灯vs窗外冷蓝'、街道'霓虹多色光源'、巷口'路灯暖光主光源'），数值色温/方位角/强度/光比属灯光设计创作判断，无明确依据不可代填 → 待 DP 逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch1",
+      "recorded_at": "2026-10-03T18:06:58+08:00"
+     }
+    }
+   ]
+  },
+  "weather": {
+   "owner": "agent_set_props",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "rain_rate_mm_h": null,
+     "ground_wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "rain_rate_mm_h/ground_wetness 为必填且为 null：剧本/scene_lock 仅定性（'中雨打在伞面上''地面水渍反光'），且第1场为室内景、第4场'雨还在下'暗示雨势随场次变化，mm/h 数值与逐镜湿程度属 set_props 岗位判断，无明确依据不可代填 → 待逐镜定值后修后签。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    }
+   ]
+  },
+  "performance": {
+   "owner": "agent_director",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "path": null,
+     "body_emotion": null,
+     "gaze": null,
+     "gesture_clips": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "path/body_emotion/gaze/gesture_clips 全 null：剧本 action 为定性描述（'蹲下查看''撑伞快步'等），逐镜走位坐标/情绪数值(0-100)/视线/手势剪辑属导演创作判断，无明确依据不可代填 → 待导演逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    }
+   ]
+  },
+  "wardrobe": {
+   "owner": "agent_set_props",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "costume_id": null,
+     "wetness": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "costume_id/wetness 为必填且为 null：character_lock/林小雨.json 仅定性'米色风衣'（K13 已锁林小雨 v2 基准），但项目无 costume 资产登记（costume_id 无既定 ID 体系），wetness 逐镜淋雨程度（0~1）无依据，属 set_props 岗位判断 → 建议先立 costume 资产 ID 登记再逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    }
+   ]
+  },
+  "props": {
+   "owner": "agent_set_props",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "prop_id": null,
+     "visible": null,
+     "state_machine": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "prop_id/visible/state_machine 为必填且为 null：剧本逐场有定性道具列表（台灯/空猫窝/飘动窗帘/开着的窗/伏案的书本/伞/垃圾桶/车底/纸箱/水洼等），但 locks/props/ 为空目录、无道具 ID 登记与状态机设计，prop_id 编制与逐镜 state_machine 属 set_props 岗位创作判断 → 待登记后逐镜回填。",
+      "recorded_by": "R0-T4-batch2",
+      "recorded_at": "2026-10-03T18:14:47+08:00"
+     }
+    }
+   ]
+  },
+  "spatial": {
+   "owner": "agent_script_super",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "axis_line_deg": null,
+     "screen_dir": null,
+     "eyeline_deg": null,
+     "light_dir_deg": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "axis_line_deg/screen_dir/eyeline_deg/light_dir_deg 全 null：轴线/视线/光位角度数值需依分镜与机位定（scene_lock 仅'广角35mm低机位'定性，无机位 lock 数值） → 待场记岗逐镜定值。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    }
+   ]
+  },
+  "ambience": {
+   "owner": "agent_sound",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "layers": [
+      {
+       "scene": "出租屋内",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/ambient/出租屋雨声.mp3",
+       "layers_present": [
+        "屋顶近场硬雨"
+       ],
+       "layers_missing": [
+        "远景低鸣",
+        "雷低通200Hz",
+        "室内闷感滤波版"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "layers": [
+      {
+       "scene": "出租屋内",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/ambient/出租屋雨声.mp3",
+       "layers_present": [
+        "屋顶近场硬雨"
+       ],
+       "layers_missing": [
+        "远景低鸣",
+        "雷低通200Hz",
+        "室内闷感滤波版"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "layers": [
+      {
+       "scene": "出租屋内",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/ambient/出租屋雨声.mp3",
+       "layers_present": [
+        "屋顶近场硬雨"
+       ],
+       "layers_missing": [
+        "远景低鸣",
+        "雷低通200Hz",
+        "室内闷感滤波版"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "layers": [
+      {
+       "scene": "出租屋内",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/ambient/出租屋雨声.mp3",
+       "layers_present": [
+        "屋顶近场硬雨"
+       ],
+       "layers_missing": [
+        "远景低鸣",
+        "雷低通200Hz",
+        "室内闷感滤波版"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "layers": [
+      {
+       "scene": "雨夜街道",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/ambient/街道雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "远景",
+        "雷",
+        "偶发车辆远声"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "layers": [
+      {
+       "scene": "雨夜街道",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/ambient/街道雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "远景",
+        "雷",
+        "偶发车辆远声"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "layers": [
+      {
+       "scene": "雨夜街道",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/ambient/街道雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "远景",
+        "雷",
+        "偶发车辆远声"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "layers": [
+      {
+       "scene": "雨夜街道",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/ambient/街道雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "远景",
+        "雷",
+        "偶发车辆远声"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "layers": [
+      {
+       "scene": "雨夜街道",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/ambient/街道雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "远景",
+        "雷",
+        "偶发车辆远声"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "layers": [
+      {
+       "scene": "雨夜巷口",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/ambient/巷口雨声.mp3",
+       "layers_present": [
+        "硬雨"
+       ],
+       "layers_missing": [
+        "滴水(窄缝混响)",
+        "雷"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "layers": [
+      {
+       "scene": "归途",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/ambient/雨声渐弱.mp3",
+       "layers_present": [
+        "硬雨渐弱"
+       ],
+       "layers_missing": [
+        "雨停滴水尾",
+        "远景城市低鸣"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "layers": [
+      {
+       "scene": "归途",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/ambient/雨声渐弱.mp3",
+       "layers_present": [
+        "硬雨渐弱"
+       ],
+       "layers_missing": [
+        "雨停滴水尾",
+        "远景城市低鸣"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "layers": [
+      {
+       "scene": "归途",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/ambient/雨声渐弱.mp3",
+       "layers_present": [
+        "硬雨渐弱"
+       ],
+       "layers_missing": [
+        "雨停滴水尾",
+        "远景城市低鸣"
+       ]
+      }
+     ],
+     "room_tone_id": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "layers 已填（audio_cues_v1 真实事件，05_audio/ambient/ 4 个 mp3 已核存在），但 room_tone_id=null 且项目无 room tone 资产登记；layers 自记 layers_missing（远景低鸣/雷/滴水混响等待补层）→ 待音频岗立 room tone 资产登记后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    }
+   ]
+  },
+  "sfx": {
+   "owner": "agent_sound",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "events": [
+      {
+       "id": "sfx1",
+       "name": "纸张翻动",
+       "start_s": 0.5,
+       "gain_lin": 0.3,
+       "src": "audio/sfx/纸张翻动.mp3",
+       "trigger_ref": {
+        "t_s": 0.5,
+        "kind": "performance",
+        "desc": "床上翻身带起启事"
+       }
+      },
+      {
+       "id": "sfx2",
+       "name": "雨声穿窗",
+       "start_s": 3.0,
+       "gain_lin": 0.4,
+       "src": "audio/sfx/雨声穿窗.mp3",
+       "trigger_ref": {
+        "t_s": 3.0,
+        "kind": "weather",
+        "desc": "1-2 空猫窝镜起"
+       },
+       "line_ref": "1-3窗没关"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 0.5,
+       "kind": {
+        "t_s": 0.5,
+        "kind": "performance",
+        "desc": "床上翻身带起启事"
+       }
+      },
+      {
+       "start_s": 3.0,
+       "kind": {
+        "t_s": 3.0,
+        "kind": "weather",
+        "desc": "1-2 空猫窝镜起"
+       }
+      }
+     ],
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "684eecbcec1b"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "events": [
+      {
+       "id": "sfx2",
+       "name": "雨声穿窗",
+       "start_s": 3.0,
+       "gain_lin": 0.4,
+       "src": "audio/sfx/雨声穿窗.mp3",
+       "trigger_ref": {
+        "t_s": 3.0,
+        "kind": "weather",
+        "desc": "1-2 空猫窝镜起"
+       },
+       "line_ref": "1-3窗没关"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 3.0,
+       "kind": {
+        "t_s": 3.0,
+        "kind": "weather",
+        "desc": "1-2 空猫窝镜起"
+       }
+      }
+     ],
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "e4cdc7b33be0"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "events": [],
+     "trigger_ref": [],
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json sfx 无该镜事件（权威源核对）",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "2ed6b4bb424c"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "events": [
+      {
+       "id": "sfx3",
+       "name": "开关门",
+       "start_s": 12.5,
+       "gain_lin": 0.5,
+       "src": "audio/sfx/开关门.mp3",
+       "trigger_ref": {
+        "t_s": 12.5,
+        "kind": "performance",
+        "desc": "1-4 手触门把"
+       }
+      },
+      {
+       "id": "sfx4",
+       "name": "踩水洼",
+       "start_s": 15.0,
+       "gain_lin": 0.35,
+       "loop": 5,
+       "src": "audio/sfx/踩水洼.mp3",
+       "trigger_ref": {
+        "synchronized_to": "video.shot=2-1",
+        "kind": "performance",
+        "desc": "步频锁相，须与走位帧逐坑对齐"
+       },
+       "foley_missing": "沥青/水洼分轨、步频未锁"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 12.5,
+       "kind": {
+        "t_s": 12.5,
+        "kind": "performance",
+        "desc": "1-4 手触门把"
+       }
+      },
+      {
+       "start_s": 15.0,
+       "kind": {
+        "synchronized_to": "video.shot=2-1",
+        "kind": "performance",
+        "desc": "步频锁相，须与走位帧逐坑对齐"
+       }
+      }
+     ],
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "fddd589c31ea"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "events": [
+      {
+       "id": "sfx4",
+       "name": "踩水洼",
+       "start_s": 15.0,
+       "gain_lin": 0.35,
+       "loop": 5,
+       "src": "audio/sfx/踩水洼.mp3",
+       "trigger_ref": {
+        "synchronized_to": "video.shot=2-1",
+        "kind": "performance",
+        "desc": "步频锁相，须与走位帧逐坑对齐"
+       },
+       "foley_missing": "沥青/水洼分轨、步频未锁"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 15.0,
+       "kind": {
+        "synchronized_to": "video.shot=2-1",
+        "kind": "performance",
+        "desc": "步频锁相，须与走位帧逐坑对齐"
+       }
+      }
+     ],
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "8d748cff6a15"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "events": [],
+     "trigger_ref": [],
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json sfx 无该镜事件（权威源核对）",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "0c8e9e10c305"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "events": [],
+     "trigger_ref": [],
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json sfx 无该镜事件（权威源核对）",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "5e9d0b85bf33"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "events": [],
+     "trigger_ref": [],
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json sfx 无该镜事件（权威源核对）",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "a6ca0fecb716"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "events": [],
+     "trigger_ref": [],
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json sfx 无该镜事件（权威源核对）",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "667931bd5cda"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "events": [
+      {
+       "id": "sfx5",
+       "name": "伞收起滴水",
+       "start_s": 36.0,
+       "gain_lin": 0.3,
+       "src": "audio/sfx/伞收起滴水.mp3",
+       "prop_ref": "p4雨伞"
+      },
+      {
+       "id": "sfx6",
+       "name": "猫叫-微弱单声",
+       "start_s": 38.5,
+       "gain_lin": 0.7,
+       "src": "audio/sfx/猫叫-微弱单声.mp3",
+       "timing_rule": "先于画面0.5s（老板已拍板：声音先行制造听觉同步）"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 36.0,
+       "kind": {}
+      },
+      {
+       "start_s": 38.5,
+       "kind": {}
+      }
+     ],
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "74e71b7f9c77"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "events": [
+      {
+       "id": "sfx6",
+       "name": "猫叫-微弱单声",
+       "start_s": 38.5,
+       "gain_lin": 0.7,
+       "src": "audio/sfx/猫叫-微弱单声.mp3",
+       "timing_rule": "先于画面0.5s（老板已拍板：声音先行制造听觉同步）"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 38.5,
+       "kind": {}
+      }
+     ],
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "da557247b5c1"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "events": [
+      {
+       "id": "sfx7",
+       "name": "纸箱窸窣",
+       "start_s": 43.0,
+       "gain_lin": 0.22,
+       "src": "audio/sfx/纸箱窸窣.mp3",
+       "trigger_ref": {
+        "t_s": 43.0,
+        "kind": "prop",
+        "prop_id": "p5纸箱"
+       }
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 43.0,
+       "kind": {
+        "t_s": 43.0,
+        "kind": "prop",
+        "prop_id": "p5纸箱"
+       }
+      }
+     ],
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "201000c2fda1"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "events": [
+      {
+       "id": "sfx8",
+       "name": "布料摩擦咕噜",
+       "start_s": 47.0,
+       "gain_lin": 0.22,
+       "src": "audio/sfx/布料摩擦咕噜.mp3",
+       "trigger_ref": {
+        "t_s": 47.0,
+        "kind": "performance",
+        "desc": "3-4 抱起接触帧"
+       }
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 47.0,
+       "kind": {
+        "t_s": 47.0,
+        "kind": "performance",
+        "desc": "3-4 抱起接触帧"
+       }
+      }
+     ],
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "c5f5c566a76d"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "events": [],
+     "trigger_ref": [],
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json sfx 无该镜事件（权威源核对）",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "706b0afe778a"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "events": [],
+     "trigger_ref": [],
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json sfx 无该镜事件（权威源核对）",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "2b9dc3684433"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "events": [],
+     "trigger_ref": [],
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json sfx 无该镜事件（权威源核对）",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "8ebad8dfd435"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "events": [
+      {
+       "id": "sfx9",
+       "name": "猫叫-应答单声",
+       "start_s": 69.5,
+       "gain_lin": 0.7,
+       "src": "audio/sfx/猫叫-应答单声.mp3",
+       "prop_ref": "p2白猫"
+      }
+     ],
+     "trigger_ref": [
+      {
+       "start_s": 69.5,
+       "kind": {}
+      }
+     ],
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "ecae774ee419"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "events": [],
+     "trigger_ref": [],
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json sfx 无该镜事件（权威源核对）",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "f926c63065cc"
+     }
+    }
+   ]
+  },
+  "dialogue": {
+   "owner": "agent_sound",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "events": [
+      {
+       "line": "1-1",
+       "text": "（惊醒）…小白？",
+       "start_s": 1.5,
+       "dur_s": 1.6,
+       "src": "audio/dialogue/1-1.mp3",
+       "speaker": "林小雨",
+       "voice": "edge-tts:候选A",
+       "voice_license": "🟡需替换"
+      }
+     ],
+     "anchor_lkfs": -27.0,
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "768b1fe60963"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "events": [],
+     "anchor_lkfs": -27.0,
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json dialogue 无该镜台词（权威源核对）；anchor 与既有 8 项统一 -27.0",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "a5473560e0ed"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "events": [
+      {
+       "line": "1-3",
+       "text": "窗没关…",
+       "start_s": 6.5,
+       "dur_s": 1.4,
+       "src": "audio/dialogue/1-3.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0,
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "1ec60d10ca45"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "events": [
+      {
+       "line": "1-4",
+       "text": "小白！你在哪…",
+       "start_s": 11.0,
+       "dur_s": 2.2,
+       "src": "audio/dialogue/1-4.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0,
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "76935d445fa4"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "events": [],
+     "anchor_lkfs": -27.0,
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json dialogue 无该镜台词（权威源核对）；anchor 与既有 8 项统一 -27.0",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "ee33d2e4d204"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "events": [
+      {
+       "line": "2-2",
+       "text": "叔叔阿姨，看见我的猫了吗…",
+       "start_s": 20.0,
+       "dur_s": 3.4,
+       "src": "audio/dialogue/2-2.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0,
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "befb0032b025"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "events": [],
+     "anchor_lkfs": -27.0,
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json dialogue 无该镜台词（权威源核对）；anchor 与既有 8 项统一 -27.0",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "58af11067146"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "events": [
+      {
+       "line": "2-4",
+       "text": "下这么大雨…",
+       "start_s": 29.0,
+       "dur_s": 2.1,
+       "src": "audio/dialogue/2-4.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0,
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "550e2b2ff65d"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "events": [],
+     "anchor_lkfs": -27.0,
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json dialogue 无该镜台词（权威源核对）；anchor 与既有 8 项统一 -27.0",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "77abb9f9137d"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "events": [],
+     "anchor_lkfs": -27.0,
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json dialogue 无该镜台词（权威源核对）；anchor 与既有 8 项统一 -27.0",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "c8901eaaa686"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "events": [
+      {
+       "line": "3-2",
+       "text": "小白？是你吗…",
+       "start_s": 40.0,
+       "dur_s": 1.99,
+       "src": "audio/dialogue/3-2.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0,
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "2f9f7286e241"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "events": [],
+     "anchor_lkfs": -27.0,
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json dialogue 无该镜台词（权威源核对）；anchor 与既有 8 项统一 -27.0",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "fbef1cc4119f"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "events": [
+      {
+       "line": "3-4",
+       "text": "原来你在这…傻丫头…",
+       "start_s": 46.0,
+       "dur_s": 2.6,
+       "src": "audio/dialogue/3-4.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0,
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "32959dae5382"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "events": [
+      {
+       "line": "3-5",
+       "text": "找到你了…我们回家。",
+       "start_s": 51.0,
+       "dur_s": 2.4,
+       "src": "audio/dialogue/3-5.mp3"
+      }
+     ],
+     "anchor_lkfs": -27.0,
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "d336e9fc6361"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "events": [],
+     "anchor_lkfs": -27.0,
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json dialogue 无该镜台词（权威源核对）；anchor 与既有 8 项统一 -27.0",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "23681653c687"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "events": [],
+     "anchor_lkfs": -27.0,
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json dialogue 无该镜台词（权威源核对）；anchor 与既有 8 项统一 -27.0",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "b32656544df5"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "events": [],
+     "anchor_lkfs": -27.0,
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json dialogue 无该镜台词（权威源核对）；anchor 与既有 8 项统一 -27.0",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "2c1c84616359"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "events": [],
+     "anchor_lkfs": -27.0,
+     "source_state": "explicit_empty",
+     "basis": "audio_cues_v1.json dialogue 无该镜台词（权威源核对）；anchor 与既有 8 项统一 -27.0",
+     "signoff": {
+      "role": "agent_sound",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "44742adf136e"
+     }
+    }
+   ]
+  },
+  "music": {
+   "owner": "agent_sound",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "events": [
+      {
+       "cue": "第1场-平静惊变",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/bgm/第1场-平静惊变.mp3",
+       "level_db": -18,
+       "motive": "无主题（留白）"
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "events": [
+      {
+       "cue": "第1场-平静惊变",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/bgm/第1场-平静惊变.mp3",
+       "level_db": -18,
+       "motive": "无主题（留白）"
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "events": [
+      {
+       "cue": "第1场-平静惊变",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/bgm/第1场-平静惊变.mp3",
+       "level_db": -18,
+       "motive": "无主题（留白）"
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "events": [
+      {
+       "cue": "第1场-平静惊变",
+       "start_s": 0,
+       "end_s": 15,
+       "src": "audio/bgm/第1场-平静惊变.mp3",
+       "level_db": -18,
+       "motive": "无主题（留白）"
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "events": [
+      {
+       "cue": "第2场-焦虑",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/bgm/第2场-焦虑.mp3",
+       "level_db": -15
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "events": [
+      {
+       "cue": "第2场-焦虑",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/bgm/第2场-焦虑.mp3",
+       "level_db": -15
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "events": [
+      {
+       "cue": "第2场-焦虑",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/bgm/第2场-焦虑.mp3",
+       "level_db": -15
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "events": [
+      {
+       "cue": "第2场-焦虑",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/bgm/第2场-焦虑.mp3",
+       "level_db": -15
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "events": [
+      {
+       "cue": "第2场-焦虑",
+       "start_s": 15,
+       "end_s": 35,
+       "src": "audio/bgm/第2场-焦虑.mp3",
+       "level_db": -15
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "events": [
+      {
+       "cue": "第3场-希望",
+       "start_s": 35,
+       "end_s": 60,
+       "src": "audio/bgm/第3场-希望.mp3",
+       "level_db": -12,
+       "theme_first_at_s": 42.0,
+       "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "events": [
+      {
+       "cue": "第4场-温暖",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/bgm/第4场-温暖.mp3",
+       "level_db": -13,
+       "fade_out_s": 5.0
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "events": [
+      {
+       "cue": "第4场-温暖",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/bgm/第4场-温暖.mp3",
+       "level_db": -13,
+       "fade_out_s": 5.0
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "events": [
+      {
+       "cue": "第4场-温暖",
+       "start_s": 60,
+       "end_s": 80,
+       "src": "audio/bgm/第4场-温暖.mp3",
+       "level_db": -13,
+       "fade_out_s": 5.0
+      }
+     ],
+     "ducks_for_dialogue": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 已填（4 场 cue，05_audio/bgm/ 4 个 mp3 已核存在），ducks_for_dialogue=null 为音乐-对白闪避混音决策，属 agent_sound/music 岗创作判断 → 待定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    }
+   ]
+  },
+  "mix": {
+   "owner": "agent_sound",
+   "items": [],
+   "manual_review": {
+    "status": "pending_owner",
+    "reason": "整轨 items=0（buses/automation/ducking/target 无任何值）：混音母带设计未开始。mix 为全镜必需的技术配置轨（非'无事件即合法'的事件型轨），补空 item 即伪造 → 轨级待人工：待音频岗整轨产出（target_lufs 参考 spec/delivery_spec.json mix 区间）。",
+    "recorded_by": "R0-T4-batch3",
+    "recorded_at": "2026-10-03T18:24:37+08:00"
+   }
+  },
+  "vfx": {
+   "owner": "agent_vfx",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "events": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events 全 null：绿眼亮起、雨幕增强等 VFX 设计属创作判断，项目无 vfx 清单 lock → 待 vfx 岗逐镜设计后修后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    }
+   ]
+  },
+  "grade": {
+   "owner": "agent_color",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "origin": "auto_draft",
+     "needs_owner_confirm": true,
+     "show_lut_id": "cold_blue_gray_v1",
+     "signoff": null,
+     "primary_lift_gamma_gain": null,
+     "grain_template_id": "film_grain_light",
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "primary_lift_gamma_gain=null（调色数值创作判断）；show_lut_id='cold_blue_gray_v1'/grain_template_id='film_grain_light' 为管线默认值且无 LUT/颗粒模板资产登记可核 → 待调色岗确认 LUT 登记并逐镜定值后签。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    }
+   ]
+  },
+  "overlay": {
+   "owner": "agent_editor",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "elements": null,
+     "ai_label": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "elements/ai_label 全 null：ai_label 为 AI 生成内容标识（交付合规硬要求），其呈现方案与 elements 字幕条/角标设计属剪辑岗创作 → 待回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    }
+   ]
+  },
+  "subtitle": {
+   "owner": "agent_editor",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "events": null,
+     "style": null,
+     "manual_review": {
+      "status": "pending_owner",
+      "reason": "events/style 全 null：whisper 字幕产物仅 1-1 一镜（05_audio/dialogue/subtitles/ 仅 1-1.json/.srt，对照 8 镜台词缺口大），style 无登记 → 待字幕岗批量产出并对齐时间轴后回填。",
+      "recorded_by": "R0-T4-batch3",
+      "recorded_at": "2026-10-03T18:24:37+08:00"
+     }
+    }
+   ]
+  },
+  "edit": {
+   "owner": "agent_editor",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "in_f": 0,
+     "out_f": 71,
+     "order_idx": 1,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "b8d0b002e65e"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "in_f": 72,
+     "out_f": 143,
+     "order_idx": 2,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "fc731f5bfa5b"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "in_f": 144,
+     "out_f": 239,
+     "order_idx": 3,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "b27e9c120ccd"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "in_f": 240,
+     "out_f": 359,
+     "order_idx": 4,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "62825595402d"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "in_f": 360,
+     "out_f": 455,
+     "order_idx": 5,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "7ea3a63fbf67"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "in_f": 456,
+     "out_f": 575,
+     "order_idx": 6,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "257bd31f38a4"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "in_f": 576,
+     "out_f": 671,
+     "order_idx": 7,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "3936917a73f0"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "in_f": 672,
+     "out_f": 767,
+     "order_idx": 8,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "cfb679eb959f"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "in_f": 768,
+     "out_f": 839,
+     "order_idx": 9,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "74fe73067688"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "in_f": 840,
+     "out_f": 935,
+     "order_idx": 10,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "3fc4c02e7ac9"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "in_f": 936,
+     "out_f": 1007,
+     "order_idx": 11,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "a8d867e0bbb4"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "in_f": 1008,
+     "out_f": 1079,
+     "order_idx": 12,
+     "transition_out": "cut",
+     "source_kind": "video",
+     "gen": {
+      "engine": "kling3-omni+first_frame"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "41b27980f2d2"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "in_f": 1080,
+     "out_f": 1199,
+     "order_idx": 13,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "7d56da9b0ac1"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "in_f": 1200,
+     "out_f": 1319,
+     "order_idx": 14,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "8587bae16027"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "in_f": 1320,
+     "out_f": 1439,
+     "order_idx": 15,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "dc1818c7e8fb"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "in_f": 1440,
+     "out_f": 1631,
+     "order_idx": 16,
+     "transition_out": "cut",
+     "source_kind": "video",
+     "gen": {
+      "engine": "kling3-omni+first_frame"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "fec59467cbfb"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "in_f": 1632,
+     "out_f": 1751,
+     "order_idx": 17,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "ad7dcc10f70c"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "in_f": 1752,
+     "out_f": 1919,
+     "order_idx": 18,
+     "transition_out": "cut",
+     "source_kind": "still_fallback",
+     "gen": {
+      "engine": "TBD"
+     },
+     "signoff": {
+      "role": "agent_editor",
+      "by": "R0-T4-batch3",
+      "ts": "2026-10-03T18:24:37+08:00",
+      "sha": "33c32f0430bc"
+     }
+    }
+   ]
+  },
+  "clock": {
+   "owner": "agent_coordinator",
+   "items": [
+    {
+     "shot_id": "1-1",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "cc988b040061"
+     }
+    },
+    {
+     "shot_id": "1-2",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "85f456691d20"
+     }
+    },
+    {
+     "shot_id": "1-3",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "512809624875"
+     }
+    },
+    {
+     "shot_id": "1-4",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "8073fbd6dad4"
+     }
+    },
+    {
+     "shot_id": "2-1",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "c640c2aa64e6"
+     }
+    },
+    {
+     "shot_id": "2-2",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "a504c0a9c39f"
+     }
+    },
+    {
+     "shot_id": "2-3",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "8aa5700dec3a"
+     }
+    },
+    {
+     "shot_id": "2-4",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "9f037bb99b6e"
+     }
+    },
+    {
+     "shot_id": "2-5",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "4e58146c4b40"
+     }
+    },
+    {
+     "shot_id": "3-1",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "db8fe4b4e10c"
+     }
+    },
+    {
+     "shot_id": "3-2",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "ac6a24b6fa8f"
+     }
+    },
+    {
+     "shot_id": "3-3",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "862a37a98b3a"
+     }
+    },
+    {
+     "shot_id": "3-4",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "f26c84d49c85"
+     }
+    },
+    {
+     "shot_id": "3-5",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "08a2fc759066"
+     }
+    },
+    {
+     "shot_id": "3-6",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "4024dcccc12f"
+     }
+    },
+    {
+     "shot_id": "4-1",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "a9fd6be3641e"
+     }
+    },
+    {
+     "shot_id": "4-2",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "f3fcbfb43960"
+     }
+    },
+    {
+     "shot_id": "4-3",
+     "fps": 24,
+     "signoff": {
+      "role": "agent_coordinator",
+      "by": "R0-T4-lead(主理人代协调岗,授权:docs/07-交接与日志/R0-执行日志-2026-10-03.md)",
+      "ts": "2026-10-03T18:38:29+08:00",
+      "sha": "f21f323c5b3b"
+     }
+    }
+   ]
+  }
+ }
+}

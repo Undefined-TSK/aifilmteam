@@ -1,0 +1,36 @@
+{
+  "handoff_id": "分镜师-20260822-A0E1",
+  "task_name": "场景锁定-雨夜街道",
+  "from_agent": "场景设计师",
+  "to_agent": "分镜师",
+  "work_background": "雨夜街道场景已锁定K13版本，scene_lock已写入，包含光影、色调、构图参数",
+  "deliverables": [
+    "雨夜街道_scene_lock.json",
+    "ComfyUI workflow参数",
+    "参考图3张"
+  ],
+  "downstream_task": "分镜生成（8镜头）",
+  "completion_criteria": [
+    "分镜01已生成",
+    "分镜02-08待生成",
+    "分镜与场景一致性检查通过"
+  ],
+  "stop_conditions": [
+    "预算不足",
+    "分镜质量不达标"
+  ],
+  "pending_items": [],
+  "material_version": "v1",
+  "created_at": "2026-08-22T22:26:49.767290",
+  "status": "pending_check",
+  "timeline": [
+    {
+      "event": "created",
+      "agent": "场景设计师",
+      "message": "创建交接任务，等待 分镜师 检查",
+      "time": "2026-08-22T22:26:49.767290"
+    }
+  ],
+  "check_result": null,
+  "result": null
+}

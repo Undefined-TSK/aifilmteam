@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>维度19 · VRAM 使用水位图 — CINEAST-3</title>
+<style>
+  :root{
+    --c1:#1a1a2e; --c2:#16213e; --c3:#0f3460; --c4:#e94560; --c5:#533483;
+    --fg:#e8eaf0; --dim:#9aa3b2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--c1);color:var(--fg);font-family:"Segoe UI","Microsoft YaHei",sans-serif;padding:24px}
+  .wrap{max-width:1120px;margin:0 auto}
+  .nav{font-size:12px;color:var(--dim);margin-bottom:14px}
+  .nav a{color:var(--c4);text-decoration:none}
+  h1{font-size:20px;margin-bottom:4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+  .card{background:var(--c2);border:1px solid var(--c3);border-radius:10px;padding:16px;margin-bottom:16px}
+  #chart{width:100%;height:520px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--c3)}
+  th{color:var(--dim);font-weight:500;font-size:12px}
+  .tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px}
+  .m{background:rgba(233,69,96,.18);color:#ff9db0}
+  .e{background:rgba(83,52,131,.28);color:#c3b0ff}
+  .w{background:rgba(154,163,178,.18);color:#c9cfda}
+  .note{color:var(--dim);font-size:12px;line-height:1.7}
+  .k{color:var(--c4)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav">基线：<a href="../00-基线报告/项目基线报告.md">../00-基线报告/项目基线报告.md</a> ｜ 规约：<a href="../_执行须知.md">../_执行须知.md</a> ｜ 导航：<a href="../索引.html">../索引.html</a></div>
+  <h1>维度 19 · VRAM 使用水位图</h1>
+  <div class="sub">各工具组合的显存占用叠加 · 12GB 红线标注 · 数据来源：nvidia-smi 实测 + 项目基线报告 + R0-T6 实测附录</div>
+
+  <div class="card"><div id="chart"></div></div>
+
+  <div class="card">
+    <table>
+      <thead><tr><th>工具组合</th><th>总占用 (MiB)</th><th>占 12GB</th><th>距红线余量</th><th>性质</th></tr></thead>
+      <tbody>
+        <tr><td>系统空载</td><td>3207</td><td>26%</td><td>+9081</td><td><span class="tag m">实测</span></td></tr>
+        <tr><td>Ollama qwen3:8b</td><td>约 5120</td><td>42%</td><td>+7168</td><td><span class="tag e">估算</span></td></tr>
+        <tr><td>ComfyUI 常驻（生成后）</td><td>约 8909</td><td>73%</td><td>+3379</td><td><span class="tag m">实测</span></td></tr>
+        <tr><td>Wan2.2 5B 生成峰值</td><td>10596</td><td>86%</td><td>+1692</td><td><span class="tag m">实测</span></td></tr>
+        <tr><td>Qwen3-VL-4B 质检</td><td>约 10240</td><td>83%</td><td>+2048</td><td><span class="tag e">估算</span></td></tr>
+        <tr><td>Blender+ComfyUI 并发峰值</td><td>11194</td><td>91%</td><td>+1094</td><td><span class="tag m">实测</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:10px">
+      红线口径：名义 12GB = 12288 MiB；本机 <span class="k">nvidia-smi</span> 实测总容量 12231 MiB。Wan2.2 峰值距名义红线仅 1692 MiB（约 1.65 GiB），与基线报告「余约 1.4GB」口径一致。<br>
+      <span class="tag e">估算</span> 项未落实测峰值：Ollama 仅记录「100% GPU」；Qwen3-VL-4B 文档记「约 10GB」。
+    </p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script>
+(function(){
+  var el = document.getElementById('chart');
+  if(!window.echarts){
+    el.innerHTML = '<div style="padding:40px;color:#9aa3b2">ECharts CDN 未加载（离线环境）。上表为同源数据。</div>';
+    return;
+  }
+  var cats = ['系统空载','Ollama qwen3:8b','ComfyUI 常驻','Wan2.2 5B 生成','Qwen3-VL-4B 质检','Blender+ComfyUI 并发'];
+  var base = [3207,3207,3207,3207,3207,3207];
+  var delta = [0,1913,5702,7389,7033,7987];
+  var total = [3207,5120,8909,10596,10240,11194];
+  var nature = ['实测','估算','实测','实测','估算','实测'];
+
+  var chart = echarts.init(el, null, {renderer:'canvas'});
+  chart.setOption({
+    backgroundColor:'transparent',
+    color:['#533483','#e94560'],
+    title:{ text:'各工具组合 VRAM 占用叠加（MiB）', left:8, top:4,
+            textStyle:{color:'#e8eaf0', fontSize:14, fontWeight:600} },
+    tooltip:{
+      trigger:'axis',
+      backgroundColor:'#16213e', borderColor:'#0f3460', textStyle:{color:'#e8eaf0'},
+      formatter:function(ps){
+        var i = ps[0].dataIndex;
+        var s = '<b>'+cats[i]+'</b><br/>';
+        s += '系统与桌面基线：'+base[i]+' MiB（实测）<br/>';
+        s += '任务增量：'+delta[i]+' MiB<br/>';
+        s += '总占用：<b>'+total[i]+' MiB</b>（'+nature[i]+'）<br/>';
+        s += '占 12GB：'+(total[i]/12288*100).toFixed(0)+'%<br/>';
+        s += '距红线余量：'+(12288-total[i])+' MiB';
+        return s;
+      }
+    },
+    legend:{ data:['系统与桌面基线','任务增量'], right:10, top:8, textStyle:{color:'#9aa3b2'} },
+    grid:{ left:70, right:40, top:64, bottom:60 },
+    xAxis:{
+      type:'category', data:cats, boundaryGap:false,
+      axisLabel:{color:'#9aa3b2', fontSize:11, interval:0, rotate:18},
+      axisLine:{lineStyle:{color:'#0f3460'}}
+    },
+    yAxis:{
+      type:'value', name:'MiB', min:0, max:13200, interval:2000,
+      nameTextStyle:{color:'#9aa3b2'},
+      axisLabel:{color:'#9aa3b2'},
+      splitLine:{lineStyle:{color:'rgba(15,52,96,.7)'}}
+    },
+    series:[
+      {
+        name:'系统与桌面基线', type:'line', stack:'vram', smooth:false,
+        areaStyle:{opacity:.55}, symbol:'circle', symbolSize:6,
+        lineStyle:{width:2},
+        data:base
+      },
+      {
+        name:'任务增量', type:'line', stack:'vram', smooth:false,
+        areaStyle:{opacity:.75}, symbol:'circle', symbolSize:8,
+        lineStyle:{width:2},
+        label:{
+          show:true, position:'top', color:'#e8eaf0', fontSize:11,
+          formatter:function(p){ return total[p.dataIndex]+' '+nature[p.dataIndex]; }
+        },
+        data:delta,
+        markLine:{
+          silent:true, symbol:'none',
+          label:{ color:'#e94560', fontSize:12, formatter:'12GB 名义红线 12288 MiB' },
+          lineStyle:{ color:'#e94560', type:'solid', width:2 },
+          data:[{ yAxis:12288 }]
+        },
+        markPoint:{
+          symbol:'pin', symbolSize:44,
+          itemStyle:{color:'#533483'},
+          label:{color:'#fff', fontSize:10},
+          data:[{ name:'实际总容量', value:12231, yAxis:12231, x:'88%' }]
+        }
+      }
+    ]
+  });
+  window.addEventListener('resize', function(){ chart.resize(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+{
+  "schema": "cineast.delivery_spec/2.0",
+  "adopted_at": "2026-09-27",
+  "supersedes": "cineast.delivery_spec/1.7（旧项目 D:\\ai_film_projects\\pipeline\\delivery_spec.json，原文件保留不删，本副本存于 _legacy/projects_雨夜寻猫/）",
+  "principle": "本文件是分辨率/帧率/码率/声道/响度/AI标识的**唯一定义处**。ffmpeg 与 qc_media 只执行与比对，不自行发明数值口径。任何脚本不得硬编码这些数值，必须读本文件。",
+  "boss_approval": {
+    "date": "2026-09-27",
+    "scope": "A2 达标线三档规格 / A3 五项硬指标 / A4 首片 30-45 秒 —— 老板回复「A 全认」",
+    "note": "L1/L2/L3 三档为本轮新增；旧 1.7 只有 web1080/review720 两档"
+  },
+
+  "references": {
+    "GY/T 377-2023（广电·网络视听节目响度）": "平均响度 -15 或 -24 LKFS ±2LU，真峰 ≤ -1 dBTP",
+    "EBU R128": "-23 LUFS ±0.5LU，TP ≤ -1 dBTP（两遍法测量，一遍动态 loudnorm 会毁动态范围）",
+    "Netflix 交付（对白锚点）": "dialogue-gated -27 LKFS ±5，程序总响度 -24 LKFS 档",
+    "网络流媒体实践口径": "平台会向下归一到约 -14 LUFS（YouTube 官方只说会调小，-14 为业界实践值，非官方条款）",
+    "GB 45438-2025 与《人工智能生成合成内容标识办法》": "显式标识 + 隐式元数据标识；视频与音频均适用（2025-09-01 已施行）",
+    "T/CEAP 1-2025": "竖屏微短剧码率下限 5500kbps（横屏档沿用其思路）",
+    "平台限流线": "<720p 平台限流；口型错位即判低质（旧项目审计件已核实）"
+  },
+
+  "profiles": {
+    "L1_review_720": {
+      "label": "L1 能看（内部审片 / 迭代 / 引擎对比）",
+      "video": {
+        "res": "1280x720",
+        "fps": 24.0,
+        "fps_tolerance": 0.005,
+        "timecode_note": "必须 CFR 24/1，禁用 23.976（1001 时基会引入节拍抖动）——旧项目 tech_v5 因 fps=23.975 被判 FAIL",
+        "codec": "h264",
+        "crf": 16,
+        "min_video_kbps": 6000,
+        "target_bitrate_kbps": 8000,
+        "maxrate_kbps": 10000,
+        "bufsize_kbps": 16000,
+        "encode_mode": "ABR+maxrate（交付档不能只靠 crf：crf 不保证码率下限，旧项目实测 1919.8kbps 即为此坑）"
+      },
+      "audio": { "rate": 48000, "channels": 2, "master_bit_depth": 24 },
+      "program_loudness": { "integrated_lufs": -14.0, "tolerance": 0.5, "true_peak_dbtp_max": -1.5, "lra_max": 14.0 },
+      "duration_hint_s": [30, 45],
+      "hard_gates": ["qc.hard_1_motion", "qc.hard_3_identity", "qc.hard_5_audio"]
+    },
+    "L2_publish_1080": {
+      "label": "L2 能发（B站 / YouTube / 抖音横屏）",
+      "video": {
+        "res": "1920x1080",
+        "fps": 24.0,
+        "fps_tolerance": 0.005,
+        "codec": "h264",
+        "crf": 16,
+        "min_video_kbps": 10000,
+        "target_bitrate_kbps": 12000,
+        "maxrate_kbps": 16000,
+        "bufsize_kbps": 24000
+      },
+      "audio": { "rate": 48000, "channels": 2, "master_bit_depth": 24 },
+      "program_loudness": { "integrated_lufs": -14.0, "tolerance": 0.5, "true_peak_dbtp_max": -1.5, "lra_max": 14.0 },
+      "duration_hint_s": [60, 90],
+      "extra_required": ["ai_label.explicit", "ai_label.implicit_metadata", "clearance_ledger"],
+      "hard_gates": ["qc.hard_1_motion", "qc.hard_3_identity", "qc.hard_5_audio"]
+    },
+    "L3_commercial": {
+      "label": "L3 能卖（商单交付）",
+      "video": {
+        "res_options": ["1920x1080", "3840x2160"],
+        "fps": 24.0,
+        "codec": "h264",
+        "min_video_kbps": 12000,
+        "target_bitrate_kbps": 16000,
+        "maxrate_kbps": 24000,
+        "master_mezzanine": "ProRes 4444 / MOV / Rec.709 / 4:4:4 10bit"
+      },
+      "audio": {
+        "rate": 48000,
+        "channels": 2,
+        "master_bit_depth": 24,
+        "deliverables": ["成片混音轨", "对白 stem", "无配乐 stem（对白+环境）"]
+      },
+      "program_loudness": { "integrated_lufs": -14.0, "tolerance": 0.5, "true_peak_dbtp_max": -1.5, "lra_max": 14.0 },
+      "extra_required": ["ai_label.explicit", "ai_label.implicit_metadata", "clearance_ledger", "delivery_proof"],
+      "hard_gates": ["qc.hard_1_motion", "qc.hard_3_identity", "qc.hard_5_audio", "qc.soft_2_structure", "qc.soft_4_lighting"]
+    }
+  },
+  "default_profile": "L1_review_720",
+
+  "dialogue_check": {
+    "method": "dialogue_window_relative",
+    "band_lu": [-1.0, 4.0],
+    "measurement": "对白窗口内整段混音相对程序响度的差（立体声网络版可测近似）；5.1 正式交付须改用对白 stem 门控",
+    "remedy": "超界只改 bus_trim_db，不许改判据、不许用 makeup 抬响度",
+    "cinema_51_alt": { "dialogue_gated_lkfs": -27.0, "tolerance": 5.0 }
+  },
+
+  "subtitle_style": {
+    "max_lines": 2,
+    "max_chars_per_line": 42,
+    "min_dur_s": 0.5,
+    "max_dur_s": 7.0,
+    "safe_area": "title_safe"
+  },
+
+  "ai_label": {
+    "legal_basis": "GB 45438-2025 + 《人工智能生成合成内容标识办法》（2025-09-01 施行）",
+    "explicit": {
+      "required": true,
+      "text": "本片由 AI 生成合成",
+      "min_duration_s": 3.0,
+      "y_pct_start_of_frame": 0.06,
+      "font_min_px": 40,
+      "safe_area": "title_safe",
+      "note": "旧项目 tech_v5 QC 因「成片轨道里没有 AI 显式标识 overlay 项」判 FAIL —— 本项必须由导出台本默认带上，不是可选项"
+    },
+    "implicit_metadata_keys": ["comment", "aigc_label", "aigc_service", "aigc_provider_id", "aigc_generated_at"],
+    "implicit_metadata_transport": {
+      "container": "matroska",
+      "note": "MP4 只保留 itu963 tag 白名单里的自定义键，会被静默丢弃（旧项目实测确认 ffprobe 读不到 aigc_*）。交付版容器用 .mkv；如平台强制 mp4，需在 mp4 内另存并在 delivery_proof 记录差异并如实标注「缺隐式标识」"
+    }
+  },
+
+  "hard_gates_definition": {
+    "where": "spec/qc_rubric.json（五项硬指标的阈值与工具）",
+    "rule": "硬指标不过 → 不得进老板预览；半硬指标不过 → 记 WARN 且必须写明是「引擎问题」还是「白模问题」"
+  },
+
+  "delivery_stage_definition": {
+    "preview": "内部审看/技术体检：码率与真动比例记 WARN，但帧率/响度/采样率/声道/AI标识仍硬判",
+    "final": "对外交付：本文件所有阈值全部硬判；血缘 kind≠video 的镜不得出现在时间线（禁止静图充数）"
+  },
+
+  "owner_signoff": {
+    "carrier": "projects/<片名>/00_brief/timeline/*.json 内每条轨道项的 owner_signoff 字段（不落口头约定）",
+    "schema": { "signoff": { "role": "owner 岗位 id", "by": "Agent 名或人", "ts": "ISO 时间", "sha": "被签对象内容 sha256 前12" } },
+    "gate": "进 g1_blockout_lock 前置条件：全部轨道项有值或有 signoff",
+    "status_note": "旧项目 19 轨时间线 305 项 signoff **全为 null**、36 项待确认 —— v2 必须逐镜签核，否则契约层是空的"
+  },
+
+  "coordinate_with": {
+    "qc_rubric": "spec/qc_rubric.json",
+    "shot_spec": "spec/shot_spec.schema.json",
+    "blockout_spec": "spec/blockout_spec.schema.json（待建）"
+  },
+
+  "bus_trim_db": { "DLG": -2.9, "AMB": 0.0, "FX": 0.0, "MX": 0.0 },
+  "bus_trim_note": "旧项目实测对白相对程序响度差 6.33 LU，修正量为 DLG -2.9dB；沿用"
+}

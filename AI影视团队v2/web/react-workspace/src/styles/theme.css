@@ -1,0 +1,73 @@
+:root {
+  --bg: #0d0c0a;
+  --bg-elev: #161411;
+  --bg-card: #1c1a16;
+  --bg-hover: #221f1a;
+  --fg: #f2ede4;
+  --fg-dim: #b5ad9e;
+  --fg-mute: #7a7366;
+  --accent: #e8b949;
+  --accent-dim: #c49a2e;
+  --accent-teal: #5bb8b5;
+  --accent-rose: #c97b63;
+  --accent-red: #d65d4e;
+  --accent-green: #6b9e54;
+  --accent-yellow: #d4a839;
+  --accent-blue: #6b8fa8;
+  --accent-gold: #e8b949;
+  --accent-purple: #8b6ba8;
+  --line: #2a2722;
+  --line-soft: #1f1d19;
+  --radius: 6px;
+  --radius-sm: 4px;
+  --radius-lg: 10px;
+  --sidebar-w: 240px;
+  --sidebar-right-w: 300px;
+  --topbar-h: 52px;
+  --bottombar-h: 44px;
+  --transition: 0.2s ease;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: 'Inter', 'Noto Serif SC', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+.serif { font-family: 'Fraunces', 'Noto Serif SC', serif; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--fg-mute); }
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+.dot-green { background: var(--accent-green); }
+.dot-yellow { background: var(--accent-yellow); }
+.dot-red { background: var(--accent-red); }
+.dot-blue { background: var(--accent-blue); }
+.dot-gray { background: var(--fg-mute); }

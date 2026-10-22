@@ -1,0 +1,226 @@
+{
+  "handoffs": [
+    {
+      "handoff_id": "角色设计-20260822-96C1",
+      "task_name": "剧本定稿-雨夜寻猫",
+      "from_agent": "编剧",
+      "to_agent": "角色设计师",
+      "status": "completed",
+      "created_at": "2026-08-22T22:25:49.428622"
+    },
+    {
+      "handoff_id": "场景设计-20260822-4FE6",
+      "task_name": "角色设计完成-雨夜少女+流浪猫",
+      "from_agent": "角色设计师",
+      "to_agent": "场景设计师",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:25:49.431651"
+    },
+    {
+      "handoff_id": "分镜师-20260822-06C5",
+      "task_name": "场景锁定-雨夜街道",
+      "from_agent": "场景设计师",
+      "to_agent": "分镜师",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:25:49.432650"
+    },
+    {
+      "handoff_id": "制片人-20260822-2CDD",
+      "task_name": "分镜01生成中",
+      "from_agent": "分镜师",
+      "to_agent": "制片人",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:25:49.433153"
+    },
+    {
+      "handoff_id": "制片人-20260822-F0B2",
+      "task_name": "角色设计被退回-流浪猫",
+      "from_agent": "角色设计师",
+      "to_agent": "制片人",
+      "status": "rejected",
+      "created_at": "2026-08-22T22:25:49.434669"
+    },
+    {
+      "handoff_id": "角色设计-20260822-61FB",
+      "task_name": "剧本定稿-雨夜寻猫",
+      "from_agent": "编剧",
+      "to_agent": "角色设计师",
+      "status": "completed",
+      "created_at": "2026-08-22T22:26:12.571168"
+    },
+    {
+      "handoff_id": "场景设计-20260822-C891",
+      "task_name": "角色设计完成-雨夜少女+流浪猫",
+      "from_agent": "角色设计师",
+      "to_agent": "场景设计师",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:26:12.574183"
+    },
+    {
+      "handoff_id": "分镜师-20260822-23C6",
+      "task_name": "场景锁定-雨夜街道",
+      "from_agent": "场景设计师",
+      "to_agent": "分镜师",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:26:12.575716"
+    },
+    {
+      "handoff_id": "制片人-20260822-5B62",
+      "task_name": "分镜01生成中",
+      "from_agent": "分镜师",
+      "to_agent": "制片人",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:26:12.576224"
+    },
+    {
+      "handoff_id": "制片人-20260822-59AD",
+      "task_name": "角色设计被退回-流浪猫",
+      "from_agent": "角色设计师",
+      "to_agent": "制片人",
+      "status": "rejected",
+      "created_at": "2026-08-22T22:26:12.577231"
+    },
+    {
+      "handoff_id": "角色设计-20260822-ECF7",
+      "task_name": "剧本定稿-雨夜寻猫",
+      "from_agent": "编剧",
+      "to_agent": "角色设计师",
+      "status": "completed",
+      "created_at": "2026-08-22T22:26:49.763263"
+    },
+    {
+      "handoff_id": "场景设计-20260822-1F78",
+      "task_name": "角色设计完成-雨夜少女+流浪猫",
+      "from_agent": "角色设计师",
+      "to_agent": "场景设计师",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:26:49.766285"
+    },
+    {
+      "handoff_id": "分镜师-20260822-A0E1",
+      "task_name": "场景锁定-雨夜街道",
+      "from_agent": "场景设计师",
+      "to_agent": "分镜师",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:26:49.767290"
+    },
+    {
+      "handoff_id": "制片人-20260822-86B3",
+      "task_name": "分镜01生成中",
+      "from_agent": "分镜师",
+      "to_agent": "制片人",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:26:49.768286"
+    },
+    {
+      "handoff_id": "制片人-20260822-9EAA",
+      "task_name": "角色设计被退回-流浪猫",
+      "from_agent": "角色设计师",
+      "to_agent": "制片人",
+      "status": "rejected",
+      "created_at": "2026-08-22T22:26:49.769290"
+    },
+    {
+      "handoff_id": "角色设计-20260822-DC71",
+      "task_name": "剧本定稿-雨夜寻猫",
+      "from_agent": "编剧",
+      "to_agent": "角色设计师",
+      "status": "completed",
+      "created_at": "2026-08-22T22:28:03.078647"
+    },
+    {
+      "handoff_id": "场景设计-20260822-296E",
+      "task_name": "角色设计完成-雨夜少女+流浪猫",
+      "from_agent": "角色设计师",
+      "to_agent": "场景设计师",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:28:03.082169"
+    },
+    {
+      "handoff_id": "分镜师-20260822-C0E4",
+      "task_name": "场景锁定-雨夜街道",
+      "from_agent": "场景设计师",
+      "to_agent": "分镜师",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:28:03.083179"
+    },
+    {
+      "handoff_id": "制片人-20260822-EE52",
+      "task_name": "分镜01生成中",
+      "from_agent": "分镜师",
+      "to_agent": "制片人",
+      "status": "pending_check",
+      "created_at": "2026-08-22T22:28:03.083691"
+    },
+    {
+      "handoff_id": "制片人-20260822-8A4D",
+      "task_name": "角色设计被退回-流浪猫",
+      "from_agent": "角色设计师",
+      "to_agent": "制片人",
+      "status": "rejected",
+      "created_at": "2026-08-22T22:28:03.084694"
+    },
+    {
+      "handoff_id": "角色设计-20260925-54FE",
+      "task_name": "剧本v1角色描述交付-林小雨与小白",
+      "from_agent": "编剧",
+      "to_agent": "角色设计师",
+      "status": "completed",
+      "created_at": "2026-09-25T16:33:56.953237"
+    },
+    {
+      "handoff_id": "场景设计-20260925-E49F",
+      "task_name": "剧本v1场景描述交付-四场戏",
+      "from_agent": "编剧",
+      "to_agent": "场景设计师",
+      "status": "completed",
+      "created_at": "2026-09-25T16:33:56.955740"
+    },
+    {
+      "handoff_id": "ANIM-20260925-8310",
+      "task_name": "分镜表v1交付-18镜完整指令",
+      "from_agent": "storyboard_artist",
+      "to_agent": "animator",
+      "status": "completed",
+      "created_at": "2026-09-25T17:16:46.241136"
+    },
+    {
+      "handoff_id": "EDIT-20260925-0FE4",
+      "task_name": "动态镜头交付-关键镜2条+镜头清单v1",
+      "from_agent": "animator",
+      "to_agent": "editor",
+      "status": "completed",
+      "created_at": "2026-09-25T18:22:30.156538"
+    },
+    {
+      "handoff_id": "SOUN-20260925-024B",
+      "task_name": "音效设计-四轨素材+清单（基于粗剪v2时间线）",
+      "from_agent": "editor",
+      "to_agent": "sound_engineer",
+      "status": "completed",
+      "created_at": "2026-09-25T22:27:50.219951"
+    },
+    {
+      "handoff_id": "EDIT-20260925-BE05",
+      "task_name": "混音执行-四轨合成粗剪v3（音拍板已定：音色A+BGM程序合成版）",
+      "from_agent": "sound_engineer",
+      "to_agent": "editor",
+      "status": "completed",
+      "created_at": "2026-09-25T22:42:00.064020"
+    },
+    {
+      "handoff_id": "EDIT-20260926-36DA",
+      "task_name": "Wan2.2视频引擎升级-关键镜3-3/4-1重生成",
+      "from_agent": "animator",
+      "to_agent": "editor",
+      "status": "completed",
+      "created_at": "2026-09-26T01:56:27.443336"
+    }
+  ],
+  "stats": {
+    "total": 27,
+    "completed": 11,
+    "rejected": 4,
+    "in_progress": 12
+  }
+}

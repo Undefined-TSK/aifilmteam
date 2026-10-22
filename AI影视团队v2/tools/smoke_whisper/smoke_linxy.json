@@ -1,0 +1,51 @@
+{
+  "source": "D:\\ai_film_projects\\musetalk\\code\\MuseTalk-main\\data\\audio\\smoke_linxy.wav",
+  "model": "small",
+  "language": "zh",
+  "duration": 3.408,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.02,
+      "end": 2.4,
+      "text": "嚇死我了,走,回家",
+      "words": [
+        {
+          "w": "嚇",
+          "start": 0.02,
+          "end": 0.56
+        },
+        {
+          "w": "死",
+          "start": 0.56,
+          "end": 0.74
+        },
+        {
+          "w": "我",
+          "start": 0.74,
+          "end": 0.94
+        },
+        {
+          "w": "了,",
+          "start": 0.94,
+          "end": 1.16
+        },
+        {
+          "w": "走,",
+          "start": 1.42,
+          "end": 1.7
+        },
+        {
+          "w": "回",
+          "start": 2.04,
+          "end": 2.16
+        },
+        {
+          "w": "家",
+          "start": 2.16,
+          "end": 2.4
+        }
+      ]
+    }
+  ]
+}

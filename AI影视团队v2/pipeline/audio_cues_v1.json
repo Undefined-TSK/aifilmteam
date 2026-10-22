@@ -1,0 +1,46 @@
+{
+ "schema": "cineast.audio_cues/1.0",
+ "clock": {"fps": 24, "sample_rate_target": 48000, "total_s": 80.0},
+ "stems": {
+  "dialogue": {"anchor_lkfs_dialog_gated": -27.0, "voice_policy": "本地合规后端（CosyVoice3→Qwen3-TTS，2026-10-05 A6 落地；edge-tts 已移除）", "events": [
+   {"line": "1-1", "text": "（惊醒）…小白？", "start_s": 1.5, "dur_s": 1.6, "src": "audio/dialogue/1-1.mp3", "speaker": "林小雨", "voice": "TBD(本地合规后端)", "voice_license": "🟢CosyVoice3/Qwen3-TTS（R5 开工前选型落定）"},
+   {"line": "1-3", "text": "窗没关…", "start_s": 6.5, "dur_s": 1.4, "src": "audio/dialogue/1-3.mp3"},
+   {"line": "1-4", "text": "小白！你在哪…", "start_s": 11.0, "dur_s": 2.2, "src": "audio/dialogue/1-4.mp3"},
+   {"line": "2-2", "text": "叔叔阿姨，看见我的猫了吗…", "start_s": 20.0, "dur_s": 3.4, "src": "audio/dialogue/2-2.mp3"},
+   {"line": "2-4", "text": "下这么大雨…", "start_s": 29.0, "dur_s": 2.1, "src": "audio/dialogue/2-4.mp3"},
+   {"line": "3-2", "text": "小白？是你吗…", "start_s": 40.0, "dur_s": 1.99, "src": "audio/dialogue/3-2.mp3"},
+   {"line": "3-4", "text": "原来你在这…傻丫头…", "start_s": 46.0, "dur_s": 2.6, "src": "audio/dialogue/3-4.mp3"},
+   {"line": "3-5", "text": "找到你了…我们回家。", "start_s": 51.0, "dur_s": 2.4, "src": "audio/dialogue/3-5.mp3"}
+  ], "gaps_note": "第4场归途(60-80s)无对白，靠音乐与雨收；1-2(3-6s)为无对白空镜"},
+  "ambience": {"room_tone_required": true, "events": [
+   {"scene": "出租屋内", "start_s": 0, "end_s": 15, "src": "audio/ambient/出租屋雨声.mp3", "layers_present": ["屋顶近场硬雨"], "layers_missing": ["远景低鸣", "雷低通200Hz", "室内闷感滤波版"]},
+   {"scene": "雨夜街道", "start_s": 15, "end_s": 35, "src": "audio/ambient/街道雨声.mp3", "layers_present": ["硬雨"], "layers_missing": ["远景", "雷", "偶发车辆远声"]},
+   {"scene": "雨夜巷口", "start_s": 35, "end_s": 60, "src": "audio/ambient/巷口雨声.mp3", "layers_present": ["硬雨"], "layers_missing": ["滴水(窄缝混响)", "雷"]},
+   {"scene": "归途", "start_s": 60, "end_s": 80, "src": "audio/ambient/雨声渐弱.mp3", "layers_present": ["硬雨渐弱"], "layers_missing": ["雨停滴水尾", "远景城市低鸣"]}
+  ], "note": "单层硬雨=听感PPT主要来源；三层(近/远/低鸣雷)+per-scene room tone 是最低配"},
+  "music": {"events": [
+   {"cue": "第1场-平静惊变", "start_s": 0, "end_s": 15, "src": "audio/bgm/第1场-平静惊变.mp3", "level_db": -18, "motive": "无主题（留白）"},
+   {"cue": "第2场-焦虑", "start_s": 15, "end_s": 35, "src": "audio/bgm/第2场-焦虑.mp3", "level_db": -15},
+   {"cue": "第3场-希望", "start_s": 35, "end_s": 60, "src": "audio/bgm/第3场-希望.mp3", "level_db": -12, "theme_first_at_s": 42.0, "note": "主题 C4-E4-G4-A4 首现须与 3-3 绿眼同帧"},
+   {"cue": "第4场-温暖", "start_s": 60, "end_s": 80, "src": "audio/bgm/第4场-温暖.mp3", "level_db": -13, "fade_out_s": 5.0}
+  ], "engine": "ACE-Step v1.5 (MIT) / numpy泛音钢琴", "license": "🟢"},
+  "sfx": {"events": [
+   {"id": "sfx1", "name": "纸张翻动", "start_s": 0.5, "gain_lin": 0.30, "src": "audio/sfx/纸张翻动.mp3", "trigger_ref": {"t_s": 0.5, "kind": "performance", "desc": "床上翻身带起启事"}},
+   {"id": "sfx2", "name": "雨声穿窗", "start_s": 3.0, "gain_lin": 0.40, "src": "audio/sfx/雨声穿窗.mp3", "trigger_ref": {"t_s": 3.0, "kind": "weather", "desc": "1-2 空猫窝镜起"}, "line_ref": "1-3窗没关"},
+   {"id": "sfx3", "name": "开关门", "start_s": 12.5, "gain_lin": 0.50, "src": "audio/sfx/开关门.mp3", "trigger_ref": {"t_s": 12.5, "kind": "performance", "desc": "1-4 手触门把"}},
+   {"id": "sfx4", "name": "踩水洼", "start_s": 15.0, "gain_lin": 0.35, "loop": 5, "src": "audio/sfx/踩水洼.mp3", "trigger_ref": {"synchronized_to": "video.shot=2-1", "kind": "performance", "desc": "步频锁相，须与走位帧逐坑对齐"}, "foley_missing": "沥青/水洼分轨、步频未锁"},
+   {"id": "sfx5", "name": "伞收起滴水", "start_s": 36.0, "gain_lin": 0.30, "src": "audio/sfx/伞收起滴水.mp3", "prop_ref": "p4雨伞"},
+   {"id": "sfx6", "name": "猫叫-微弱单声", "start_s": 38.5, "gain_lin": 0.70, "src": "audio/sfx/猫叫-微弱单声.mp3", "timing_rule": "先于画面0.5s（老板已拍板：声音先行制造听觉同步）"},
+   {"id": "sfx7", "name": "纸箱窸窣", "start_s": 43.0, "gain_lin": 0.22, "src": "audio/sfx/纸箱窸窣.mp3", "trigger_ref": {"t_s": 43.0, "kind": "prop", "prop_id": "p5纸箱"}},
+   {"id": "sfx8", "name": "布料摩擦咕噜", "start_s": 47.0, "gain_lin": 0.22, "src": "audio/sfx/布料摩擦咕噜.mp3", "trigger_ref": {"t_s": 47.0, "kind": "performance", "desc": "3-4 抱起接触帧"}},
+   {"id": "sfx9", "name": "猫叫-应答单声", "start_s": 69.5, "gain_lin": 0.70, "src": "audio/sfx/猫叫-应答单声.mp3", "prop_ref": "p2白猫"}
+  ], "license_note": "2条真实猫叫采样来自 sounddino 免署名可商用"},
+  "mix": {"current": {"chain": "amix normalize=0 → alimiter=0.95", "master_lufs_measured": -20.83, "true_peak_dbtp": -7.19, "rate_hz": 44100, "verdict": "响度偏低6.8LU/码率低/单层/无对白anchor计量"},
+   "target": {"rate_hz": 48000, "bit_depth": 24, "integrated_lufs": -14.0, "tolerance": 0.5, "true_peak_dbtp_max": -1.5, "lra_max": 14.0, "method": "两遍法loudnorm（一遍测→二遍线性），动态处理全部完成后再做", "why_order": "loudnorm单遍dynamic自带AGC会把ducking抬回去"},
+   "buses": [{"name": "DX", "level_db": 0}, {"name": "MX", "level_db": -3}, {"name": "FX", "level_db": -1}, {"name": "AMB", "level_db": -6}],
+   "ducking": [{"target": "AMB", "during": "dialogue", "depth_db": -4}, {"target": "MX", "during": "dialogue", "depth_db": -6}],
+   "missing_automation": ["per-shot reverb send（雨棚/巷口/大街三空间）", "对白随景别高频滚降(声音透视)", "步频锁相Foley轨", "雨三层各自电平曲线"]},
+  "subtitle": {"source": "dialogue + forced alignment(whisperX 中文按字)", "rule": {"max_lines": 2, "max_chars_per_line": 42, "min_dur_s": 0.5, "max_dur_s": 7.0}, "note": "v4 无硬字幕；交付需 SRT+内嵌双版本"}
+ }
+}
+

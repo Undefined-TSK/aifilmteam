@@ -1,0 +1,70 @@
+# ============================================================
+# AI影视团队v2 — 版本控制忽略规则（维度13 版本控制方案）
+# 设计原则：代码/文档/契约/规格入 git；模型权重/渲染产物/第三方环境/密钥一律排除。
+# 实测体积依据（2026-10-05）：
+#   _legacy_projects 79.4GB/125045 文件 ｜ v2/models 18.2GB ｜ v2/projects/雨夜寻猫/06_edit 469MB
+#   v2/blender/shots 113MB（白模帧序列）｜ v2/wan_runtime 221MB ｜ outputs 255MB
+# ============================================================
+
+# ==== 运行时与生成物（只忽略，绝不删除）====
+runtime/
+.workbuddy/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+node_modules/
+dist/
+build/
+*.egg-info/
+
+# ==== 大体积模型权重（按需重下，不入库）====
+AI影视团队v2/models/
+AI影视团队v2/wan_runtime/
+models/
+wan_runtime/
+
+# ==== 历史归档（冻结·只读，79GB，永不入库）====
+_legacy_projects/
+AI影视团队v2/_legacy/
+
+# ==== 渲染与生成产物（可再生，不入库）====
+outputs/
+AI影视团队v2/logs/
+logs/
+AI影视团队v2/blender/shots/
+AI影视团队v2/projects/*/02_blockout/
+AI影视团队v2/projects/*/03_render/
+AI影视团队v2/projects/*/04_qc/
+AI影视团队v2/projects/*/05_audio/
+AI影视团队v2/projects/*/06_edit/
+AI影视团队v2/projects/*/07_deliver/
+AI影视团队v2/projects/*/assets/
+
+# ==== 视频/音频/图像等大二进制中间物（LFS 未启用前一律排除）====
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.mp3
+*.flac
+*.exr
+*.blend1
+
+# ==== 环境与密钥（R14-RC4：密钥不落库）====
+.env
+*.env
+!*.env.example
+AI影视团队v2/runtime/
+
+# ==== 工具配置与市场数据（与项目无关，已移出）====
+.trae-html-share-packages/
+.trae/
+
+# ==== 系统与编辑器 ====
+Thumbs.db
+desktop.ini
+.DS_Store
+.idea/
+.vscode/
+*.swp

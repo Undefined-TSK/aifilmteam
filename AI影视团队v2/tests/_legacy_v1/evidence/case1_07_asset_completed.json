@@ -1,0 +1,19 @@
+{
+  "assets": [
+    {
+      "name": "女主角林月",
+      "type": "character",
+      "status": "locked",
+      "dependencies": [],
+      "description": "赛博朋克风格女主角林月全身概念图，短发，霓虹色夹克，雨夜都市背景",
+      "prompt": "cinematic photo of a 25 year old woman named Lin Yue with short hair, wearing a neon colored cyberpunk jacket, standing in a rainy neon-lit city street at night, cyberpunk aesthetic, dramatic lighting, rain reflections on wet pavement, photorealistic, highly detailed, movie still",
+      "params": {},
+      "output_file": "k13_locked/character/女主角林月/02312674/generated_v1.png",
+      "version_uuid": "02312674",
+      "retry_count": 0,
+      "created_at": "2026-08-22 18:21:37",
+      "updated_at": "2026-08-22 18:21:49"
+    }
+  ],
+  "created_at": "2026-08-22 18:21:37"
+}

@@ -1,0 +1,12 @@
+# 白模 MCP addon（R17-8a 试点）—— baimo_mcp_addon
+schema_version = "1.0.0"
+
+id = "baimo_mcp_addon"
+version = "0.1.0"
+name = "白模 MCP 服务端（自包含 Blender 控制层）"
+tagline = "JSON-RPC 2.0 over TCP socket 服务端，供自研 MCP server / agent 操控 Blender"
+maintainer = "C3 AI影视团队v2"
+type = "add-on"
+blender_version_min = "4.2.0"
+license = ["SPDX:GPL-2.0-or-later"]
+tags = ["pipeline", "automation"]

@@ -1,0 +1,281 @@
+{
+  "project": "雨夜寻猫",
+  "version": 1,
+  "created_at": "2026-09-25",
+  "based_on_screenplay": "screenplay/雨夜寻猫_剧本_v1.json",
+  "total_duration_sec": 80,
+  "notes": "轴线约定：每场机位固定在动作线同一侧180度内；第4场4-1/4-3为结尾韵律镜（配合音乐渐弱），时长超铁律特批",
+  "scenes": [
+    {
+      "scene_no": 1,
+      "location": "出租屋内",
+      "scene_emotion": "平静→惊觉·焦虑",
+      "duration_sec": 15,
+      "axis_note": "机位在书桌-窗-门对角线右侧，人物移动方向从画面左（书桌）到右（门）",
+      "shots": [
+        {
+          "shot_no": "1-1",
+          "shot_type": "MS",
+          "camera_move": "static",
+          "duration_sec": 3,
+          "description": "暖黄台灯下林小雨伏案写字，抬头发现窗帘在飘",
+          "character_action": "伏案写字→抬头看窗帘",
+          "emotion": "平静",
+          "dialogue": "……小白？",
+          "locks_used": ["scene_lock/出租屋内.json", "character_lock/林小雨.json"],
+          "prompt": "medium shot, young Chinese woman with short dark hair, writing at desk under warm yellow desk lamp at night, looking up at flowing white curtain, cold blue light from open window, books on desk, small apartment interior, cinematic, 35mm film",
+          "reference_image": ""
+        },
+        {
+          "shot_no": "1-2",
+          "shot_type": "ECU",
+          "camera_move": "dolly in",
+          "duration_sec": 3,
+          "description": "空猫窝特写：冷蓝窗光打在空窝上，几根白色猫毛残留——丢失的第一信号",
+          "character_action": "无（空镜）",
+          "emotion": "惊觉",
+          "dialogue": "",
+          "locks_used": ["scene_lock/出租屋内.json"],
+          "prompt": "close-up of empty round cat bed on wooden floor at night, no cat, unoccupied cushion with a few white fur hairs, cold blue light from window falling on the empty bed, warm desk lamp glow bokeh in far background, lonely quiet night atmosphere, cinematic, shallow depth of field, 35mm film",
+          "reference_image": "",
+          "generation_note": "两次生成SDXL均在窝中出猫（训练数据偏差），分镜图暂缺；成片时猫窝空置由剪辑/动画层控制，图片不阻塞"
+        },
+        {
+          "shot_no": "1-3",
+          "shot_type": "CU",
+          "camera_move": "static",
+          "duration_sec": 4,
+          "description": "林小雨愣两秒，抓起椅背上的米色风衣",
+          "character_action": "起身抓风衣",
+          "emotion": "焦虑",
+          "dialogue": "窗没关……它肯定出去了。",
+          "locks_used": ["character_lock/林小雨.json"],
+          "prompt": "close-up, young Chinese woman with short dark hair, alarmed expression, grabbing beige trench coat from chair back and standing up quickly, small apartment at night, warm desk lamp light, cinematic, 35mm film",
+          "reference_image": ""
+        },
+        {
+          "shot_no": "1-4",
+          "shot_type": "FS",
+          "camera_move": "static",
+          "duration_sec": 5,
+          "description": "林小雨冲出门，门灯熄灭，屋内只剩开着的窗和飘动的窗帘",
+          "character_action": "冲出门",
+          "emotion": "决然",
+          "dialogue": "等我，我马上回来。",
+          "locks_used": ["scene_lock/出租屋内.json", "character_lock/林小雨.json"],
+          "prompt": "full shot, young Chinese woman in beige trench coat rushing out through apartment door, door light going out, empty room with open window and flowing curtain behind, rainy night, cinematic, 35mm film",
+          "reference_image": ""
+        }
+      ]
+    },
+    {
+      "scene_no": 2,
+      "location": "雨夜街道",
+      "scene_emotion": "焦虑·孤寂",
+      "duration_sec": 20,
+      "axis_note": "机位在街道行进方向左侧，人物始终从画面左向右移动",
+      "shots": [
+        {
+          "shot_no": "2-1",
+          "shot_type": "WS",
+          "camera_move": "tracking",
+          "duration_sec": 4,
+          "description": "林小雨撑伞快步穿过霓虹街道，水洼倒影被踩碎",
+          "character_action": "撑伞快步走",
+          "emotion": "焦虑",
+          "dialogue": "",
+          "locks_used": ["scene_lock/雨夜街道.json", "character_lock/林小雨.json"],
+          "prompt": "wide shot, young Chinese woman in beige trench coat with short dark hair, holding umbrella walking fast through empty rainy street, neon signs reflections on wet pavement, cold blue-purple tone, cinematic, low angle, 35mm film",
+          "reference_image": "assets/storyboards/分镜2-1-街道寻找_v1.png"
+        },
+        {
+          "shot_no": "2-2",
+          "shot_type": "CU",
+          "camera_move": "static",
+          "duration_sec": 5,
+          "description": "雨打伞面，林小雨的呼喊被雨声压低",
+          "character_action": "喊",
+          "emotion": "焦虑",
+          "dialogue": "小白——小白？",
+          "locks_used": ["character_lock/林小雨.json"],
+          "prompt": "close-up, young Chinese woman with short dark hair under umbrella, calling out anxiously in the rain, raindrops on umbrella, neon lights bokeh, cold night, cinematic, 35mm film",
+          "reference_image": ""
+        },
+        {
+          "shot_no": "2-3",
+          "shot_type": "MS",
+          "camera_move": "static",
+          "duration_sec": 4,
+          "description": "林小雨蹲下查看垃圾桶旁、车底",
+          "character_action": "蹲下查看",
+          "emotion": "急切",
+          "dialogue": "",
+          "locks_used": ["scene_lock/雨夜街道.json", "character_lock/林小雨.json"],
+          "prompt": "medium shot, young Chinese woman in beige trench coat crouching down to look under a car beside trash can in rainy street, searching, neon reflections on wet pavement, cinematic, 35mm film",
+          "reference_image": ""
+        },
+        {
+          "shot_no": "2-4",
+          "shot_type": "FS",
+          "camera_move": "static",
+          "duration_sec": 4,
+          "description": "林小雨起身摇头，继续向前",
+          "character_action": "起身摇头",
+          "emotion": "失落",
+          "dialogue": "不吓你，我们回家。",
+          "locks_used": ["character_lock/林小雨.json"],
+          "prompt": "full shot, young Chinese woman in beige trench coat standing up shaking head in disappointment, empty rainy street with neon signs, cinematic, 35mm film",
+          "reference_image": ""
+        },
+        {
+          "shot_no": "2-5",
+          "shot_type": "WS",
+          "camera_move": "static",
+          "duration_sec": 3,
+          "description": "空荡街道上只剩一个米色风衣的身影渐远",
+          "character_action": "缓慢前行",
+          "emotion": "孤寂",
+          "dialogue": "",
+          "locks_used": ["scene_lock/雨夜街道.json", "character_lock/林小雨.json"],
+          "prompt": "wide shot, lonely figure of young woman in beige trench coat with umbrella walking away on empty rainy street, neon reflections on wet pavement, cold blue-purple tone, cinematic, 35mm film",
+          "reference_image": ""
+        }
+      ]
+    },
+    {
+      "scene_no": 3,
+      "location": "雨夜巷口",
+      "scene_emotion": "微光希望·重逢",
+      "duration_sec": 25,
+      "axis_note": "机位在巷口外侧右侧45度，巷内纸箱始终在画面深处；核心场6镜（情绪密度最高的转折场）",
+      "shots": [
+        {
+          "shot_no": "3-1",
+          "shot_type": "MS",
+          "camera_move": "static",
+          "duration_sec": 4,
+          "description": "林小雨停在窄巷口喘气，伞沿滴水，巷口纸箱入画",
+          "character_action": "停步喘气",
+          "emotion": "疲惫",
+          "dialogue": "",
+          "locks_used": ["scene_lock/雨夜巷口.json", "character_lock/林小雨.json"],
+          "prompt": "medium shot, young Chinese woman in beige trench coat with umbrella stopping at narrow alley entrance catching breath, umbrella dripping, cardboard box visible in alley, warm streetlight glow, rainy night, cinematic, 35mm film",
+          "reference_image": "locks/k13_locked/storyboard/分镜02-巷口寻猫/1028cfdc/分镜02-巷口寻猫_v1.png"
+        },
+        {
+          "shot_no": "3-2",
+          "shot_type": "CU",
+          "camera_move": "pan",
+          "duration_sec": 3,
+          "description": "一声微弱猫叫声中，林小雨循声望去",
+          "character_action": "循声转头",
+          "emotion": "惊喜",
+          "dialogue": "是小白的声音。",
+          "locks_used": ["character_lock/林小雨.json"],
+          "prompt": "close-up, young Chinese woman with short dark hair holding umbrella, turning head toward sound with hopeful surprised expression, rain at night, warm streetlight glow, cinematic, 35mm film",
+          "reference_image": ""
+        },
+        {
+          "shot_no": "3-3",
+          "shot_type": "ECU",
+          "camera_move": "static",
+          "duration_sec": 3,
+          "description": "巷口纸箱里小白蜷成一团，绿眼睛在路灯暖光下亮了一下——全片情绪转折点",
+          "character_action": "无（猫的反应）",
+          "emotion": "希望",
+          "dialogue": "",
+          "locks_used": ["scene_lock/雨夜巷口.json", "character_lock/小白.json"],
+          "prompt": "extreme close-up of small white kitten in cardboard box, soaked wet fur clumping, damp matted white fur with water droplets, bright green eyes reflecting warm orange streetlight glow, warm light rim on fur edges, narrow rainy alley at night with bokeh background, cinematic, shallow depth of field, 35mm film",
+          "reference_image": "assets/storyboards/分镜3-3-绿眼亮起_v2.png"
+        },
+        {
+          "shot_no": "3-4",
+          "shot_type": "MS",
+          "camera_move": "static",
+          "duration_sec": 5,
+          "description": "林小雨蹲下伸手，小白蹭了蹭她的掌心",
+          "character_action": "蹲下伸手",
+          "emotion": "释然",
+          "dialogue": "找到你了。",
+          "locks_used": ["scene_lock/雨夜巷口.json", "character_lock/林小雨.json", "character_lock/小白.json"],
+          "prompt": "medium shot, young Chinese woman in beige trench coat crouching down reaching out her hand to small white kitten in cardboard box, kitten nuzzling her palm, narrow alley at night, warm streetlight glow, cinematic, 35mm film",
+          "reference_image": ""
+        },
+        {
+          "shot_no": "3-5",
+          "shot_type": "CU",
+          "camera_move": "static",
+          "duration_sec": 5,
+          "description": "林小雨把小白裹进风衣怀里，抱紧贴脸",
+          "character_action": "裹猫抱紧贴脸",
+          "emotion": "温柔",
+          "dialogue": "吓死我了……走，回家。",
+          "locks_used": ["character_lock/林小雨.json", "character_lock/小白.json"],
+          "prompt": "close-up, young Chinese woman holding small white kitten wrapped in beige trench coat against her chest, tender relieved expression, kitten nestling, rain bokeh, warm streetlight, cinematic, 35mm film",
+          "reference_image": ""
+        },
+        {
+          "shot_no": "3-6",
+          "shot_type": "FS",
+          "camera_move": "static",
+          "duration_sec": 5,
+          "description": "林小雨起身抱猫离开巷口，暖路灯在身后",
+          "character_action": "起身离开",
+          "emotion": "温暖",
+          "dialogue": "",
+          "locks_used": ["scene_lock/雨夜巷口.json", "character_lock/林小雨.json", "character_lock/小白.json"],
+          "prompt": "full shot, young Chinese woman in beige trench coat standing up holding small white kitten, walking out of narrow alley, warm streetlight glow behind, rainy night, cinematic, 35mm film",
+          "reference_image": ""
+        }
+      ]
+    },
+    {
+      "scene_no": 4,
+      "location": "雨夜街道（归途）",
+      "scene_emotion": "温暖·释然",
+      "duration_sec": 20,
+      "axis_note": "机位与第2场同侧（街道左），情绪反转呼应；结尾韵律镜时长特批",
+      "shots": [
+        {
+          "shot_no": "4-1",
+          "shot_type": "WS",
+          "camera_move": "tracking",
+          "duration_sec": 8,
+          "description": "林小雨撑伞走在空荡的霓虹街道上，小白猫踏着水洼跟在她脚边",
+          "character_action": "走",
+          "emotion": "温暖",
+          "dialogue": "",
+          "locks_used": ["scene_lock/雨夜街道.json", "character_lock/林小雨.json", "character_lock/小白.json"],
+          "prompt": "wide shot, young Chinese woman in beige trench coat with umbrella walking on empty rainy neon street, small white kitten following at her feet stepping through puddles, neon reflections on wet pavement, cold blue-purple tone, cinematic, 35mm film",
+          "reference_image": "locks/k13_locked/storyboard/分镜01-归途/58f9b65d/分镜01-归途_v2.png"
+        },
+        {
+          "shot_no": "4-2",
+          "shot_type": "CU",
+          "camera_move": "static",
+          "duration_sec": 5,
+          "description": "林小雨回头看了一眼猫，嘴角微微上扬，继续走",
+          "character_action": "回头看猫微笑",
+          "emotion": "释然",
+          "dialogue": "",
+          "locks_used": ["character_lock/林小雨.json", "character_lock/小白.json"],
+          "prompt": "close-up, young Chinese woman with short dark hair looking back over shoulder with gentle smile, small white kitten following at her feet, rainy neon street at night, cinematic, 35mm film",
+          "reference_image": ""
+        },
+        {
+          "shot_no": "4-3",
+          "shot_type": "LS",
+          "camera_move": "dolly out",
+          "duration_sec": 7,
+          "description": "一人一猫的影子被路灯拉得很长，雨声渐弱，画面渐黑",
+          "character_action": "走远",
+          "emotion": "余韵",
+          "dialogue": "",
+          "locks_used": ["scene_lock/雨夜街道.json", "character_lock/林小雨.json", "character_lock/小白.json"],
+          "prompt": "long shot, silhouettes of young woman with umbrella and small white kitten walking away on empty rainy street, long shadows under streetlight, night fading to black, gentle rain, cinematic, 35mm film",
+          "reference_image": ""
+        }
+      ]
+    }
+  ]
+}

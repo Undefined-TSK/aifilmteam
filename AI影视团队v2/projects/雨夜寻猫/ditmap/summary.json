@@ -1,0 +1,77 @@
+{
+ "project": "雨夜寻猫",
+ "generated_at": "2026-10-05 17:00:02",
+ "src_json": true,
+ "media_files": 134,
+ "media_by_type": {
+  "image": 65,
+  "video": 33,
+  "audio": 35
+ },
+ "shots": 18,
+ "shot_kind": {
+  "still_fallback": 16,
+  "video": 2
+ },
+ "dynamic_ratio_by_provenance": 0.111,
+ "deliverable_shots": 2,
+ "still_fallback_ref_image": {
+  "with_ref": 2,
+  "without_ref": 14,
+  "ref_missing_in_project": []
+ },
+ "zero_byte_assets": [
+  "locks/k13_locked/character/流浪猫/3ba07b4f/流浪猫_v1.png",
+  "locks/k13_locked/character/雨夜少女/97d280db/雨夜少女_v1.png",
+  "locks/k13_locked/scene/雨夜街道/6db52730/雨夜街道_v2.png",
+  "locks/k13_locked/scene/雨夜街道/e1f09c9a/雨夜街道_v1.png",
+  "locks/k13_locked/storyboard/分镜01-雨夜街道远景/2b21ef79/分镜01_v1.png"
+ ],
+ "broken_references": [
+  {
+   "asset": "locks/k13_locked/character/雨夜少女/97d280db/雨夜少女_v1.png",
+   "referenced_by": "k13/97d280db",
+   "why": "文件仅 0 字节（坏产物仍被锁定引用）",
+   "params_seed": 42,
+   "legacy_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\雨夜少女\\97d280db\\雨夜少女_v1.png"
+  },
+  {
+   "asset": "locks/k13_locked/character/流浪猫/3ba07b4f/流浪猫_v1.png",
+   "referenced_by": "k13/3ba07b4f",
+   "why": "文件仅 0 字节（坏产物仍被锁定引用）",
+   "params_seed": 108,
+   "legacy_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\character\\流浪猫\\3ba07b4f\\流浪猫_v1.png"
+  },
+  {
+   "asset": "locks/k13_locked/scene/雨夜街道/e1f09c9a/雨夜街道_v1.png",
+   "referenced_by": "k13/e1f09c9a",
+   "why": "文件仅 0 字节（坏产物仍被锁定引用）",
+   "params_seed": 256,
+   "legacy_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\scene\\雨夜街道\\e1f09c9a\\雨夜街道_v1.png"
+  },
+  {
+   "asset": "locks/k13_locked/scene/雨夜街道/6db52730/雨夜街道_v2.png",
+   "referenced_by": "k13/6db52730",
+   "why": "文件仅 0 字节（坏产物仍被锁定引用）",
+   "params_seed": 257,
+   "legacy_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\scene\\雨夜街道\\6db52730\\雨夜街道_v2.png"
+  },
+  {
+   "asset": "locks/k13_locked/storyboard/分镜01-雨夜街道远景/2b21ef79/分镜01_v1.png",
+   "referenced_by": "k13/2b21ef79",
+   "why": "文件仅 0 字节（坏产物仍被锁定引用）",
+   "params_seed": 512,
+   "legacy_path": "D:\\ai_film_projects\\projects\\雨夜寻猫\\k13_locked\\storyboard\\分镜01-雨夜街道远景\\2b21ef79\\分镜01_v1.png"
+  }
+ ],
+ "unreferenced_assets": 92,
+ "audio_stems_present": false,
+ "integrity_flags": [
+  {
+   "zero_byte": 5,
+   "broken_refs": 5,
+   "non_video_shots": 16
+  },
+  "注：本文件只记事实与完整性标志；PASS/FAIL 交付判定属 tools/qc_media.py（技术门）"
+ ]
+}

@@ -1,0 +1,21 @@
+{
+  "scene_name": "雨夜街道",
+  "atmosphere_keywords": [
+    "霓虹",
+    "雨夜",
+    "湿滑",
+    "冷调"
+  ],
+  "lighting_direction": "霓虹招牌多色光源+地面镜面反射",
+  "color_palette": {
+    "primary": "#1a1a2e",
+    "secondary": "#0f3460",
+    "accent": "#e94560"
+  },
+  "memory_point": "米色风衣在冷调霓虹中的唯一暖色锚点；湿路面霓虹镜面反射",
+  "camera": "广角35mm低机位",
+  "concept_art_path": "assets/scenes/雨夜街道_v3.png",
+  "locked_version_uuid": "af70b9b0",
+  "locked_at": "2026-09-25T17:41:57.081144",
+  "note": "原concept_art（v1/v2）为0字节空文件事故，v3重生成后更新引用"
+}

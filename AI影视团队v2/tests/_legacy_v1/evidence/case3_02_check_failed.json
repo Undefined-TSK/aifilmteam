@@ -1,0 +1,9 @@
+{
+  "total_budget": 2.0,
+  "spent": 0,
+  "remaining": 2.0,
+  "currency": "CNY",
+  "warning_threshold": 0.8,
+  "frozen": false,
+  "transactions": []
+}
